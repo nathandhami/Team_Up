@@ -13,7 +13,6 @@ router.route('/')
 
     res.render('index', {
       title: 'Home',
-      user: req.user
     });
   });
 

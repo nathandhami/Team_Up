@@ -16,8 +16,26 @@ router.route('/google')
 // if auth pass or fails
 router.route('/google/callback')
   .get(passport.authenticate('google', {
-    successRedirect: '/',
+    successRedirect: '/auth',
     failureRedirect: '/login'
   }));
+
+router.use('/', (req, res, next) => {
+  if (!req.user) {
+    res.redirect('/');
+  }
+  next();
+});
+
+router.route('/')
+  .get((req, res, next) => {
+    res.render('auth', {
+      title: 'Home',
+      user: {
+        name: req.user.displayName,
+        image: req.user._json.image.url
+      }
+    });
+  });
 
 module.exports = router;
