@@ -10,5 +10,10 @@
   },
   "session": {
     "secret": "we are team robot"
+  },
+  "google": {
+    "clientID": "767931424494-iq2vbnf82i1v51bsaeao1vgcvh1urd9h.apps.googleusercontent.com",
+    "clientSecret" : "ubuzHztEarmS_LJjIQ8HCC4l",
+    "callbackURL" : "https://localhost:8080/auth/google/callback"
   }
 }

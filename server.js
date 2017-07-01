@@ -3,15 +3,31 @@
 const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
-const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const nconf = require('./bin/lib/config/nconfConfig');
 
+// Strategies
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+passport.use(new GoogleStrategy({
+    clientID: nconf.get('google:clientID'),
+    clientSecret: nconf.get('google:clientSecret'),
+    callbackURL: nconf.get('google:callbackURL')
+  },
+  (accessToken, refreshToken, profile, done) => {
+    // User.findOrCreate(..., function(err, user) {
+    //   done(err, user);
+    // });
+    done(null, profile);
+  }));
+
 // Routes Config
 const index = require('./routes/index');
 const login = require('./routes/login');
+const auth = require('./routes/auth');
 const notFound = require('./routes/notFound');
 
 // Server Config
@@ -40,14 +56,14 @@ serverConfig.use(passport.initialize());
 serverConfig.use(passport.session());
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user);
 });
 
 passport.deserializeUser((id, done) => {
   // User.findById(id, (err, user) => {
   //   done(err, user);
   // });
-  done(err, id);
+  done(null, id);
 });
 
 // Setting up Engine Config
@@ -58,6 +74,7 @@ serverConfig.set('view engine', 'pug');
 serverConfig.use(express.static(path.join(__dirname, 'public')));
 serverConfig.use('/', index);
 serverConfig.use('/login', login);
+serverConfig.use('/auth', auth);
 
 // 404 route
 serverConfig.use('/', notFound);
