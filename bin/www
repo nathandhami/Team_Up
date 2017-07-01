@@ -1,11 +1,6 @@
 'use strict';
 
-// const express = require('express');
-// const open = require('open');
-// const path = require('path');
-
-// const rootPath = require('app-root-path');
-
+const open = require('open');
 const serverConfig = require('../server');
 const https = require('https');
 const nconf = require('./lib/config/nconfConfig');
@@ -17,13 +12,14 @@ serverConfig.set('port', PORT);
 
 const serverSSL = https.createServer(httpsOptions, serverConfig);
 
-const baseurlDisplay = () => {
-  const baseurl = 'https://localhost:' + PORT + '/';
-  winston.info('Listening on port: %s', PORT);
-  winston.info('Connection with URL %s', baseurl);
-  // open(baseurl);
-};
-
 serverSSL.listen(PORT, (err) => {
   (err) ? winston.error(err) : baseurlDisplay();
 });
+
+// Predefined Display Info
+const baseurlDisplay = () => {
+  const baseurl = 'https://localhost:' + PORT + '/';
+  winston.info('Listening on port: %s', PORT);
+  winston.info('Serving at URL %s', baseurl);
+  open(baseurl);
+};
