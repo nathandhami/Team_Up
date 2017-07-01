@@ -18,8 +18,8 @@
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
-    "jade": "^1.11.0",
     "nconf": "^0.8.4",
+    "pug": "^2.0.0-rc.2",
     "winston": "^2.3.1"
   }
 }
