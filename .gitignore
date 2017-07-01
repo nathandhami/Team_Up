@@ -26,3 +26,6 @@ node_modules
 # locks and bundle
 Gemfile.lock
 .bundle
+
+# cryptographic random data
+.rnd

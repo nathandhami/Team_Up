@@ -8,14 +8,14 @@ const index = require('./routes/index');
 const login = require('./routes/login');
 
 // Server Config
-const server = express();
+const serverConfig = express();
 
 // Setting up Engine Config
-server.set('views', path.join(__dirname, 'views'));
-server.set('view engine', 'pug');
+serverConfig.set('views', path.join(__dirname, 'views'));
+serverConfig.set('view engine', 'pug');
 
 // Setting up Routes
-server.use('/', index);
-server.use('/login', login);
+serverConfig.use('/', index);
+serverConfig.use('/login', login);
 
-module.exports = server;
+module.exports = serverConfig;

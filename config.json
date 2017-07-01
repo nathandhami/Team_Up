@@ -1,5 +1,11 @@
 {
+  "root":{
+    "path": "./"
+  },
   "http": {
     "port": 8080
+  },
+  "ssl": {
+    "passphrase": "teamrobot"
   }
 }

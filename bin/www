@@ -6,24 +6,24 @@
 
 // const rootPath = require('app-root-path');
 
-const server = require('../server');
+const serverConfig = require('../server');
+const https = require('https');
 const nconf = require('./lib/config/nconfConfig');
 const winston = require('./lib/config/winstonConfig');
+const httpsOptions = require('./lib/config/sslConfig');
 const PORT = nconf.get('http:port');
 
-server.set('port', PORT);
+serverConfig.set('port', PORT);
+
+const serverSSL = https.createServer(httpsOptions, serverConfig);
 
 const baseurlDisplay = () => {
-  const baseurl = 'http://localhost:' + PORT + '/';
+  const baseurl = 'https://localhost:' + PORT + '/';
   winston.info('Listening on port: %s', PORT);
   winston.info('Connection with URL %s', baseurl);
   // open(baseurl);
 };
 
-server.listen(PORT, (err) => {
+serverSSL.listen(PORT, (err) => {
   (err) ? winston.error(err) : baseurlDisplay();
 });
-
-// server.get('/', (req, res) => {
-//   res.sendFile(rootPath + '/src/public/html/index.html');
-// });
