@@ -1,9 +1,11 @@
 {
   "name": "team-up",
   "version": "1.0.0",
+  "private": true,
   "description": "Team Up website that allow members to find other people to join them in a sports activity",
   "main": "server.js",
   "scripts": {
+	"start": "node ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,5 +13,11 @@
     "url": "git@csil-git1.cs.surrey.sfu.ca:rtanzeel/Team_Up.git"
   },
   "author": "Rafay Tanzeel, Rudy Kong Tin Lun, Nathan Dhami, NoorUllah Randhawa",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "jade": "^1.11.0"
+  }
 }
