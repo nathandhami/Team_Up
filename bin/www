@@ -18,8 +18,8 @@ serverSSL.listen(PORT, (err) => {
 
 // Predefined Display Info
 const baseurlDisplay = () => {
-  const baseurl = 'https://localhost:' + PORT + '/';
-  winston.info('Listening on port: %s', PORT);
-  winston.info('Serving at URL %s', baseurl);
+  const baseurl = `https://localhost:${PORT}/`;
+  winston.info(`Listening on port: ${PORT}`);
+  winston.info(`Serving at URL ${baseurl}`);
   open(baseurl);
 };
