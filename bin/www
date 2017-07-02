@@ -3,9 +3,9 @@
 const open = require('open');
 const serverConfig = require('../server');
 const https = require('https');
-const nconf = require('./lib/config/nconfConfig');
-const winston = require('./lib/config/winstonConfig');
-const httpsOptions = require('./lib/config/sslConfig');
+const nconf = require('../src/config/nconfConfig');
+const winston = require('../src/config/winstonConfig');
+const httpsOptions = require('../src/config/sslConfig');
 const PORT = nconf.get('http:port');
 
 serverConfig.set('port', PORT);

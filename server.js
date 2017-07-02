@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const nconf = require('./bin/lib/config/nconfConfig');
+const nconf = require('./src/config/nconfConfig');
 
 // Routes Config
 const index = require('./routes/index');
@@ -38,7 +38,7 @@ serverConfig.use(session({
 }));
 
 // Import authentication strategies
-require('./bin/lib/config/authConfig')(serverConfig);
+require('./src/config/authConfig')(serverConfig);
 
 // Setting up Engine Config
 serverConfig.set('views', path.join(__dirname, 'views'));
