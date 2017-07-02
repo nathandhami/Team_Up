@@ -2,26 +2,27 @@
 
 const nconf = require('../config/nconfConfig');
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 
 module.exports = () => {
-  passport.use(new GoogleStrategy({
-      clientID: nconf.get('google:clientID'),
-      clientSecret: nconf.get('google:clientSecret'),
-      callbackURL: nconf.get('google:callbackURL')
+  passport.use(new FacebookStrategy({
+      clientID: nconf.get('facebook:clientID'),
+      clientSecret: nconf.get('facebook:clientSecret'),
+      callbackURL: nconf.get('facebook:callbackURL')
     },
     (accessToken, refreshToken, profile, done) => {
       // User.findOrCreate(..., function(err, user) {
       //   done(err, user);
       // });
 
+      console.log(profile);
       const user = {
-        email: profile.emails[0].value,
-        image: profile._json.image.url,
+        // email: profile.emails[0].value,
+        image: profile.profileUrl,
         displayName: profile.displayName,
-        google: {
+        facebook: {
           id: profile.id,
-          token: accessToken
+          token: tokenSecret
         }
       };
 

@@ -20,6 +20,32 @@ router.route('/google/callback')
     failureRedirect: '/login'
   }));
 
+// redirecting the user to twitter.com
+router.route('/twitter')
+  .get(passport.authenticate('twitter'));
+
+// if auth pass or fails
+router.route('/twitter/callback')
+  .get(passport.authenticate('twitter', {
+    successRedirect: '/auth',
+    failureRedirect: '/login'
+  }));
+
+// redirecting the user to twitter.com
+router.route('/facebook')
+  .get(passport.authenticate('facebook', {
+    scope: [
+      'email'
+    ]
+  }));
+
+// if auth pass or fails
+router.route('/facebook/callback')
+  .get(passport.authenticate('facebook', {
+    successRedirect: '/auth',
+    failureRedirect: '/login'
+  }));
+
 router.use('/', (req, res, next) => {
   if (!req.user) {
     res.redirect('/');
@@ -33,7 +59,7 @@ router.route('/')
       title: 'Home',
       user: {
         name: req.user.displayName,
-        image: req.user._json.image.url
+        image: req.user.image
       }
     });
   });

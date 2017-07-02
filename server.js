@@ -30,8 +30,8 @@ serverConfig.use(express.static(path.join(__dirname, 'public')));
 // Session and Cookie configuration
 serverConfig.use(session({
   secret: nconf.get('session:secret'),
-  resave: true,
-  saveUninitialized: true
+  resave: false,
+  saveUninitialized: false
   // cookie: {
   //   secure: true
   // }
