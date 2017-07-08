@@ -3,11 +3,14 @@
 const express = require('express');
 const router = new express.Router();
 
-/* GET 404 page */
-router.route('*')
+/* GET register page */
+router.route('/')
   .get((req, res, next) => {
-    res.status(404).render('notFound', {
-      title: 'Page Not Found',
+    res.render('register', {
+      title: 'Register',
     });
+  }).post((req, res, next) => {
+    res.redirect('/');
   });
+
 module.exports = router;

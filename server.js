@@ -12,6 +12,7 @@ const mongoose = require('mongoose');
 // Routes Config
 const index = require('./routes/index');
 const login = require('./routes/login');
+const register = require('./routes/register');
 const auth = require('./routes/auth');
 const notFound = require('./routes/notFound');
 
@@ -27,7 +28,6 @@ serverConfig.use(bodyParser.urlencoded({
   extended: false, // body only accept string or array
 }));
 serverConfig.use(cookieParser());
-serverConfig.use(express.static(path.join(__dirname, 'public')));
 
 // Session and Cookie configuration
 serverConfig.use(session({
@@ -48,7 +48,16 @@ serverConfig.set('view engine', 'pug');
 
 // Setting up Routes
 serverConfig.use(express.static(path.join(__dirname, 'public')));
+
+// serverConfig.use((req, res, next)=>{
+//   if (!req.isAuthenticated()) {
+//     res.redirect('/login');
+//   }
+//   next();
+// });
+
 serverConfig.use('/login', login);
+serverConfig.use('/register', register);
 serverConfig.use('/', index);
 serverConfig.use('/auth', auth);
 

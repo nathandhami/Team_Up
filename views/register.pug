@@ -7,12 +7,24 @@ block content
       .row
         .col-xs-12.col-sm-push-3.col-sm-6.well
           ul.nav.nav-tabs.nav-justified
-            li.active
-              a(href='#', onclick='return false') Sign In
             li
-              a(href='/register') Register
+              a(href='/login') Sign In
+            li.active
+              a(href='#', onclick='return false') Register
           br
           form(action='/login', method='post')
+            .form-group
+              label(for='fname') First Name:
+              .input-group
+                span.input-group-addon
+                  i.glyphicon.glyphicon-user
+                input#fname.form-control(type='text', name='fname', placeholder='First Name')
+            .form-group
+              label(for='lname') Last Name:
+              .input-group
+                span.input-group-addon
+                  i.glyphicon.glyphicon-user
+                input#lname.form-control(type='text', name='lname', placeholder='Last Name')
             .form-group
               label(for='email') Email:
               .input-group
@@ -25,22 +37,18 @@ block content
                 span.input-group-addon
                   i.glyphicon.glyphicon-lock
                 input#pwd.form-control(type='password', placeholder='Enter Password', name='pwd')
+            .form-group
+              label(for='confirmpwd') Confirm Password:
+              .input-group
+                span.input-group-addon
+                  i.glyphicon.glyphicon-lock
+                input#confirmpwd.form-control(type='password', placeholder='Confirm Password', name='confirmpwd')
             .checkbox
               label
                 input(type='checkbox', name='remember')
                 |  Remember me
             button.btn.btn-primary.btn-block(type='submit') Submit
             hr
-            h5.text-center Social Media Sign In
-            a.btn.btn-block.btn-social.btn-google(href="/auth/google")
-              span.fa.fa-google
-              |             Sign in with Google
-            a.btn.btn-block.btn-social.btn-facebook(href="/auth/facebook")
-              span.fa.fa-facebook
-              |             Sign in with Facebook
-            a.btn.btn-block.btn-social.btn-twitter(href="/auth/twitter")
-              span.fa.fa-twitter
-              |             Sign in with Twitter
 
 
 
