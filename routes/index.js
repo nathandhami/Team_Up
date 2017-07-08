@@ -2,7 +2,7 @@
 
 const express = require('express');
 const _ = require('lodash');
-const router = express.Router();
+const router = new express.Router();
 
 /* GET home page */
 router.route('/')

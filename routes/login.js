@@ -1,13 +1,13 @@
 'use strict';
 
 const express = require('express');
-const router = express.Router();
+const router = new express.Router();
 
 /* GET login page */
 router.route('/')
   .get((req, res, next) => {
     res.render('login', {
-      title: 'Login'
+      title: 'Login',
     });
   }).post((req, res, next) => {
     res.redirect('/');

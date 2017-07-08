@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/config/authConfig.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'public'),
   },
 
   watch: true,
@@ -14,10 +14,10 @@ module.exports = {
       host: 'localhost',
       port: 8080,
       files: ['./views/placeholders/*.pug', './views/*.pug'],
-      proxy: 'http://localhost:8090/'
+      proxy: 'http://localhost:8090/',
       // server: {
       //   baseDir: ['public/*.html', 'views/*/*.pug']
       // }
-    })
+    }),
   ],
 };

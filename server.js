@@ -7,6 +7,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const nconf = require('./src/config/nconfConfig');
+const mongoose = require('mongoose');
 
 // Routes Config
 const index = require('./routes/index');
@@ -16,13 +17,14 @@ const notFound = require('./routes/notFound');
 
 // Server Config
 const serverConfig = express();
+// const db = mongoose.connect('mongodb://localhost/users');
 
-//Secure http headers configured
+// Secure http headers configured
 serverConfig.use(helmet());
 
 serverConfig.use(bodyParser.json());
 serverConfig.use(bodyParser.urlencoded({
-  extended: false //body only accept string or array
+  extended: false, // body only accept string or array
 }));
 serverConfig.use(cookieParser());
 serverConfig.use(express.static(path.join(__dirname, 'public')));
@@ -31,10 +33,10 @@ serverConfig.use(express.static(path.join(__dirname, 'public')));
 serverConfig.use(session({
   secret: nconf.get('session:secret'),
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
   // cookie: {
-  //   secure: true
-  // }
+  //   secure: true,
+  // },
 }));
 
 // Import authentication strategies

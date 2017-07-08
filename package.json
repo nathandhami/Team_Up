@@ -5,11 +5,12 @@
   "description": "Team Up website that allow members to find other people to join them in a sports activity",
   "main": "server.js",
   "scripts": {
-    "prestart": "npm run security-check",
+    "prestart": "npm-run-all --parallel security-check linter",
     "start": "npm-run-all --parallel server",
     "server": "node ./bin/www -p 8080 webpack",
     "build": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "linter": "esw --ignore-path .gitignore --fix ./",
     "security-check": "nsp check"
   },
   "repository": {
@@ -38,6 +39,9 @@
   "devDependencies": {
     "browser-sync": "^2.18.12",
     "browser-sync-webpack-plugin": "^1.1.4",
+    "eslint": "^4.1.1",
+    "eslint-config-google": "^0.9.0",
+    "eslint-watch": "^3.1.2",
     "npm-run-all": "^4.0.2",
     "nsp": "^2.6.3",
     "open": "^0.0.5",

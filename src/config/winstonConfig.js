@@ -13,7 +13,7 @@ if (!fs.existsSync(logPath)) {
 // winston Configuratiton
 winston.add(winston.transports.File, {
   filename: path.join(logPath, 'error.log'),
-  level: 'error'
+  level: 'error',
 });
 
 module.exports = winston;

@@ -3,7 +3,6 @@
 const passport = require('passport');
 
 module.exports = (serverConfig) => {
-
   serverConfig.use(passport.initialize());
   serverConfig.use(passport.session());
 

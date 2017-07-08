@@ -11,7 +11,7 @@ const privateKeyPath = path.join(rootPath, 'src', 'ssl', 'key.pem');
 const httpsOptions = {
   'key': fs.readFileSync(privateKeyPath, 'utf-8'),
   'cert': fs.readFileSync(publicKeyPath, 'utf-8'),
-  'passphrase': nconf.get('ssl:passphrase')
+  'passphrase': nconf.get('ssl:passphrase'),
 };
 
 module.exports = httpsOptions;
