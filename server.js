@@ -19,7 +19,7 @@ const notFound = require('./routes/notFound');
 
 // Server Config
 const serverConfig = express();
-// const db = mongoose.connect('mongodb://localhost/users');
+const db = mongoose.connect('mongodb://localhost/users');
 
 // Secure http headers configured
 serverConfig.use(helmet());
