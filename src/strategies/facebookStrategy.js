@@ -15,14 +15,14 @@ module.exports = () => {
     //   done(err, user);
     // });
 
-    console.log(profile);
+    // console.log(profile);
     const user = {
       // email: profile.emails[0].value,
       image: profile.profileUrl,
       displayName: profile.displayName,
       facebook: {
         id: profile.id,
-        token: tokenSecret,
+        token: accessToken,
       },
     };
 

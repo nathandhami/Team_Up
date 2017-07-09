@@ -1,0 +1,7 @@
+mixin form-element(forLabel, label, type, name, placeholder, iconClassName)
+  .form-group
+    label(for= forLabel) #{label}:
+    .input-group
+      span.input-group-addon
+        i(class= iconClassName)
+      input.form-control(id= name, type= type, name= name, placeholder= placeholder)

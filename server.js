@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
 const nconf = require('./src/config/nconfConfig');
 const mongoose = require('mongoose');
 
@@ -27,6 +28,7 @@ serverConfig.use(bodyParser.json());
 serverConfig.use(bodyParser.urlencoded({
   extended: false, // body only accept string or array
 }));
+serverConfig.use(expressValidator());
 serverConfig.use(cookieParser());
 
 // Session and Cookie configuration
@@ -49,17 +51,17 @@ serverConfig.set('view engine', 'pug');
 // Setting up Routes
 serverConfig.use(express.static(path.join(__dirname, 'public')));
 
-// serverConfig.use((req, res, next)=>{
-//   if (!req.isAuthenticated()) {
-//     res.redirect('/login');
-//   }
-//   next();
-// });
-
+serverConfig.use('/', index);
 serverConfig.use('/login', login);
 serverConfig.use('/register', register);
-serverConfig.use('/', index);
 serverConfig.use('/auth', auth);
+
+serverConfig.use((req, res, next)=>{
+  if (!req.isAuthenticated()) {
+    res.redirect('/');
+  }
+  next();
+});
 
 // 404 route
 serverConfig.use('/', notFound);
