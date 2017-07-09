@@ -30,7 +30,10 @@
           "warn"
         ],
         "prefer-arrow-callback": [
-          "error"
+          "warn"
+        ],
+        "no-invalid-this": [
+          "warn"
         ]
     }
 }

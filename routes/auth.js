@@ -2,6 +2,7 @@
 
 const passport = require('passport');
 const express = require('express');
+const User = require('../models/User');
 const router = new express.Router();
 
 // redirecting the user to google.com
@@ -48,37 +49,83 @@ router.route('/facebook/callback')
 
 router.route('/register')
   .post((req, res) => {
-    req.checkBody(registerValidationOptions);
+    // req.checkBody(registerValidationOptions);
 
 
-    req.getValidationResult().then((result) => {
-      if (!result.isEmpty()) {
-        res.redirect('/register');
-        return;
-      }
-      res.redirect('/');
+    // req.getValidationResult().then((result) => {
+    //   if (!result.isEmpty()) {
+    //     res.redirect('/register');
+    //     return;
+    //   }
+    //   res.redirect('/');
+    // });
+
+
+    const firstName = req.body.fname;
+    const lastName = req.body.lname;
+    const email = req.body.email;
+    const password = req.body.pwd;
+    const confirmPassword = req.body.confirmpwd;
+
+
+    const user = new User({
+      firstname: firstName,
+      lastname: lastName,
+      email: email,
+      password: password,
     });
 
+    user.save((err, user) => {
+      if (err) throw err;
+      req.login(user, (err) => {
+        return res.redirect('/');
+      });
+    });
 
-    // const firstname = req.body.fname;
-    // const lastname = req.body.lname;
-    // const email = req.body.email;
-    // const password = req.body.pwd;
-    // const confirmPassword = req.body.confirmpwd;
+    // user.comparePassword(confirmPassword, (err, confirm) => {
+    //   if (err) throw err;
+    //   console.log(confirm);
+    //   if (confirm) {
 
-    // console.log(req.body.fname);
-    // console.log(req.body.lname);
-    // console.log(req.body.email);
-    // console.log(req.body.pwd);
-    // console.log(req.body.confirmpwd);
+    //   }
+    // });
 
-    res.redirect('/register');
+    // console.log(firstname);
+    // console.log(lastname);
+    // console.log(email);
+    // console.log(password);
+    // console.log(confirmPassword);
+
+    // res.redirect('/register');
   });
 
 
 router.route('/login')
   .post((req, res) => {
-    res.redirect('/');
+    const email = req.body.email;
+    const password = req.body.pwd;
+
+    const query = {
+      'email': email,
+    };
+
+    User.findOne(query, (err, user) => {
+      if (user) {
+        user.comparePassword(password, (err, match) => {
+          if (err) throw err;
+
+          if (match) {
+            req.login(user, (err) => {
+              return res.redirect('/');
+            });
+          } else {
+            return res.redirect('/');
+          }
+        });
+      } else {
+        return res.redirect('/');
+      }
+    });
   });
 
 router.use('/', (req, res, next) => {

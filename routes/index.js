@@ -1,6 +1,7 @@
 'use strict';
 
 const express = require('express');
+const User = require('../models/User');
 const _ = require('lodash');
 const router = new express.Router();
 
@@ -14,7 +15,7 @@ router.route('/')
       displayName = req.user.displayName;
       userImage = req.user.image;
     }
-    // console.log(req.user);
+
     res.render('index', {
       title: 'Home',
       isAuth: req.isAuthenticated(),

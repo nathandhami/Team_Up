@@ -12,7 +12,7 @@ router.route('/')
       });
       return;
     }
-    res.redirect('/');
+    return res.redirect('/');
   });
 
 module.exports = router;

@@ -1,20 +1,25 @@
 'use strict';
 
 const passport = require('passport');
+const User = require('../../models/User');
 
 module.exports = (serverConfig) => {
   serverConfig.use(passport.initialize());
   serverConfig.use(passport.session());
 
   passport.serializeUser((user, done) => {
-    done(null, user);
+    done(null, user._id);
   });
 
   passport.deserializeUser((id, done) => {
-    // User.findById(id, (err, user) => {
-    //   done(err, user);
-    // });
-    done(null, id);
+    User.findById(id, (err, user) => {
+      if (!user) {
+        return done(null, false);
+      } else {
+        done(null, user);
+      }
+    });
+    // done(null, id);
   });
 
   require('../strategies/googleStrategy')();

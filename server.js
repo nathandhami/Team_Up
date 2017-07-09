@@ -58,7 +58,7 @@ serverConfig.use('/auth', auth);
 
 serverConfig.use((req, res, next)=>{
   if (!req.isAuthenticated()) {
-    res.redirect('/');
+    return res.redirect('/');
   }
   next();
 });
