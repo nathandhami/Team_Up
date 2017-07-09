@@ -33,6 +33,7 @@ module.exports = () => {
             twitter: {
               id: profile.id,
               token: token,
+              tokenSecret: tokenSecret,
             },
           });
           userDocument.save((err, user) => {

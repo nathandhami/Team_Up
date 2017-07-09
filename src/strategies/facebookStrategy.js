@@ -28,6 +28,7 @@ module.exports = () => {
             facebook: {
               id: profile.id,
               token: accessToken,
+              tokenSecret: refreshToken,
             },
           });
           userDocument.save((err, user) => {

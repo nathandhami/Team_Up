@@ -7,7 +7,7 @@
   "scripts": {
     "prestart": "npm-run-all --parallel security-check linter",
     "start": "npm-run-all --parallel server",
-    "server": "node ./bin/www -p 8080 webpack",
+    "server": "node ./bin/www -p 8080",
     "build": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "linter": "esw --ignore-path .gitignore --fix ./",
