@@ -37,7 +37,8 @@
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
     "pug": "^2.0.0-rc.2",
-    "winston": "^2.3.1"
+    "winston": "^2.3.1",
+    "xss-filters": "^1.2.7"
   },
   "devDependencies": {
     "browser-sync": "^2.18.12",

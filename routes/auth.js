@@ -4,6 +4,7 @@ const passport = require('passport');
 const express = require('express');
 const User = require('../models/User');
 const RegisterValidation = require('../models/RegisterValidation');
+const xssFilters = require('xss-filters');
 const router = new express.Router();
 
 // redirecting the user to google.com
@@ -62,11 +63,11 @@ router.route('/register')
     // });
 
 
-    const firstName = req.body.fname;
-    const lastName = req.body.lname;
-    const email = req.body.email;
-    const password = req.body.password;
-    const confirmPassword = req.body.confirmPassword;
+    const firstName = xssFilters.inHTMLData(req.body.fname);
+    const lastName = xssFilters.inHTMLData(req.body.lname);
+    const email = xssFilters.inHTMLData(req.body.email);
+    const password = xssFilters.inHTMLData(req.body.password);
+    const confirmPassword = xssFilters.inHTMLData(req.body.confirmPassword);
 
 
     const user = new User({

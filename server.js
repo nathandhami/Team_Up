@@ -25,6 +25,17 @@ const db = mongoose.connect(nconf.get('db:url'));
 
 // Secure http headers configured
 serverConfig.use(helmet());
+// serverConfig.use(helmet.contentSecurityPolicy({
+//   directives: {
+//     defaultSrc: ["'self'", 'default.com'],
+//     styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com'],
+//     imgSrc: ['img.com', 'data:'],
+//     sandbox: ['allow-forms', 'allow-scripts'],
+//     reportUri: '/report-violation',
+//     objectSrc: [], // An empty array allows nothing through
+//   },
+// }));
+
 
 serverConfig.use(bodyParser.json());
 serverConfig.use(bodyParser.urlencoded({

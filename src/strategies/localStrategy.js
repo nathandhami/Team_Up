@@ -2,6 +2,7 @@
 
 const passport = require('passport');
 const User = require('../../models/User');
+const xssFilters = require('xss-filters');
 const LocalStrategy = require('passport-local').Strategy;
 
 
@@ -12,7 +13,7 @@ module.exports = () => {
     },
     (username, password, done) => {
       User.findOne({
-        'email': username,
+        'email': xssFilters.inHTMLData(username),
       }, (err, user) => {
         if (err) {
           return done(err);
@@ -22,7 +23,7 @@ module.exports = () => {
             message: 'Incorrect Email',
           });
         }
-        if (!user.validPassword(password)) {
+        if (!user.validPassword(xssFilters.inHTMLData(password))) {
           return done(null, false, {
             message: 'Incorrect Password',
           });
