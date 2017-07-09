@@ -22,6 +22,7 @@ module.exports = (serverConfig) => {
     // done(null, id);
   });
 
+  require('../strategies/localStrategy')();
   require('../strategies/googleStrategy')();
   require('../strategies/twitterStrategy')();
   require('../strategies/facebookStrategy')();

@@ -15,12 +15,12 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.pre('save', function(next) {
   const user = this;
-  const salt = 15;
+  const saltRound = 10;
 
   if (!user.isModified('password')) return next();
 
   if (user.password) {
-    bcrypt.hash(user.password, salt, (err, hash) => {
+    bcrypt.hash(user.password, saltRound, (err, hash) => {
       if (err) {
         throw err;
         // return next(err);
@@ -31,11 +31,8 @@ UserSchema.pre('save', function(next) {
   }
 });
 
-UserSchema.methods.comparePassword = function(password, next) {
-  bcrypt.compare(password, this.password, (err, res) => {
-    if (err) return next(err);
-    next(null, res);
-  });
+UserSchema.methods.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.password);
 };
 
 module.exports = mongoose.model('User', UserSchema);
