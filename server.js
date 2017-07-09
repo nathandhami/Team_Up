@@ -4,6 +4,7 @@ const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
@@ -19,7 +20,8 @@ const notFound = require('./routes/notFound');
 
 // Server Config
 const serverConfig = express();
-const db = mongoose.connect('mongodb://localhost/users');
+const db = mongoose.connect(nconf.get('db:url'));
+// const dbConnection = mongoose.createConnection('mongodb://localhost/users');
 
 // Secure http headers configured
 serverConfig.use(helmet());
@@ -31,14 +33,26 @@ serverConfig.use(bodyParser.urlencoded({
 serverConfig.use(expressValidator());
 serverConfig.use(cookieParser());
 
+
 // Session and Cookie configuration
 serverConfig.use(session({
+  name: 'teamId',
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    ttl: 1 * 60 * 60, // = 1 hr
+  }),
   secret: nconf.get('session:secret'),
   resave: false,
   saveUninitialized: false,
-  // cookie: {
-  //   secure: true,
-  // },
+  cookie: {
+    path: '/',
+    httpOnly: true,
+    secure: false,
+    maxAge: 1 * 60 * 60 * 1000, // = 1 hr
+  },
+  // store: new MongoStore({
+  //   mongooseConnection: dbConnection,
+  // }),
 }));
 
 // Import authentication strategies
@@ -56,7 +70,7 @@ serverConfig.use('/login', login);
 serverConfig.use('/register', register);
 serverConfig.use('/auth', auth);
 
-serverConfig.use((req, res, next)=>{
+serverConfig.use((req, res, next) => {
   if (!req.isAuthenticated()) {
     return res.redirect('/');
   }
