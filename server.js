@@ -7,6 +7,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const csrf = require('csurf');
 const expressValidator = require('express-validator');
 const nconf = require('./src/config/nconfConfig');
 const mongoose = require('mongoose');
@@ -43,7 +44,16 @@ serverConfig.use(bodyParser.urlencoded({
 }));
 serverConfig.use(expressValidator());
 serverConfig.use(cookieParser());
+serverConfig.use(csrf({
+  cookie: true,
+}));
 
+// handle bad CSRF token
+serverConfig.use((err, req, res, next) => {
+  if (err.code !== 'EBADCSRFTOKEN') return next(err);
+  res.status(403);
+  res.send('Form Exploited');
+});
 
 // Session and Cookie configuration
 serverConfig.use(session({

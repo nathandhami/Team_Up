@@ -7,4 +7,5 @@ block content
       img(src= user.image)
       h4= user.name
   else
+    - var label = csrfToken
     include ./login

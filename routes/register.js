@@ -9,6 +9,7 @@ router.route('/')
     if (!req.isAuthenticated()) {
       res.render('register', {
         title: 'Register',
+        csrfToken: req.csrfToken(),
       });
       return;
     }

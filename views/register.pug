@@ -14,6 +14,7 @@ block content
               a(href='#', onclick='return false') Register
           br
           form(action='/auth/register', method='post')
+            input(type='hidden', name='_csrf', value= csrfToken)
             //- form-element(forLabel, label, type, name, placeholder, iconClassName)
             +form-element('fname', 'First Name', 'text', 'fname', 'Enter First Name', 'glyphicon glyphicon-user')
             +form-element('lname', 'Last Name', 'text', 'lname', 'Enter Last Name', 'glyphicon glyphicon-user')

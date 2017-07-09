@@ -15,6 +15,7 @@ block content
           br
 
           form(action='/auth/login', method='post')
+            input(type='hidden', name='_csrf', value= csrfToken)
             //- form-element(forLabel, label, type, name, placeholder, iconClassName)
             +form-element('email', 'Email', 'email', 'email', 'Enter Email', 'glyphicon glyphicon-envelope')
             +form-element('password', 'Password', 'password', 'password', 'Enter Password', 'glyphicon glyphicon-lock')
