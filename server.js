@@ -47,7 +47,7 @@ serverConfig.use(session({
   cookie: {
     path: '/',
     httpOnly: true,
-    secure: false,
+    secure: true,
     maxAge: 1 * 60 * 60 * 1000, // = 1 hr
   },
   // store: new MongoStore({
