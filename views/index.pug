@@ -17,7 +17,7 @@ block content
       .container-fluid
         nav.navbar.navbar-fixed-top
           .navbar-header.nav-justified
-            a.navbar-brand.hvr-grow-rotate(href='#')
+            a.navbar-brand.hvr-grow-rotate(href='#', onclick='return false')
               // <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
               | Team Up
 
@@ -36,8 +36,7 @@ block content
 
               include login
               include register
-    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js")
-    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+
     script(src="https://npmcdn.com/particlesjs@2.0.2/dist/particles.min.js", type="text/javascript")
     script(src="/javascripts/index.js", type="text/javascript")
     script(src="/javascripts/particles.js", type="text/javascript")
