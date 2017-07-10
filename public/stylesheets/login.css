@@ -1,0 +1,76 @@
+body {
+  color: white;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url("../assets/images/raster/jpg/main-page.jpg");
+  background-position: center;
+  background-size: cover;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.glass {
+  padding: 50px;
+  background-color: rgba(114, 127, 132, 0.3);
+  border-radius: 10px;
+  -webkit-box-shadow: 13px 15px 53px -17px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 13px 15px 53px -17px rgba(0, 0, 0, 0.57);
+  box-shadow: 13px 15px 53px -17px rgba(0, 0, 0, 0.57);
+}
+
+.nav-tabs.nav-justified>li:not(.active)>a {
+  color: white;
+}
+
+.nav-tabs.nav-justified>li:not(.active)>a:hover {
+  color: white;
+  background-color: rgba(114, 127, 132, 0.55);
+  border-color: #5f9ea0;
+}
+
+.jumbotron {
+  background-color: rgba(238, 238, 238, 0);
+}
+
+header {
+  margin-bottom: 4em;
+}
+
+.navbar-brand {
+  width: 100%;
+  text-align: center;
+  font-size: 2em;
+  color: white;
+  font-family: 'Trade Winds', cursive;
+}
+
+.navbar {
+  padding: 0.5em;
+}
+
+.navbar-brand:hover {
+  color: #f7f67e;
+}
+
+nav {
+  background-color: #607d8b;
+  -webkit-box-shadow: 10px 10px 46px -5px rgba(82, 72, 82, 1);
+  -moz-box-shadow: 10px 10px 46px -5px rgba(82, 72, 82, 1);
+  box-shadow: 10px 10px 46px -5px rgba(82, 72, 82, 1);
+}
+
+.social-signin {
+  font-size: 1.3em;
+}

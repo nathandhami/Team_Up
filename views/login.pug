@@ -1,40 +1,21 @@
-extends placeholders/header
-include ./mixins/form.element.pug
-block content
-
-  link(rel='stylesheet', href='/bower_components/bootstrap-social/bootstrap-social.css')
-
-  .container
-      .row
-        .col-xs-12.col-sm-push-3.col-sm-6.well
-          ul.nav.nav-tabs.nav-justified
-            li.active
-              a(href='#', onclick='return false') Sign In
-            li
-              a(href='/register') Register
-          br
-
-          form(action='/auth/login', method='post')
-            input(type='hidden', name='_csrf', value= csrfToken)
-            //- form-element(forLabel, label, type, name, placeholder, iconClassName)
-            +form-element('email', 'Email', 'email', 'email', 'Enter Email', 'glyphicon glyphicon-envelope')
-            +form-element('password', 'Password', 'password', 'password', 'Enter Password', 'glyphicon glyphicon-lock')
-            .checkbox
-              label
-                input(type='checkbox', name='remember')
-                |  Remember me
-            button.btn.btn-primary.btn-block(type='submit') Submit
-            hr
-            h5.text-center Social Media Sign In
-            a.btn.btn-block.btn-social.btn-google(href="/auth/google")
-              span.fa.fa-google
-              |             Sign in with Google
-            a.btn.btn-block.btn-social.btn-facebook(href="/auth/facebook")
-              span.fa.fa-facebook
-              |             Sign in with Facebook
-            a.btn.btn-block.btn-social.btn-twitter(href="/auth/twitter")
-              span.fa.fa-twitter
-              |             Sign in with Twitter
-
-
-
+form#login(action='/auth/login', method='post')
+  input(type='hidden', name='_csrf', value= csrfToken)
+  //- form-element(forLabel, label, type, name, placeholder, iconClassName)
+  +form-element('email', 'Email', 'email', 'email', 'Enter Email', 'glyphicon glyphicon-envelope')
+  +form-element('password', 'Password', 'password', 'password', 'Enter Password', 'glyphicon glyphicon-lock')
+  .checkbox
+    label
+      input(type='checkbox', name='remember')
+      |  Remember me
+  button.btn.btn-primary.btn-block.hvr-grow(type='submit') Submit
+  hr
+  h5.text-center.social-signin Social Media Sign In
+  a.btn.btn-block.btn-social.btn-google.hvr-grow(href="/auth/google")
+    span.fa.fa-google
+    |             Sign in with Google
+  a.btn.btn-block.btn-social.btn-facebook.hvr-grow(href="/auth/facebook")
+    span.fa.fa-facebook
+    |             Sign in with Facebook
+  a.btn.btn-block.btn-social.btn-twitter.hvr-grow(href="/auth/twitter")
+    span.fa.fa-twitter
+    |             Sign in with Twitter
