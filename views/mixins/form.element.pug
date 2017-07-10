@@ -1,7 +1,8 @@
-mixin form-element(forLabel, label, type, name, placeholder, iconClassName, requiredBool)
+mixin form-element(forLabel, label, type, name, id, placeholder, iconClassName, requiredBool)
   .form-group
     label(for= forLabel) #{label}:
     .input-group
       span.input-group-addon
         i(class= iconClassName)
-      input.form-control(id= name, type= type, name= name, placeholder= placeholder, required= requiredBool)
+      input.form-control(id= id, type= type, name= name, placeholder= placeholder, required= requiredBool)&attributes(attributes)
+    .help-block.with-errors.has-error

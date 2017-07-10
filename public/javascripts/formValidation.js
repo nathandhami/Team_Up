@@ -1,0 +1,4 @@
+$(() => {
+  $('#register').validator();
+  $('#login').validator();
+});

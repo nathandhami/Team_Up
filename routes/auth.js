@@ -104,13 +104,17 @@ router.route('/register')
 
 router.route('/login')
   .post(passport.authenticate('local', {
-    successRedirect: '/',
     failureRedirect: '/',
-  }));
+  }), (req, res) => {
+    if (!req.body.remember) {
+      req.session.cookie.expires = false;
+    }
+    return res.redirect('/');
+  });
 
 router.use('/', (req, res, next) => {
   if (!req.user) {
-    res.redirect('/');
+    return res.redirect('/');
   }
   next();
 });
