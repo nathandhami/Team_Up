@@ -54,6 +54,7 @@ Here are multiple ways to run the server
 $ npm start -s (Recommended Clean Output And Default Port 8080)
 $ npm start (Default Port 8080)
 $ node ./bin/www -p 8080 (Pick Any Available Port No)
+$ ./start.bat [git bash, windows only]
 ```
 
 ## License
