@@ -22,6 +22,15 @@ body {
   min-height: 100%;
 }
 
+#particles-js{
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
 .glass {
   padding: 50px;
   background-color: rgba(114, 127, 132, 0.3);
