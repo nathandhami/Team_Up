@@ -85,3 +85,7 @@ nav {
 .social-signin {
   font-size: 1.3em;
 }
+
+#register{
+  display: none;
+}

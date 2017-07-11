@@ -51,7 +51,7 @@ $(() => {
       'line_linked': {
         'enable': true,
         'distance': 150,
-        'color': '#ffffff',
+        'color': '#bbdefb',
         'opacity': 0.4,
         'width': 1,
       },
