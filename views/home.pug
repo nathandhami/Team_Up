@@ -1,13 +1,25 @@
-// img(src= user.image)
-// h4= user.name
+// img(src= user.image) will be used for #account-img
+// h4= user.name will be used instead of Brad
 // side bar
 link(rel="stylesheet", href="/stylesheets/sidebar.css")
-div#wrapper.sidebarDisplayed
+div#wrapper-container.sidebarDisplayed
   div#sidebar-wrapper
-    ul.sidebar-nav
+    div#account-img
+      img.img-responsive.img-circle(src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/079/328/1630e0b.jpg", width="82", height="82")
+    ul.sidebar-nav-content
+      li Brad <span> [Status: away] </span>
+      li Manage events
       li <a href="#"> Create Sports Event </a>
       li <a href="#"> Join Sports Event </a>
+      li
+      li
+      li #joinedEvents
   // main content here.
+  // Row 1:
+  // Col A: Event details
+  // Col B: Map
+  // Row 2:
+  // Col A: Chat Application
   div#page-content-wrapper
     div.container-fluid
       div.row

@@ -1,8 +1,7 @@
-/* Sidebar */
 #sidebar-wrapper {
+    z-index: 1;
     position: absolute;
     width: 0;
-    margin-top: 10px;
     height: 100%;
     overflow-y: hidden;
     background: rgba(114, 127, 132, 0.3);
@@ -17,30 +16,37 @@
 }
 
 
-#wrapper.sidebarDisplayed #sidebar-wrapper {
+#wrapper-container.sidebarDisplayed #sidebar-wrapper {
     width: 200px;
 }
 
-#wrapper.sidebarDisplayed #page-content-wrapper {
+#wrapper-container.sidebarDisplayed #page-content-wrapper {
     margin-left: 200px;
 }
 
-.sidebar-nav {
+.sidebar-nav-content {
     padding: 0;
     list-style: none;
 }
 
-.sidebar-nav li {
+.sidebar-nav-content li {
     text-indent: 25px;
     line-height: 40px;
 }
 
-.sidebar-nav li a {
+.sidebar-nav-content li a {
     display: block;
     text-decoration: none;
     color: black;
 }
 
-.sidebar-nav li a:hover {
+.sidebar-nav-content li a:hover {
     background:teal;
+}
+
+#account-img{
+    display: block;
+    text-decoration: none;
+    padding-left: 50px;
+    color: black;
 }
