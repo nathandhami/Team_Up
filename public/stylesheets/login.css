@@ -22,7 +22,7 @@ body {
   min-height: 100%;
 }
 
-#particles-js{
+#particles-js {
   position: absolute;
   z-index: 0;
   top: 0;
@@ -86,6 +86,13 @@ nav {
   font-size: 1.3em;
 }
 
-#register{
+#register {
   display: none;
+}
+
+.removeSelect {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
