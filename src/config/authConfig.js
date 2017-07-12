@@ -7,6 +7,11 @@ module.exports = (serverConfig) => {
   serverConfig.use(passport.initialize());
   serverConfig.use(passport.session());
 
+  serverConfig.use((req, res, next) => {
+    res.locals.isAuth = req.isAuthenticated();
+    next();
+  });
+
   passport.serializeUser((user, done) => {
     done(null, user._id);
   });

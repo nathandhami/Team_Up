@@ -112,6 +112,13 @@ router.route('/login')
     return res.redirect('/');
   });
 
+router.route('/logout')
+  .get((req, res) => {
+    req.logout();
+    req.session.destroy();
+    return res.redirect('/');
+  });
+
 router.use('/', (req, res, next) => {
   if (!req.user) {
     return res.redirect('/');

@@ -17,7 +17,6 @@ router.route('/')
 
     res.render('index', {
       title: 'Home',
-      isAuth: req.isAuthenticated(),
       csrfToken: req.csrfToken(),
       user: {
         name: displayName,

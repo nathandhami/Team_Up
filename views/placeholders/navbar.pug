@@ -1,7 +1,19 @@
 header
   .container-fluid
     nav.navbar.navbar-fixed-top
-      .navbar-header.nav-justified
+      .navbar-header
         a.removeSelect.navbar-brand.hvr-grow-rotate(onclick='return false')
           // <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
           | Team Up
+      if isAuth
+        ul.nav.navbar-nav
+          li.active
+            a(href="#") Home
+          li
+            a(href="#") Page 1
+          li
+            a(href="#") Page 2
+          li
+            a(href="#") Page 3
+        a.btn.btn-danger.navbar-btn(href="/auth/logout") Log Out
+
