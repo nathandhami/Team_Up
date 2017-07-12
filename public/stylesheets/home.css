@@ -1,0 +1,15 @@
+#page-content-wrapper {
+    width: 100%;
+    margin-top:10px;
+    position: absolute;
+    margin-left: 15px;
+}
+
+
+#wrapper-container.sidebarDisplayed #sidebar-wrapper {
+    width: 200px;
+}
+
+#wrapper-container.sidebarDisplayed #page-content-wrapper {
+    margin-left: 200px;
+}
