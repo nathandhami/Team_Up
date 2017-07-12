@@ -2,14 +2,34 @@ header
   .container-fluid
     nav.navbar.navbar-fixed-top
       .navbar-header
+        button.navbar-toggle(type="button", data-toggle="collapse", data-target="#navbar")
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
         a.removeSelect.navbar-brand.hvr-grow-rotate(onclick='return false')
           // <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
           | Team Up
       if isAuth
-        ul.nav.navbar-nav
-          each navLabel in ['Home', 'Sports', 'Contact Us']
-            li
-              a(href="#")= navLabel
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            each navLabel in ['Home', 'Sports', 'Contact Us']
+              li
+                a(href="#")= navLabel
 
-        a.btn.btn-danger.navbar-btn(href="/auth/logout") Log Out
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='#')
+                span.glyphicon.glyphicon-user
+                |  Account
+            li
+              a(href='#')
+                span.glyphicon.glyphicon-log-in
+                |  Log Out
+
+        //- a.btn.btn-danger.navbar-btn(href="/auth/logout") Log Out
+
+
+
+
+
 

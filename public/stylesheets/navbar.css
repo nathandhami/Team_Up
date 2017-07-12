@@ -33,3 +33,9 @@ nav {
   -moz-user-select: none;
   -ms-user-select: none;
 }
+
+
+.icon-bar {
+    width: 100%; /* Full-width */
+    background-color: #555; /* Dark-grey background */
+}
