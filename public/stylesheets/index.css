@@ -61,3 +61,7 @@ body {
 #register {
   display: none;
 }
+
+.help-block.with-errors.has-error{
+  color: #FFEB3B;
+}
