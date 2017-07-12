@@ -3,23 +3,15 @@ include ./mixins/form.element.pug
 
 block content
   if isAuth
-    h1 Welcome To The App
-    div
-      img(src= user.image)
-      h4= user.name
+    include ./placeholders/navbar
+    include home
   else
     - var label = csrfToken
 
     link(rel='stylesheet', href='/bower_components/bootstrap-social/bootstrap-social.css')
     link(href="/stylesheets/login.css", rel="stylesheet")
 
-    header
-      .container-fluid
-        nav.navbar.navbar-fixed-top
-          .navbar-header.nav-justified
-            a.removeSelect.navbar-brand.hvr-grow-rotate(onclick='return false')
-              // <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-              | Team Up
+    include ./placeholders/navbar
 
     .jumbotron.vertical-center
       .container-fluid

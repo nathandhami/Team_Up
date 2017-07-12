@@ -14,8 +14,6 @@ const mongoose = require('mongoose');
 
 // Routes Config
 const index = require('./routes/index');
-const login = require('./routes/login');
-const register = require('./routes/register');
 const auth = require('./routes/auth');
 const notFound = require('./routes/notFound');
 
@@ -87,16 +85,14 @@ serverConfig.set('view engine', 'pug');
 serverConfig.use(express.static(path.join(__dirname, 'public')));
 
 serverConfig.use('/', index);
-serverConfig.use('/login', login);
-serverConfig.use('/register', register);
 serverConfig.use('/auth', auth);
 
-serverConfig.use((req, res, next) => {
-  if (!req.isAuthenticated()) {
-    return res.redirect('/');
-  }
-  next();
-});
+// serverConfig.use((req, res, next) => {
+//   if (!req.isAuthenticated()) {
+//     return res.redirect('/');
+//   }
+//   next();
+// });
 
 // 404 route
 serverConfig.use('/', notFound);
