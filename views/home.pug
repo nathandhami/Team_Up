@@ -1,5 +1,15 @@
-.container-fluid
-  h1 Welcome To The App
-  div
-    img(src= user.image)
-    h4= user.name
+// img(src= user.image)
+// h4= user.name
+// side bar
+link(rel="stylesheet", href="/stylesheets/sidebar.css")
+div#wrapper.sidebarDisplayed
+  div#sidebar-wrapper
+    ul.sidebar-nav
+      li <a href="#"> Create Sports Event </a>
+      li <a href="#"> Join Sports Event </a>
+  // main content here.
+  div#page-content-wrapper
+    div.container-fluid
+      div.row
+        div.col-lg-12
+          h1 No events joined yet
