@@ -39,3 +39,20 @@ nav {
     width: 100%; /* Full-width */
     background-color: #555; /* Dark-grey background */
 }
+
+
+.bar1, .bar2, .bar3 {
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-4.5px, 4px) ;
+    transform: rotate(-45deg) translate(-4.5px, 4px) ;
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-4px, -4px) ;
+    transform: rotate(45deg) translate(-4px, -4px) ;
+}

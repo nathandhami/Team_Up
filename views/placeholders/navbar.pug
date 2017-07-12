@@ -2,10 +2,10 @@ header
   .container-fluid
     nav.navbar.navbar-fixed-top
       .navbar-header
-        button.navbar-toggle(type="button", data-toggle="collapse", data-target="#navbar")
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
+        button.navbar-toggle(type="button", data-toggle="collapse", data-target="#navbar", onclick="this.classList.toggle('change');")
+          span.icon-bar.bar1
+          span.icon-bar.bar2
+          span.icon-bar.bar3
         a.removeSelect.navbar-brand.hvr-grow-rotate(onclick='return false')
           // <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
           | Team Up
