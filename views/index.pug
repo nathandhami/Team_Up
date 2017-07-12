@@ -3,15 +3,12 @@ include ./mixins/form.element.pug
 
 block content
   if isAuth
-    include ./placeholders/navbar
     include home
   else
     - var label = csrfToken
 
     link(rel='stylesheet', href='/bower_components/bootstrap-social/bootstrap-social.css')
-    link(href="/stylesheets/login.css", rel="stylesheet")
-
-    include ./placeholders/navbar
+    link(href="/stylesheets/index.css", rel="stylesheet")
 
     .jumbotron.vertical-center
       .container-fluid
