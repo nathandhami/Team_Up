@@ -90,7 +90,6 @@ serverConfig.use('/', index);
 serverConfig.use('/auth', auth);
 
 serverConfig.use((req, res, next) => {
-  console.log('Hello');
   // if (!req.isAuthenticated()) {
   //   return res.redirect('/');
   // }

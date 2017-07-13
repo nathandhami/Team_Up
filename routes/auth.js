@@ -120,7 +120,6 @@ router.route('/logout')
   });
 
 router.use('/', (req, res, next) => {
-  console.log('ff');
   if (!req.user) {
     return res.redirect('/');
   }
