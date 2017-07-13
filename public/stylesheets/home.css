@@ -3,13 +3,33 @@
     margin-top:10px;
     position: absolute;
     margin-left: 15px;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
 }
 
 
 #wrapper-container.sidebarDisplayed #sidebar-wrapper {
-    width: 200px;
+    width: 215px;
+}
+
+#wrapper-container #sidebar-wrapper{
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
 }
 
 #wrapper-container.sidebarDisplayed #page-content-wrapper {
-    margin-left: 200px;
+    margin-left: 215px;
+}
+
+
+@media (max-width:768px) {
+ 
+}
+
+@media (min-width: 769px) {
+ 
 }
