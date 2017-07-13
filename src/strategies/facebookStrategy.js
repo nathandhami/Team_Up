@@ -32,7 +32,11 @@ module.exports = () => {
             },
           });
           userDocument.save((err, user) => {
-            if (err) throw err;
+            if (err) {
+              return done(null, false, {
+                message: 'Please Retry',
+              });
+            }
             done(null, user);
           });
         } else {

@@ -1,6 +1,11 @@
-form#login(action='/auth/login', method='post', data-toggle="validator", role="form")
+form#login(action='/auth/login', method='POST', data-toggle="validator", role="form")
   input(type='hidden', name='_csrf', value= csrfToken)
   //- form-element(forLabel, label, type, name, id, placeholder, iconClassName, requiredBool)
+  if errorExist
+      .alert.alert-warning
+        each errMsg in loginErrors
+          p= errMsg
+
   +form-element('email', 'Email', 'email', 'email', 'emailLogin', 'Enter Email', 'glyphicon glyphicon-envelope', true)(data-error="Email Address is invalid")
   +form-element('password', 'Password', 'password', 'password', 'passwordLogin','Enter Password', 'glyphicon glyphicon-lock', true)(data-error="Password must have minimum 6 character", data-minlength="6")
   //- .checkbox

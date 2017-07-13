@@ -20,7 +20,8 @@ router.route('/google')
 router.route('/google/callback')
   .get(passport.authenticate('google', {
     successRedirect: '/',
-    failureRedirect: '/login',
+    failureRedirect: '/',
+    failureFlash: true,
   }));
 
 // redirecting the user to twitter.com
@@ -31,7 +32,8 @@ router.route('/twitter')
 router.route('/twitter/callback')
   .get(passport.authenticate('twitter', {
     successRedirect: '/',
-    failureRedirect: '/login',
+    failureRedirect: '/',
+    failureFlash: true,
   }));
 
 // redirecting the user to twitter.com
@@ -47,6 +49,7 @@ router.route('/facebook/callback')
   .get(passport.authenticate('facebook', {
     successRedirect: '/',
     failureRedirect: '/login',
+    failureFlash: true,
   }));
 
 router.route('/register')
@@ -104,13 +107,10 @@ router.route('/register')
 
 router.route('/login')
   .post(passport.authenticate('local', {
+    successRedirect: '/',
     failureRedirect: '/',
-  }), (req, res) => {
-    if (!req.body.remember) {
-      req.session.cookie.expires = false;
-    }
-    return res.redirect('/');
-  });
+    failureFlash: true,
+  }));
 
 router.route('/logout')
   .get((req, res) => {
@@ -120,6 +120,7 @@ router.route('/logout')
   });
 
 router.use('/', (req, res, next) => {
+  console.log('ff');
   if (!req.user) {
     return res.redirect('/');
   }

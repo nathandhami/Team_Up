@@ -5,7 +5,7 @@ const router = new express.Router();
 
 /* GET 404 page */
 router.route('*')
-  .get((req, res, next) => {
+  .get((req, res, next, err) => {
     res.status(404).render('notFound', {
       title: 'Page Not Found',
     });
