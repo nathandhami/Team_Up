@@ -20,12 +20,12 @@ module.exports = () => {
         }
         if (!user) {
           return done(null, false, {
-            message: 'Incorrect Email',
+            message: 'Incorrect Email or Password',
           });
         }
         if (!user.validPassword(xssFilters.inHTMLData(password))) {
           return done(null, false, {
-            message: 'Incorrect Password',
+            message: 'Incorrect Email or Password',
           });
         } else {
           return done(null, user);

@@ -15,6 +15,8 @@ router.route('/')
       userImage = req.user.image;
     }
 
+    const messages = req.flash('error');
+
     res.render('index', {
       title: 'Home',
       csrfToken: req.csrfToken(),
@@ -22,6 +24,8 @@ router.route('/')
         name: displayName,
         image: userImage,
       },
+      errorExist: messages.length > 0,
+      loginErrors: messages,
     });
     return;
   });

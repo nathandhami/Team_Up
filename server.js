@@ -7,6 +7,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const flash = require('connect-flash');
 const csrf = require('csurf');
 const expressValidator = require('express-validator');
 const nconf = require('./src/config/nconfConfig');
@@ -73,6 +74,7 @@ serverConfig.use(session({
   //   mongooseConnection: dbConnection,
   // }),
 }));
+serverConfig.use(flash());
 
 // Import authentication strategies
 require('./src/config/authConfig')(serverConfig);
@@ -87,12 +89,12 @@ serverConfig.use(express.static(path.join(__dirname, 'public')));
 serverConfig.use('/', index);
 serverConfig.use('/auth', auth);
 
-// serverConfig.use((req, res, next) => {
-//   if (!req.isAuthenticated()) {
-//     return res.redirect('/');
-//   }
-//   next();
-// });
+serverConfig.use((req, res, next) => {
+  // if (!req.isAuthenticated()) {
+  //   return res.redirect('/');
+  // }
+  // next();
+});
 
 // 404 route
 serverConfig.use('/', notFound);
