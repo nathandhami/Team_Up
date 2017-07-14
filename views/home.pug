@@ -1,7 +1,9 @@
 // img(src= user.image) will be used for #account-img
 // h4= user.name will be used instead of Brad
 link(rel="stylesheet", href="/stylesheets/home.css")
+
 div#wrapper-container.sidebarDisplayed
+  //<button href="#" id="toggle-sidebar"><span class="btn glyphicon glyphicon-user"> </span> </a>
   include placeholders/sidebar
   // main content here.
   // Row 1:
@@ -12,5 +14,10 @@ div#wrapper-container.sidebarDisplayed
   div#page-content-wrapper
     div.container-fluid
       div.row
+        div.col-xs-1.col-md-1.col-lg-1
+          button#toggle-sidebar.btn.glyphicon.glyphicon-th-list(type="button")
+      div.row
         div.col-lg-12
           h1 No events joined yet
+  
+script(src="/javascripts/home.js")
