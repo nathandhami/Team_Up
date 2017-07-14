@@ -89,12 +89,22 @@ serverConfig.use(express.static(path.join(__dirname, 'public')));
 serverConfig.use('/', index);
 serverConfig.use('/auth', auth);
 
-serverConfig.use((req, res, next) => {
+// serverConfig.use((req, res, next) => {
   // if (!req.isAuthenticated()) {
   //   return res.redirect('/');
   // }
   // next();
-});
+// });
+
+
+// put your routes here
+// only thing you need to put here is:
+// const yourRoute = require('./routes/yourRoute');
+// serverConfig.use('/theRouteYouWantToAttachTo', yourRoute);
+// <-- Start Here
+
+
+// --> End Here
 
 // 404 route
 serverConfig.use('/', notFound);
