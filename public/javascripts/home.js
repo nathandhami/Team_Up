@@ -1,8 +1,7 @@
-$(document).ready(function(){
-    $("#toggle-sidebar").on('click',function (e){
+$(document).ready(() => {
+    $('#toggle-sidebar').on('click', (e) => {
             e.preventDefault();
-            $("#wrapper-container").toggleClass("sidebarDisplayed");
-
+            $('#wrapper-container').toggleClass('sidebarDisplayed');
      });
 /*
      if ($("#toggle-sidebar").css("display") == "none"){
@@ -10,7 +9,6 @@ $(document).ready(function(){
                 $('#wrapper.container').addClass('sidebarDisplayed');
             }
             */
-})
-
+});
 
 
