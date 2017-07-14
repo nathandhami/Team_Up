@@ -15,9 +15,10 @@ div#wrapper-container.sidebarDisplayed
     div.container-fluid
       div.row
         div.col-xs-1.col-md-1.col-lg-1
-          button#toggle-sidebar.btn.glyphicon.glyphicon-th-list(type="button")
       div.row
         div.col-lg-12
+          - for (i = 0; i < 13; i ++) {
           h1 No events joined yet
+          -}
   
 script(src="/javascripts/home.js")

@@ -1,12 +1,14 @@
 #page-content-wrapper {
     width: 100%;
     margin-top:10px;
-    position: absolute;
+    position: fixed;
     margin-left: 15px;
     -webkit-transition: all 0.25s ease;
     -moz-transition: all 0.25s ease;
     -o-transition: all 0.25s ease;
     transition: all 0.25s ease;
+    height: 100%;
+    overflow-y: auto;
 }
 
 
@@ -32,4 +34,20 @@
 
 @media (min-width: 769px) {
  
+}
+
+/* Custom Scrollbar (only works for web-kit based browers */
+::-webkit-scrollbar {
+    width: 12px;
+    transition: all 0.25s ease;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
