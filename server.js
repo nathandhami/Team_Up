@@ -103,6 +103,8 @@ serverConfig.use('/auth', auth);
 // serverConfig.use('/theRouteYouWantToAttachTo', yourRoute);
 // <-- Start Here
 
+const create = require('./routes/create');
+serverConfig.use('/create', create);
 
 // --> End Here
 

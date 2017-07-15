@@ -1,11 +1,11 @@
-$(document).ready(function() {
-    $('#userToggleSideBar').on('click', function(e) {
+$(document).ready(() => {
+    $('#userToggleSideBar').on('click', (e) => {
             e.preventDefault();
             $('#wrapper-container').toggleClass('sidebarDisplayed');
      });
 
 
-     $('.sidebarClose').on('click', function(e) {
+     $('.sidebarClose').on('click', (e) => {
             e.preventDefault();
             $('#wrapper-container').toggleClass('sidebarDisplayed');
      });
