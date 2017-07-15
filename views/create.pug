@@ -1,8 +1,7 @@
 extends placeholders/header
-link(rel="stylesheet", href="/stylesheets/create.css")
-
-body(onload='loadMap()')
-  h3 My Google Maps Demo
+block content
+  h3 Create Sports Event
   #map
+  script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBOPHTiGEVhZh9LaKbtNjsSjvbD1R6r9Kw&callback=loadMap', type='text/javascript')
   script(src='/javascripts/create.js')
-  script(src='https://maps.googleapis.com/maps/api/js')
+  link(rel="stylesheet", href="/stylesheets/create.css")

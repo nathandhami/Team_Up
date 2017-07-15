@@ -17,6 +17,7 @@ const mongoose = require('mongoose');
 const index = require('./routes/index');
 const auth = require('./routes/auth');
 const notFound = require('./routes/notFound');
+const create = require('./routes/create');
 
 // Server Config
 const serverConfig = express();
@@ -103,7 +104,6 @@ serverConfig.use('/auth', auth);
 // serverConfig.use('/theRouteYouWantToAttachTo', yourRoute);
 // <-- Start Here
 
-const create = require('./routes/create');
 serverConfig.use('/create', create);
 
 // --> End Here
