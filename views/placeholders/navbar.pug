@@ -19,10 +19,15 @@ header
                 a(href="#")= navLabel
 
           ul.nav.navbar-nav.navbar-right
-            li#userToggleSideBar
-              a(href='#')
+            li#userToggleSideBar.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
                 span.glyphicon.glyphicon-user
-                |  Account
+                  |  Account
+              ul.dropdown-menu
+                li
+                  a(href='#') Edit Account
+                li
+                  a(href='#') Delete Account
             li
               a(href='/auth/logout')
                 span.glyphicon.glyphicon-log-in
