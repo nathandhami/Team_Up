@@ -17,11 +17,13 @@
     padding: 0;
     margin: 0;
     list-style: none;
+    white-space : nowrap;
 }
 
 .sidebar-nav-content li {
     text-indent: 25px;
     line-height: 40px;
+
 }
 
 .sidebar-nav-content li a {
@@ -32,15 +34,26 @@
 
 .sidebar-nav-content li a:hover {
     background:teal;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
 }
 
-#account-img{
+.profile-user-pic img {
     display: block;
-    text-decoration: none;
-    padding-left: 50px;
-    color: black;
+    margin-left: 50px;
 }
 
-.sidebarClose {
-    margin: 5px;
+.sidebarCloseBtn {
+    position: absolute;
+    right: 5px;
+}
+
+.glyphicon.glyphicon-plus {
+
+}
+
+.icons {
+    padding-left: 5px;
 }

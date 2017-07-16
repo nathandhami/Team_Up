@@ -5,7 +5,7 @@ $(document).ready(function() {
      });
 
 
-     $('.sidebarClose').on('click', function(e) {
+     $('.sidebarCloseBtn').on('click', function(e) {
             e.preventDefault();
             $('#wrapper-container').toggleClass('sidebarDisplayed');
      });
