@@ -6,7 +6,19 @@
               | Delete Account
           .modal-body
             | By doing this you are letting go of fun opportunities in the future to
-            | get together, play and make friends. Are you sure you want to delete your account from TeamUp?
+            | make friends, get together, and play. <br/>
+            | Are you sure you want to delete your account from TeamUp?
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Cancel
             a.btn.btn-danger.btn-ok Delete
+
+#contactUsModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h3
+              | Contact Us
+          .modal-body
+            | Please contact us if you have any questions or provide feedback at email@example.com. TODO
+          .modal-footer
+            button.btn.btn-success(type='button', data-dismiss='modal') Ok

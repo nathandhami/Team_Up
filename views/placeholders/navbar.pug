@@ -14,9 +14,12 @@ header
       if isAuth
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-left
-            each navLabel in ['Home', 'Sports', 'Contact Us']
-              li
-                a(href="#")= navLabel
+            li
+              a(href="#") Home
+            li
+              a(href="#") Sports
+            li
+              a(href='#', data-toggle='modal', data-target='#contactUsModal') Contact Us
 
           ul.nav.navbar-nav.navbar-right
             li#userToggleSideBar.dropdown
