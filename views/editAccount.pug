@@ -12,12 +12,6 @@ block content
           input.form-control(type='file')
       // edit form column
       .col-md-9.personal-info
-        .alert.alert-info.alert-dismissable
-          a.panel-close.close(data-dismiss='alert') ×
-          i.fa.fa-coffee
-          |     Please
-          strong  Save
-          |  changes once you are done.
         h3 Personal info
         form.form-horizontal(role='form')
           .form-group
@@ -31,19 +25,25 @@ block content
           .form-group
             label.col-lg-3.control-label Email:
             .col-lg-8
-              input.form-control(type='text', value='janesemail@gmail.com')
+              input.form-control(type='text', value='janesemail@gmail.com', disabled)
+          .alert.alert-info.alert-dismissable
+            a.panel-close.close(data-dismiss='alert') ×
+            i.fa.fa-bell
+            |     Leave the following fields
+            strong  blank
+            |    if you do not want to update your password.
           .form-group
             label.col-md-3.control-label Current Password:
             .col-md-8
-              input.form-control(type='password', value='11111122333')
+              input.form-control(type='password', placeholder='Enter your password')
           .form-group
             label.col-md-3.control-label New Password:
             .col-md-8
-              input.form-control(type='password', value='11111122333')
+              input.form-control(type='password')
           .form-group
             label.col-md-3.control-label Confirm password:
             .col-md-8
-              input.form-control(type='password', value='11111122333')
+              input.form-control(type='password')
           .form-group
             label.col-md-3.control-label
             .col-md-8
