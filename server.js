@@ -102,7 +102,8 @@ serverConfig.use('/auth', auth);
 // const yourRoute = require('./routes/yourRoute');
 // serverConfig.use('/theRouteYouWantToAttachTo', yourRoute);
 // <-- Start Here
-
+const edit = require('./routes/edit');
+serverConfig.use('/editAccount', edit);
 
 // --> End Here
 
