@@ -36,6 +36,27 @@
  
 }
 
+/* CHAT MESSENGER UI */
+.chatUI {
+    border: 1px solid blue;
+    position: fixed;
+    bottom: 0;
+}
+
+.chatUI form {
+    border: 1px solid green;
+}
+
+.chatUI input {
+    border: 1px  solid red;
+
+}
+
+.chatUI button {
+    border: 1px solid yellow;
+}
+/* END OF CHAT MESSENGER UI */
+
 /* Custom Scrollbar (only works for web-kit based browers */
 ::-webkit-scrollbar {
     width: 12px;
