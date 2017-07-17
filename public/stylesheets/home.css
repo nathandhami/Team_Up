@@ -42,7 +42,7 @@
     position: fixed;
     bottom: 0;
     height: 25%;
-    width: 50%;
+    width: 60%;
 }
 
 .chatUI-statusBar{
@@ -70,25 +70,27 @@
 
 .chatUI-usrInput {
     position: absolute;
-    border: 1px solid red;
+    border: 2px solid red;
     width: 100%;
     bottom: 0;
 }
 
-.chatUI-usrInput button{
-    position: absolute;
-    right: 0;
-}
-
-.chatUI-usrInput button{
-    position: absolute;
-    right: 0;
-}
-
-.chatUI form input{
+.chatUI-usrInput input{
     /*border: 1px solid green;*/
-    width: 50%;
+    border: 2px solid orange;
+
 }
+
+.chatUI-usrInput button{
+    position: absolute;
+    right: 0;
+}
+
+.chatUI-usrInput button{
+    position: absolute;
+    right: 0;
+}
+
 /* END OF CHAT MESSENGER UI */
 
 /* Custom Scrollbar (only works for web-kit based browers */
