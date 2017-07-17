@@ -8,7 +8,8 @@
             | By doing this you are letting go of fun opportunities in the future to
             | make friends, get together, and play. <br/>
             | Please be sure this would permanently delete your account from <b>TeamUp</b>.
-            form#delete.form-horizontal.col-sm-12(data-toggle="validator")
+            form#delete.form-horizontal.col-sm-12(action="/deleteAccount", method="post", role="form", data-toggle="validator")
+              input(type='hidden', name='_csrf', value=csrfToken)
               .form-group
                  label(style='margin-top: 25px') E-Mail
                  input.form-control(value='email@you.com', data-placement='top', data-trigger='manual', type='email', disabled)
@@ -31,7 +32,8 @@
         h5
           | We value your input. Please feel free to contact us or provide feedback by submitting the form below
           | and we will try to get back to you as soon as possible.
-        form#contact.form-horizontal.col-sm-12(data-toggle="validator")
+        form#contact.form-horizontal.col-sm-12(action="/contact", method="post", role="form", data-toggle="validator")
+          input(type='hidden', name='_csrf', value=csrfToken)
           .form-group
             label(style='margin-top: 25px') * Name
             input.form-control(placeholder='Your name must only container letters', data-placement='top', data-trigger='manual', type='text', pattern="[A-Za-z, -]{2,}", required)
