@@ -7,8 +7,8 @@ div#wrapper-container.sidebarDisplayed
   include placeholders/sidebar
   // main content here.
   // Row 1:
-  // Col A: Event details
-  // Col B: Map
+  // Col A: Event details (right)
+  // Col B: Map (left)
   // Row 2:
   // Col A: Chat Application
   div#page-content-wrapper
@@ -16,26 +16,25 @@ div#wrapper-container.sidebarDisplayed
       div.row
         div.col-lg-12
           h1 No events joined yet
-      div.chatUI-container
-        div.chatUI-statusBar
-        div.chatUI-msgBody
-          ul
-            li
-              img.img-circle(src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/079/328/1630e0b.jpg", width="28", height="28")
-              span hey
-            li
-              img.img-circle(src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/079/328/1630e0b.jpg", width="28", height="28")
-              span hey
-            li
-              img.img-circle(src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/079/328/1630e0b.jpg", width="28", height="28")
-              span hey
-            li
-              img.img-circle(src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/079/328/1630e0b.jpg", width="28", height="28")
-              span hey  
-        div.chatUI-usrInput
-          form.form-inline
-            div.form-group
+        div.chatUI-container
+          div.chatUI-statusBar
+          div.chatUI-msgBody
+            ul
+              - for (i =0; i < 5; i ++){
+              li.clearfix
+                span.userImg.pull-left
+                  img.img-circle(src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/079/328/1630e0b.jpg", width="28", height="28")
+                span.userMsgBody.clearfix
+                  div.header
+                    strong Brad
+                    small.pull-right.text-muted
+                      span.glyphicon.glyphicon-time
+                      | 5 mins ago
+                  p Hey man
+              -}
+          div.chatUI-usrInput
+            div.input-group
               input.form-control(type='text', value='', id="inputSendMsg", placeholder="message #event")
-              button.btn.btn-primary Send
+              span.input-group-btn <button class="btn btn-primary" type="button"> Send </button>
   
 script(src="/javascripts/home.js")
