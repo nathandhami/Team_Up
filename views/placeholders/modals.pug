@@ -36,16 +36,16 @@
           input(type='hidden', name='_csrf', value=csrfToken)
           .form-group
             label(style='margin-top: 25px') * Name
-            input.form-control(placeholder='Your name must only container letters', data-placement='top', data-trigger='manual', type='text', pattern="[A-Za-z, -]{2,}", required)
+            input.form-control(name='contactName', placeholder='Your name must only container letters', data-placement='top', data-trigger='manual', type='text', pattern="[A-Za-z, -]{2,}", required)
           .form-group
             label * E-Mail
-            input.form-control(placeholder='email@you.com (so that we can contact you)', data-placement='top', data-trigger='manual', type='email', required)
+            input.form-control(name='contactEmail', placeholder='email@you.com (so that we can contact you)', data-placement='top', data-trigger='manual', type='email', required)
           .form-group
             label Location
-            input.form-control(placeholder='City, Country', data-placement='top', data-trigger='manual', data-content='Must only contain letters.', type='text', pattern="[A-Za-z, -]{2,}")
+            input.form-control(name='contactLocation', placeholder='City, Country', data-placement='top', data-trigger='manual', data-content='Must only contain letters.', type='text', pattern="[A-Za-z, -]{2,}")
           .form-group
             label * Message
-            textarea.form-control(style='height: 100px', placeholder='Your message here..', data-placement='top', data-trigger='manual', required)
+            textarea.form-control(style='height: 100px', name='contactMsg', placeholder='Your message here..', data-placement='top', data-trigger='manual', required)
           .form-group
             button.btn.btn-success.pull-right(type='submit') Send It!
             p#form-error.help-block.pull-left.text-danger.hide   The form is not valid.
