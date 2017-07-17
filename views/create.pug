@@ -1,7 +1,11 @@
 extends placeholders/header
 block content
-  h3 Create Sports Event
+  #header
+    h2 Create a Sports Event
+  #location
+    input#pac-input.controls(type='text', placeholder='Enter a Location')
   #map
   script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBOPHTiGEVhZh9LaKbtNjsSjvbD1R6r9Kw&callback=loadMap', type='text/javascript')
+  script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBOPHTiGEVhZh9LaKbtNjsSjvbD1R6r9Kw&libraries=places&callback=initAutocomplete', async='', defer='')
   script(src='/javascripts/create.js')
   link(rel="stylesheet", href="/stylesheets/create.css")
