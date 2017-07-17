@@ -7,10 +7,19 @@
           .modal-body
             | By doing this you are letting go of fun opportunities in the future to
             | make friends, get together, and play. <br/>
-            | Are you sure you want to delete your account from TeamUp?
+            | Please be sure this would permanently delete your account from <b>TeamUp</b>.
+            form#delete.form-horizontal.col-sm-12(data-toggle="validator")
+              .form-group
+                 label(style='margin-top: 25px') E-Mail
+                 input.form-control(value='email@you.com', data-placement='top', data-trigger='manual', type='email', disabled)
+              .form-group
+                 label * Password
+                 input.form-control(type='password', placeholder='Enter your password', required)
+              .form-group
+                 button.btn.btn-danger.pull-right(type='submit', style='display: inline') Delete
+                 p#form-error.help-block.pull-left.text-danger.hide   The form is not valid.
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Cancel
-            a.btn.btn-danger.btn-ok Delete
 
 #contactUsModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
   .modal-dialog
@@ -18,9 +27,9 @@
       .modal-header
         button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
         h3#myModalLabel We'd Love to Hear From You
-      .modal-body 
-        h5 
-          | We value your input. Please feel free to contact us or provide feeback by submitting the form below 
+      .modal-body
+        h5
+          | We value your input. Please feel free to contact us or provide feedback by submitting the form below
           | and we will try to get back to you as soon as possible.
         form#contact.form-horizontal.col-sm-12(data-toggle="validator")
           .form-group
@@ -37,7 +46,7 @@
             textarea.form-control(style='height: 100px', placeholder='Your message here..', data-placement='top', data-trigger='manual', required)
           .form-group
             button.btn.btn-success.pull-right(type='submit') Send It!
-            p#form-error.help-block.pull-left.text-danger.hide   The form is not valid. 
+            p#form-error.help-block.pull-left.text-danger.hide   The form is not valid.
       .modal-footer
         button.btn(data-dismiss='modal', aria-hidden='true') Cancel
 
