@@ -37,13 +37,36 @@
 }
 
 /* CHAT MESSENGER UI */
-.chatUI {
+.chatUI-container{
     border: 1px solid blue;
     position: fixed;
     bottom: 0;
-    height: 20%;
+    height: 25%;
     width: 50%;
 }
+
+.chatUI-statusBar{
+    border: 1px solid orange;
+}
+
+.chatUI-msgBody {
+    border: 3px solid green;
+    height: 78%;
+    overflow-y: auto;
+  
+}
+
+.chatUI-msgBody ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chatUI-msgBody ul li{
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
 
 .chatUI-usrInput {
     position: absolute;
@@ -65,15 +88,6 @@
 .chatUI form input{
     /*border: 1px solid green;*/
     width: 50%;
-}
-
-.chatUI input {
-    /*border: 1px  solid red;*/
-
-}
-
-.chatUI button {
-    /*border: 1px solid yellow;*/
 }
 /* END OF CHAT MESSENGER UI */
 
