@@ -12,10 +12,10 @@
               input(type='hidden', name='_csrf', value=csrfToken)
               .form-group
                  label(style='margin-top: 25px') E-Mail
-                 input.form-control(value='email@you.com', data-placement='top', data-trigger='manual', type='email', disabled)
+                 input.form-control(name='userEmail', value='email@you.com', data-placement='top', data-trigger='manual', type='email', readonly)
               .form-group
                  label * Password
-                 input.form-control(type='password', placeholder='Enter your password', required)
+                 input.form-control(name='userPass', type='password', placeholder='Enter your password', required)
               .form-group
                  button.btn.btn-danger.pull-right(type='submit', style='display: inline') Delete
                  p#form-error.help-block.pull-left.text-danger.hide   The form is not valid.
