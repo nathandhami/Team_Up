@@ -44,16 +44,16 @@
 }
 
 .chatUI form {
-    border: 1px solid green;
+    /*border: 1px solid green;*/
 }
 
 .chatUI input {
-    border: 1px  solid red;
+    /*border: 1px  solid red;*/
 
 }
 
 .chatUI button {
-    border: 1px solid yellow;
+    /*border: 1px solid yellow;*/
 }
 /* END OF CHAT MESSENGER UI */
 

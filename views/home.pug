@@ -16,13 +16,15 @@ div#wrapper-container.sidebarDisplayed
       div.row
         div.col-lg-12
           h1 No events joined yet
-      div.row
-        div.col-lg-7
-          li Test1
+      div.chatUI
+        div.chatUI-msgBody
+          ul
+            li Test1
+        div.chatUI-usrInput
           form.form-inline
             div.form-group
               label.sr-only(for="inputSendMsg") Type message here
               input.form-control(type='text', value='', id="inputSendMsg")
-            button.btn.btn-primary Send
+              button.btn.btn-primary Send
   
 script(src="/javascripts/home.js")
