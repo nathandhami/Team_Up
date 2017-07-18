@@ -15,8 +15,6 @@ function loadMap() {
     mapTypeId: 'roadmap'
   });
 
-  var infoWindow = new google.maps.InfoWindow();
-
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
@@ -29,6 +27,7 @@ function loadMap() {
 
   // Create a marker with its category for each location
   var i, newMarker;
+  var infoWindow = new google.maps.InfoWindow();
   for (i = 0; i < locations.length; i++) {
     newMarker = new google.maps.Marker({
       position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -37,6 +36,14 @@ function loadMap() {
     });
     newMarker.category = locations[i][3];
     newMarker.setVisible(false);
+    var data = locations[i][0];
+    (function (newMarker, data) {
+      google.maps.event.addListener(newMarker, 'click', function () {
+        infoWindow.setContent(data);
+        infoWindow.open(map, newMarker);
+      });
+    })
+    (newMarker, data);
     markers.push(newMarker);
   }
 
