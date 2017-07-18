@@ -40,8 +40,9 @@ div#wrapper-container.sidebarDisplayed
                     p Hey man
                 -}
             div.chatUI-usrInput
-              div.input-group
-                input.form-control(type='text', value='', id="inputSendMsg", placeholder="message #event")
-                span.input-group-btn <button class="btn btn-primary" type="button"> Send </button>
-  
+              form(action="", method="")
+                div.input-group
+                  input.form-control(type='text', value='', id="inputSendMsg", placeholder="message #event")
+                  span.input-group-btn <button class="btn btn-primary" type="button"> Send </button>
+
 script(src="/javascripts/home.js")
