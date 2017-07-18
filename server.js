@@ -18,6 +18,7 @@ const index = require('./routes/index');
 const auth = require('./routes/auth');
 const notFound = require('./routes/notFound');
 const create = require('./routes/create');
+const edit = require('./routes/edit');
 
 // Server Config
 const serverConfig = express();
@@ -105,6 +106,7 @@ serverConfig.use('/auth', auth);
 // <-- Start Here
 
 serverConfig.use('/create', create);
+serverConfig.use('/editAccount', edit);
 
 // --> End Here
 
