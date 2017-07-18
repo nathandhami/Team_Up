@@ -48,18 +48,22 @@ div#wrapper-container.sidebarDisplayed
 script(src="/javascripts/socket.io-client/dist/socket.io.js")
 script(src="/bower_components/jquery/dist/jquery.min.js")
 script.
-  $(function () {
+  $(document).ready(function () {
     var socket = io();
 
     $('form').submit(function(){
       socket.emit('chat message', $('#inputSendMsg').val());
       $('#inputSendMsg').val('');
-      //- Prevent form default behaviour, same as calling preventDefault and stopPropagation on event object
+       //- Prevent form default behaviour, same as calling preventDefault and stopPropagation on event object
       return false;
     });
 
     socket.on('chat message', function(msg){
-      $('#messages').append($('<li>').text(msg));
+      var msgBody = $('.chatUI-msgBody');
+      msgBody.find('ul').append($('<li>').text(msg));
+      //- AutoScroll
+      msgBody.scrollTop(msgBody.prop('scrollHeight'));
+       
     });
   });
 
