@@ -25,12 +25,15 @@ button {
   font-family: Roboto;
   font-size: 15px;
   font-weight: 300;
-  margin-left: 12px;
   padding: 3px 11px;
   text-overflow: ellipsis;
-  width: 400px;
 }
 
 #pac-input:focus {
   border-color: #4d90fe;
+}
+
+h3 {
+  text-align: center;
+  padding: 10px;
 }
