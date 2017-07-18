@@ -1,6 +1,7 @@
 // img(src= user.image) will be used for #account-img
 // h4= user.name will be used instead of Brad
 link(rel="stylesheet", href="/stylesheets/home.css")
+//- include ./mixins/chatMsg.element.pug
 
 div#wrapper-container.sidebarDisplayed
   //<button href="#" id="toggle-sidebar"><span class="btn glyphicon glyphicon-user"> </span> </a>
@@ -27,18 +28,8 @@ div#wrapper-container.sidebarDisplayed
             div.chatUI-statusBar
             div.chatUI-msgBody
               ul
-                - for (i =0; i < 5; i ++){
-                li.clearfix
-                  span.userImg.pull-left
-                    img.img-circle(src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/079/328/1630e0b.jpg", width="28", height="28")
-                  span.userMsgBody.clearfix
-                    div.header
-                      strong Brad
-                      small.pull-right.text-muted
-                        span.glyphicon.glyphicon-time
-                        | 5 mins ago
-                    p Hey man
-                -}
+                //- +chatMsg-element("test")
+                //- Messages enter here
             div.chatUI-usrInput
               form(action="", method="")
                 div.input-group
@@ -46,11 +37,19 @@ div#wrapper-container.sidebarDisplayed
                   span.input-group-btn <button class="btn btn-primary" type="submit"> Send </button>
 
 script(src="/javascripts/socket.io-client/dist/socket.io.js")
-script(src="/bower_components/jquery/dist/jquery.min.js")
 script.
-  //- Chat Behaviour
+  //- Chat Client-Side Behaviour
   $(document).ready(function () {
     var socket = io();
+
+    function generateMsg (content, img, timestamp){
+        var formattedMsg = '<li class="clearfix"><span class="userImg pull-left">'
+      + '<img class="img-circle" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/079/328/1630e0b.jpg" width="28" height="28"/></span><span class="userMsgBody clearfix">'
+         + '<div class="header"><strong>Brad</strong><small class="pull-right text-muted"><span class="glyphicon glyphicon-time"></span> 5 mins ago </small></div>'
+           + '<p>' + content + '</p> </span></li>';
+           
+      return formattedMsg;
+    }
 
     $('form').submit(function(){
       socket.emit('chat message', $('#inputSendMsg').val());
@@ -60,8 +59,10 @@ script.
     });
 
     socket.on('chat message', function(msg){
+      var msgPrep = " "
       var msgBody = $('.chatUI-msgBody');
-      msgBody.find('ul').append($('<li>').text(msg));
+      //- Be careful, security vulnerability
+      msgBody.find('ul').append(generateMsg(msg));
       //- AutoScroll
       msgBody.scrollTop(msgBody.prop('scrollHeight'));
        

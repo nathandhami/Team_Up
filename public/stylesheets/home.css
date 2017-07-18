@@ -71,6 +71,11 @@
     padding-bottom: 5px;
 }
 
+.chatUI-msgBody li:hover {
+    background-color: rgb(89.8%, 89.8%, 89.8%);
+}
+
+
 
 /* END OF CHAT MESSENGER UI */
 
