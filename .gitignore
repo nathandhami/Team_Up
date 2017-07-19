@@ -30,3 +30,6 @@ Gemfile.lock
 
 # cryptographic random data
 .rnd
+
+# socket.io client library
+socket.io-client
