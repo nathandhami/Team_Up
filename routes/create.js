@@ -10,7 +10,7 @@ router.route('/').get((req, res) => {
   res.render('create');
 });
 
-router.route('/').post('/home', (req, res) => {
+router.route('/').post((req, res) => {
   const teamupName = xssFilters.inHTMLData(req.body.teamupName);
   const sport = xssFilters.inHTMLData(req.body.sport);
   const locationName = xssFilters.inHTMLData(req.body.locationName);
@@ -25,7 +25,9 @@ router.route('/').post('/home', (req, res) => {
 
   event.save((err, event) => {
     if (err) throw err;
-    res.redirect('/home');
+    res.render('home', {
+      csrfToken: req.csrfToken()
+    });
   });
 });
 
