@@ -42,10 +42,10 @@ function loadMap() {
       google.maps.event.addListener(newMarker, 'click', function () {
         infoWindow.setContent(locationName);
         infoWindow.open(map, newMarker);
-        document.getElementById("location-name").value = locationName;
-        document.getElementById("location-name").disabled = true;
-        document.getElementById("location-address").value = locationAddress;
-        document.getElementById("location-address").disabled = true;
+        document.getElementById("locationName").value = locationName;
+        document.getElementById("locationName").disabled = true;
+        document.getElementById("locationAddress").value = locationAddress;
+        document.getElementById("locationAddress").disabled = true;
       });
     })
     (newMarker, locationName);
