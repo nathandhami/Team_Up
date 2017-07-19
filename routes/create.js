@@ -23,7 +23,7 @@ router.route('/').post((req, res) => {
     locationAddress: locationAddress,
   });
 
-  event.save((err, user) => {
+  event.save((err, event) => {
     if (err) throw err;
     return res.redirect('home');
   });
