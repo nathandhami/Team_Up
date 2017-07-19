@@ -17,6 +17,7 @@ const mongoose = require('mongoose');
 const index = require('./routes/index');
 const auth = require('./routes/auth');
 const notFound = require('./routes/notFound');
+const create = require('./routes/create');
 
 // Server Config
 const serverConfig = express();
@@ -109,6 +110,8 @@ serverConfig.use('/deleteAccount', deleteAccount);
 const contactUs = require('./routes/contactUs');
 serverConfig.use('/contact', contactUs);
 
+
+serverConfig.use('/create', create);
 
 // --> End Here
 
