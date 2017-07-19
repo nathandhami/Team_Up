@@ -19,12 +19,12 @@ router.route('/')
         if (user.validPassword(userPass)) {
           user.remove();
         } else {
-          //return 403
+          // return 403
         }
       }
     });
 
-    res.redirect('/logout');
+    res.redirect('/auth/logout');
     return;
   });
 

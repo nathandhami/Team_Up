@@ -12,7 +12,7 @@
               input(type='hidden', name='_csrf', value=csrfToken)
               .form-group
                  label(style='margin-top: 25px') E-Mail
-                 input.form-control(name='userEmail', value='email@you.com', data-placement='top', data-trigger='manual', type='email', readonly)
+                 input.form-control(name='userEmail', value=user.email, data-placement='top', data-trigger='manual', type='email', readonly)
               .form-group
                  label * Password
                  input.form-control(name='userPass', type='password', placeholder='Enter your password', required)
