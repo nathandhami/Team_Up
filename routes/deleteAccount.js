@@ -12,23 +12,19 @@ router.route('/')
     const userEmail = xssFilters.inHTMLData(req.body.userEmail);
     const userPass = xssFilters.inHTMLData(req.body.userPass);
 
-    // TODO: validate password
-    User.find({email: userEmail}, (err, user) => {
+    User.findOne({email: userEmail}, (err, user) => {
       if (err) throw err;
 
-      if (user.validPassword(userPass))  {
-        console.log('correct');
-      } 
+      if (user) {
+        if (user.validPassword(userPass)) {
+          user.remove();
+        } else {
+          //return 403
+        }
+      }
     });
 
-    // User.findOneAndRemove({email: userEmail}, (err) => {
-    //    if (err) throw err;
-
-    //    console.log('User ' + userEmail + 'successfully deleted!');
-    // });
-
-
-    res.redirect('/');
+    res.redirect('/logout');
     return;
   });
 
