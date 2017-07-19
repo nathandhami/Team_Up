@@ -26,7 +26,7 @@ block content
     form.form-horizontal(action="/create", method="POST")
       input(type='hidden', name='_csrf', value= csrfToken)
       .form-group
-        label.col-sm-3.control-label TeampUp Name:
+        label.col-sm-3.control-label TeamUp Name:
         .col-sm-8
           input#teamupName.form-control(type='text', name='teamupName', placeholder='TeamUp', required='required', data-error='TeamUp Name is required.')
       .form-group

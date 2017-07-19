@@ -12,6 +12,7 @@ router.route('/').get((req, res) => {
   });
 });
 
+/* POST create event */
 router.route('/').post((req, res) => {
   const teamupName = xssFilters.inHTMLData(req.body.teamupName);
   const sport = xssFilters.inHTMLData(req.body.sport);
