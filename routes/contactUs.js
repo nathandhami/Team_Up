@@ -16,7 +16,6 @@ router.route('/')
 
     const subject = 'TeamUp - Feedback';
     const sender = '\"' + contactName + '\" <' + contactEmail + '>';
-    console.log(sender);
 
     let textBody = 'Contact Name: ' + contactName + '<br/>' +
                     'Contact Email: ' + contactEmail + '<br/>' +
