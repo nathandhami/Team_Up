@@ -106,7 +106,6 @@ serverConfig.use('/auth', auth);
 // <-- Start Here
 
 serverConfig.use('/create', create);
-serverConfig.use('/', create);
 serverConfig.use('/editAccount', edit);
 
 // --> End Here
