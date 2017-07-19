@@ -7,10 +7,12 @@ const router = new express.Router();
 
 /* GET create event page */
 router.route('/').get((req, res) => {
-  res.render('create');
+  res.render('create', {
+    csrfToken: req.csrfToken()
+  });
 });
 
-router.route('/').post((req, res) => {
+router.route('/').post('/home', (req, res) => {
   const teamupName = xssFilters.inHTMLData(req.body.teamupName);
   const sport = xssFilters.inHTMLData(req.body.sport);
   const locationName = xssFilters.inHTMLData(req.body.locationName);
@@ -25,9 +27,7 @@ router.route('/').post((req, res) => {
 
   event.save((err, event) => {
     if (err) throw err;
-    res.render('home', {
-      csrfToken: req.csrfToken()
-    });
+    res.redirect('/');
   });
 });
 
