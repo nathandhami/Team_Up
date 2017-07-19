@@ -25,17 +25,21 @@ block content
   #event-details.col-sm-11
     form.form-horizontal(role='form')
       .form-group
-        label.col-sm-3.control-label Name:
+        label.col-sm-3.control-label TeampUp Name:
         .col-sm-8
-          input.form-control(type='text', placeholder='TeamUp')
+          input.form-control(type='text', placeholder='TeamUp', required='')
       .form-group
         label.col-sm-3.control-label Sport:
         .col-sm-8
-          input.form-control(type='text', placeholder='Sport')
+          input.form-control#sport(type='text', placeholder='Sport')
       .form-group
-        label.col-sm-3.control-label Location:
+        label.col-sm-3.control-label Name of Location:
         .col-sm-8
-          input.form-control(type='text', placeholder='Location')
+          input.form-control#location-name(type='text', placeholder='Name of Location')
+      .form-group
+        label.col-sm-3.control-label Address of Location:
+        .col-sm-8
+          input.form-control#location-address(type='text', placeholder='Address of Location')
       .form-group
         label.col-sm-3.control-label
         .col-sm-8
