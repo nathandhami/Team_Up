@@ -1,4 +1,5 @@
 $(document).ready(() => {
+
   $('#userToggleSideBar').on('click', (e) => {
     e.preventDefault();
     $('#wrapper-container').toggleClass('sidebarDisplayed');
@@ -54,6 +55,7 @@ $(document).ready(() => {
     msgBody.scrollTop(msgBody.prop('scrollHeight'));
   });
     // END OF Chat Client-Side Behaviour
+
 });
 
 

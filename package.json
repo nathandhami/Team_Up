@@ -5,7 +5,7 @@
   "description": "Team Up website that allow members to find other people to join them in a sports activity",
   "main": "server.js",
   "scripts": {
-    "prestart": "npm-run-all --parallel security-check linter",
+    "prestart": "npm-run-all --parallel security-check",
     "start": "npm-run-all --parallel server",
     "server": "node ./bin/www -p 8080",
     "build": "webpack --config webpack.config.js",
