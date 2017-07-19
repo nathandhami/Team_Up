@@ -12,7 +12,7 @@ router.route('/').get((req, res) => {
   });
 });
 
-router.route('/').post('/home', (req, res) => {
+router.route('/').post((req, res) => {
   const teamupName = xssFilters.inHTMLData(req.body.teamupName);
   const sport = xssFilters.inHTMLData(req.body.sport);
   const locationName = xssFilters.inHTMLData(req.body.locationName);
