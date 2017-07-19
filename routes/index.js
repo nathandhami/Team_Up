@@ -9,10 +9,12 @@ router.route('/')
   .get((req, res, next) => {
     let displayName = null;
     let userImage = null;
+    let userEmail = null;
 
     if (_.has(req, 'user')) {
       displayName = req.user.displayName;
       userImage = req.user.image;
+      userEmail = req.user.email;
     }
 
     const messages = req.flash('error');
@@ -23,6 +25,7 @@ router.route('/')
       user: {
         name: displayName,
         image: userImage,
+        email: userEmail,
       },
       errorExist: messages.length > 0,
       loginErrors: messages,
