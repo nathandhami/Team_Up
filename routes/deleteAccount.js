@@ -18,13 +18,15 @@ router.route('/')
       if (user) {
         if (user.validPassword(userPass)) {
           user.remove();
+          res.json({success: 'Account Deleted!',
+                  status: 204, redirect: '/auth/logout'});
         } else {
-          // return 403
+          res.json({error: 'The password you entered is incorrect. '
+                            + 'Please try again', status: 403});
         }
       }
     });
 
-    res.redirect('/auth/logout');
     return;
   });
 

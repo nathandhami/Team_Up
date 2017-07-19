@@ -8,19 +8,19 @@
             | By doing this you are letting go of fun opportunities in the future to
             | make friends, get together, and play. <br/>
             | Please be sure this would permanently delete your account from <b>TeamUp</b>.
-            form#delete.form-horizontal.col-sm-12(action="/deleteAccount", method="post", role="form", data-toggle="validator")
+            form#deleteForm.form-horizontal.col-sm-12(role="form")
               input(type='hidden', name='_csrf', value=csrfToken)
               .form-group
                  label(style='margin-top: 25px') E-Mail
                  input.form-control(name='userEmail', value=user.email, data-placement='top', data-trigger='manual', type='email', readonly)
               .form-group
                  label * Password
-                 input.form-control(name='userPass', type='password', placeholder='Enter your password', required)
-              .form-group
-                 button.btn.btn-danger.pull-right(type='submit', style='display: inline') Delete
-                 p#form-error.help-block.pull-left.text-danger.hide   The form is not valid.
+                 input.form-control(name='userPass', type='password', placeholder='Enter your password')
+                 .alert.alert-danger(id='errorDiv', style='display: none')
+                    p#errorPara
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal') Cancel
+            button#btnDelAccount.btn.btn-danger.pull-right(type='submit') Delete
 
 #contactUsModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
   .modal-dialog
