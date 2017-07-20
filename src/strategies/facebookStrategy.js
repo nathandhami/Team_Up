@@ -10,6 +10,7 @@ module.exports = () => {
       clientID: nconf.get('facebook:clientID'),
       clientSecret: nconf.get('facebook:clientSecret'),
       callbackURL: nconf.get('facebook:callbackURL'),
+      profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified'],
     },
     (accessToken, refreshToken, profile, done) => {
       const query = {
@@ -20,7 +21,7 @@ module.exports = () => {
       User.findOne(query, (err, user) => {
         if (!user) {
           const userDocument = new User({
-            // email: profile.emails[0].value,
+            email: profile.emails[0].value,
             firstname: profile.name.givenName,
             lastname: profile.name.familyName,
             image: profile.profileUrl,

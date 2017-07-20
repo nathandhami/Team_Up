@@ -3,7 +3,9 @@ header
     nav.navbar.navbar-fixed-top(role='navigation')
       .navbar-header
         if isAuth
-          button.navbar-toggle(type="button", data-toggle="collapse", data-target="#navbar", onclick="this.classList.toggle('change');")
+          button.navbar-toggle.pull-left(type="button", data-toggle="collapse", data-target="#navbarResLeft", id="sidenav")
+            span.glyphicon.glyphicon-user
+          button.navbar-toggle.pull-right(type="button", data-toggle="collapse", data-target="#navbarResRight", onclick="this.classList.toggle('change');")
             span.icon-bar.bar1
             span.icon-bar.bar2
             span.icon-bar.bar3
@@ -12,23 +14,17 @@ header
           | Team Up
 
       if isAuth
-        #navbar.collapse.navbar-collapse
+        #navbarResRight.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-left
             li
               a(href="/") Home
             li
               a(href="#") Sports
-            li
-              a(href='#', data-toggle='modal', data-target='#contactUsModal') Contact Us
 
           ul.nav.navbar-nav.navbar-right
-            li#userToggleSideBar
-              a(href='#')
-                span.glyphicon.glyphicon-user
-                |  Account
+            li
+              a(href='#', data-toggle='modal', data-target='#contactUsModal') Contact Us
             li
               a(href='/auth/logout')
                 span.glyphicon.glyphicon-log-in
                 |  Log Out
-
-        //- a.btn.btn-danger.navbar-btn(href="/auth/logout") Log Out

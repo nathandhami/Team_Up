@@ -1,6 +1,5 @@
 $(document).ready(() => {
-
-  $('#userToggleSideBar').on('click', (e) => {
+  $('#sidenav').on('click', (e) => {
     e.preventDefault();
     $('#wrapper-container').toggleClass('sidebarDisplayed');
   });
@@ -43,7 +42,7 @@ $(document).ready(() => {
   $('form').submit(() => {
     socket.emit('chat message', $('#inputSendMsg').val());
     $('#inputSendMsg').val('');
-    // Prevent form default behaviour, 
+    // Prevent form default behaviour,
     return false;
   });
 
