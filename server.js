@@ -18,7 +18,6 @@ const index = require('./routes/index');
 const auth = require('./routes/auth');
 const notFound = require('./routes/notFound');
 const create = require('./routes/create');
-const edit = require('./routes/edit');
 
 // Server Config
 const serverConfig = express();
@@ -104,9 +103,15 @@ serverConfig.use('/auth', auth);
 // const yourRoute = require('./routes/yourRoute');
 // serverConfig.use('/theRouteYouWantToAttachTo', yourRoute);
 // <-- Start Here
+const editAccount = require('./routes/editAccount');
+serverConfig.use('/editAccount', editAccount);
+const deleteAccount = require('./routes/deleteAccount');
+serverConfig.use('/deleteAccount', deleteAccount);
+const contactUs = require('./routes/contactUs');
+serverConfig.use('/contact', contactUs);
+
 
 serverConfig.use('/create', create);
-serverConfig.use('/editAccount', edit);
 
 // --> End Here
 

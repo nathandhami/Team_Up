@@ -7,13 +7,31 @@ div#wrapper-container.sidebarDisplayed
   include placeholders/sidebar
   // main content here.
   // Row 1:
-  // Col A: Event details
-  // Col B: Map
-  // Row 2:
-  // Col A: Chat Application
+  // header
+  // Panel A: Map (above chat)
+  // Panel B: Event Details (right to chat and map)
+  // Panel C: Chat Application (footer)
   div#page-content-wrapper
     div.container-fluid
+      header
+        h3 Event Room
       div.row
-        div.col-lg-12
-          h1 No events joined yet
+        div.col-md-5.panelA
+          h6 Map
+        div.col-lg-7.panelB
+          h6 Event Details
+        div.col-md-5.panelC
+          div.chatUI-container
+            div.chatUI-statusBar
+            div.chatUI-msgBody
+              ul
+                //- Messages enter here
+            div.chatUI-usrInput
+              form(action="", method="")
+                div.input-group
+                  input.form-control(type='text', value='', id="inputSendMsg", placeholder="message #event", autocomplete="off")
+                  span.input-group-btn <button class="btn btn-primary" type="submit"> Send </button>
+
+script(src="/javascripts/socket.io-client/dist/socket.io.js")
 script(src="/javascripts/home.js")
+script(src="/javascripts/modals.js")
