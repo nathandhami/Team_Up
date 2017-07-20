@@ -14,11 +14,17 @@ header {
   margin: 0 auto;
 }
 
+.nav>li>a:focus,
+.nav>li>a:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+
 .navbar-toggle {
   z-index: 2;
 }
 
-#navbarResRight ul, navbarResRight ul{
+#navbarResRight ul,
+navbarResRight ul {
   margin-left: 1em;
   margin-right: 1em;
 }
