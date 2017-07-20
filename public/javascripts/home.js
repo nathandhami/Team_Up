@@ -9,6 +9,14 @@ $(document).ready(() => {
     e.preventDefault();
     $('#wrapper-container').toggleClass('sidebarDisplayed');
   });
+  
+  $(window).resize(function(){
+    var minWidth = 768;
+    var container =  $('#wrapper-container');
+    if(!container.hasClass('sidebarDisplayed') && $(window).width() > minWidth) {
+        container.addClass('sidebarDisplayed');
+    }
+  });
 
   // Chat Client-Side Behaviour
   let socket = io();
