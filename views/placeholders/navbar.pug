@@ -1,6 +1,4 @@
-if !isAuth
-  script(src="/javascripts/navbar.js")
-
+script(src="/javascripts/navbar.js")
 header
   .container-fluid
     nav.navbar.navbar-fixed-top(role='navigation')
@@ -43,3 +41,11 @@ if isAuth
       $(() => {
         $("nav").addClass("scrolled");
       });
+else
+  script(type='text/javascript').
+    $(() => {
+      $(document).scroll(function () {
+      const navBar = $("nav");
+      navBar.toggleClass('scrolled', $(this).scrollTop() > navBar.height());
+      });
+    });

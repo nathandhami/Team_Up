@@ -1,31 +1,3 @@
-#page-content-wrapper {
-    width: 100%;
-    margin-top:10px;
-    position: fixed;
-    -webkit-transition: all 0.25s ease;
-    -moz-transition: all 0.25s ease;
-    -o-transition: all 0.25s ease;
-    transition: all 0.25s ease;
-    height: 100%;
-    overflow-y: auto;
-}
-
-
-aside.sidebarDisplayed #sidebar-wrapper {
-    width: 215px;
-}
-
-aside #sidebar-wrapper{
-    -webkit-transition: all 0.25s ease;
-    -moz-transition: all 0.25s ease;
-    -o-transition: all 0.25s ease;
-    transition: all 0.25s ease;
-}
-
-aside.sidebarDisplayed #page-content-wrapper {
-    margin-left: 215px;
-}
-
 
 @media (max-width:768px) {
 

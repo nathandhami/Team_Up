@@ -73,3 +73,32 @@ a.list-group-item:focus, a.list-group-item:hover{
   background-color: #37474f;
   color: white;
 }
+
+#page-content-wrapper {
+    width: 100%;
+    margin-top:10px;
+    position: fixed;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    height: 100%;
+    overflow-y: auto;
+}
+
+
+aside.sidebarDisplayed #page-content-wrapper {
+    margin-left: 215px;
+}
+
+aside.sidebarDisplayed #sidebar-wrapper {
+    width: 215px;
+}
+
+aside #sidebar-wrapper{
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
