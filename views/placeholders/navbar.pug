@@ -10,7 +10,7 @@ header
     nav.navbar.navbar-fixed-top(role='navigation')
       .navbar-header
         if isAuth
-          button.navbar-toggle.pull-left(type="button", data-toggle="collapse", data-target="#navbarResLeft", id="sidenav")
+          button.navbar-toggle.pull-left(type="button", data-toggle="collapse", data-target="#navbarResLeft", id="sidebar")
             span.glyphicon.glyphicon-cog(style="font-size:1.3em;")
           button.navbar-toggle.pull-right(type="button", data-toggle="collapse", data-target="#navbarResRight", onclick="this.classList.toggle('change');")
             span.icon-bar.bar1
@@ -35,3 +35,7 @@ header
               a.hvr-underline-from-center(href='/auth/logout')
                 span.glyphicon.glyphicon-log-in
                 |  Log Out
+
+    if isAuth
+      aside.sidebarDisplayed
+        include sidebar

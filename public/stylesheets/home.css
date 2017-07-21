@@ -11,28 +11,28 @@
 }
 
 
-#wrapper-container.sidebarDisplayed #sidebar-wrapper {
+aside.sidebarDisplayed #sidebar-wrapper {
     width: 215px;
 }
 
-#wrapper-container #sidebar-wrapper{
+aside #sidebar-wrapper{
     -webkit-transition: all 0.25s ease;
     -moz-transition: all 0.25s ease;
     -o-transition: all 0.25s ease;
     transition: all 0.25s ease;
 }
 
-#wrapper-container.sidebarDisplayed #page-content-wrapper {
+aside.sidebarDisplayed #page-content-wrapper {
     margin-left: 215px;
 }
 
 
 @media (max-width:768px) {
- 
+
 }
 
 @media (min-width: 769px) {
- 
+
 }
 
 /* Panel Setup */
@@ -81,13 +81,13 @@
     width: 12px;
     transition: all 0.25s ease;
 }
- 
+
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 10px;
 }
- 
+
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }

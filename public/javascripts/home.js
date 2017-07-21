@@ -1,18 +1,18 @@
 $(document).ready(() => {
-  $('#sidenav').on('click', (e) => {
+  $('#sidebar').on('click', (e) => {
     e.preventDefault();
-    $('#wrapper-container').toggleClass('sidebarDisplayed');
+    $('aside').toggleClass('sidebarDisplayed');
   });
 
 
   $('.sidebarCloseBtn').on('click', (e) => {
     e.preventDefault();
-    $('#wrapper-container').toggleClass('sidebarDisplayed');
+    $('aside').toggleClass('sidebarDisplayed');
   });
-  
+
   $(window).resize(function(){
     var minWidth = 768;
-    var container =  $('#wrapper-container');
+    var container =  $('aside');
     if(!container.hasClass('sidebarDisplayed') && $(window).width() > minWidth) {
         container.addClass('sidebarDisplayed');
     }
