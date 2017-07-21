@@ -92,3 +92,11 @@ nav {
 button.navbar-toggle{
   margin-bottom: 0;
 }
+
+.glyphicon{
+  color: white;
+}
+
+.icon-bar{
+  background-color: white;
+}
