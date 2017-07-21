@@ -15,6 +15,24 @@ function loadMap() {
     ['Trafalgar Park', '2610 W 23rd Ave, Vancouver, BC V6L 1N7', 49.251888, -123.1672523, 1],
     ['Andy Livingstone Park', '89 Expo Blvd, Vancouver, BC V6B 6N5', 49.2788226, -123.1079865, 1],
     ['David Lam Park', '1300 Pacific Blvd, Vancouver, BC V6Z 0A9', 49.2721506, -123.1271803, 1],
+    ['Chaldecott Park', '4175 Wallace St, Vancouver, BC V6S 2J3', 49.2489526, -123.1933026, 1],
+    ['Memorial West Park', '4701 Dunbar St, Vancouver, BC V6S 2G8', 49.2433206, -123.1904335, 1],
+    ['Musqueam Park', '4000 SW Marine Dr, Vancouver, BC V6N 2B8', 49.2301998, -123.1962955, 1],
+    ['Charleson Park', '999 Charleson Street, Vancouver, BC V5Z 4A2', 49.2666129, -123.1281372, 1],
+    ['Garden Park', '1851 Garden Dr, Vancouver, BC V5N 4W6', 49.2681669, -123.0612162, 1],
+    ['McSpadden Park', '2125 Victoria Dr, Vancouver, BC V5N 5Y4', 49.2661038, -123.068721, 1],
+    ['Templeton Park', '700 Templeton Dr, Vancouver, BC V5L 4N8', 49.278319, -123.0613521, 1],
+    ['Woodland Park', '705 Woodland Dr, Vancouver, BC V5L 3R2', 49.2785105, -123.0756486, 1],
+    ['Adanac Park', '1025 Boundary Rd, Vancouver, BC V5K 4T2', 49.276231, -123.0276928, 1],
+    ['Clinton Park', '2690 Grant St, Vancouver, BC V5K 3G9', 49.2705402, -123.0532006, 1],
+    ['New Brighton Park', '93 New Brighton Rd, Vancouver, BC V5K', 49.2894798, -123.0372333, 1],
+    ['Rupert Park', '3402 Charles St, Vancouver, BC V5K 5H9', 49.2716035, -123.0321886, 1],
+    ['Sunrise Park', '1950 Windermere St, Vancouver, BC V5M 3R2', 49.2666929, -123.0373739, 1],
+    ['Brewers Park', '4175 Victoria Dr, Vancouver, BC V5N 4M9', 49.2476715, -123.0685292, 1],
+    ['Clark Park', '1500 E 14th Ave, Vancouver, BC V5N 3R3', 49.2577806, -123.0758836, 1],
+    ['John Hendry (Trout Lake) Park', '3300 Victoria Dr, Vancouver, BC V5N 4M4', 49.2561531, -123.0635412, 1],
+    ['Jones Park', '5350 Commercial St, Vancouver, BC V5P 3N3', 49.2360017, -123.0693179, 1],
+    ['Kensington Park', '5175 Dumfries St, Vancouver, BC V5P 3A2', 49.2360319,-123.084639, 1],
 
     // basketball
     ['SFU Fitness Centre', '8888 Gaglardi Way, Burnaby, BC V5A 1S6', 49.2794424, -122.9245066, 2],
@@ -40,6 +58,13 @@ function loadMap() {
     ['Quilchena Park', '4590 Magnolia St, Vancouver, BC V6J 4B5', 49.2437806, -123.1516046, 4],
     ['Trafalgar Park', '2610 W 23rd Ave, Vancouver, BC V6L 1N7', 49.251888, -123.1672523, 4],
     ['Andy Livingstone Park', '89 Expo Blvd, Vancouver, BC V6B 6N5', 49.2788226, -123.1079865, 4],
+    ['Chaldecott Park', '4175 Wallace St, Vancouver, BC V6S 2J3', 49.2489526, -123.1933026, 4],
+    ['Memorial West Park', '4701 Dunbar St, Vancouver, BC V6S 2G8', 49.2433206, -123.1904335, 4],
+    ['Templeton Park', '700 Templeton Dr, Vancouver, BC V5L 4N8', 49.278319, -123.0613521, 4],
+    ['Woodland Park', '705 Woodland Dr, Vancouver, BC V5L 3R2', 49.2785105, -123.0756486, 4],
+    ['Clinton Park', '2690 Grant St, Vancouver, BC V5K 3G9', 49.2705402, -123.0532006, 4],
+    ['Rupert Park', '3402 Charles St, Vancouver, BC V5K 5H9', 49.2716035, -123.0321886, 4],
+    ['Sunrise Park', '1950 Windermere St, Vancouver, BC V5M 3R2', 49.2666929,-123.0373739, 4],
   ];
 
   var map = new google.maps.Map(document.getElementById('map'), {
