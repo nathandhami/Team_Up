@@ -89,8 +89,22 @@ nav {
 }
 
 
+.side-change{
+  transform: rotate(180deg);
+  transition: 0.4s;
+  transition-timing-function: ease-in-out;
+}
+
+.side-nave-icon{
+  transition: 0.4s;
+}
+
 button.navbar-toggle{
   margin-bottom: 0;
+}
+
+.side-nave-icon.navbar-toggle{
+  margin-top: 0.3em;
 }
 
 .glyphicon{

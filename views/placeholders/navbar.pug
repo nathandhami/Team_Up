@@ -6,8 +6,10 @@ header
     nav.navbar.navbar-fixed-top(role='navigation')
       .navbar-header
         if isAuth
-          button.navbar-toggle.pull-left(type="button", data-toggle="collapse", data-target="#navbarResLeft", id="sidebar")
-            span.glyphicon.glyphicon-cog(style="font-size:1.3em;")
+          button.navbar-toggle.side-nave-icon.pull-left(type="button", data-toggle="collapse", data-target="#navbarResLeft", id="sidebar", onclick="this.classList.toggle('side-change');")
+
+            img(src="/assets/images/svg/page-layout-sidebar-left.svg" alt="Left Side Nav")
+            //- span.glyphicon.glyphicon-cog(style="font-size:1.3em;")
           button.navbar-toggle.pull-right(type="button", data-toggle="collapse", data-target="#navbarResRight", onclick="this.classList.toggle('change');")
             span.icon-bar.bar1
             span.icon-bar.bar2
