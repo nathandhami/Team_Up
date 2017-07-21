@@ -3,7 +3,7 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-aside{
+aside {
   left: 0;
 }
 
@@ -11,10 +11,14 @@ hr {
   margin: 1em;
 }
 
-a{
+a {
   color: white;
 }
 
-a:hover{
+a:hover {
   color: #CDDC39;
+}
+
+.glyphicon{
+  color: white;
 }
