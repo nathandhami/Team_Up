@@ -89,3 +89,8 @@ nav {
   -webkit-transform: rotate(45deg) translate(-4px, -4px);
   transform: rotate(45deg) translate(-4px, -4px);
 }
+
+
+button.navbar-toggle{
+  margin-bottom: 0;
+}
