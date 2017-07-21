@@ -10,26 +10,27 @@ aside.sidebarDisplayed
   // Panel A: Map (above chat)
   // Panel B: Event Details (right to chat and map)
   // Panel C: Chat Application (footer)
-  div#page-content-wrapper
-    div.container-fluid
-      header
+  #page-content-wrapper
+    .container-fluid
+      .page-header
         h3 Event Room
-      div.row
-        div.col-md-5.panelA
-          h6 Map
-        div.col-lg-7.panelB
-          h6 Event Details
-        div.col-md-5.panelC
-          div.chatUI-container
-            div.chatUI-statusBar
-            div.chatUI-msgBody
-              ul
-                //- Messages enter here
-            div.chatUI-usrInput
-              form(action="", method="")
-                div.input-group
-                  input.form-control(type='text', value='', id="inputSendMsg", placeholder="message #event", autocomplete="off")
-                  span.input-group-btn <button class="btn btn-primary" type="submit"> Send </button>
+      .container-fluid
+        div.row
+          div.col-md-5.panelA
+            h6 Map
+          div.col-lg-7.panelB
+            h6 Event Details
+          div.col-md-5.panelC
+            div.chatUI-container
+              div.chatUI-statusBar
+              div.chatUI-msgBody
+                ul
+                  //- Messages enter here
+              div.chatUI-usrInput
+                form(action="", method="")
+                  div.input-group
+                    input.form-control(type='text', value='', id="inputSendMsg", placeholder="message #event", autocomplete="off")
+                    span.input-group-btn <button class="btn btn-primary" type="submit"> Send </button>
 
 script(src="/javascripts/socket.io-client/dist/socket.io.js")
 script(src="/javascripts/home.js")

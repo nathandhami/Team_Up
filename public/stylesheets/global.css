@@ -11,3 +11,11 @@ hr {
   margin: 1em;
   border-color: #21282c;
 }
+
+a{
+  color: white;
+}
+
+a:hover{
+  color: #CDDC39;
+}

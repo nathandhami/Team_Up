@@ -1,8 +1,4 @@
-if isAuth
-  style(type='text/css').
-    #navbarResRight, #navbarResLeft, nav{background: #f5f5f5;}
-    .navbar-brand{color: rgb(109, 96, 96);}
-else
+if !isAuth
   script(src="/javascripts/navbar.js")
 
 header
@@ -39,3 +35,10 @@ header
     if isAuth
       aside.sidebarDisplayed
         include sidebar
+
+
+if isAuth
+  script(type='text/javascript').
+      $(() => {
+        $("nav").addClass("scrolled");
+      });
