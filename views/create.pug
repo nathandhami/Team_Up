@@ -22,26 +22,30 @@ block content
               span
                 img(src="https://png.icons8.com/baseball/color/24")
                 |  Baseball
-
         .container-fluid
           .row
             input#pac-input.controls.col-xs-5(type='text', placeholder='Enter a Location')
             #map
             h3 Event Details
             #event-details.col-sm-11
-              form.form-horizontal(role='form')
+              form.form-horizontal(action="/create", method="POST")
+                input(type='hidden', name='_csrf', value= csrfToken)
                 .form-group
-                  label.col-sm-3.control-label Name:
+                  label.col-sm-3.control-label TeamUp Name:
                   .col-sm-8
-                    input.form-control(type='text', placeholder='TeamUp')
+                    input#teamupName.form-control(type='text', name='teamupName', placeholder='TeamUp', required='required', data-error='TeamUp Name is required.')
                 .form-group
                   label.col-sm-3.control-label Sport:
                   .col-sm-8
-                    input.form-control(type='text', placeholder='Sport')
+                    input#sport.form-control(type='text', name='sport', placeholder='Sport', required='required', data-error='Sport is required.')
                 .form-group
-                  label.col-sm-3.control-label Location:
+                  label.col-sm-3.control-label Name of Location:
                   .col-sm-8
-                    input.form-control(type='text', placeholder='Location')
+                    input#locationName.form-control(type='text', name='locationName', placeholder='Name of Location', required='required', data-error='Location Address is required.')
+                .form-group
+                  label.col-sm-3.control-label Address of Location:
+                  .col-sm-8
+                    input#locationAddress.form-control(type='text', name='locationAddress', placeholder='Address of Location', required='required', data-error='Location Name is required.')
                 .form-group
                   label.col-sm-3.control-label
                   .col-sm-8
