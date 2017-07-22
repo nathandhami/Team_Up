@@ -17,7 +17,13 @@ router.route('/')
       userEmail = req.user.email;
     }
 
-    const messages = req.flash('error');
+    const messagesErrSignIn = req.flash('error');
+    const messagesErrRegister = req.flash('registerError');
+    const messages = messagesErrSignIn.concat(messagesErrRegister);
+
+
+
+
 
     res.render('index', {
       title: 'Home',
