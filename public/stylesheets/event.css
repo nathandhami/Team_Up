@@ -1,0 +1,49 @@
+
+@media (max-width:768px) {
+
+}
+
+@media (min-width: 769px) {
+
+}
+
+/* Panel Setup */
+.panelA{
+    border: 2px solid orange;
+}
+
+.panelB{
+    border: 2px solid blue;
+}
+
+
+/* CHAT MESSENGER UI */
+.panelC {
+    border: 2px solid red;
+     bottom: 0px;
+}
+
+.chatUI-container {
+    width: 100%;
+}
+
+.chatUI-msgBody {
+    height: 200px;
+    overflow-y: auto;
+}
+
+.chatUI-msgBody ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chatUI-msgBody li {
+    padding-bottom: 5px;
+}
+
+.chatUI-msgBody li:hover {
+    background-color: rgb(89.8%, 89.8%, 89.8%);
+}
+
+/* END OF CHAT MESSENGER UI */

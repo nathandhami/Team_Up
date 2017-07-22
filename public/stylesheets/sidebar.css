@@ -1,53 +1,104 @@
 #sidebar-wrapper {
-    z-index: 2;
-    position: fixed;
-    width: 0;
-    height: 100%;
-    background: rgba(114, 127, 132, 0.3);
-    opacity: 1;
-    display:block;
-    overflow-y: hidden;
-}
-
-#sidebar-wrapper:hover {
-    overflow-y: auto;
+  z-index: 2;
+  position: fixed;
+  width: 0;
+  height: 100%;
+  background-color: #263238;
+  opacity: 1;
+  display: block;
+  overflow-y: hidden;
+  left: 0;
+  padding-top: 3em;
+  color: white;
 }
 
 .sidebar-nav-content {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    white-space : nowrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  white-space: nowrap;
 }
 
 .sidebar-nav-content li {
-    text-indent: 25px;
-    line-height: 40px;
+  text-indent: 25px;
+  line-height: 40px;
 }
 
-.sidebar-nav-content li a {
-    display: block;
-    text-decoration: none;
-    color: black;
+/* .sidebar-nav-content li a {
+  display: block;
+  text-decoration: none;
+  color: black;
+} */
+
+/* .sidebar-nav-content li a:hover {
+  background: teal;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+} */
+
+.profile-user-pic img {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 1em;
 }
 
-.sidebar-nav-content li a:hover {
-    background:teal;
+.profile-user-pic {
+  padding: 2em 1em;
+  background-color: #102027;
+}
+
+.glyphicon.glyphicon-plus {}
+
+.icons {
+  padding-left: 5px;
+}
+
+.profile-user-name {
+  text-align: center;
+}
+
+.list-group-item.list-group-item-action {
+  padding: 0em;
+  background-color: #263238;
+  border-color: #37474f;
+  color: white;
+  border-radius: 0em;
+
+}
+
+
+a.list-group-item:focus, a.list-group-item:hover{
+  background-color: #37474f;
+  color: white;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    margin-top:10px;
+    position: fixed;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    height: 100%;
+    overflow-y: auto;
+}
+
+
+aside.sidebarDisplayed #page-content-wrapper {
+    margin-left: 215px;
+}
+
+aside.sidebarDisplayed #sidebar-wrapper {
+    width: 215px;
+}
+
+aside #sidebar-wrapper{
     -webkit-transition: all 0.25s ease;
     -moz-transition: all 0.25s ease;
     -o-transition: all 0.25s ease;
     transition: all 0.25s ease;
 }
 
-.profile-user-pic img {
-    display: block;
-    margin-left: 50px;
-}
-
-.glyphicon.glyphicon-plus {
-
-}
-
-.icons {
-    padding-left: 5px;
-}

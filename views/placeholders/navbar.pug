@@ -1,17 +1,12 @@
-if isAuth
-  style(type='text/css').
-    #navbarResRight, #navbarResLeft, nav{background: #f5f5f5;}
-    .navbar-brand{color: rgb(109, 96, 96);}
-else
-  script(src="/javascripts/navbar.js")
-
+script(src="/javascripts/navbar.js")
 header
   .container-fluid
     nav.navbar.navbar-fixed-top(role='navigation')
       .navbar-header
         if isAuth
-          button.navbar-toggle.pull-left(type="button", data-toggle="collapse", data-target="#navbarResLeft", id="sidenav")
-            span.glyphicon.glyphicon-cog(style="font-size:1.3em;")
+          button.navbar-toggle.side-nave-icon.pull-left(type="button", data-toggle="collapse", data-target="#navbarResLeft", id="sidebar", onclick="this.classList.toggle('side-change');")
+            img(src="/assets/images/svg/page-layout-sidebar-left.svg" alt="Left Side Nav")
+            //- span.glyphicon.glyphicon-cog(style="font-size:1.3em;")
           button.navbar-toggle.pull-right(type="button", data-toggle="collapse", data-target="#navbarResRight", onclick="this.classList.toggle('change');")
             span.icon-bar.bar1
             span.icon-bar.bar2
@@ -35,5 +30,22 @@ header
               a.hvr-underline-from-center(href='/auth/logout')
                 span.glyphicon.glyphicon-log-in
                 |  Log Out
+
     if isAuth
-      include sidebar
+      aside.sidebarDisplayed
+        include sidebar
+
+
+if isAuth
+  script(type='text/javascript').
+      $(() => {
+        $("nav").addClass("scrolled");
+      });
+else
+  script(type='text/javascript').
+    $(() => {
+      $(document).scroll(function () {
+      const navBar = $("nav");
+      navBar.toggleClass('scrolled', $(this).scrollTop() > navBar.height());
+      });
+    });
