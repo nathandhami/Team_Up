@@ -10,7 +10,7 @@ module.exports = () => {
       clientID: nconf.get('facebook:clientID'),
       clientSecret: nconf.get('facebook:clientSecret'),
       callbackURL: nconf.get('facebook:callbackURL'),
-      profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified'],
+      profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified', 'picture.type(large)'],
     },
     (accessToken, refreshToken, profile, done) => {
       const query = {
@@ -18,13 +18,14 @@ module.exports = () => {
       };
 
       // console.log(profile);
+
       User.findOne(query, (err, user) => {
         if (!user) {
           const userDocument = new User({
             email: profile.emails[0].value,
             firstname: profile.name.givenName,
             lastname: profile.name.familyName,
-            image: profile.profileUrl,
+            image: profile.photos[0].value,
             displayName: profile.displayName,
             facebook: {
               id: profile.id,

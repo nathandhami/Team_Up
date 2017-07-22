@@ -88,16 +88,17 @@ serverConfig.set('view engine', 'pug');
 // Setting up Routes
 serverConfig.use(express.static(path.join(__dirname, 'public')));
 
+
+
 serverConfig.use('/', index);
 serverConfig.use('/auth', auth);
 
 // serverConfig.use((req, res, next) => {
-  // if (!req.isAuthenticated()) {
-  //   return res.redirect('/');
-  // }
-  // next();
+// if (!req.isAuthenticated()) {
+//   return res.redirect('/');
+// }
+// next();
 // });
-
 
 // put your routes here
 // only thing you need to put here is:

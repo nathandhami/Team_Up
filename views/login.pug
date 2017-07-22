@@ -2,7 +2,7 @@ form#login(action='/auth/login', method='POST', data-toggle="validator", role="f
   input(type='hidden', name='_csrf', value= csrfToken)
   //- form-element(forLabel, label, type, name, id, placeholder, iconClassName, requiredBool)
   if errorExist
-      .alert.alert-danger
+      .alert.alert-danger(style="background-color:rgba(4, 33, 33, 0.52); color:rgb(214, 205, 52)")
         each errMsg in loginErrors
           p= errMsg
 
