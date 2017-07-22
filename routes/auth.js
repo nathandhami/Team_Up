@@ -112,7 +112,7 @@ router.route('/register')
   });
 
 router.route('/deleteUser')
-  .psot((req, res) => {
+  .post((req, res) => {
     const userId = req.user._id;
     User.findOneAndRemove({
       _id: userId,
