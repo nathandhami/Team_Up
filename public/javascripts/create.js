@@ -184,14 +184,14 @@ function loadMap() {
     ['West Point Grey Park', '2250 Trimble St, Vancouver, BC V6R 4G9', 49.2664721, -123.2064366, 4]
   ];
 
-  var map = new google.maps.Map(document.getElementById('map'), {
+  var map = new google.maps.Map($('#map'), {
     center: {lat: 49.278628, lng: -122.920355},
     zoom: 12,
     mapTypeId: 'roadmap'
   });
 
   // Create the search box and link it to the UI element.
-  var input = document.getElementById('pac-input');
+  var input = $('#pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP].push(input);
 
@@ -217,10 +217,10 @@ function loadMap() {
       google.maps.event.addListener(newMarker, 'click', function () {
         infoWindow.setContent(locationName);
         infoWindow.open(map, newMarker);
-        document.getElementById("locationName").value = locationName;
-        document.getElementById("locationName").disabled = true;
-        document.getElementById("locationAddress").value = locationAddress;
-        document.getElementById("locationAddress").disabled = true;
+        $("#locationName").value = locationName;
+        $("#locationName").disabled = true;
+        $("#locationAddress").value = locationAddress;
+        $("#locationAddress").disabled = true;
       });
     })
     (newMarker, locationName);
@@ -264,13 +264,13 @@ function displayMarkers(category) {
     }
   }
   if (category == 1) {
-    document.getElementById("sport").value = "Soccer";
+    $("#sport").value = "Soccer";
   } else if (category == 2) {
-    document.getElementById("sport").value = "Basketball";
+    $("#sport").value = "Basketball";
   } else if (category == 3) {
-    document.getElementById("sport").value = "Volleyball";
+    $("#sport").value = "Volleyball";
   } else if (category == 4) {
-    document.getElementById("sport").value = "Baseball";
+    $("#sport").value = "Baseball";
   }
-  document.getElementById("sport").disabled = true;
+  $("#sport").disabled = true;
 }
