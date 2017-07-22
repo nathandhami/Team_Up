@@ -1,10 +1,10 @@
-#!/usr/bin/env node
+
 
 'use strict';
 
-const open = require('open');
 const serverConfig = require('../server');
 const https = require('https');
+const http = require('http');
 const nconf = require('../src/config/nconfConfig');
 const winston = require('../src/config/winstonConfig');
 const httpsOptions = require('../src/config/sslConfig');
@@ -13,7 +13,8 @@ const socketApi = require('../socketApi');
 
 serverConfig.set('port', PORT);
 
-const serverSSL = https.createServer(httpsOptions, serverConfig);
+// const serverSSL = https.createServer(httpsOptions, serverConfig);
+const serverSSL = http.createServer(serverConfig);
 
 serverSSL.listen(PORT, (err) => {
   (err) ? winston.error(err) : baseurlDisplay();
@@ -21,12 +22,12 @@ serverSSL.listen(PORT, (err) => {
 
 const io = socketApi.io;
 // Mount socket.io on https server
-io.attach(serverSSL);
+// io.attach(serverSSL);
 
 // Predefined Display Info
 const baseurlDisplay = () => {
-  const baseurl = `https://localhost:${PORT}/`;
+  const baseurl = `http://localhost:${PORT}/`;
   winston.info(`Listening on port: ${PORT}`);
   winston.info(`Serving at URL ${baseurl}`);
-  open(baseurl);
+  // open(baseurl);
 };

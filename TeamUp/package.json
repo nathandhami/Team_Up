@@ -5,8 +5,7 @@
   "description": "Team Up website that allow members to find other people to join them in a sports activity",
   "main": "server.js",
   "scripts": {
-    "prestart": "npm-run-all --parallel security-check",
-    "start": "npm-run-all --parallel server",
+    "start": "npm run server",
     "server": "node ./bin/www -p 8080",
     "build": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -52,7 +51,6 @@
     "eslint-watch": "^3.1.2",
     "npm-run-all": "^4.0.2",
     "nsp": "^2.6.3",
-    "open": "^0.0.5",
     "webpack": "^3.0.0"
   }
 }
