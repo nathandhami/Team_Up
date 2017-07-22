@@ -20,7 +20,7 @@ module.exports = () => {
         }
         if (!user) {
           return done(null, false, {
-            message: 'Incorrect Email or Password',
+            message: 'User Doesn\'t Exist',
           });
         }
         if (!user.validPassword(xssFilters.inHTMLData(password))) {

@@ -60,7 +60,7 @@ $ ./start.bat [git bash, windows only]
 ### Pug Globals
 
 **You can now use these global values in your pug files.**
-
+* isAuth
 * userData.name
 * userData.email
 * userData.image

@@ -111,6 +111,21 @@ router.route('/register')
     });
   });
 
+router.route('/deleteUser')
+  .psot((req, res) => {
+    const userId = req.user._id;
+    User.findOneAndRemove({
+      _id: userId,
+    }, (err) => {
+      if (err) {
+        throw err;
+      }
+      req.logout();
+      req.session.destroy();
+      return res.redirect('/');
+    });
+  });
+
 
 router.route('/login')
   .post(passport.authenticate('local', {
