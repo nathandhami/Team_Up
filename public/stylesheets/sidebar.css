@@ -10,7 +10,6 @@
   left: 0;
   padding-top: 3em;
   color: white;
- 
 }
 
 .sidebar-nav-content {
@@ -76,13 +75,16 @@ a.list-group-item:focus, a.list-group-item:hover{
 }
 
 #page-content-wrapper {
-     margin-top:10px;
-    position: relative;
+    width: 100%;
+    margin-top:10px;
+    position: fixed;
     -webkit-transition: all 0.25s ease;
     -moz-transition: all 0.25s ease;
     -o-transition: all 0.25s ease;
     transition: all 0.25s ease;
- }
+    height: 100%;
+    overflow-y: auto;
+}
 
 
 aside.sidebarDisplayed #page-content-wrapper {
