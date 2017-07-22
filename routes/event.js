@@ -4,9 +4,9 @@ const express = require('express');
 const router = new express.Router();
 
 /* GET Event page */
-router.route('/')
+router.route('/:id')
   .get((req, res, next) => {
-    res.render('event');
+    res.render('event', {} );
     return;
   });
 

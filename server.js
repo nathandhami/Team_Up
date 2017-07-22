@@ -18,7 +18,7 @@ const index = require('./routes/index');
 const auth = require('./routes/auth');
 const notFound = require('./routes/notFound');
 const create = require('./routes/create');
-const event = require('./routes/event')
+const event = require('./routes/event');
 
 // Server Config
 const serverConfig = express();

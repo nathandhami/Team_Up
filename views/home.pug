@@ -1,37 +1,14 @@
-// img(src= user.image) will be used for #account-img
-// h4= user.name will be used instead of Brad
+//- img(src= user.image) will be used for #account-img
+//-  h4= user.name will be used instead of Brad
 link(rel="stylesheet", href="/stylesheets/home.css")
+link(rel="stylesheet", href="/stylesheets/customScrollbar.css")
 
 aside.sidebarDisplayed
-  //<button href="#" id="toggle-sidebar"><span class="btn glyphicon glyphicon-user"> </span> </a>
-  // main content here.
-  // Row 1:
-  // header
-  // Panel A: Map (above chat)
-  // Panel B: Event Details (right to chat and map)
-  // Panel C: Chat Application (footer)
+  //- Accordion display of events
   #page-content-wrapper
     .container-fluid
       .page-header
-        h3 Event Room
-      .container-fluid
-        .row
-          div.col-md-5.panelA
-            h6 Map
-          div.col-lg-7.panelB
-            h6 Event Details
-          div.col-md-5.panelC
-            div.chatUI-container
-              div.chatUI-statusBar
-              div.chatUI-msgBody
-                ul
-                  //- Messages enter here
-              div.chatUI-usrInput
-                form(action="", method="")
-                  div.input-group
-                    input.form-control(type='text', value='', id="inputSendMsg", placeholder="message #event", autocomplete="off")
-                    span.input-group-btn <button class="btn btn-primary" type="submit"> Send </button>
+        h3 My Events
 
-script(src="/javascripts/socket.io-client/dist/socket.io.js")
 script(src="/javascripts/home.js")
 script(src="/javascripts/modals.js")
