@@ -211,7 +211,7 @@ function loadMap() {
     var lat = locations[i][2];
     var long = locations[i][3];
     var category = locations[i][4];
-    var content = locationName + "<br>" + locationAddress + "<br><a target='_blank' href=https://www.google.com/maps/dir//" + lat + "," + long + ">Get Directions</a>";
+    var content = locationName + "<br>" + locationAddress + "<br><a class='directions' target='_blank' href=https://www.google.com/maps/dir//" + lat + "," + long + ">Get Directions</a>";
     newMarker = new google.maps.Marker({
       position: new google.maps.LatLng(lat, long),
       map: map,
