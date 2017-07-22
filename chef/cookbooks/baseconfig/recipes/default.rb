@@ -27,14 +27,14 @@ end
 
 ######## NGINX Config ########
 
-# package "nginx"
-# cookbook_file "nginx-default" do
-#   path "/etc/nginx/sites-available/default"
-# end
+package "nginx"
+cookbook_file "nginx-default" do
+  path "/etc/nginx/sites-available/default"
+end
 
-# service "nginx" do
-# 	action :restart
-# end
+service "nginx" do
+	action :restart
+end
 
 
 ######## Nodejs Config ########
@@ -48,27 +48,42 @@ package "nodejs"
 
 bash 'npm_global_installation' do
   code <<-EOH
+  sudo npm install -g node-pre-gyp 
   sudo npm install -g bower
+  sudo npm install -g forever
   EOH
 end
+
 
 bash 'install_dependencies' do
   cwd '/home/ubuntu/project/TeamUp/'
   code <<-EOH
-  sudo npm --no-bin-links install
+  sudo npm --no-bin-links install bcrypt
+  sudo npm --no-bin-links install body-parser
+  sudo npm --no-bin-links install connect-flash
+  sudo npm --no-bin-links install connect-mongo
+  sudo npm --no-bin-links install cookie-parser
+  sudo npm --no-bin-links install csurf
+  sudo npm --no-bin-links install express
+  sudo npm --no-bin-links install express-session
+  sudo npm --no-bin-links install express-validator
+  sudo npm --no-bin-links install helmet
+  sudo npm --no-bin-links install lodash
+  sudo npm --no-bin-links install mongoose
+  sudo npm --no-bin-links install nconf
+  sudo npm --no-bin-links install nodemailer
+  sudo npm --no-bin-links install passport
+  sudo npm --no-bin-links install passport-facebook
+  sudo npm --no-bin-links install passport-google-oauth
+  sudo npm --no-bin-links install passport-local
+  sudo npm --no-bin-links install passport-twitter
+  sudo npm --no-bin-links install pug
+  sudo npm --no-bin-links install socket.io
+  sudo npm --no-bin-links install winston
+  sudo npm --no-bin-links install xss-filters
   bower install --allow-root
   EOH
 end
-
-# bash 'install_npm_dependencies' do
-#   cwd '/home/ubuntu/project/TeamUp/'
-#   code <<-EOH
-#   sudo npm --no-bin-links install
-#   sudo npm install bcrypt --no-bin-links
-#   sudo npm install -g bower --allow-root
-#   sudo bower install --allow-root
-#   EOH
-# end
 
 
 ######## MongoDB Config ########
@@ -86,7 +101,7 @@ end
 
 
 
-######## Supervisor Config ########
+####### Supervisor Config ########
 
 # bash 'supervisord_config' do
 #   code <<-EOH
@@ -116,3 +131,13 @@ end
 #   sudo supervisorctl restart all
 #   EOH
 # end
+
+
+
+bash 'run-server' do
+  cwd '/home/ubuntu/project/TeamUp/'
+  code <<-EOH
+  kill -9 $(lsof -t -i:8080)
+  sudo forever start ./bin/www -p 8080
+  EOH
+end
