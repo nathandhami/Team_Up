@@ -1,7 +1,7 @@
-var markers = [];
+let markers = [];
 
 function loadMap() {
-  var locations = [
+  let locations = [
     // soccer
     ['Terry Fox Field', 'Burnaby, BC V5A 1S6', 49.278657, -122.922332, 1],
     ['Field 2', 'Burnaby, BC V5A 1S6', 49.278478, -122.924905, 1],
@@ -184,15 +184,15 @@ function loadMap() {
     ['West Point Grey Park', '2250 Trimble St, Vancouver, BC V6R 4G9', 49.2664721, -123.2064366, 4]
   ];
 
-  var map = new google.maps.Map($('#map'), {
+  let map = new google.maps.Map($('#map'), {
     center: {lat: 49.278628, lng: -122.920355},
     zoom: 12,
     mapTypeId: 'roadmap'
   });
 
   // Create the search box and link it to the UI element.
-  var input = $('#pac-input');
-  var searchBox = new google.maps.places.SearchBox(input);
+  let input = $('#pac-input');
+  let searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP].push(input);
 
   // Bias the SearchBox results towards current map's viewport.
@@ -201,8 +201,8 @@ function loadMap() {
   });
 
   // Create a marker with its category for each location
-  var i, newMarker;
-  var infoWindow = new google.maps.InfoWindow();
+  let i, newMarker;
+  let infoWindow = new google.maps.InfoWindow();
   for (i = 0; i < locations.length; i++) {
     newMarker = new google.maps.Marker({
       position: new google.maps.LatLng(locations[i][2], locations[i][3]),
@@ -211,8 +211,8 @@ function loadMap() {
     });
     newMarker.category = locations[i][4];
     newMarker.setVisible(false);
-    var locationName = locations[i][0];
-    var locationAddress = locations[i][1];
+    let locationName = locations[i][0];
+    let locationAddress = locations[i][1];
     (function (newMarker, locationName) {
       google.maps.event.addListener(newMarker, 'click', function () {
         infoWindow.setContent(locationName);
@@ -230,13 +230,13 @@ function loadMap() {
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
   searchBox.addListener('places_changed', function() {
-    var places = searchBox.getPlaces();
+    let places = searchBox.getPlaces();
     if (places.length == 0) {
       return;
     }
 
     // For each place, get the location.
-    var bounds = new google.maps.LatLngBounds();
+    let bounds = new google.maps.LatLngBounds();
     places.forEach(function(place) {
       if (!place.geometry) {
         console.log("Returned place contains no geometry");
@@ -254,7 +254,7 @@ function loadMap() {
 }
 
 function displayMarkers(category) {
-  var i;
+  let i;
   for (i = 0; i < markers.length; i++) {
     if (markers[i].category === category) {
       markers[i].setVisible(true);
