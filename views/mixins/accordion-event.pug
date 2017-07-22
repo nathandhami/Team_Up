@@ -1,0 +1,19 @@
+mixin event-panel(collapseNum)
+  .panel.panel-default
+    .panel-heading.container-fluid
+      .row
+        h5.panel-title
+          .col-md-4
+            a(data-toggle="collapse", data-parent="#accordion", href= '#' + collapseNum)
+              span Event Title
+          .col-md-6
+            span Status: Completed
+          div#jk.col-md-2.text-right
+            abbr(title="Participants") 
+              <i class="fa fa-user"> 7/10  </i>
+    div.panel-collapse.collapse(id=collapseNum)
+      .panel-body
+        p Location
+        p Sport Type
+        p Date
+        button.btn.btn-default(type="button") join event room

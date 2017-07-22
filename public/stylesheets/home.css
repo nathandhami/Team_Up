@@ -1,0 +1,19 @@
+
+#accordion a { 
+    color: black;
+}
+
+#accordion a :hover { 
+    color: blue;
+}
+
+#accordion abbr[title] {
+  border-bottom: none;
+}
+
+@media (max-width: 980px){
+    #jk {
+        text-align:left;
+    }
+
+}

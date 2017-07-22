@@ -2,6 +2,7 @@
 //-  h4= user.name will be used instead of Brad
 link(rel="stylesheet", href="/stylesheets/home.css")
 link(rel="stylesheet", href="/stylesheets/customScrollbar.css")
+include ./mixins/accordion-event.pug
 
 aside.sidebarDisplayed
   //- Accordion display of events
@@ -9,6 +10,24 @@ aside.sidebarDisplayed
     .container-fluid
       .page-header
         h3 My Events
-
+    .container
+      row
+        .col-md-3-offset-3.col
+          div#accordion.panel-group
+            +event-panel('collapseOne')
+            +event-panel('collapseTwo')
+            +event-panel('collapseThree')
+            +event-panel('collapseFour')
+            +event-panel('collapseFive')
+            +event-panel('collapseSix')
+            +event-panel('collapseSeven')
+            +event-panel('collapseEight')
+            +event-panel('collapseNine')
+            +event-panel('collapseTen')
+            +event-panel('collapseEleven')
+            +event-panel('collapseTwelve')
+            +event-panel('collapseThirteen')
+            +event-panel('collapseFourteen')            
+                
 script(src="/javascripts/home.js")
 script(src="/javascripts/modals.js")
