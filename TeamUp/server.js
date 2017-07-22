@@ -85,7 +85,7 @@ serverConfig.set('views', path.join(__dirname, 'views'));
 serverConfig.set('view engine', 'pug');
 
 // Setting up Routes
-serverConfig.use(express.static(path.join(__dirname, 'public')));
+// serverConfig.use(express.static(path.join(__dirname, 'public')));
 
 serverConfig.use('/', index);
 serverConfig.use('/auth', auth);

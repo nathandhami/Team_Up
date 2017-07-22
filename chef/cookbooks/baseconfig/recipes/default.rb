@@ -50,7 +50,7 @@ bash 'npm_global_installation' do
   code <<-EOH
   sudo npm install -g node-pre-gyp 
   sudo npm install -g bower
-  sudo npm install -g forever
+  sudo npm install -g pm2
   EOH
 end
 
@@ -136,8 +136,9 @@ end
 
 bash 'run-server' do
   cwd '/home/ubuntu/project/TeamUp/'
+  ignore_failure true
   code <<-EOH
-  kill -9 $(lsof -t -i:8080)
-  sudo forever start ./bin/www -p 8080
+  sudo pm2 stop all
+  sudo pm2 start ./bin/www -p 8080
   EOH
 end
