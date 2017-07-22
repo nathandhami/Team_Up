@@ -57,7 +57,23 @@ $ node ./bin/www -p 8080 (Pick Any Available Port No)
 $ ./start.bat [git bash, windows only]
 ```
 
-## License
+### Pug Globals
+
+**You can now use these global values in your pug files.**
+
+* userData.name
+* userData.email
+* userData.image
+* userData.firstname
+* userData.lastname
+* userData.facebookId
+* userData.twitterId
+* userData.googleId
+
+> Caution : Some of these may be null or undefined, so check before use
+
+
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
