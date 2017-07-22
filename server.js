@@ -1,7 +1,6 @@
 'use strict';
 
 const path = require('path');
-const _ = require('lodash');
 const express = require('express');
 const helmet = require('helmet');
 const session = require('express-session');
@@ -89,24 +88,6 @@ serverConfig.set('view engine', 'pug');
 // Setting up Routes
 serverConfig.use(express.static(path.join(__dirname, 'public')));
 
-
-serverConfig.use((req, res, next) => {
-  if (_.has(req, 'user')) {
-    const defaultImage = "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/079/328/1630e0b.jpg";
-    const userImage = req.user.image ? req.user.image : defaultImage;
-    res.locals.userData = {
-      name: req.user.displayName,
-      email: req.user.email,
-      image: userImage,
-      firstname: req.user.firstname,
-      lastname: req.user.lastname,
-      facebookId: req.user.facebook,
-      twitterId: req.user.twitter,
-      googleId: req.user.google,
-    };
-  }
-  next();
-});
 
 
 serverConfig.use('/', index);
