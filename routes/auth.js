@@ -155,12 +155,37 @@ router.route('/editAccount')
     const fname = xssFilters.inHTMLData(req.body.first_name);
     const lname = xssFilters.inHTMLData(req.body.last_name);
     const currentPass = xssFilters.inHTMLData(req.body.current_password);
-    const isPasswordUpdate = xssFilters.inHTMLData(req.body.pass_checkbox);
     const newPass = xssFilters.inHTMLData(req.body.new_pass);
 
-    if (!newPass) {
-      console.log("hello");
-    }
+    User.findOne({
+      _id: userId,
+    }, (err, user) => {
+      if (err) {
+        throw err;
+      }
+
+      if (user) {
+        if (user.validPassword(currentPass)) {
+          user.firstname = fname;
+          user.lastname = lname;
+          if (newPass) {
+            user.password = newPass;
+          }
+
+          user.save((err) => {
+            if (err) throw err;
+          });
+
+          res.json({success: 'Profile Updated!',
+                  status: 204, redirect: '/editAccount'});
+        } else {
+          res.json({error: 'The password you entered is incorrect. '
+                            + 'Please try again', status: 403});
+        }
+      }
+
+      return;
+    });
 
     // console.log(fname + lname + currentPass + isPasswordUpdate + newPass);
     
