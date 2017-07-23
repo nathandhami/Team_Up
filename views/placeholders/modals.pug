@@ -2,6 +2,7 @@
       .modal-dialog
         .modal-content
           .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
             h3
               | Delete Account
           .modal-body
@@ -12,10 +13,10 @@
               input(type='hidden', name='_csrf', value=csrfToken)
               .form-group
                  label(style='margin-top: 25px') E-Mail
-                 input.form-control(name='userEmail', value=user.email, data-placement='top', data-trigger='manual', type='email', readonly)
+                 input.form-control(name='userEmail', value=userData.email, data-placement='top', data-trigger='manual', type='email', readonly)
               .form-group
                  label * Password
-                 input.form-control(name='userPass', type='password', placeholder='Enter your password')
+                 input.form-control(name='userPass', type='password', placeholder='Enter your password',  autocomplete='new-password')
                  .alert.alert-danger(id='errorDiv', style='display: none')
                     p#errorPara
           .modal-footer

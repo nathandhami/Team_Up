@@ -114,16 +114,35 @@ router.route('/register')
 router.route('/deleteUser')
   .post((req, res) => {
     const userId = req.user._id;
-    User.findOneAndRemove({
+    const userPass = xssFilters.inHTMLData(req.body.userPass);
+
+    User.findOne({
       _id: userId,
-    }, (err) => {
+    }, (err, user) => {
       if (err) {
         throw err;
       }
-      req.logout();
-      req.session.destroy();
-      return res.redirect('/');
+
+      if (user) {
+        if (user.validPassword(userPass)) {
+          user.remove();
+          res.json({success: 'Account Deleted!',
+                  status: 204, redirect: '/auth/logout'});
+        } else {
+          res.json({error: 'The password you entered is incorrect. '
+                            + 'Please try again', status: 403});
+        }
+      }
+
+      return;
     });
+  });
+
+
+router.route('/editAccount')
+  .get((req, res, next) => {
+    res.render('editAccount');
+    return;
   });
 
 
