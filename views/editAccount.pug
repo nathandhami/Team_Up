@@ -12,7 +12,7 @@ block content
               .col-md-3
                 .text-center
                   img.avatar.img-circle(src=userData.image, alt='avatar')
-                  h6 Upload a different photo...
+                  h6 Upload profile photo...
                   input.form-control(type='file')
               // edit form column
               .col-md-9.personal-info
@@ -21,11 +21,11 @@ block content
                   .form-group
                     label.col-lg-3.control-label First name:
                     .col-lg-8
-                      input.form-control(type='text', value=userData.firstname)
+                      input.form-control(type='text', value=userData.firstname, required)
                   .form-group
                     label.col-lg-3.control-label Last name:
                     .col-lg-8
-                      input.form-control(type='text', value=userData.lastname)
+                      input.form-control(type='text', value=userData.lastname, required)
                   .form-group
                     label.col-lg-3.control-label Email:
                     .col-lg-8
@@ -33,7 +33,7 @@ block content
                   .form-group
                     label.col-md-3.control-label Current Password:
                     .col-md-8
-                      input.form-control(type='password', placeholder='Enter your password', auto-complete='new-password')
+                      input.form-control(type='password', placeholder='Enter your password', auto-complete='new-password', required)
                   .alert.alert-info.alert-dismissable
                     a.panel-close.close(data-dismiss='alert') ×
                     i.fa.fa-bell
