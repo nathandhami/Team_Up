@@ -11,7 +11,7 @@ $(document).ready(() => {
         submitHandler: function(form) {
           $.ajax({
             type: 'POST',
-            url: '/deleteAccount',
+            url: '/auth/deleteUser',
             data: $(form).serialize(),
             timeout: 3000,
             success: function(response) {
