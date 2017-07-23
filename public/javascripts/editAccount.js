@@ -51,20 +51,17 @@ $(document).ready(() => {
                     swal({
                       title: response.error,
                       text: response.text,
-                      type: 'error',
+                      type: 'warning',
                       confirmButtonColor: '#DD6B55',
                       confirmButtonText: 'Okay',
-                      closeOnConfirm: false,
-                    },
-                    () => {
-                      window.location.href = response.redirect;
+                      closeOnConfirm: true,
                     });
                 } else {
                     swal({
                       title: response.success,
                       text: response.text,
                       type: 'success',
-                      confirmButtonColor: '#DD6B55',
+                      confirmButtonColor: "#DD6B55",
                       confirmButtonText: 'Okay',
                       closeOnConfirm: false,
                     },

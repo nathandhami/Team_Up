@@ -178,7 +178,7 @@ router.route('/editAccount')
 
           res.json({success: 'Profile Updated!', status: 204, 
                     text: 'Your personal info has been updated.', 
-                    redirect: '/editAccount'});
+                    redirect: '/auth/editAccount'});
         } else {
           res.json({error: 'Incorrect Password!', status: 403,
                     text: 'Please try again with your current password.'});
