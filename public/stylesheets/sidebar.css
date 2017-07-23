@@ -78,12 +78,14 @@ a.list-group-item:focus, a.list-group-item:hover{
     transition: all 0.25s ease;
  }
 
-aside.sidebarDisplayed #page-content-wrapper {
-    margin-left: 215px;
-}
+@media (min-width: 451px){
+    aside.sidebarDisplayed #page-content-wrapper {
+      margin-left: 215px;
+  }
 
-aside.sidebarDisplayed #sidebar-wrapper {
-    width: 215px;
+  aside.sidebarDisplayed #sidebar-wrapper {
+      width: 215px;
+  }
 }
 
 aside #sidebar-wrapper{
@@ -91,5 +93,26 @@ aside #sidebar-wrapper{
     -moz-transition: all 0.25s ease;
     -o-transition: all 0.25s ease;
     transition: all 0.25s ease;
+}
+
+@media (max-width:450px){
+
+  aside.sidebarDisplayed #sidebar-wrapper {
+    width: 215px;
+  }
+
+    aside.sidebarDisplayed #page-content-wrapper {
+      margin-left: 0;
+  }
+    aside.sidebarDisplayed #overlay  {
+      position: fixed;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1;
+      transition: all 0.25s ease;
+  }
+
 }
 
