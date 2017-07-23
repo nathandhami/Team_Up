@@ -1,5 +1,6 @@
 extends placeholders/header.pug
 block content
+  link(rel="stylesheet", href="/stylesheets/editAccount.css")
   .container
     aside.sidebarDisplayed
       #page-content-wrapper
@@ -34,10 +35,10 @@ block content
                     label.col-md-3.control-label Current Password:
                     .col-md-8
                       input.form-control(type='password', placeholder='Enter your password', auto-complete='new-password', required)
-                    label.control-label
-                      input(type='checkbox')
-                      | Update Password
-                  #passChangeDiv
+                  label#updateCheckbox.control-label
+                    input(type='checkbox')
+                    |  Update Password
+                  .update-password
                     .alert.alert-info.alert-dismissable
                       a.panel-close.close(data-dismiss='alert') ×
                       i.fa.fa-bell
