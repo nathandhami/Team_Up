@@ -11,7 +11,7 @@ block content
               // left column
               .col-md-3
                 .text-center
-                  img.avatar.img-circle(src='//placehold.it/100', alt='avatar')
+                  img.avatar.img-circle(src=userData.image, alt='avatar')
                   h6 Upload a different photo...
                   input.form-control(type='file')
               // edit form column
@@ -21,19 +21,19 @@ block content
                   .form-group
                     label.col-lg-3.control-label First name:
                     .col-lg-8
-                      input.form-control(type='text', value='Jane')
+                      input.form-control(type='text', value=userData.firstname)
                   .form-group
                     label.col-lg-3.control-label Last name:
                     .col-lg-8
-                      input.form-control(type='text', value='Bishop')
+                      input.form-control(type='text', value=userData.lastname)
                   .form-group
                     label.col-lg-3.control-label Email:
                     .col-lg-8
-                      input.form-control(type='text', value='janesemail@gmail.com', disabled)
+                      input.form-control(type='text', value=userData.email, readonly)
                   .form-group
                     label.col-md-3.control-label Current Password:
                     .col-md-8
-                      input.form-control(type='password', placeholder='Enter your password')
+                      input.form-control(type='password', placeholder='Enter your password', auto-complete='new-password')
                   .alert.alert-info.alert-dismissable
                     a.panel-close.close(data-dismiss='alert') ×
                     i.fa.fa-bell
@@ -43,11 +43,11 @@ block content
                   .form-group
                     label.col-md-3.control-label New Password:
                     .col-md-8
-                      input.form-control(type='password')
+                      input.form-control(type='password', auto-complete='new-password')
                   .form-group
                     label.col-md-3.control-label Confirm password:
                     .col-md-8
-                      input.form-control(type='password')
+                      input.form-control(type='password', auto-complete='new-password')
                   .form-group
                     label.col-md-3.control-label
                     .col-md-8
