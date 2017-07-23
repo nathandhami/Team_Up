@@ -5,18 +5,40 @@ $(document).ready(() => {
 
     $('#updateForm').validate({
         rules: {
-            first_name: 'required',
-            last_name: 'required',
+            first_name: {
+              required: true, 
+              minlength: 2
+            },
+            last_name: {
+              required: true, 
+              minlength: 2
+            },
             current_password: 'required',
-            new_pass: 'required',
-            confirm_new_pass: 'required',
+            new_pass: {
+              required: true, 
+              minlength: 6
+            },
+            confirm_new_pass: {
+              equalTo: '#new_pass'
+            }
         },
         messages: {
-            first_name: 'required',
-            last_name: 'required',
-            current_password: 'required',
-            new_pass: 'required',
-            confirm_new_pass: 'required',
+            first_name: {
+              required: "Please enter your first name.", 
+              minlength: "First Name must have minimum 2 characters."
+            },
+            last_name: {
+              required: "Please enter your first name.", 
+              minlength: "Last Name must have minimum 2 characters."
+            },
+            current_password: "Please enter your current password",
+            new_pass: {
+              required: "Please enter your new password", 
+              minlength: "Password must have minimum 6 characters."
+            },
+            confirm_new_pass: {
+              equalTo: "Your passwords do not match."
+            }
         },
         submitHandler: function(form) {
           $.ajax({
