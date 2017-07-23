@@ -34,20 +34,24 @@ block content
                     label.col-md-3.control-label Current Password:
                     .col-md-8
                       input.form-control(type='password', placeholder='Enter your password', auto-complete='new-password', required)
-                  .alert.alert-info.alert-dismissable
-                    a.panel-close.close(data-dismiss='alert') ×
-                    i.fa.fa-bell
-                    |     Leave the following fields
-                    strong  blank
-                    |    if you do not want to update your password.
-                  .form-group
-                    label.col-md-3.control-label New Password:
-                    .col-md-8
-                      input.form-control(type='password', auto-complete='new-password')
-                  .form-group
-                    label.col-md-3.control-label Confirm password:
-                    .col-md-8
-                      input.form-control(type='password', auto-complete='new-password')
+                    label.control-label
+                      input(type='checkbox')
+                      | Update Password
+                  #passChangeDiv
+                    .alert.alert-info.alert-dismissable
+                      a.panel-close.close(data-dismiss='alert') ×
+                      i.fa.fa-bell
+                      |     Leave the following fields
+                      strong  blank
+                      |    if you do not want to update your password.
+                    .form-group
+                      label.col-md-3.control-label New Password:
+                      .col-md-8
+                        input.form-control(type='password', auto-complete='new-password')
+                    .form-group
+                      label.col-md-3.control-label Confirm password:
+                      .col-md-8
+                        input.form-control(type='password', auto-complete='new-password')
                   .form-group
                     label.col-md-3.control-label
                     .col-md-8
