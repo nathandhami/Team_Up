@@ -48,21 +48,29 @@ $(document).ready(() => {
             timeout: 3000,
             success: function(response) {
                 if (response.status == '403') {
-                    alert('incorrect password');
+                    swal({
+                      title: response.error,
+                      text: response.text,
+                      type: 'error',
+                      confirmButtonColor: '#DD6B55',
+                      confirmButtonText: 'Okay',
+                      closeOnConfirm: false,
+                    },
+                    () => {
+                      window.location.href = response.redirect;
+                    });
                 } else {
-                    alert('correct password');
-                    // swal({
-                    //   title: response.success,
-                    //   text: 'We are sorry to see you leave but ' +
-                    //         'you can always come back.',
-                    //   type: 'success',
-                    //   confirmButtonColor: '#DD6B55',
-                    //   confirmButtonText: 'Okay',
-                    //   closeOnConfirm: false,
-                    // },
-                    // () => {
-                    //   window.location.href = response.redirect;
-                    // });
+                    swal({
+                      title: response.success,
+                      text: response.text,
+                      type: 'success',
+                      confirmButtonColor: '#DD6B55',
+                      confirmButtonText: 'Okay',
+                      closeOnConfirm: false,
+                    },
+                    () => {
+                      window.location.href = response.redirect;
+                    });
                 }
             },
             error: function(response) {
