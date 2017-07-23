@@ -12,6 +12,7 @@ const csrf = require('csurf');
 const expressValidator = require('express-validator');
 const nconf = require('./src/config/nconfConfig');
 const mongoose = require('mongoose');
+const multer = require('multer');
 
 // Routes Config
 const index = require('./routes/index');
@@ -45,6 +46,11 @@ serverConfig.use(bodyParser.urlencoded({
 }));
 serverConfig.use(expressValidator());
 serverConfig.use(cookieParser());
+
+serverConfig.use(multer({
+  dest: './upload/'
+}).single('pic_upload'));
+
 serverConfig.use(csrf({
   cookie: true,
 }));
@@ -108,6 +114,9 @@ serverConfig.use('/auth', auth);
 const contactUs = require('./routes/contactUs');
 serverConfig.use('/contact', contactUs);
 
+serverConfig.post('/uploadPic', function(req, res) {
+  console.log(req.file);
+});
 
 serverConfig.use('/create', create);
 serverConfig.use('/event', event);
