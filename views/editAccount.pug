@@ -17,7 +17,7 @@ block content
                       .text-center
                         img.avatar.img-circle(src=userData.image, alt='avatar')
                         h6 Upload profile photo...
-                        input.form-control.file-button(type='file', name='pic_upload')
+                        input.form-control.file-button(type='file', name='pic_upload', accept='image/*')
                         input.btn.btn-primary(type='submit', value='Upload')
                   form#updateForm.form-horizontal(role='form')
                     .form-group
