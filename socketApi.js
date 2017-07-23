@@ -5,7 +5,7 @@ const io = require('socket.io')();
 const socketApi = {};
 const debugPrefix = 'SocketAPI: ';
 const elementNotFound = -1;
-
+const Chat = require('./models/Chat');
 socketApi.io = io;
 
 // Stores users that are connected @ default namespace @ default room
@@ -28,9 +28,38 @@ io.on('connection', (socket) => {
         console.log('New event show users: ' + users);
     });
 
+    // Show last 5 messages of chat history in default room one time, or 
+    // every time user refreshes page
+    Chat.count({}, function(err, result){
+        console.log('# of chat docs:' + result);
+    });
+
+
+    Chat.find({}).exec(function(err, historyChatMsg){
+        console.log('History:' + historyChatMsg);
+        console.log('History:' + historyChatMsg[0]);
+
+    });
+
     socket.on('chat message', (data) => {
         console.log('Chat Message Event: ' + data.message);
         console.log('Chat Message Event: ' + data.image);
+
+        const chat = new Chat({
+            name:data.name,
+            message:data.message,
+            date: Date.now(),
+            image: data.image,
+        });
+
+        console.log('Chat DB: ' + chat);
+
+        chat.save((err, chat) => {
+            if (err){
+                console.log('unable to save chat message');
+                throw err;
+            }
+        });
         
         // Emit chat message to every client in room
         io.emit('chat message', data);
