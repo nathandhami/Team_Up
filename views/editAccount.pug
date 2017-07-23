@@ -11,7 +11,7 @@ block content
               hr
               .row
                 .col-md-9.personal-info
-                  form#uploadForm.form-horizontal(action='/uploadPic', method='post', enctype='multipart/form-data', role='form')
+                  form#uploadForm.form-horizontal(action='/auth/uploadPic', method='post', enctype='multipart/form-data', role='form')
                     input(type='hidden', name='_csrf', value=csrfToken)
                     .form-group
                       .text-center

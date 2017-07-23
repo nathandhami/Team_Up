@@ -114,10 +114,6 @@ serverConfig.use('/auth', auth);
 const contactUs = require('./routes/contactUs');
 serverConfig.use('/contact', contactUs);
 
-serverConfig.post('/uploadPic', function(req, res) {
-  console.log(req.file);
-});
-
 serverConfig.use('/create', create);
 serverConfig.use('/event', event);
 

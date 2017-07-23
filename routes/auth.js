@@ -6,6 +6,7 @@ const User = require('../models/User');
 const RegisterValidation = require('../models/RegisterValidation');
 const xssFilters = require('xss-filters');
 const router = new express.Router();
+const fs = require('fs');
 
 // redirecting the user to google.com
 router.route('/google')
@@ -190,6 +191,31 @@ router.route('/editAccount')
 
     // console.log(fname + lname + currentPass + isPasswordUpdate + newPass);
     
+  })
+
+router.route('/uploadPic') 
+  .post(function(req, res) {
+    console.log(req.file);
+    const userId = req.user._id;
+
+    User.findOne({
+        _id: userId,
+      }, (err, user) => {
+        if (err) {
+          throw err;
+        }
+
+        if (user) {
+          user.image.data = fs.readFileSync(req.file.path);
+          user.image.contentType = req.file.mimetype;
+
+          user.save((err) => {
+            if (err) throw err;
+          });
+        }
+      });
+
+    return res.redirect('/auth/editAccount');
   });
 
 
