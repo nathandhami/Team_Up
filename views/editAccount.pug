@@ -20,11 +20,11 @@ block content
                 h3 Personal info
                 form.form-horizontal(role='form')
                   .form-group
-                    label.col-lg-3.control-label First name:
+                    label.col-lg-3.control-label * First name:
                     .col-lg-8
                       input.form-control(type='text', value=userData.firstname, required)
                   .form-group
-                    label.col-lg-3.control-label Last name:
+                    label.col-lg-3.control-label * Last name:
                     .col-lg-8
                       input.form-control(type='text', value=userData.lastname, required)
                   .form-group
@@ -32,32 +32,32 @@ block content
                     .col-lg-8
                       input.form-control(type='text', value=userData.email, readonly)
                   .form-group
-                    label.col-md-3.control-label Current Password:
+                    label.col-md-3.control-label * Current Password:
                     .col-md-8
                       input.form-control(type='password', placeholder='Enter your password', auto-complete='new-password', required)
                   .form-group
                     label#updateCheckbox.col-md-6.control-label
                       input(type='checkbox')
                       |  Update Password
-                  .update-password
+                  #updatePassDiv.update-password
                     .alert.alert-info.alert-dismissable
                       a.panel-close.close(data-dismiss='alert') ×
                       i.fa.fa-bell
-                      |     Leave the following fields
-                      strong  blank
+                      |     Please
+                      strong  uncheck checkbox 
                       |    if you do not want to update your password.
                     .form-group
-                      label.col-md-3.control-label New Password:
+                      label.col-md-3.control-label * New Password:
                       .col-md-8
-                        input.form-control(type='password', auto-complete='new-password')
+                        input.form-control(type='password', auto-complete='new-password', required)
                     .form-group
-                      label.col-md-3.control-label Confirm password:
+                      label.col-md-3.control-label * Confirm password:
                       .col-md-8
-                        input.form-control(type='password', auto-complete='new-password')
+                        input.form-control(type='password', auto-complete='new-password', required)
                   .form-group
                     label.col-md-3.control-label
-                    .col-md-8
+                    .col-md-8.edit-footer
                       input.btn.btn-primary(type='button', value='Save Changes')
-                      span
-                      input.btn.btn-default(type='reset', value='Cancel')
+                      input.btn.btn-default(style='margin-left: 1em', type='reset', value='Cancel')
   hr  
+  script(src="/javascripts/editAccount.js")
