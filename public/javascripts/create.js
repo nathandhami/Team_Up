@@ -219,7 +219,7 @@ function loadMap() {
     });
     newMarker.category = category;
     newMarker.setVisible(false);
-    (function (newMarker, content, infoWindow) {
+    (function (newMarker, locationName, locationAddress, content, infoWindow) {
       google.maps.event.addListener(newMarker, 'click', function () {
         infoWindow.setContent(content);
         infoWindow.open(map, newMarker);
@@ -229,7 +229,7 @@ function loadMap() {
         document.getElementById("locationAddress").disabled = true;
       });
     })
-    (newMarker, content, infoWindow);
+    (newMarker, locationName, locationAddress, content, infoWindow);
     markers.push(newMarker);
   }
 
