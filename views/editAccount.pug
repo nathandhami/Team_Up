@@ -7,20 +7,17 @@ block content
         #page-content-wrapper
           .container-fluid
             .pageheader
-              h1 Edit Profile
+              h2 Personal Info
               hr
               .row
-                // left column
-                .col-md-3
-                  .text-center
-                    img.avatar.img-circle(src=userData.image, alt='avatar')
-                    h6 Upload profile photo...
-                    input.form-control(type='file')
-                // edit form column
                 .col-md-9.personal-info
-                  h3 Personal info
                   form#updateForm.form-horizontal(role='form')
                     input(type='hidden', name='_csrf', value=csrfToken)
+                    .form-group
+                      .text-center
+                        img.avatar.img-circle(src=userData.image, alt='avatar')
+                        h6 Upload profile photo...
+                        input.form-control.file-button(type='file')
                     .form-group
                       label.col-lg-3.control-label * First name:
                       .col-lg-8
