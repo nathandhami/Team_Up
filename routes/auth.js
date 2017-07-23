@@ -151,7 +151,19 @@ router.route('/editAccount')
 
   .post((req, res) => {
     const userId = req.user._id;
-    console.log("I'M HERE");
+
+    const fname = xssFilters.inHTMLData(req.body.first_name);
+    const lname = xssFilters.inHTMLData(req.body.last_name);
+    const currentPass = xssFilters.inHTMLData(req.body.current_password);
+    const isPasswordUpdate = xssFilters.inHTMLData(req.body.pass_checkbox);
+    const newPass = xssFilters.inHTMLData(req.body.new_pass);
+
+    if (!newPass) {
+      console.log("hello");
+    }
+
+    // console.log(fname + lname + currentPass + isPasswordUpdate + newPass);
+    
   });
 
 
