@@ -40,25 +40,20 @@
 } */
 
 .profile-user-pic img {
-  width: 50%;
-  margin: 0 auto;
   margin-bottom: 1em;
 }
 
 .profile-user-pic {
   padding: 2em 1em;
   background-color: #102027;
+  text-align: center;
+  width: 215px;
 }
-
-.glyphicon.glyphicon-plus {}
 
 .icons {
   padding-left: 5px;
 }
 
-.profile-user-name {
-  text-align: center;
-}
 
 .list-group-item.list-group-item-action {
   padding: 0em;
