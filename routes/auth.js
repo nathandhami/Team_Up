@@ -139,10 +139,19 @@ router.route('/deleteUser')
   });
 
 
-router.route('/editAccount')
+router.route('/editAccount') 
   .get((req, res, next) => {
-    res.render('editAccount');
+    res.render('editAccount', {
+      title: 'Profile',
+      csrfToken: req.csrfToken()
+    });
+
     return;
+  })
+
+  .post((req, res) => {
+    const userId = req.user._id;
+    console.log("I'M HERE");
   });
 
 

@@ -20,6 +20,7 @@ block content
                 .col-md-9.personal-info
                   h3 Personal info
                   form#updateForm.form-horizontal(role='form')
+                    input(type='hidden', name='_csrf', value=csrfToken)
                     .form-group
                       label.col-lg-3.control-label * First name:
                       .col-lg-8
