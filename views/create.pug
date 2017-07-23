@@ -30,25 +30,32 @@ block content
             #event-details.col-sm-11
               form.form-horizontal(action="/create", method="POST")
                 input(type='hidden', name='_csrf', value= csrfToken)
-                .form-group
-                  label.col-sm-3.control-label TeamUp Name:
-                  .col-sm-8
+                .row
+                  label.col-md-3.control-label TeamUp Name:
+                  .col-md-8
                     input#teamupName.form-control(type='text', name='teamupName', placeholder='TeamUp', required='required', data-error='TeamUp Name is required.')
-                .form-group
-                  label.col-sm-3.control-label Sport:
-                  .col-sm-8
+                .row
+                  label.col-md-3.control-label Start Time:
+                  .col-lg-3.col-md-8
+                    input#startTime.form-control(type='text', name='startTime', placeholder='Start Time', required='required', data-error='Start Time is required.')
+                  label.col-md-3.col-lg-2.control-label End Time:
+                  .col-lg-3.col-md-8
+                    input#endTime.form-control(type='text', name='endTime', placeholder='End Time', required='required', data-error='End Time is required.')
+                .row
+                  label.col-md-3.control-label Sport:
+                  .col-md-8
                     input#sport.form-control(type='text', name='sport', placeholder='Sport', required='required', data-error='Sport is required.')
-                .form-group
-                  label.col-sm-3.control-label Name of Location:
-                  .col-sm-8
+                .row
+                  label.col-md-3.control-label Name of Location:
+                  .col-md-8
                     input#locationName.form-control(type='text', name='locationName', placeholder='Name of Location', required='required', data-error='Location Address is required.')
-                .form-group
-                  label.col-sm-3.control-label Address of Location:
-                  .col-sm-8
+                .row
+                  label.col-md-3.control-label Address of Location:
+                  .col-md-8
                     input#locationAddress.form-control(type='text', name='locationAddress', placeholder='Address of Location', required='required', data-error='Location Name is required.')
-                .form-group
-                  label.col-sm-3.control-label
-                  .col-sm-8
+                .row
+                  label.col-md-3.control-label
+                  .col-md-8
                     button.btn.btn-primary.btn-block.hvr-grow(type='submit') Create Event(to be implemented)
   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBOPHTiGEVhZh9LaKbtNjsSjvbD1R6r9Kw&libraries=places&callback=loadMap', async='', defer='')
   script(src='/javascripts/create.js')
