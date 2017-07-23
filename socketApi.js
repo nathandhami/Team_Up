@@ -35,10 +35,9 @@ io.on('connection', (socket) => {
     });
 
 
-    Chat.find({}).exec(function(err, historyChatMsg){
+    Chat.find({}).sort({date: -1}). limit(5).exec(function(err, historyChatMsg){
         console.log('History:' + historyChatMsg);
-        console.log('History:' + historyChatMsg[0]);
-
+        io.emit('sendChatHistory', historyChatMsg);
     });
 
     socket.on('chat message', (data) => {

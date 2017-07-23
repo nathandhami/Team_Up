@@ -12,6 +12,17 @@ $(document).ready(() => {
     }
   });
 
+  socket.on('sendChatHistory', (historyChatArr) => {
+    let msgBody = $('.chatUI-msgBody');
+    
+    for ( i= (historyChatArr.length - 1); i >= 0; i--){
+      // Fix later, security vulnerability
+      msgBody.find('ul').append(generateMsg(historyChatArr[i].message,
+        historyChatArr[i].name, historyChatArr[i].image));
+    }
+
+  });
+
   /**
    * Returns a message in proper format for chat window *
    *
