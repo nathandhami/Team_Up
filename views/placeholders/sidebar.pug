@@ -1,11 +1,12 @@
 link(rel="stylesheet", href="/stylesheets/sidebar.css")
+div#overlay
 #sidebar-wrapper
   //- button.close.sidebarClose(type="button",aria-label="Close")
     //- <span aria-hidden="true">&times;</span>
   .profile-user-pic
     img.cropped(src= userData.image, width="120", height="120")
     .profile-user-name #{userData.firstname}
-      span [Status: away]
+    .profile-user-status [Status: away]
   ul.sidebar-nav-content.list-group
     li
       a.list-group-item.list-group-item-action(href="#")
