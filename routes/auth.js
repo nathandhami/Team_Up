@@ -215,6 +215,7 @@ router.route('/uploadPic')
             if (err) throw err;
           });
 
+          fs.unlinkSync(req.file.path);
         }
       });
 
