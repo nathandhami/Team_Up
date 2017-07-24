@@ -7,7 +7,7 @@ node_modules
 bower_components
 
 # Upload directory
-upload
+public/uploads
 
 # Webpack Source Maps
 *.map

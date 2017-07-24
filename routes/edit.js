@@ -4,10 +4,10 @@ const express = require('express');
 const xssFilters = require('xss-filters');
 const router = new express.Router();
 const fs = require('fs');
-const sleep = require('system-sleep');
+const path = require('path')
 const User = require('../models/User');
 
-router.route('/') 
+router.route('/')
   .get((req, res, next) => {
     res.render('edit', {
       title: 'Profile',
@@ -44,8 +44,8 @@ router.route('/')
             if (err) throw err;
           });
 
-          res.json({success: 'Profile Updated!', status: 204, 
-                    text: 'Your personal info has been updated.', 
+          res.json({success: 'Profile Updated!', status: 204,
+                    text: 'Your personal info has been updated.',
                     redirect: '/edit'});
         } else {
           res.json({error: 'Incorrect Password!', status: 403,
@@ -55,10 +55,10 @@ router.route('/')
 
       return;
     });
-    
+
   })
 
-router.route('/uploadPic') 
+router.route('/uploadPic')
   .post(function(req, res) {
     const userId = req.user._id;
 
@@ -71,9 +71,19 @@ router.route('/uploadPic')
 
         if (user) {
           let ImageData = fs.readFileSync(req.file.path);
+          let pubFolder = 'public/';
+          let destFile = 'uploads/' + user.firstname + '_'
+                        + user.lastname + path.extname(req.file.originalname);
+          let dest = pubFolder + destFile;
 
-          let base64 = new Buffer(ImageData).toString('base64');
-          user.image = 'data:' + req.file.mimetype + ';base64,' + base64;
+          fs.writeFile(dest, ImageData, 'binary',
+            function(err){
+              if (err) throw err;
+            });
+
+          if (path.resolve(dest)) {
+            user.image = destFile;
+          }
 
           user.save((err) => {
             if (err) throw err;
@@ -83,7 +93,6 @@ router.route('/uploadPic')
         }
       });
 
-    sleep(750);
     return res.redirect('back');
   });
 
