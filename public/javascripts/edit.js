@@ -28,7 +28,7 @@ $(document).ready(() => {
               minlength: "First Name must have minimum 2 characters."
             },
             last_name: {
-              required: "Please enter your first name.", 
+              required: "Please enter your last name.", 
               minlength: "Last Name must have minimum 2 characters."
             },
             current_password: "Please enter your current password",
@@ -43,7 +43,7 @@ $(document).ready(() => {
         submitHandler: function(form) {
           $.ajax({
             type: 'POST',
-            url: '/auth/editAccount',
+            url: '/edit',
             data: $(form).serialize(),
             timeout: 3000,
             success: function(response) {

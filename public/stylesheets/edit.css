@@ -1,0 +1,31 @@
+.update-password {
+	display: none
+}
+
+#updateCheckbox {
+	margin-top: 1em;
+}
+
+.edit-footer {
+	margin-top: 2em;
+}
+
+.file-button {
+	width: 50%;
+	margin-bottom: 4em;
+	display: inline-block !important;
+}
+
+.upload-button {
+	margin-left: 1em;
+	display: inline-block;
+}
+
+form .error {
+  color: indianred;
+}
+
+.deactivate {
+	color: blue;
+	text-decoration: underline;
+}
