@@ -24,3 +24,8 @@
 form .error {
   color: indianred;
 }
+
+.deactivate {
+	color: blue;
+	text-decoration: underline;
+}
