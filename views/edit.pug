@@ -11,13 +11,13 @@ block content
               hr
               .row
                 .col-md-9.personal-info
-                  form#uploadForm.form-horizontal(action='/edit/uploadPic', method='post', enctype='multipart/form-data', role='form')
+                  form#uploadForm.form-horizontal(action='/edit/uploadPic', method='post', enctype='multipart/form-data', role='form', data-toggle="validator")
                     input(type='hidden', name='_csrf', value=csrfToken)
                     .form-group
                       .text-center
                         img.avatar.img-thumbnail(src=userData.image, alt='avatar', width='200px', height='200px')
                         h6 Upload profile photo...
-                        input.form-control.file-button(type='file', name='pic_upload', accept='image/*')
+                        input.form-control.file-button(type='file', name='pic_upload', accept='image/*', required)
                         input.btn.btn-primary.upload-button(type='submit', value='Upload')
                   form#updateForm.form-horizontal(role='form')
                     input(type='hidden', name='_csrf', value=csrfToken)
