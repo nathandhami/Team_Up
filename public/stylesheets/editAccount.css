@@ -11,7 +11,12 @@
 }
 
 .file-button {
-	width: 60%;
-	margin-left: 8em;
+	width: 50%;
 	margin-bottom: 4em;
+	display: inline-block !important;
+}
+
+.upload-button {
+	margin-left: 1em;
+	display: inline-block;
 }
