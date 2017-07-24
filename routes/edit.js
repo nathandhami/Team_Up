@@ -71,17 +71,18 @@ router.route('/uploadPic')
 
         if (user) {
           let ImageData = fs.readFileSync(req.file.path);
-          let dest = 'public/uploads/' + user.firstname + '_'
+          let pubFolder = 'public/';
+          let destFile = 'uploads/' + user.firstname + '_'
                         + user.lastname + path.extname(req.file.originalname);
+          let dest = pubFolder + destFile;
 
           fs.writeFile(dest, ImageData, 'binary',
             function(err){
               if (err) throw err;
             });
 
-          console.log(__dirname + '/../' + dest);
-          if (fs.existsSync(__dirname + '/../' + dest)) {
-            user.image = __dirname + '/../' + dest;
+          if (path.resolve(dest)) {
+            user.image = destFile;
           }
 
           user.save((err) => {
