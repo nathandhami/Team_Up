@@ -9,7 +9,7 @@ const User = require('../models/User');
 
 router.route('/') 
   .get((req, res, next) => {
-    res.render('editAccount', {
+    res.render('edit', {
       title: 'Profile',
       csrfToken: req.csrfToken()
     });
