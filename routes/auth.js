@@ -215,10 +215,11 @@ router.route('/uploadPic')
           user.save((err) => {
             if (err) throw err;
           });
+
         }
       });
 
-    return res.redirect('/auth/editAccount');
+    return res.redirect('back');
   });
 
 

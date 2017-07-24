@@ -15,7 +15,7 @@ block content
                     input(type='hidden', name='_csrf', value=csrfToken)
                     .form-group
                       .text-center
-                        img.avatar.img-circle(src=userData.image, alt='avatar')
+                        img.avatar.img-thumbnail(src=userData.image, alt='avatar', width='200px', height='200px')
                         h6 Upload profile photo...
                         input.form-control.file-button(type='file', name='pic_upload', accept='image/*')
                         input.btn.btn-primary(type='submit', value='Upload')
