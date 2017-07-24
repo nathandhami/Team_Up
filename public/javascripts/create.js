@@ -8,8 +8,10 @@ $(document).ready(function() {
     todayBtn: "linked",
     autoclose: true
   });
-  var time_input = $('input[name="time"]');
-  time_input.timepicker();
+  var from_input = $('input[name="from"]');
+  from_input.timepicker();
+  var to_input = $('input[name="to"]');
+  to_input.timepicker();
 });
 
 var markers = [];
