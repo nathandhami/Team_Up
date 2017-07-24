@@ -55,8 +55,6 @@ router.route('/')
 
       return;
     });
-
-    // console.log(fname + lname + currentPass + isPasswordUpdate + newPass);
     
   })
 
