@@ -1,3 +1,17 @@
+$(document).ready(function() {
+  var date_input = $('input[name="date"]');
+  var container = $('#event-details form').length>0 ? $('#event-details form').parent() : "body";
+  date_input.datepicker({
+    format: 'mm/dd/yyyy',
+    container: container,
+    todayHighlight: true,
+    todayBtn: "linked",
+    autoclose: true
+  });
+  var time_input = $('input[name="time"]');
+  time_input.timepicker();
+});
+
 var markers = [];
 
 function loadMap() {
