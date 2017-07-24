@@ -49,7 +49,7 @@ serverConfig.use(expressValidator());
 serverConfig.use(cookieParser());
 
 serverConfig.use(multer({
-  dest: './upload/'
+  dest: './public/uploads/'
 }).single('pic_upload'));
 
 serverConfig.use(csrf({
