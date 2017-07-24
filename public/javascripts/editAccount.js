@@ -43,7 +43,7 @@ $(document).ready(() => {
         submitHandler: function(form) {
           $.ajax({
             type: 'POST',
-            url: '/auth/editAccount',
+            url: '/edit',
             data: $(form).serialize(),
             timeout: 3000,
             success: function(response) {

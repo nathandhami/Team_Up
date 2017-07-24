@@ -20,6 +20,7 @@ const auth = require('./routes/auth');
 const notFound = require('./routes/notFound');
 const create = require('./routes/create');
 const event = require('./routes/event');
+const edit = require('./routes/edit');
 
 // Server Config
 const serverConfig = express();
@@ -116,6 +117,7 @@ serverConfig.use('/contact', contactUs);
 
 serverConfig.use('/create', create);
 serverConfig.use('/event', event);
+serverConfig.use('/edit', edit);
 
 // --> End Here
 
