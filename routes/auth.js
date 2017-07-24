@@ -7,6 +7,7 @@ const RegisterValidation = require('../models/RegisterValidation');
 const xssFilters = require('xss-filters');
 const router = new express.Router();
 const fs = require('fs');
+const im = require('imagemagick');
 
 // redirecting the user to google.com
 router.route('/google')
@@ -206,8 +207,10 @@ router.route('/uploadPic')
         }
 
         if (user) {
-          user.image.data = fs.readFileSync(req.file.path);
-          user.image.contentType = req.file.mimetype;
+          let ImageData = fs.readFileSync(req.file.path);
+
+          let base64 = new Buffer(ImageData).toString('base64');
+          user.image = 'data:' + req.file.mimetype + ';base64,' + base64;
 
           user.save((err) => {
             if (err) throw err;

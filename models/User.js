@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema({
   displayName: String,
   email: String,
   password: String,
-  image: { data: Buffer, contentType: String },
+  image: String,
   facebook: Object,
   twitter: Object,
   google: Object,
