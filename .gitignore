@@ -6,6 +6,9 @@ logs
 node_modules
 bower_components
 
+# Upload directory
+upload
+
 # Webpack Source Maps
 *.map
 
