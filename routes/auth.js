@@ -7,7 +7,7 @@ const RegisterValidation = require('../models/RegisterValidation');
 const xssFilters = require('xss-filters');
 const router = new express.Router();
 const fs = require('fs');
-const im = require('imagemagick');
+const sleep = require('system-sleep');
 
 // redirecting the user to google.com
 router.route('/google')
@@ -196,7 +196,6 @@ router.route('/editAccount')
 
 router.route('/uploadPic') 
   .post(function(req, res) {
-    console.log(req.file);
     const userId = req.user._id;
 
     User.findOne({
@@ -219,6 +218,7 @@ router.route('/uploadPic')
         }
       });
 
+    sleep(750);
     return res.redirect('back');
   });
 
