@@ -239,10 +239,14 @@ function loadMap() {
       google.maps.event.addListener(newMarker, 'click', function () {
         infoWindow.setContent(content);
         infoWindow.open(map, newMarker);
-        document.getElementById("locationName").value = locationName;
-        document.getElementById("locationName").disabled = true;
-        document.getElementById("locationAddress").value = locationAddress;
-        document.getElementById("locationAddress").disabled = true;
+
+        let locationNameElement = $("#locationName");
+        let locationAddrElement = $("#locationAddress");
+
+        locationNameElement.val(locationName);
+        locationNameElement.prop("disabled",true);
+        locationAddrElement.val(locationAddress);
+        locationAddrElement.prop("disabled", true);
       });
     })
     (newMarker, locationName, locationAddress, content, infoWindow);
@@ -277,6 +281,8 @@ function loadMap() {
 
 function displayMarkers(category) {
   let i;
+  let sportElement = $("#sport");
+  
   for (i = 0; i < markers.length; i++) {
     if (markers[i].category === category) {
       markers[i].setVisible(true);
@@ -286,13 +292,13 @@ function displayMarkers(category) {
     }
   }
   if (category == 1) {
-    document.getElementById("sport").value = "Soccer";
+    sportElement.val("Soccer");
   } else if (category == 2) {
-    document.getElementById("sport").value = "Basketball";
+    sportElement.val("Basketball");
   } else if (category == 3) {
-    document.getElementById("sport").value = "Volleyball";
+    sportElement.val("Volleyball");
   } else if (category == 4) {
-    document.getElementById("sport").value = "Baseball";
+    sportElement.val("Baseball");
   }
-  document.getElementById("sport").disabled = true;
+  sportElement.prop("disabled", true);
 }
