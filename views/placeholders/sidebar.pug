@@ -1,11 +1,12 @@
 link(rel="stylesheet", href="/stylesheets/sidebar.css")
+div#overlay
 #sidebar-wrapper
   //- button.close.sidebarClose(type="button",aria-label="Close")
     //- <span aria-hidden="true">&times;</span>
   .profile-user-pic
-    img.img-responsive.img-circle(src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/079/328/1630e0b.jpg", width="82", height="82")
-    .profile-user-name Brad
-      span [Status: away]
+    img.cropped(src= userData.image, width="120", height="120")
+    .profile-user-name #{userData.firstname}
+    .profile-user-status [Status: away]
   ul.sidebar-nav-content.list-group
     li
       a.list-group-item.list-group-item-action(href="#")
@@ -17,11 +18,5 @@ link(rel="stylesheet", href="/stylesheets/sidebar.css")
       a.list-group-item.list-group-item-action(href="#")
         | Join Sports Event
     li
-      a.list-group-item.list-group-item-action(href='/editAccount')
-        | Edit Account
-
-
-  ul.sidebar-nav-content.list-group
-    li
-      a.list-group-item.list-group-item-action(href='#', data-toggle='modal', data-target='#deleteAccountModal')
-        | Delete Account
+      a.list-group-item.list-group-item-action(href='/edit')
+        | Edit Profile

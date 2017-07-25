@@ -53,55 +53,89 @@ router.route('/facebook/callback')
   }));
 
 router.route('/register')
-  .post((req, res) => {
-    // req.checkBody(RegisterValidation);
-
-    // req.getValidationResult().then((result) => {
-    //   console.log(result.array());
-    // if (!result.isEmpty()) {
-    //   res.redirect('/register');
-    //   return;
-    // }
-    // res.redirect('/');
-    // });
-
-
-    const firstName = xssFilters.inHTMLData(req.body.fname);
-    const lastName = xssFilters.inHTMLData(req.body.lname);
-    const email = xssFilters.inHTMLData(req.body.email);
-    const password = xssFilters.inHTMLData(req.body.password);
-    const confirmPassword = xssFilters.inHTMLData(req.body.confirmPassword);
-
-
-    const user = new User({
-      firstname: firstName,
-      lastname: lastName,
-      email: email,
-      password: password,
+  .post((req, res, next) => {
+    req.checkBody('fname', 'Invalid First Name').notEmpty().isLength({
+      min: 2,
     });
+    req.checkBody('lname', 'Invalid Last Name').notEmpty().isLength({
+      min: 2,
+    });
+    req.checkBody('email', 'Invalid Email').notEmpty().isEmail();
+    req.checkBody('password', 'Invalid Password').notEmpty().isLength({
+      min: 6,
+    });
+    req.checkBody('confirmPassword', 'Passwords do not match.').equals(req.body.password);
 
-    user.save((err, user) => {
-      if (err) throw err;
-      req.login(user, (err) => {
+    req.getValidationResult().then((result) => {
+      if (!result.isEmpty()) {
+
+        let messages = [];
+        let results = result.array();
+        results.forEach((element) => {
+          messages.push(element.msg);
+        });
+        req.flash('registerError', messages);
         return res.redirect('/');
+      }
+
+      const firstName = xssFilters.inHTMLData(req.body.fname);
+      const lastName = xssFilters.inHTMLData(req.body.lname);
+      const email = xssFilters.inHTMLData(req.body.email);
+      const password = xssFilters.inHTMLData(req.body.password);
+      const confirmPassword = xssFilters.inHTMLData(req.body.confirmPassword);
+
+      User.findOne({
+        'email': email,
+      }, (err, user) => {
+        if (err) {
+          return done(err);
+        }
+        if (!user) {
+          const user = new User({
+            firstname: firstName,
+            lastname: lastName,
+            email: email,
+            password: password,
+          });
+
+          user.save((err, user) => {
+            if (err) throw err;
+            req.flash('registerError', 'Register Successful');
+            return res.redirect('/');
+          });
+        } else {
+          req.flash('registerError', 'Email Already Exist');
+          return res.redirect('/');
+        }
       });
     });
+  });
 
-    // user.validPassword(confirmPassword, (err, confirm) => {
-    //   if (err) throw err;
-    //   console.log(confirm);
-    //   if (confirm) {
+router.route('/deleteUser')
+  .post((req, res) => {
+    const userId = req.user._id;
+    const userPass = xssFilters.inHTMLData(req.body.userPass);
 
-    //   }
-    // });
+    User.findOne({
+      _id: userId,
+    }, (err, user) => {
+      if (err) {
+        throw err;
+      }
 
-    // console.log(firstname);
-    // console.log(lastname);
-    // console.log(email);
-    // console.log(password);
-    // console.log(confirmPassword);
+      if (user) {
+        if (user.validPassword(userPass)) {
+          user.remove();
+          res.json({success: 'Account Deleted!',
+                  status: 204, redirect: '/auth/logout'});
+        } else {
+          res.json({error: 'The password you entered is incorrect. '
+                            + 'Please try again', status: 403});
+        }
+      }
 
-    // res.redirect('/register');
+      return;
+    });
   });
 
 
