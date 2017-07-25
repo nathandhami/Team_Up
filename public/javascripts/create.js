@@ -281,8 +281,7 @@ function loadMap() {
 
 function displayMarkers(category) {
   let i;
-  let sportElement = $("#sport");
-  
+
   for (i = 0; i < markers.length; i++) {
     if (markers[i].category === category) {
       markers[i].setVisible(true);
@@ -291,6 +290,8 @@ function displayMarkers(category) {
       markers[i].setVisible(false);
     }
   }
+  
+  let sportElement = $("#sport");
   if (category == 1) {
     sportElement.val("Soccer");
   } else if (category == 2) {
