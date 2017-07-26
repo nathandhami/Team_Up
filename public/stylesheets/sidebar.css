@@ -46,6 +46,10 @@
   width: 215px;
 }
 
+.profile-user-status {
+  margin-top: 0.3em;
+}
+
 .cropped {
     object-fit: cover;
     display: block;
