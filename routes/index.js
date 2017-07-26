@@ -9,6 +9,20 @@ router.route('/')
     const messagesErrSignIn = req.flash('error');
     const messagesErrRegister = req.flash('registerError');
     const messages = messagesErrSignIn.concat(messagesErrRegister);
+    const queryEventDetails = {};
+
+    // Execute DB queries if there is no error
+    if (messages.length <= 0){
+      const Event = require('../models/Event');
+
+      Event.find({}, (err, event) => {
+        queryEventDetails.eventName = event[0].teamupName;
+        console.log('Index: ' + event[0].teamupName);
+        console.log(event.length);
+        console.log(event);
+
+      });
+    }
 
     res.render('index', {
       title: 'Home',
