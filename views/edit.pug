@@ -38,8 +38,8 @@ block content
                       .col-md-8
                         input.form-control(type='password', name='current_password', placeholder='Enter your password', auto-complete='new-password')
                     .form-group
-                      label#updateCheckbox.col-md-6.control-label
-                        input(type='checkbox', name="pass_checkbox")
+                      label.col-md-6.control-label
+                        input#updateCheckbox(type='checkbox', name="pass_checkbox")
                         |  Update Password
                     #updatePassDiv.update-password
                       .alert.alert-info.alert-dismissable

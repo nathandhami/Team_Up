@@ -1,6 +1,6 @@
 $(document).ready(() => {
     $('#updateCheckbox').click( (e) => {
-      $('#updatePassDiv').toggle('show');
+      $('#updatePassDiv').slideToggle();
     });
 
     $('#updateForm').validate({
