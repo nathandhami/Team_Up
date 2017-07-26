@@ -5,6 +5,7 @@ const EventSchema = new mongoose.Schema({
   sport: String,
   locationName: String,
   locationAddress: String,
+  createdBy: {type: mongoose.Schema.ObjectId, ref: 'User'},
 });
 
 module.exports = mongoose.model('Event', EventSchema);
