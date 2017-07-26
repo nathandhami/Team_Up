@@ -15,7 +15,8 @@ router.route('/')
     if (messages.length <= 0){
       const Event = require('../models/Event');
 
-      Event.find({}, (err, event) => {
+      // Get user specific events
+      Event.find({createdBy: req.user._id}, (err, event) => {
         queryEventDetails.eventName = event[0].teamupName;
         console.log('Index: ' + event[0].teamupName);
         console.log(event.length);
