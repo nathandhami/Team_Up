@@ -32,3 +32,11 @@ h3 {
   text-align: center;
   padding: 10px;
 }
+
+button.btn {
+  margin-bottom: 10px;
+}
+
+.directions {
+  color: #039be5;
+}
