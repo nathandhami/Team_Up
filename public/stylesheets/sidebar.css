@@ -67,10 +67,7 @@
 }
 
 .status-menu li a {
-  border-left: none;
-  border-right: none;
-  border-top: : none;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #555;
   padding: 4px;
   color: white;
   margin-left: 10px;
