@@ -7,7 +7,7 @@ mixin event-panel(collapseNum, name, locationName, locationAddress, sportType, u
             a(data-toggle="collapse", data-parent="#accordion", href= '#' + collapseNum)
               span= name
           .col-md-6
-            span Status: Completed
+            span#status
           div#participants.col-md-2.text-right
             abbr(title="Participants") 
               <i class="fa fa-user"> 1/10  </i>
