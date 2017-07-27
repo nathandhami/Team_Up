@@ -244,9 +244,7 @@ function loadMap() {
         let locationAddrElement = $("#locationAddress");
 
         locationNameElement.val(locationName);
-        locationNameElement.prop("disabled",true);
         locationAddrElement.val(locationAddress);
-        locationAddrElement.prop("disabled", true);
       });
     })
     (newMarker, locationName, locationAddress, content, infoWindow);
@@ -292,6 +290,11 @@ function displayMarkers(category) {
   }
   
   let sportElement = $("#sport");
+   let locationNameElement = $("#locationName");
+  let locationAddrElement = $("#locationAddress");
+  locationNameElement.val('');
+  locationAddrElement.val('');
+
   if (category == 1) {
     sportElement.val("Soccer");
   } else if (category == 2) {
@@ -301,5 +304,4 @@ function displayMarkers(category) {
   } else if (category == 4) {
     sportElement.val("Baseball");
   }
-  sportElement.prop("disabled", true);
 }

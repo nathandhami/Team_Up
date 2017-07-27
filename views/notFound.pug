@@ -1,22 +1,24 @@
 extends placeholders/header
 block content
   link(rel="stylesheet", href="/stylesheets/notFound.css")
-  // main content
-  div.container#main-container
-    div.row
-      div.col-md-6.col-xs-6
-        h1#main-header Oops!
-    div.row
-      div.col-md-6.col-xs-6
-        h3 We can't seem to find the page you're looking for
-    div.row
-      div.col-md-6.col-xs-6
-        p <strong>Error Code:</strong> <em>404</em>
 
-    div.jumbotron
-      p Here are some helpful links:
-      ul
-        li <a href="#"> home </a>
-        li <a href="#"> previous page <a>
+  aside.sidebarDisplayed
+    #page-content-wrapper
+      div.container#main-container
+        div.row
+          div.col-md-6.col-xs-6
+            h1#main-header Oops!
+        div.row
+          div.col-md-6.col-xs-6
+            h3 We can't seem to find the page you're looking for
+        div.row
+          div.col-md-6.col-xs-6
+            p <strong>Error Code:</strong> <em>404</em>
+
+        div.jumbotron
+          p Here are some helpful links:
+          ul
+            li <a href="\"> home </a>
+            li <a href="#"> previous page <a>
         
          
