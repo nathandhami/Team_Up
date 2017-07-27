@@ -139,13 +139,6 @@ router.route('/deleteUser')
   });
 
 
-router.route('/editAccount')
-  .get((req, res, next) => {
-    res.render('editAccount');
-    return;
-  });
-
-
 router.route('/login')
   .post(passport.authenticate('local', {
     successRedirect: '/',

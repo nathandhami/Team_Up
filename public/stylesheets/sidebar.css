@@ -39,16 +39,23 @@
   transition: all 0.25s ease;
 } */
 
-.profile-user-pic img {
-  margin-bottom: 1em;
-}
-
 .profile-user-pic {
   padding: 2em 1em;
   background-color: #102027;
   text-align: center;
   width: 215px;
 }
+
+.cropped {
+    object-fit: cover;
+    display: block;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
+
+.glyphicon.glyphicon-plus {}
 
 .icons {
   padding-left: 5px;
@@ -115,4 +122,3 @@ aside #sidebar-wrapper{
   }
 
 }
-

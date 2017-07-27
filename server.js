@@ -12,6 +12,7 @@ const csrf = require('csurf');
 const expressValidator = require('express-validator');
 const nconf = require('./src/config/nconfConfig');
 const mongoose = require('mongoose');
+const multer = require('multer');
 
 // Routes Config
 const index = require('./routes/index');
@@ -19,6 +20,7 @@ const auth = require('./routes/auth');
 const notFound = require('./routes/notFound');
 const create = require('./routes/create');
 const event = require('./routes/event');
+const edit = require('./routes/edit');
 
 // Server Config
 const serverConfig = express();
@@ -45,6 +47,11 @@ serverConfig.use(bodyParser.urlencoded({
 }));
 serverConfig.use(expressValidator());
 serverConfig.use(cookieParser());
+
+serverConfig.use(multer({
+  dest: './public/uploads/'
+}).single('pic_upload'));
+
 serverConfig.use(csrf({
   cookie: true,
 }));
@@ -93,12 +100,12 @@ serverConfig.use(express.static(path.join(__dirname, 'public')));
 serverConfig.use('/', index);
 serverConfig.use('/auth', auth);
 
-// serverConfig.use((req, res, next) => {
-// if (!req.isAuthenticated()) {
-//   return res.redirect('/');
-// }
-// next();
-// });
+serverConfig.use((req, res, next) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect('/');
+  }
+  next();
+});
 
 // put your routes here
 // only thing you need to put here is:
@@ -108,9 +115,9 @@ serverConfig.use('/auth', auth);
 const contactUs = require('./routes/contactUs');
 serverConfig.use('/contact', contactUs);
 
-
 serverConfig.use('/create', create);
 serverConfig.use('/event', event);
+serverConfig.use('/edit', edit);
 
 // --> End Here
 
