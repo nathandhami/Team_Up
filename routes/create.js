@@ -15,16 +15,26 @@ router.route('/').get((req, res) => {
 /* POST create event */
 router.route('/').post((req, res) => {
   const teamupName = xssFilters.inHTMLData(req.body.teamupName);
+  const date = xssFilters.inHTMLData(req.body.date);
+  const from = xssFilters.inHTMLData(req.body.from);
+  const to = xssFilters.inHTMLData(req.body.to);
   const sport = xssFilters.inHTMLData(req.body.sport);
   const locationName = xssFilters.inHTMLData(req.body.locationName);
   const locationAddress = xssFilters.inHTMLData(req.body.locationAddress);
+  const userId = req.user._id;
 
   const event = new Event({
     teamupName: teamupName,
+    date: date,
+    from: from,
+    to: to,
     sport: sport,
     locationName: locationName,
     locationAddress: locationAddress,
+    createdBy: userId,
   });
+
+  console.log('Create: ' + req.user._id);
 
   event.save((err, event) => {
     if (err) throw err;

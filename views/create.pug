@@ -27,31 +27,57 @@ block content
             input#pac-input.controls.col-xs-5(type='text', placeholder='Enter a Location')
             #map
             h3 Event Details
-            #event-details.col-sm-11
+            #event-details.col-sm-10
               form.form-horizontal(action="/create", method="POST")
                 input(type='hidden', name='_csrf', value= csrfToken)
                 .form-group
-                  label.col-sm-3.control-label TeamUp Name:
-                  .col-sm-8
+                  label.col-md-4.control-label TeamUp Name:
+                  .col-md-7
                     input#teamupName.form-control(type='text', name='teamupName', placeholder='TeamUp', required='required', data-error='TeamUp Name is required.')
                 .form-group
-                  label.col-sm-3.control-label Sport:
-                  .col-sm-8
+                  label.col-md-4.control-label Date:
+                  .col-md-7
+                    .input-group
+                      input#date.form-control(type='text', name='date', placeholder='MM/DD/YYYY', required='required', data-error='Date is required.')
+                      .input-group-addon
+                        i.fa.fa-calendar
+                .form-group
+                  label.col-md-4.control-label From:
+                  .col-md-7
+                    .input-group.bootstrap-timepicker.timepicker
+                      input#from.form-control(type='text', name='from', placeholder='hh:mm AM/PM', required='required', data-error='Start Time is required.')
+                      span.input-group-addon
+                        i.fa.fa-clock-o
+                .form-group
+                  label.col-md-4.control-label To:
+                  .col-md-7
+                    .input-group.bootstrap-timepicker.timepicker
+                      input#to.form-control(type='text', name='to', placeholder='hh:mm AM/PM')
+                      span.input-group-addon
+                        i.fa.fa-clock-o
+                .form-group
+                  label.col-md-4.control-label Sport:
+                  .col-md-7
                     input#sport.form-control(type='text', name='sport', placeholder='Sport', required='required', data-error='Sport is required.')
                 .form-group
-                  label.col-sm-3.control-label Name of Location:
-                  .col-sm-8
+                  label.col-md-4.control-label Name of Location:
+                  .col-md-7
                     input#locationName.form-control(type='text', name='locationName', placeholder='Name of Location', required='required', data-error='Location Address is required.')
                 .form-group
-                  label.col-sm-3.control-label Address of Location:
-                  .col-sm-8
+                  label.col-md-4.control-label Address of Location:
+                  .col-md-7
                     input#locationAddress.form-control(type='text', name='locationAddress', placeholder='Address of Location', required='required', data-error='Location Name is required.')
                 .form-group
-                  label.col-sm-3.control-label
-                  .col-sm-8
+                  label.col-md-4.control-label
+                  .col-md-7
                     button.btn.btn-primary.btn-block.hvr-grow(type='submit') Create Event(to be implemented)
   script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBOPHTiGEVhZh9LaKbtNjsSjvbD1R6r9Kw&libraries=places&callback=loadMap', async='', defer='')
+  script(type='text/javascript', src='https://code.jquery.com/jquery-1.11.3.min.js')
+  script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js')
+  script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/js/bootstrap-timepicker.min.js')
   script(src='/javascripts/create.js')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.min.css')
+  link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-timepicker/0.5.2/css/bootstrap-timepicker.min.css')
   link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
   link(rel="stylesheet", href="/stylesheets/create.css")
 
