@@ -8,7 +8,7 @@ div#overlay
     .profile-user-name #{userData.firstname}
     .profile-user-status.dropdown
       a#statusBtn.list-group-item.list-group-item-action(type='button', data-toggle='dropdown', href='#') 
-        | [Status: Available]
+        | [Status: #{userData.status}]
         span.caret
       ul.dropdown-menu.status-menu.pull-right
         li

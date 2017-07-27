@@ -138,6 +138,28 @@ router.route('/deleteUser')
     });
   });
 
+router.route('/changeStatus')
+  .post((req, res) => {
+    console.log("hello");
+    const userId = req.user._id;
+    console.log(req.body)
+    const status = xssFilters.inHTMLData(req.body.status);
+
+    User.findOne({
+      _id: userId,
+    }, (err, user) => {
+      if (err) {
+        throw err;
+      }
+
+      if (user) {
+        console.log(status);
+      }
+
+      return;
+    });
+  });
+
 
 router.route('/login')
   .post(passport.authenticate('local', {
