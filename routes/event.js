@@ -9,9 +9,14 @@ router.route('/:id')
   .get((req, res, next) => {
 
     Event.findById(req.params.id).exec(function (err, event) {
+      if (err || event.createdBy == null) {
+        res.status(404).render('notFound', {
+          title: 'Page Not Found',
+        });
+      }
       // Check if user is unauthorized to view page
       // Later will change to viewable by any user that joined the event
-      if (event.createdBy.toString() != req.user._id) {
+      else if (event.createdBy.toString() != req.user._id) {
         // Send unauthorized page (403 error)
         res.send('<h1> Unauthorized. Status Code: 403 </h1>');
       }
