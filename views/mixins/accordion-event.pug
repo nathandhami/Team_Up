@@ -1,4 +1,4 @@
-mixin event-panel(collapseNum, name, locationName, sportType, url)
+mixin event-panel(collapseNum, name, locationName, locationAddress, sportType, url)
   .panel.panel-default
     .panel-heading.container-fluid
       .row
@@ -14,7 +14,8 @@ mixin event-panel(collapseNum, name, locationName, sportType, url)
     div.panel-collapse.collapse(id=collapseNum)
       .panel-body
         p= 'Location: ' + locationName
-        p= 'Sport Type: ' + sportType
+        p= 'Address: '  + locationAddress
+        p= 'Sport: ' + sportType
         p Date
         button.btn.btn-default(type="button") 
           a(href=url) join event room

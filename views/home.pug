@@ -23,6 +23,6 @@ aside.sidebarDisplayed
             - for (i = 0; i < numOfUserEvents; i++) {
             - if (i == maxEventsDisplayedLen ) {break}
                 +event-panel('collapse' + maxEventsDisplayed[i], userEvents[i].teamupName, userEvents[i].locationName, 
-                              userEvents[i].sport, userEvents[i].url)
+                              userEvents[i].locationAddress, userEvents[i].sport, userEvents[i].url)
             - }
 script(src="/javascripts/home.js")
