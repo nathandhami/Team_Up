@@ -32,8 +32,6 @@ router.route('/').post((req, res) => {
     createdBy: userId,
   });
 
-  console.log('Create: ' + req.user._id);
-
   event.save((err, event) => {
     if (err) throw err;
     res.redirect('/');
