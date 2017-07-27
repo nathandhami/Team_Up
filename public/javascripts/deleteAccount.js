@@ -4,14 +4,13 @@ $(document).ready(() => {
             userPass: 'required',
         },
         messages: {
-            userPass: '<span style="color: indianred;' +
-                ' padding-left: 5px">' +
-                '  Please enter your current password</span>',
+            userPass: '<span style="color: indianred;">' +
+                'Please enter your current password</span>',
         },
         submitHandler: function(form) {
           $.ajax({
             type: 'POST',
-            url: '/deleteAccount',
+            url: '/auth/deleteUser',
             data: $(form).serialize(),
             timeout: 3000,
             success: function(response) {

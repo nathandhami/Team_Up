@@ -22,6 +22,7 @@ html(lang="en")
 
   body
     include navbar
-    //- include modals
     block content
     include ./footer.pug
+    if isAuth
+        include contactModal
