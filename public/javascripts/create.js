@@ -1,17 +1,19 @@
 $(document).ready(function() {
-  var date_input = $('input[name="date"]');
-  var container = $('#event-details form').length>0 ? $('#event-details form').parent() : "body";
-  date_input.datepicker({
-    format: 'mm/dd/yyyy',
-    container: container,
-    todayHighlight: true,
-    todayBtn: "linked",
-    autoclose: true
+  let from_input = $('#from');
+  let to_input = $('#to');
+  from_input.datetimepicker({
+    minDate: moment()
   });
-  var from_input = $('input[name="from"]');
-  from_input.timepicker();
-  var to_input = $('input[name="to"]');
-  to_input.timepicker();
+  to_input.datetimepicker({
+    useCurrent: false,
+    minDate: moment()
+  });
+  from_input.on("dp.change", function (e) {
+      to_input.data("DateTimePicker").minDate(e.date);
+  });
+  to_input.on("dp.change", function (e) {
+      from_input.data("DateTimePicker").maxDate(e.date);
+  });
 });
 
 var markers = [];
