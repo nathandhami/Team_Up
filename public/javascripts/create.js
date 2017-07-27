@@ -292,7 +292,7 @@ function displayMarkers(category) {
   }
 
   let sportElement = $("#sport");
-   let locationNameElement = $("#locationName");
+  let locationNameElement = $("#locationName");
   let locationAddrElement = $("#locationAddress");
   locationNameElement.val('');
   locationAddrElement.val('');
