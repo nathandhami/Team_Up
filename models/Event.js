@@ -8,4 +8,10 @@ const EventSchema = new mongoose.Schema({
   createdBy: {type: mongoose.Schema.ObjectId, ref: 'User'},
 });
 
+
+EventSchema.virtual('url')
+  .get(function() {
+    return '/event/' + this._id;
+  });
+
 module.exports = mongoose.model('Event', EventSchema);
