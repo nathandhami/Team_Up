@@ -142,24 +142,10 @@ router.route('/changeStatus')
   .post((req, res) => {
     const userId = req.user._id;
     const status = xssFilters.inHTMLData(req.body.status);
+    changeStatus(userId, status);
 
-    User.findOne({
-      _id: userId,
-    }, (err, user) => {
-      if (err) {
-        throw err;
-      }
-
-      if (user) {
-        user.status = status;
-        user.save((err, user) => {
-            if (err) throw err;
-            res.json({status: 204, new_status: status});
-        });
-
-      }
-      return;
-    });
+    return res.json({success: 'Status changed.', 
+                    status: 204});
   });
 
 
@@ -172,6 +158,7 @@ router.route('/login')
 
 router.route('/logout')
   .get((req, res) => {
+    changeStatus(req.user._id, "Offline");
     req.logout();
     req.session.destroy();
     return res.redirect('/');
@@ -183,5 +170,22 @@ router.use('/', (req, res, next) => {
   }
   next();
 });
+
+var changeStatus = function(userId, status) {
+    User.findOne({
+      _id: userId,
+    }, (err, user) => {
+      if (err) {
+        throw err;
+      }
+      if (user) {
+        user.status = status;
+        user.save((err, user) => {
+            if (err) throw err;
+        });
+      }
+    });
+  return;
+}
 
 module.exports = router;

@@ -11,7 +11,7 @@ $(document).ready(() => {
             },
             timeout: 3000,
             success: function(response) {
-                let temp = '[ Status: ' + response.new_status +' ] ';
+                let temp = '[ Status: ' + status +' ] ';
                 $('#statusBtn').text(temp);
                 $('#statusBtn').append('<span class=\"caret\"></span>');
             },
