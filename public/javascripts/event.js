@@ -21,9 +21,8 @@ $(document).ready(() => {
     for ( i= (historyChatArr.length - 1); i >= 0; i--){
       // Fix later, security vulnerability
       msgBody.find('ul').append(generateMsg(historyChatArr[i].message,
-        historyChatArr[i].name, historyChatArr[i].image));
+        historyChatArr[i].name, historyChatArr[i].image, historyChatArr[i].date));
     }
-
   });
 
   /**
@@ -35,6 +34,7 @@ $(document).ready(() => {
    * @return {String}
    */
   function generateMsg(content, name, img, timestamp) {
+    var timeString  = calculateTimeSince(timestamp);
     let formattedMsg =
       '<li class="clearfix">'
       + '<span class="userImg pull-left">'
@@ -46,11 +46,19 @@ $(document).ready(() => {
       + '<strong>' + name + '</strong>'
       + '<small class="pull-right text-muted">'
       + '<span class="glyphicon glyphicon-time"></span>'
-      + '5 mins ago </small></div>'
+      + '<span id=timestamp>' + timeString + '</span>' + ' ago </small></div>'
       + '<p>' + content + '</p> </span></li>';
+      console.log(calculateTimeSince(timestamp) + ' ago');
 
     console.log(formattedMsg);
     return formattedMsg;
+  }
+
+  function calculateTimeSince(timestamp) {
+    var messageTimestamp = timestamp;
+    var currentTimestamp = Date.now();
+    var result = moment(currentTimestamp).diff(moment(messageTimestamp));
+    return moment.duration(result).humanize();
   }
 
   $('form').submit(() => {
@@ -74,7 +82,7 @@ $(document).ready(() => {
     let msgBody = $('.chatUI-msgBody');
 
     // Fix later, security vulnerability
-    msgBody.find('ul').append(generateMsg(data.message, data.name, data.image));
+    msgBody.find('ul').append(generateMsg(data.message, data.name, data.image, data.date));
     // AutoScroll
     msgBody.scrollTop(msgBody.prop('scrollHeight'));
   });
