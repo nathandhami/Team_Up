@@ -2,12 +2,14 @@ $(document).ready(() => {
 
   // Chat Client-Side Behaviour
   let socket = io();
+  var syncTimestampArr = [];
+  var messageCount = 0;
 
-  socket.on('connect', function() {
+  socket.on('connect', function () {
     socket.emit('new user', localUserData, localEventData);
   });
-  
-   console.log(localEventData.roomId);
+
+  console.log(localEventData.roomId);
   socket.on('updateChatUsers', (data) => {
     console.log(data);
     for (let user of data) {
@@ -17,8 +19,8 @@ $(document).ready(() => {
 
   socket.on('sendChatHistory', (historyChatArr) => {
     let msgBody = $('.chatUI-msgBody');
-    
-    for ( i= (historyChatArr.length - 1); i >= 0; i--){
+
+    for (i = (historyChatArr.length - 1); i >= 0; i--) {
       // Fix later, security vulnerability
       msgBody.find('ul').append(generateMsg(historyChatArr[i].message,
         historyChatArr[i].name, historyChatArr[i].image, historyChatArr[i].date));
@@ -34,7 +36,9 @@ $(document).ready(() => {
    * @return {String}
    */
   function generateMsg(content, name, img, timestamp) {
-    var timeString  = calculateTimeSince(timestamp);
+    var timeString = calculateTimeSince(timestamp);
+    syncTimestampArr.push(timestamp);
+
     let formattedMsg =
       '<li class="clearfix">'
       + '<span class="userImg pull-left">'
@@ -46,12 +50,32 @@ $(document).ready(() => {
       + '<strong>' + name + '</strong>'
       + '<small class="pull-right text-muted">'
       + '<span class="glyphicon glyphicon-time"></span>'
-      + '<span id=timestamp>' + timeString + '</span>' + ' ago </small></div>'
+      + '<span class="timestamp' + messageCount + '"' + '>' + timeString + '</span>' + ' ago </small></div>'
       + '<p>' + content + '</p> </span></li>';
-      console.log(calculateTimeSince(timestamp) + ' ago');
-
+    console.log(calculateTimeSince(timestamp) + ' ago');
+    messageCount++;
     console.log(formattedMsg);
     return formattedMsg;
+  }
+
+
+
+
+  syncTimestamps();
+
+  function syncTimestamps() {
+    setInterval(function () {
+      let i = 0;
+
+      for (let timestamp of syncTimestampArr) {
+        let className = '.timestamp' + i;
+        let newTimeString = calculateTimeSince(timestamp);
+        $(className).text(newTimeString);
+        console.log('New time (' + newTimeString +')'+ 'for '  + className);
+        i++;
+      }
+
+    }, 60000);
   }
 
   function calculateTimeSince(timestamp) {
