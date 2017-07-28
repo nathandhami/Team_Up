@@ -96,6 +96,7 @@ router.route('/register')
             lastname: lastName,
             email: email,
             password: password,
+            status: "Available",
           });
 
           user.save((err, user) => {
