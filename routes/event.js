@@ -21,7 +21,7 @@ router.route('/:id')
         res.send('<h1> Unauthorized. Status Code: 403 </h1>');
       }
       else {
-        res.render('event', { event: event });
+        res.render('event', { csrfToken: req.csrfToken(), event: event });
       }
     });
 

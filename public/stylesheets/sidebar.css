@@ -46,6 +46,10 @@
   width: 215px;
 }
 
+.profile-user-status {
+  margin-top: 0.3em;
+}
+
 .cropped {
     object-fit: cover;
     display: block;
@@ -61,6 +65,23 @@
   padding-left: 5px;
 }
 
+.status-menu {
+  background-color: #263238;
+  color: white;
+}
+
+.status-menu li a {
+  border-bottom: 1px solid #555;
+  padding: 4px;
+  color: white;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.status-menu li a:hover {
+  background-color: #37474f;
+  color: white;
+}
 
 .list-group-item.list-group-item-action {
   padding: 0em;

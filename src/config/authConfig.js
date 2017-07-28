@@ -13,12 +13,14 @@ module.exports = (serverConfig) => {
     if (_.has(req, 'user')) {
       const defaultImage = "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/2/000/079/328/1630e0b.jpg";
       const userImage = req.user.image ? req.user.image : defaultImage;
+      const userStatus = req.user.status ? req.user.status : "Available";
       res.locals.userData = {
         name: req.user.displayName,
         email: req.user.email,
         image: userImage,
         firstname: req.user.firstname,
         lastname: req.user.lastname,
+        status: userStatus,
         facebookId: req.user.facebook,
         twitterId: req.user.twitter,
         googleId: req.user.google,
