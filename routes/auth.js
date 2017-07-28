@@ -151,7 +151,12 @@ router.route('/changeStatus')
       }
 
       if (user) {
-        console.log(status);
+        user.status = status;
+        user.save((err, user) => {
+            if (err) throw err;
+            res.json({status: 204, new_status: status});
+        });
+
       }
       return;
     });

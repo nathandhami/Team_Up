@@ -1,8 +1,7 @@
 $(document).ready(() => {
     $('.status-menu li a').click( (e) => {
         let status = $(e.target).text();
-        let csrf = "bbxlNcut-kBGt51rBfITS9wJN7jSwnv-wWqk";
-        console.log(csrf);
+        let csrf = $('#input_csrf').val();
         $.ajax({
             type: 'POST',
             url: '/auth/changeStatus',
@@ -12,11 +11,8 @@ $(document).ready(() => {
             },
             timeout: 3000,
             success: function(response) {
-                if (response.status == '403') {
-                    console.log(response);
-                } else {
-                    console.log(success);
-                }
+                let temp = '[ Status: ' + response.new_status +' ]';
+                $('#statusBtn').text(temp);
             },
             error: function(response) {
                 console.log(response);
