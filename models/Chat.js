@@ -5,7 +5,7 @@ const ChatSchema = new mongoose.Schema({
   image:    String,
   message:  String,
   date:     Date,
-  eventId:  Number,
+  roomId:  String,
 });
 
 module.exports = mongoose.model('Chat', ChatSchema);
