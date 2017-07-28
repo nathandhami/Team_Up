@@ -3,8 +3,11 @@ $(document).ready(() => {
   // Chat Client-Side Behaviour
   let socket = io();
 
-  socket.emit('new user', localUserData);
-
+  socket.on('connect', function() {
+    socket.emit('new user', localUserData, localEventData);
+  });
+  
+   console.log(localEventData.roomId);
   socket.on('updateChatUsers', (data) => {
     console.log(data);
     for (let user of data) {

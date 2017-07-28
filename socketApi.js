@@ -13,63 +13,68 @@ let users = [];
 
 // event handler for each connected socket
 io.on('connection', (socket) => {
-    console.log(debugPrefix + 'A user connected');
+  console.log(debugPrefix + 'A user connected');
 
-    socket.on('new user', function (userData, callback) {
-        if (users.indexOf(userData.name) != elementNotFound) {
-            return false;
-        }
-        else {
-            socket.userName = userData.name;
-            users.push(socket.userName);
-            io.emit('updateChatUsers', users);
-        }
+  socket.on('new user', function (userData, eventData, callback) {
+    {
+      socket.userName = userData.name;
+      users.push(socket.userName);
+      socket.room = eventData.roomId;
+      socket.join(socket.room);
 
-        console.log('New event show users: ' + users);
-    });
+      console.log(socket.userName + ' has joined room ' + socket.room);
+      io.in(socket.room).emit('updateChatUsers', users);
+    }
 
-    // Show last 5 messages of chat history in default room one time, or 
-    // every time user refreshes page
-    Chat.count({}, function(err, result){
-        console.log('# of chat docs:' + result);
-    });
+    console.log('New User Event - Global socket users: ' + users);
+  });
+
+  // Show last 5 messages of chat history in default room one time, or 
+  // every time user refreshes page
+  // Chat.count({}, function (err, result) {
+  //   console.log('# of chat docs:' + result);
+  // });
 
 
-    Chat.find({}).sort({date: -1}). limit(5).exec(function(err, historyChatMsg){
-        console.log('History:' + historyChatMsg);
-        io.emit('sendChatHistory', historyChatMsg);
-    });
+  // Chat.find({}).sort({date: -1}). limit(5).exec(function(err, historyChatMsg){
+  //     console.log('History:' + historyChatMsg);
+  //     io.emit('sendChatHistory', historyChatMsg);
+  // });
 
-    socket.on('chat message', (data) => {
-        console.log('Chat Message Event: ' + data.message);
-        console.log('Chat Message Event: ' + data.image);
+  socket.on('chat message', (data) => {
 
-        const chat = new Chat({
-            name:data.name,
-            message:data.message,
-            date: Date.now(),
-            image: data.image,
-        });
+    console.log(socket.userName + ' has sent a message ' + data.message
+      + ' to room ' + socket.room);
 
-        console.log('Chat DB: ' + chat);
+    // const chat = new Chat({
+    //     name:data.name,
+    //     message:data.message,
+    //     date: Date.now(),
+    //     image: data.image,
+    // });
 
-        chat.save((err, chat) => {
-            if (err){
-                console.log('unable to save chat message');
-                throw err;
-            }
-        });
-        
-        // Emit chat message to every client in room
-        io.emit('chat message', data);
-    });
+    // console.log('Chat DB: ' + chat);
 
-    socket.on('disconnect', () => {
-        console.log(debugPrefix + 'A user disconnected');
-        users.splice(users.indexOf(socket.userName), 1);
-        io.emit('updateChatUsers', users);
-        console.log('Disconnect event show users: ' + users);
-    });
+    // chat.save((err, chat) => {
+    //     if (err){
+    //         console.log('unable to save chat message');
+    //         throw err;
+    //     }
+    // });
+
+    // Emit chat message to every client in room
+    io.in(socket.room).emit('chat message', data);
+  });
+
+  socket.on('disconnect', () => {
+    users.splice(users.indexOf(socket.userName), 1);
+    io.in(socket.room).emit('updateChatUsers', users);
+    console.log(socket.userName + ' has left room ' + socket.room);
+    socket.leave(socket.room);
+    console.log(debugPrefix + 'A user disconnected');
+    console.log('Disconnect Event - Global socket users: ' + users);
+  });
 });
+
 
 module.exports = socketApi;

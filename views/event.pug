@@ -37,6 +37,9 @@ block content
       img: '#{userData.image}',
       name: '#{userData.firstname}',
     }
+    var localEventData = {
+      roomId: '#{event.roomId}',
+    }
 
   script(src="/javascripts/socket.io-client/dist/socket.io.js")
   script(src="/javascripts/event.js")
