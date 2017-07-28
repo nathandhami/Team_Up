@@ -1,14 +1,14 @@
 $(document).ready(() => {
     $('.status-menu li a').click( (e) => {
         let status = $(e.target).text();
-        console.log(getCookie('_csrf'));
+        let csrf = "bbxlNcut-kBGt51rBfITS9wJN7jSwnv-wWqk";
+        console.log(csrf);
         $.ajax({
             type: 'POST',
             url: '/auth/changeStatus',
-            data: {"status": "status",
-        			"_csrf": getCookie('_csrf')},
-            headers: {
-            	'X-CSRF-TOKEN': $('csrfToken'),
+            data: {
+            	"_csrf": csrf,
+            	"status": status,
             },
             timeout: 3000,
             success: function(response) {

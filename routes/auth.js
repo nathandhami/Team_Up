@@ -140,9 +140,7 @@ router.route('/deleteUser')
 
 router.route('/changeStatus')
   .post((req, res) => {
-    console.log("hello");
     const userId = req.user._id;
-    console.log(req.body)
     const status = xssFilters.inHTMLData(req.body.status);
 
     User.findOne({
@@ -155,7 +153,6 @@ router.route('/changeStatus')
       if (user) {
         console.log(status);
       }
-
       return;
     });
   });
