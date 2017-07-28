@@ -96,6 +96,7 @@ router.route('/register')
             lastname: lastName,
             email: email,
             password: password,
+            status: "Available",
           });
 
           user.save((err, user) => {
@@ -136,6 +137,30 @@ router.route('/deleteUser')
 
       return;
     });
+  });
+
+router.route('/changeStatus')
+  .post((req, res) => {
+    const userId = req.user._id;
+    const status = xssFilters.inHTMLData(req.body.status);
+    
+    User.findOne({
+      _id: userId,
+    }, (err, user) => {
+      if (err) {
+        throw err;
+      }
+      if (user) {
+        user.status = status;
+        user.save((err, user) => {
+            if (err) throw err;
+        });
+        res.json({success: 'Status changed.', 
+                    status: 204});
+      }
+    });
+
+    return;
   });
 
 
