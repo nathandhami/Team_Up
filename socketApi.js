@@ -27,40 +27,35 @@ io.on('connection', (socket) => {
     }
 
     console.log('New User Event - Global socket users: ' + users);
+      // Show previous messages of chat history
+      Chat.find({'roomId':socket.room}).sort({date: -1}).limit(5).exec(function(err, historyChatMsg){
+      console.log('History:' + historyChatMsg);
+      io.in(socket.room).emit('sendChatHistory', historyChatMsg);
   });
 
-  // Show last 5 messages of chat history in default room one time, or 
-  // every time user refreshes page
-  // Chat.count({}, function (err, result) {
-  //   console.log('# of chat docs:' + result);
-  // });
-
-
-  // Chat.find({}).sort({date: -1}). limit(5).exec(function(err, historyChatMsg){
-  //     console.log('History:' + historyChatMsg);
-  //     io.emit('sendChatHistory', historyChatMsg);
-  // });
+  });
 
   socket.on('chat message', (data) => {
 
     console.log(socket.userName + ' has sent a message ' + data.message
       + ' to room ' + socket.room);
 
-    // const chat = new Chat({
-    //     name:data.name,
-    //     message:data.message,
-    //     date: Date.now(),
-    //     image: data.image,
-    // });
+    const chat = new Chat({
+        name:data.name,
+        message:data.message,
+        date: Date.now(),
+        image: data.image,
+        roomId: socket.room,
+    });
 
-    // console.log('Chat DB: ' + chat);
+    console.log('Chat DB: ' + chat);
 
-    // chat.save((err, chat) => {
-    //     if (err){
-    //         console.log('unable to save chat message');
-    //         throw err;
-    //     }
-    // });
+    chat.save((err, chat) => {
+        if (err){
+            console.log('unable to save chat message');
+            throw err;
+        }
+    });
 
     // Emit chat message to every client in room
     io.in(socket.room).emit('chat message', data);
