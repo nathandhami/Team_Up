@@ -1,11 +1,61 @@
-.container-fluid
-  h2 Sports
-  ul
-    img(src="https://png.icons8.com/soccer-ball/color/24")
-    p Soccer
-    img(src="https://png.icons8.com/basketball/color/24")
-    p Basketball
-    img(src="https://png.icons8.com/volleyball/color/24")
-    p Volleyball
-    img(src="https://png.icons8.com/baseball/color/24")
-    p Baseball
+extends placeholders/header
+block content
+  aside.sidebarDisplayed
+    #page-content-wrapper
+      .container-fluid
+        .page-header
+          h2 Sports
+      .container-fluid
+        row
+          .col-md-12
+            #accordion.panel-group(role='tablist', aria-multiselectable='true')
+              .panel.panel-default
+                #headingOne.panel-heading(role='tab')
+                  h4.panel-title
+                    a.collapsed(role='button', data-toggle='collapse', href='#collapseOne', aria-expanded='false', aria-controls='collapseOne')
+                      span
+                        img(src='https://png.icons8.com/soccer-ball/color/24', title='Soccer Ball', width='24', height='24')
+                        | Soccer
+                #collapseOne.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingOne')
+                  .panel-body
+                    | Soccer is fun
+              .panel.panel-default
+                #headingTwo.panel-heading(role='tab')
+                  h4.panel-title
+                    a.collapsed(role='button', data-toggle='collapse', href='#collapseTwo', aria-expanded='false', aria-controls='collapseTwo')
+                      span
+                        img(src='https://png.icons8.com/basketball/color/24', title='Basketball', width='24', height='24')
+                        | Basketball
+                #collapseTwo.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingTwo')
+                  .panel-body
+                    | Basketball is also fun
+              .panel.panel-default
+                #headingThree.panel-heading(role='tab')
+                  h4.panel-title
+                    a.collapsed(role='button', data-toggle='collapse', href='#collapseThree', aria-expanded='false', aria-controls='collapseThree')
+                      span
+                        img(src='https://png.icons8.com/volleyball/color/24', title='Volleyball', width='24', height='24')
+                        | Volleyball
+                #collapseThree.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingThree')
+                  .panel-body
+                    | Volleyball is as fun as soccer and basketball
+              .panel.panel-default
+                #headingFour.panel-heading(role='tab')
+                  h4.panel-title
+                    a.collapsed(role='button', data-toggle='collapse', href='#collapseFour', aria-expanded='false', aria-controls='collapseFour')
+                      span
+                        img(src='https://png.icons8.com/baseball/color/24', title='Baseball', width='24', height='24')
+                        | Baseball
+                #collapseFour.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingFour')
+                  .panel-body
+                    | Baseball is as fun as soccer and basketball
+              .panel.panel-default
+                #headingFive.panel-heading(role='tab')
+                  h4.panel-title
+                    a.collapsed(role='button', data-toggle='collapse', href='#collapseFive', aria-expanded='false', aria-controls='collapseFive')
+                      span
+                        img(src='https://png.icons8.com/sports-mode/color/24', title='Sports Mode', width='24', height='24')
+                        | Coming Soon
+                #collapseFive.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingFive')
+                  .panel-body
+                    | We are currently working on adding more sports for you.
