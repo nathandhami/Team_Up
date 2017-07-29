@@ -38,6 +38,7 @@ $(document).ready(() => {
   function generateMsg(content, name, img, timestamp) {
     var timeString = calculateTimeSince(timestamp);
     syncTimestampArr.push(timestamp);
+    console.log('generateMsg:: ' + timestamp);
 
     let formattedMsg =
       '<li class="clearfix">'
@@ -58,24 +59,17 @@ $(document).ready(() => {
     return formattedMsg;
   }
 
+  syncTimestamps(60000);
 
-
-
-  syncTimestamps();
-
-  function syncTimestamps() {
+  function syncTimestamps(intervalRate) {
     setInterval(function () {
-      let i = 0;
-
-      for (let timestamp of syncTimestampArr) {
+      for (i = 0; i < syncTimestampArr.length; i++) {
         let className = '.timestamp' + i;
-        let newTimeString = calculateTimeSince(timestamp);
+        let newTimeString = calculateTimeSince(syncTimestampArr[i]);
         $(className).text(newTimeString);
-        console.log('New time (' + newTimeString +')'+ 'for '  + className);
-        i++;
+        console.log('New time (' + newTimeString + ')' + 'for ' + className);
       }
-
-    }, 60000);
+    }, intervalRate);
   }
 
   function calculateTimeSince(timestamp) {
@@ -91,7 +85,8 @@ $(document).ready(() => {
     let data = {
       message: messageContent,
       name: localUserData.name,
-      image: localUserData.img
+      image: localUserData.img,
+      date: Date.now(),
     };
 
     console.log(data);

@@ -43,7 +43,7 @@ io.on('connection', (socket) => {
     const chat = new Chat({
         name:data.name,
         message:data.message,
-        date: Date.now(),
+        date: data.date,
         image: data.image,
         roomId: socket.room,
     });
