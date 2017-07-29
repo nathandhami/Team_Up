@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
       io.in(socket.room).emit('updateChatUsers', users);
     }
 
-    console.log('New User Event - Global socket users: ' + users);
+    // console.log('New User Event - Global socket users: ' + users);
       // Show previous messages of chat history
       Chat.find({'roomId':socket.room}).sort({date: -1}).exec(function(err, historyChatMsg){
       io.in(socket.room).emit('sendChatHistory', historyChatMsg);
@@ -63,7 +63,7 @@ io.on('connection', (socket) => {
     io.in(socket.room).emit('updateChatUsers', users);
     socket.leave(socket.room);
     
-    console.log('Disconnect Event - Global socket users: ' + users);
+    // console.log('Disconnect Event - Global socket users: ' + users);
   });
 });
 
