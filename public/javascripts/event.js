@@ -2,16 +2,18 @@ $(document).ready(() => {
 
   // Chat Client-Side Behaviour
   let socket = io();
-  var syncTimestampArr = [];
-  var messageCount = 0;
+  let syncTimestampArr = [];
+  let messageCount = 0;
+  const timerInMs = 60000; 
+
+  // Updates timestamp at an interval for each message in chat
+  syncTimestamps(timerInMs);
 
   socket.on('connect', function () {
     socket.emit('new user', localUserData, localEventData);
   });
 
-  console.log(localEventData.roomId);
   socket.on('updateChatUsers', (data) => {
-    console.log(data);
     for (let user of data) {
       console.log(user);
     }
@@ -27,8 +29,38 @@ $(document).ready(() => {
     }
   });
 
+  $('form').submit(() => {
+    let messageContent = $('#inputSendMsg').val();
+
+    // Prepare data transfer
+    let data = {
+      message: messageContent,
+      name: localUserData.name,
+      image: localUserData.img,
+      date: Date.now(),
+    };
+
+    console.log(data);
+    // Send data to server socket
+    socket.emit('chat message', data);
+
+    $('#inputSendMsg').val('');
+
+    // Prevent form default behaviour,
+    return false;
+  });
+
+  socket.on('chat message', (data) => {
+    let msgBody = $('.chatUI-msgBody');
+
+    // Fix later, security vulnerability
+    msgBody.find('ul').append(generateMsg(data.message, data.name, data.image, data.date));
+    // AutoScroll
+    msgBody.scrollTop(msgBody.prop('scrollHeight'));
+  });
+
   /**
-   * Returns a message in proper format for chat window *
+   * Returns a message in proper format for chat window
    *
    * @param {String} content
    * @param {String} img
@@ -36,9 +68,10 @@ $(document).ready(() => {
    * @return {String}
    */
   function generateMsg(content, name, img, timestamp) {
-    var timeString = calculateTimeSince(timestamp);
+    let timeString = calculateTimeSince(timestamp);
+
+    // Insert message timestamp for resync later on
     syncTimestampArr.push(timestamp);
-    console.log('generateMsg:: ' + timestamp);
 
     let formattedMsg =
       '<li class="clearfix">'
@@ -53,58 +86,42 @@ $(document).ready(() => {
       + '<span class="glyphicon glyphicon-time"></span>'
       + '<span class="timestamp' + messageCount + '"' + '>' + timeString + '</span>' + ' ago </small></div>'
       + '<p>' + content + '</p> </span></li>';
-    console.log(calculateTimeSince(timestamp) + ' ago');
+
+    // Track the number of messages sent in the chat
     messageCount++;
-    console.log(formattedMsg);
+
     return formattedMsg;
   }
 
-  syncTimestamps(60000);
-
-  function syncTimestamps(intervalRate) {
-    setInterval(function () {
-      for (i = 0; i < syncTimestampArr.length; i++) {
-        let className = '.timestamp' + i;
-        let newTimeString = calculateTimeSince(syncTimestampArr[i]);
-        $(className).text(newTimeString);
-        console.log('New time (' + newTimeString + ')' + 'for ' + className);
-      }
-    }, intervalRate);
-  }
-
+  /**
+   * Calculate duration of two dates and return a readable string
+   * Using moment.js to calculate this
+   */
   function calculateTimeSince(timestamp) {
-    var messageTimestamp = timestamp;
-    var currentTimestamp = Date.now();
-    var result = moment(currentTimestamp).diff(moment(messageTimestamp));
+    let messageTimestamp = timestamp;
+    let currentTimestamp = Date.now();
+    let result = moment(currentTimestamp).diff(moment(messageTimestamp));
+
     return moment.duration(result).humanize();
   }
 
-  $('form').submit(() => {
-    let messageContent = $('#inputSendMsg').val();
-    // Prepare data transfer
-    let data = {
-      message: messageContent,
-      name: localUserData.name,
-      image: localUserData.img,
-      date: Date.now(),
-    };
+  /**
+   * Updates the timestamp for each message currently displayed in the chat
+   * at speciifed parameter interval rate (in milliseconds)
+   *
+   */
+  function syncTimestamps(intervalRate) {
+    setInterval(function () {
+      let arrSize = syncTimestampArr.length;
 
-    console.log(data);
-    // Send data to server socket
-    socket.emit('chat message', data);
-    $('#inputSendMsg').val('');
-    // Prevent form default behaviour,
-    return false;
-  });
+      for (i = 0; i < arrSize; i++) {
+        let className = '.timestamp' + i;
+        let newTimeString = calculateTimeSince(syncTimestampArr[i]);
 
-  socket.on('chat message', (data) => {
-    let msgBody = $('.chatUI-msgBody');
-
-    // Fix later, security vulnerability
-    msgBody.find('ul').append(generateMsg(data.message, data.name, data.image, data.date));
-    // AutoScroll
-    msgBody.scrollTop(msgBody.prop('scrollHeight'));
-  });
+        $(className).text(newTimeString);
+      }
+    }, intervalRate);
+  }
   // END OF Chat Client-Side Behaviour
 
 });
