@@ -19,8 +19,10 @@
 
 /* CHAT MESSENGER UI */
 .panelC {
-    border: 2px solid red;
-     bottom: 0px;
+    border: 2px solid red; 
+    bottom: 0px;
+     padding: 0;
+     margin-top: 5px;
 }
 
 .chatUI-container {
@@ -36,6 +38,11 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
+    word-break:break-all;
+}
+
+.chatUI-msgBody p {
+    margin-left: 50px;
 }
 
 .chatUI-msgBody li {
@@ -44,6 +51,14 @@
 
 .chatUI-msgBody li:hover {
     background-color: rgb(89.8%, 89.8%, 89.8%);
+}
+
+.chatUI-usrInput .input-group{
+    z-index: 0;
+}
+
+.timestamp-default {
+    margin-right: 5px;
 }
 
 .userImg {

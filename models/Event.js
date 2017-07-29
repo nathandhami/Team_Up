@@ -9,6 +9,12 @@ const EventSchema = new mongoose.Schema({
 });
 
 
+EventSchema.virtual('roomId')
+  .get(function() {
+    return 'room-' + this._id;
+  });
+
+
 EventSchema.virtual('url')
   .get(function() {
     return '/event/' + this._id;
