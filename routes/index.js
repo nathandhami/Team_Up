@@ -19,9 +19,6 @@ router.route('/')
       // Get user specific events
       Event.find({ createdBy: req.user._id }, (err, events) => {
 
-        console.log(events.length);
-        console.log(events);
-
         res.render('index', {
           title: 'Home',
           csrfToken: req.csrfToken(),
