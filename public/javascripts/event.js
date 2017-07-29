@@ -82,7 +82,7 @@ $(document).ready(() => {
       + ' height="42"/></span><span class="userMsgBody clearfix">'
       + '<div class="header">'
       + '<strong>' + name + '</strong>'
-      + '<small class="pull-right text-muted">'
+      + '<small class="pull-right text-muted timestamp-default">'
       + '<span class="glyphicon glyphicon-time"></span>'
       + '<span class="timestamp' + messageCount + '"' + '>' + timeString + '</span>' + ' ago </small></div>'
       + '<p>' + content + '</p> </span></li>';
