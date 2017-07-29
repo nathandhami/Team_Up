@@ -53,6 +53,10 @@
     background-color: rgb(89.8%, 89.8%, 89.8%);
 }
 
+.chatUI-usrInput .input-group{
+    z-index: 0;
+}
+
 .timestamp-default {
     margin-right: 5px;
 }
