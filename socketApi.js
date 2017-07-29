@@ -6,6 +6,8 @@ const socketApi = {};
 const debugPrefix = 'SocketAPI: ';
 const elementNotFound = -1;
 const Chat = require('./models/Chat');
+const xssFilters = require('xss-filters');
+
 socketApi.io = io;
 
 // Stores users that are connected @ default namespace @ default room
@@ -40,9 +42,12 @@ io.on('connection', (socket) => {
     console.log(socket.userName + ' has sent a message ' + data.message
       + ' to room ' + socket.room);
 
+    // Overwrite the message with special characters escaped
+    data.message =  xssFilters.inHTMLData(data.message);
+
     const chat = new Chat({
         name:data.name,
-        message:data.message,
+        message: data.message,
         date: data.date,
         image: data.image,
         roomId: socket.room,
