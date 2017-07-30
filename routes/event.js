@@ -23,7 +23,7 @@ router.route('/chatroom/:id')
         res.send('<h1> Unauthorized. Status Code: 403 </h1>');
       }
       else {
-        res.render('event', { csrfToken: req.csrfToken(), event: event });
+        res.render('event', { csrfToken: req.csrfToken(), title: event.teamupName, event: event });
       }
     });
 

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-var aliasId = require('shortid');
+var shortid = require('shortid');
 
 const EventSchema = new mongoose.Schema({
   teamupName: String,
@@ -7,7 +7,7 @@ const EventSchema = new mongoose.Schema({
   locationName: String,
   locationAddress: String,
   createdBy: {type: mongoose.Schema.ObjectId, ref: 'User'},
-  aliasId: {type: String, unique:true, default: aliasId.generate},
+  aliasId: {type: String, unique:true, default: shortid.generate},
 });
 
 EventSchema.virtual('roomId')
