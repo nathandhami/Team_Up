@@ -13,13 +13,22 @@ block content
     #page-content-wrapper
       .container-fluid
         .page-header
-          h3 Event Room
+          h3#event-Title= event.teamupName
         .container-fluid
           .row
             div.col-md-5.panelA
               h6 Map
             div.col-md-7.panelB
-              h6 Event Details
+              h4 Event Details
+              hr
+              ul#event-details
+                li <span class="icon-default glyphicon glyphicon-home"></span> #{event.locationName}
+                li <span class="icon-default glyphicon glyphicon-map-marker"></span> #{event.locationAddress} </li>
+                li <span class="icon-default glyphicon glyphicon-cog"></span> #{event.sport}
+              h4 Participants
+              hr
+              ul#event-participants
+                li #{userData.firstname}
             div.col-md-5.panelC
               div.chatUI-container
                 div.chatUI-statusBar

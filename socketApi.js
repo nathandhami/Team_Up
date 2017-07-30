@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
     // console.log('New User Event - Global socket users: ' + users);
       // Show previous messages of chat history
       Chat.find({'roomId':socket.room}).sort({date: -1}).exec(function(err, historyChatMsg){
-      io.in(socket.room).emit('sendChatHistory', historyChatMsg);
+      socket.emit('sendChatHistory', historyChatMsg);
   });
 
   });

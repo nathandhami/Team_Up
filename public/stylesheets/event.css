@@ -16,6 +16,18 @@
     border: 2px solid blue;
 }
 
+/* Event Details  */
+#event-details{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#event-details .icon-default {
+   color: black;
+   font-size: 1.5em;
+}
+
 
 /* CHAT MESSENGER UI */
 .panelC {

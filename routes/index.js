@@ -31,7 +31,7 @@ router.route('/')
     // login page
     else {
       res.render('index', {
-        title: 'Login',
+        title: 'Teamup - Login or Sign Up',
         csrfToken: req.csrfToken(),
         errorExist: messages.length > 0,
         loginErrors: messages,
