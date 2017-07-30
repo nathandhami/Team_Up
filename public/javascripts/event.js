@@ -14,8 +14,15 @@ $(document).ready(() => {
   });
 
   socket.on('updateChatUsers', (data) => {
-    for (let user of data) {
-      console.log(user);
+    let eventParticipants = $('#event-participants');
+    
+    // Clear first
+    $('.users').remove();
+
+    for (let i = 0; i < data.length; i++) {
+      let content = $('<li class="users user' + i +'">' + data[i].name + '</li>');
+       eventParticipants.append(content);
+    
     }
   });
 
