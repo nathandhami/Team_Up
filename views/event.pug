@@ -29,8 +29,12 @@ block content
                 li.item <span class="icon-default glyphicon glyphicon-calendar" title="To"></span> #{event.to}
               h4 Participants
               hr
+              //- For now, this shows who has entered the chat.
               ul#event-participants
-            div.col-md-5.panelC
+          .spacer
+          .row
+            .col-md-4
+            .col-md-4.panelC
               div.chatUI-container
                 div.chatUI-statusBar
                 div.chatUI-msgBody
@@ -41,7 +45,9 @@ block content
                     div.input-group
                       input.form-control(type='text', value='', id="inputSendMsg", placeholder="message #event", autocomplete="off")
                       span.input-group-btn <button class="btn btn-primary" type="submit"> Send </button>
-  
+            .col-md-4
+
+
   script.
     var localUserData = {
       img: '#{userData.image}',
