@@ -38,6 +38,7 @@ router.route('/').post((req, res) => {
 
   event.save((err, event) => {
     if (err) throw err;
+    // console.log('Created: ' + event.aliasId);
     res.redirect('/');
   });
 });

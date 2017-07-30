@@ -5,11 +5,13 @@ const router = new express.Router();
 const Event = require('../models/Event');
 
 /* GET Event page */
-router.route('/:id')
+router.route('/chatroom/:id')
   .get((req, res, next) => {
 
-    Event.findById(req.params.id).exec(function (err, event) {
-      if (err || event.createdBy == null) {
+    const id = req.params.id;
+
+    Event.findOne({'aliasId': id}).exec(function (err, event) {
+      if (err || event == null) {
         res.status(404).render('notFound', {
           title: 'Page Not Found',
         });
