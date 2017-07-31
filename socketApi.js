@@ -19,13 +19,24 @@ io.on('connection', (socket) => {
     {
       socket.userName = userData.name;
       socket.email = userData.email;
-
-      users.push({ email: socket.email, name: socket.userName });
-
-      const uniqueUsers = filterArray(users);
-
+      socket.status = userData.status;
       socket.room = eventData.roomId;
+
       socket.join(socket.room);
+
+      users.push({ email: socket.email, name: socket.userName, status: socket.status, room: socket.room });
+
+      const filterRoomArr = [];
+      for (let i = 0; i < users.length; i++) {
+        if (users[i].room == socket.room) {
+          filterRoomArr.push(users[i]);
+        }
+      }
+
+      // If users contain duplicates, only keep 1 copy
+      const uniqueUsers = filterArray(filterRoomArr);
+      // console.log('New socket: ' + uniqueUsers.length);
+
       io.in(socket.room).emit('updateChatUsers', uniqueUsers);
     }
 
@@ -60,6 +71,24 @@ io.on('connection', (socket) => {
     io.in(socket.room).emit('chat message', data);
   });
 
+  // Status updating Logic
+  socket.on('userChangedStatus', (data) => {
+
+    let user = {};
+
+    for (let i = 0; i < users.length; i++) {
+      // Break after finding user only once since there may be duplicates
+      if (users[i].email == socket.email) {
+        users[i].status = data.status;
+        user = users[i];
+        break;
+      }
+    }
+
+    io.emit('updateStatusBroadcast', user);
+
+  });
+
   socket.on('disconnect', () => {
     // Break after finding user only once
     for (let i = 0; i < users.length; i++) {
@@ -69,18 +98,25 @@ io.on('connection', (socket) => {
       }
     }
 
-    const uniqueUsers = filterArray(users);
+    const filterRoomArr = [];
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].room == socket.room) {
+        filterRoomArr.push(users[i]);
+      }
+    }
+
+    const uniqueUsers = filterArray(filterRoomArr);
+    // console.log('Disconnected socket: ' + uniqueUsers.length);
 
     io.in(socket.room).emit('updateChatUsers', uniqueUsers);
     socket.leave(socket.room);
 
-    console.log('Disconnect Event - Global socket users: ' + users);
+    // console.log('Disconnect Event - Global socket users: ' + users);
   });
 });
 
-// Filter objects by email property
+// Filter out duplicate objects by email property
 function filterArray(arr) {
-
   const set = new Set();
   const filteredArr = arr.filter(element => {
     if (set.has(element.email)) {
@@ -92,7 +128,5 @@ function filterArray(arr) {
 
   return filteredArr;
 }
-
-
 
 module.exports = socketApi;

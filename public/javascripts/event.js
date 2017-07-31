@@ -1,28 +1,64 @@
 $(document).ready(() => {
 
   // Chat Client-Side Behaviour
-  let socket = io();
+
+  var socket = io();
+  // Force socket.io to use only websock and never use HTTP polling
+  // let socket = io({transports: ['websocket'], upgrade: false});
   let syncTimestampArr = [];
   let messageCount = 0;
-  const timerInMs = 60000; 
+  const timerInMs = 60000;
 
   // Updates timestamp at an interval for each message in chat
   syncTimestamps(timerInMs);
+
+  // If user changes status
+  $('.status-menu li a').click((e) => {
+    let status = $(e.target).text();
+
+    localUserData.status = status;
+    console.log(status);
+
+    // Status Updating Logic
+    socket.emit('userChangedStatus', localUserData);
+
+  });
+
 
   socket.on('connect', function () {
     socket.emit('new user', localUserData, localEventData);
   });
 
+
+  socket.on('updateStatusBroadcast', (user) => {
+
+    if (localUserData.email == user.email) {
+      let statusTitle = $('.profile-user-status > a');
+      statusTitle.text(' [ Status: ' + user.status + ' ]');
+      statusTitle.append($('<span class="caret"></span>'));
+    }
+    
+      $('#event-participants').find('li').each(function( index ) {
+        var text = $(this).text();
+        // Later on, use email instead of name.
+       if (text.indexOf(user.name) >= 0){
+         $(this).text(user.name + ' (' + user.status + ')');
+       }
+
+    });
+
+  });
+
   socket.on('updateChatUsers', (data) => {
     let eventParticipants = $('#event-participants');
-    
+
     // Clear first
     $('.users').remove();
 
     for (let i = 0; i < data.length; i++) {
-      let content = $('<li class="users user' + i +'">' + data[i].name + '</li>');
-       eventParticipants.append(content);
-    
+      let content = $('<li class="users user' + i + '">' + data[i].name + ' ' + '<span class="statuses status' + i + '">'
+        + '(' + data[i].status + ')' + '</span></li>');
+      eventParticipants.append(content);
     }
   });
 
