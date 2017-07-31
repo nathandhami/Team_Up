@@ -16,21 +16,34 @@ block content
           h3#event-Title= event.teamupName
         .container-fluid
           .row
-            div.col-md-5.panelA
-              h6 Map
-            div.col-md-7.panelB
-              h4 Event Details
-              hr
-              ul#event-details
-                li.item <span class="icon-default glyphicon glyphicon-home" title="Location Name"></span> #{event.locationName}
-                li.item <span class="icon-default glyphicon glyphicon-map-marker" title= "Address"></span> #{event.locationAddress} </li>
-                li.item <span class="icon-default glyphicon glyphicon-cog" title="Sport"></span> #{event.sport}
-                li.item <span class="icon-default glyphicon glyphicon-calendar"  title="From"></span> #{event.from}
-                li.item <span class="icon-default glyphicon glyphicon-calendar" title="To"></span> #{event.to}
-              h4 Participants
-              hr
-              //- For now, this shows who has entered the chat.
-              ul#event-participants
+            div.col-md-6.panelA
+              .panel-group
+                .panel.panel-primary
+                  .panel-heading
+                    h4 Map
+                  hr
+                  .panel-body
+            div.col-md-6.panelB
+              .panel-group
+                .panel.panel-primary
+                  .panel-heading
+                    h4 Event Details
+                  hr
+                  .panel-body
+                    ul#event-details
+                      li.item <span class="icon-default glyphicon glyphicon-home" title="Location Name"></span> #{event.locationName}
+                      li.item <span class="icon-default glyphicon glyphicon-map-marker" title= "Address"></span> #{event.locationAddress} </li>
+                      li.item <span class="icon-default glyphicon glyphicon-cog" title="Sport"></span> #{event.sport}
+                      li.item <span class="icon-default glyphicon glyphicon-calendar"  title="From"></span> #{event.from}
+                      li.item <span class="icon-default glyphicon glyphicon-calendar" title="To"></span> #{event.to}
+                .panel-group
+                .panel.panel-primary
+                  .panel-heading
+                    h4 Participants
+                  hr
+                  .panel-body
+                    //- For now, this shows who has entered the chat.
+                    ul#event-participants
           .spacer
           .row
             .col-md-4
@@ -53,6 +66,7 @@ block content
       img: '#{userData.image}',
       name: '#{userData.firstname}',
       email: '#{userData.email}',
+      status: '#{userData.status}',
     }
     var localEventData = {
       roomId: '#{event.roomId}',
