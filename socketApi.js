@@ -72,6 +72,7 @@ io.on('connection', (socket) => {
   });
 
   // Status updating Logic
+  // Don't need to update database because ajax will handle that
   socket.on('userChangedStatus', (data) => {
 
     let user = {};

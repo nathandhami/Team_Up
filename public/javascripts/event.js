@@ -17,7 +17,7 @@ $(document).ready(() => {
     let status = $(e.target).text();
 
     localUserData.status = status;
-    console.log(status);
+    // console.log(status);
 
     // Status Updating Logic
     socket.emit('userChangedStatus', localUserData);
@@ -30,6 +30,8 @@ $(document).ready(() => {
   });
 
 
+  // This was recieved by all chatrooms and will only affect the user 
+  // that changed it (through email)
   socket.on('updateStatusBroadcast', (user) => {
 
     if (localUserData.email == user.email) {
@@ -38,11 +40,11 @@ $(document).ready(() => {
       statusTitle.append($('<span class="caret"></span>'));
     }
     
-      $('#event-participants').find('li').each(function( index ) {
-        var text = $(this).text();
-        // Later on, use email instead of name.
-       if (text.indexOf(user.name) >= 0){
-         $(this).text(user.name + ' (' + user.status + ')');
+      $('#event-participants').find('span').each(function( index ) {
+        var text = $(this).data('email');
+        // console.log (text);
+       if (text == user.email){
+         $(this).text(' (' + user.status + ')');
        }
 
     });
@@ -56,8 +58,9 @@ $(document).ready(() => {
     $('.users').remove();
 
     for (let i = 0; i < data.length; i++) {
-      let content = $('<li class="users user' + i + '">' + data[i].name + ' ' + '<span class="statuses status' + i + '">'
-        + '(' + data[i].status + ')' + '</span></li>');
+      let content = $('<li class="users user' + i + '">' + data[i].name + ' ' 
+                        + '<span data-email="' + data[i].email + '" class="statuses status' + i + '">'
+                        + '(' + data[i].status + ')' + '</span></li>');
       eventParticipants.append(content);
     }
   });
