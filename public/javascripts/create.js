@@ -17,6 +17,7 @@ $(document).ready(function() {
 });
 
 let markers = [];
+let map, infoWindow;
 
 function loadMap() {
   let locations = [
@@ -202,12 +203,33 @@ function loadMap() {
     ['West Point Grey Park', '2250 Trimble St, Vancouver, BC V6R 4G9', 49.2664721, -123.2044366, 4]
   ];
 
-  let map = new google.maps.Map(document.getElementById('map'), {
+  // Create the map with a default center.
+  map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 49.278628, lng: -122.920355},
     zoom: 12,
     scaleControl: true,
     mapTypeId: 'roadmap'
   });
+  infoWindow = new google.maps.InfoWindow();
+
+  // Locate user's location if location is turned on
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Location found.');
+      infoWindow.open(map);
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
 
   // Create the search box and link it to the UI element.
   let input = document.getElementById('pac-input');
@@ -222,7 +244,6 @@ function loadMap() {
   // Create a marker with its category for each location
   let i;
   let newMarker;
-  let infoWindow = new google.maps.InfoWindow();
   for (i = 0; i < locations.length; i++) {
     let locationName = locations[i][0];
     let locationAddress = locations[i][1];
@@ -241,10 +262,8 @@ function loadMap() {
       google.maps.event.addListener(newMarker, 'click', function () {
         infoWindow.setContent(content);
         infoWindow.open(map, newMarker);
-
         let locationNameElement = $("#locationName");
         let locationAddrElement = $("#locationAddress");
-
         locationNameElement.val(locationName);
         locationAddrElement.val(locationAddress);
       });
@@ -281,7 +300,6 @@ function loadMap() {
 
 function displayMarkers(category) {
   let i;
-
   for (i = 0; i < markers.length; i++) {
     if (markers[i].category === category) {
       markers[i].setVisible(true);
@@ -306,4 +324,12 @@ function displayMarkers(category) {
   } else if (category == 4) {
     sportElement.val("Baseball");
   }
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
 }
