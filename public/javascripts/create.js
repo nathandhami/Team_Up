@@ -17,7 +17,7 @@ $(document).ready(function() {
 });
 
 let markers = [];
-let map, infoWindow;
+let map, infoWindow, service, currentUserLocation;
 
 function loadMap() {
   let locations = [
@@ -212,6 +212,8 @@ function loadMap() {
   });
   infoWindow = new google.maps.InfoWindow();
 
+  service = new google.maps.places.PlacesService(map);
+
   // Locate user's location if location is turned on
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -219,6 +221,7 @@ function loadMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+      currentLocation = pos;
       infoWindow.setPosition(pos);
       infoWindow.setContent('Location found.');
       infoWindow.open(map);
@@ -296,6 +299,31 @@ function loadMap() {
     });
     map.fitBounds(bounds);
   });
+}
+
+//  Display the markers dynamically depending on request type
+function displayMarkersGeo(category) {
+  let request = {
+    // map.getCenter()
+    // location is retrieved from geolocation
+    location: currentLocation,
+    radius: 8047,
+    types: ['park'],
+  }
+
+  service.nearbySearch(request, function(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK){
+      for (let i =0; i < results.length; i++){
+        let location = results[i].geometry.location;
+        let marker = new google.maps.Marker({
+          map:map,
+          position: results[i].geometry.location
+        });
+      }
+
+    }
+  });
+
 }
 
 // Display the markers when the button are clicked
