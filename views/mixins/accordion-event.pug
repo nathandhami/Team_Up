@@ -18,5 +18,5 @@ mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locati
         p= 'Sport: ' + sport
         p= 'Location: ' + locationName
         p= 'Address: '  + locationAddress
-        button.btn.btn-default(type="button")
-          a(href=url) Join Event Room
+        div
+          a.btn.btn-default(role="button", href=url) Join chat
