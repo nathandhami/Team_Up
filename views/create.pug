@@ -5,23 +5,22 @@ block content
       .container-fluid
         .page-header
           h2 What Sport Would Like To Play?
-          ul
-            button.btn.btn-info(type='button', onclick='displayMarkers(1)')
-              span
-                img(src='https://png.icons8.com/soccer-ball/color/24', title='Soccer Ball', width='24', height='24')
-                |  Soccer
-            button.btn.btn-info(type='button', onclick='displayMarkers(2)')
-              span
-                img(src='https://png.icons8.com/basketball/color/24', title='Basketball', width='24', height='24')
-                |  Basketball
-            button.btn.btn-info(type='button', onclick='displayMarkers(3)')
-              span
-                img(src='https://png.icons8.com/volleyball/color/24', title='Volleyball', width='24', height='24')
-                |  Volleyball
-            button.btn.btn-info(type='button', onclick='displayMarkers(4)')
-              span
-                img(src='https://png.icons8.com/baseball/color/24', title='Baseball', width='24', height='24')
-                |  Baseball
+          button.btn.btn-info(type='button', onclick='displayMarkers(1)')
+            span
+              img(src='https://png.icons8.com/soccer-ball/color/24', title='Soccer Ball', width='24', height='24')
+              |  Soccer
+          button.btn.btn-info(type='button', onclick='displayMarkers(2)')
+            span
+              img(src='https://png.icons8.com/basketball/color/24', title='Basketball', width='24', height='24')
+              |  Basketball
+          button.btn.btn-info(type='button', onclick='displayMarkers(3)')
+            span
+              img(src='https://png.icons8.com/volleyball/color/24', title='Volleyball', width='24', height='24')
+              |  Volleyball
+          button.btn.btn-info(type='button', onclick='displayMarkers(4)')
+            span
+              img(src='https://png.icons8.com/baseball/color/24', title='Baseball', width='24', height='24')
+              |  Baseball
         .container-fluid
           .row
             input#pac-input.controls.col-xs-5(type='text', placeholder='Enter a Location')
@@ -38,14 +37,14 @@ block content
                   label.col-md-4.control-label From:
                   .col-md-7
                     .input-group.bootstrap-timepicker.timepicker
-                      input#from.form-control(type='text', name='from', required='required', data-error='Start Date is required.')
+                      input#from.form-control(type='text', name='from', placeholder='MM/DD/YYYY HH:MM AM', required='required', data-error='Start Date is required.')
                       span.input-group-addon
                         i.fa.fa-calendar
                 .form-group
                   label.col-md-4.control-label To:
                   .col-md-7
                     .input-group.bootstrap-timepicker.timepicker
-                      input#to.form-control(type='text', name='to')
+                      input#to.form-control(type='text', name='to', placeholder='MM/DD/YYYY HH:MM AM')
                       span.input-group-addon
                         i.fa.fa-calendar
                 .form-group
