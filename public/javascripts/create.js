@@ -21,7 +21,7 @@ let map, infoWindow;
 
 function loadMap() {
   let locations = [
-    // soccer
+    // Soccer
     ['Terry Fox Field', 'Burnaby, BC V5A 1S6', 49.278657, -122.922332, 1],
     ['Field 2', 'Burnaby, BC V5A 1S6', 49.278478, -122.924905, 1],
     ['Residence Field', 'Burnaby, BC, Canada', 49.279378, -122.927717, 1],
@@ -91,7 +91,7 @@ function loadMap() {
     ['Jericho Beach Park', '3941 Point Grey Rd, Vancouver, BC V6R 1B5', 49.2722411, -123.1987128, 1],
     ['West Point Grey Park', '2250 Trimble St, Vancouver, BC V6R 4G9', 49.2664721, -123.2044366, 1],
 
-    // basketball
+    // Basketball
     ['SFU Fitness Centre', '8888 Gaglardi Way, Burnaby, BC V5A 1S6', 49.2794424, -122.9225066, 2],
     ['Forest Grove Park', 'Burnaby, BC, Canada', 49.265949, -122.923910, 2],
     ['Trafalgar Park', '2610 W 23rd Ave, Vancouver, BC V6L 1N7', 49.251888, -123.1652523, 2],
@@ -134,7 +134,7 @@ function loadMap() {
     ['Bobolink Park', '2510 Hoylake Ave, Vancouver, BC V5S 2E2', 49.2153405, -123.0575778, 2],
     ['Plateau Park Basketball Courts', '3200 E Hastings St, Vancouver, BC V5K 5J3', 49.2823652, -123.032886, 2],
 
-    // volleyball
+    // Volleyball
     ['SFU Fitness Centre', '8888 Gaglardi Way, Burnaby, BC V5A 1S6', 49.2794424, -122.9225066, 3],
     ['English Bay Beach', 'M, Vancouver, BC V6C 3C1', 49.2863149, -123.1436752, 3],
     ['Plateau Park', '3200 E Hastings St, Vancouver, BC V5K 5J3', 49.2823652, -123.032886, 3],
@@ -146,7 +146,7 @@ function loadMap() {
     ['Spanish Banks West', '4875 NW Marine Dr, Vancouver, BC V6T 1A1', 49.2774214, -123.2229616, 3],
     ['Sunset Beach', '1204 Beach Ave, Vancouver, BC V6E 1V3', 49.2799515, -123.1388828, 3],
 
-    // baseball
+    // Baseball
     ['Field', 'Burnaby, BC, Canada', 49.279000, -122.926365, 4],
     ['Carnarvon Park', '2995 W 19th Ave, Vancouver, BC V6L 3C3', 49.2564811, -123.1714225, 4],
     ['Quilchena Park', '4590 Magnolia St, Vancouver, BC V6J 4B5', 49.2437806, -123.1496046, 4],
@@ -298,6 +298,7 @@ function loadMap() {
   });
 }
 
+// Display the markers when the button are clicked
 function displayMarkers(category) {
   let i;
   for (i = 0; i < markers.length; i++) {
@@ -326,6 +327,7 @@ function displayMarkers(category) {
   }
 }
 
+// Handle the error for user's location
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
