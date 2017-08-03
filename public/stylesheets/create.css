@@ -33,8 +33,12 @@ h3 {
   padding: 10px;
 }
 
-button.btn {
+button.btn-info {
   margin: 10px;
+}
+
+button.btn-primary {
+  margin-bottom: 15px;
 }
 
 .directions {
@@ -42,5 +46,5 @@ button.btn {
 }
 
 .bootstrap-timepicker.timepicker .glyphicon {
-  color: rgb(32.5%, 42.7%, 99.6%);
+  color: #039be5;
 }
