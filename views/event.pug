@@ -16,20 +16,38 @@ block content
           h3#event-Title= event.teamupName
         .container-fluid
           .row
-            div.col-md-5.panelA
-              h6 Map
-            div.col-md-7.panelB
-              h4 Event Details
-              hr
-              ul#event-details
-                li <span class="icon-default glyphicon glyphicon-home"></span> #{event.locationName}
-                li <span class="icon-default glyphicon glyphicon-map-marker"></span> #{event.locationAddress} </li>
-                li <span class="icon-default glyphicon glyphicon-cog"></span> #{event.sport}
-              h4 Participants
-              hr
-              ul#event-participants
-                li #{userData.firstname}
-            div.col-md-5.panelC
+            div.col-md-6.panelA
+              .panel-group
+                .panel.panel-primary
+                  .panel-heading
+                    h4 Map
+                  hr
+                  .panel-body
+            div.col-md-6.panelB
+              .panel-group
+                .panel.panel-primary
+                  .panel-heading
+                    h4 Event Details
+                  hr
+                  .panel-body
+                    ul#event-details
+                      li.item <span class="icon-default glyphicon glyphicon-home" title="Location Name"></span> #{event.locationName}
+                      li.item <span class="icon-default glyphicon glyphicon-map-marker" title= "Address"></span> #{event.locationAddress} </li>
+                      li.item <span class="icon-default glyphicon glyphicon-cog" title="Sport"></span> #{event.sport}
+                      li.item <span class="icon-default glyphicon glyphicon-calendar"  title="From"></span> #{event.from}
+                      li.item <span class="icon-default glyphicon glyphicon-calendar" title="To"></span> #{event.to}
+                .panel-group
+                .panel.panel-primary
+                  .panel-heading
+                    h4 Participants
+                  hr
+                  .panel-body
+                    //- For now, this shows who has entered the chat.
+                    ul#event-participants
+          .spacer
+          .row
+            .col-md-4
+            .col-md-4.panelC
               div.chatUI-container
                 div.chatUI-statusBar
                 div.chatUI-msgBody
@@ -40,11 +58,15 @@ block content
                     div.input-group
                       input.form-control(type='text', value='', id="inputSendMsg", placeholder="message #event", autocomplete="off")
                       span.input-group-btn <button class="btn btn-primary" type="submit"> Send </button>
-  
+            .col-md-4
+
+
   script.
     var localUserData = {
       img: '#{userData.image}',
       name: '#{userData.firstname}',
+      email: '#{userData.email}',
+      status: '#{userData.status}',
     }
     var localEventData = {
       roomId: '#{event.roomId}',

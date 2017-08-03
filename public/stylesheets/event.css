@@ -7,13 +7,25 @@
 
 }
 
+
+/* Helper classes  */
+.spacer {
+    margin-top:50px;
+}
+
+.panel > .panel-heading {
+    background-color: #102027;
+}
+
+
 /* Panel Setup */
 .panelA{
-    border: 2px solid orange;
+    /* border: 2px solid orange; */
 }
 
 .panelB{
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
+    overflow-y: auto;
 }
 
 /* Event Details  */
@@ -28,13 +40,25 @@
    font-size: 1.5em;
 }
 
+#event-participants {
+    list-style-type: none;
+    margin: 0;
+    padding: 0.2em;
+    word-break: break-all;
+}
+
+#event-participants > li{
+    display: inline;
+    margin: 1.1em;
+    padding: 0.3em
+}
 
 /* CHAT MESSENGER UI */
 .panelC {
-    border: 2px solid red; 
     bottom: 0px;
-     padding: 0;
-     margin-top: 5px;
+    padding: 0;
+    margin-top: 5px;
+    width: 100%;
 }
 
 .chatUI-container {
@@ -44,6 +68,8 @@
 .chatUI-msgBody {
     height: 200px;
     overflow-y: auto;
+    border-top: 1px outset rgb(74.1%, 74.1%, 74.1%);
+    border-left: 1px outset rgb(74.1%, 74.1%, 74.1%);
 }
 
 .chatUI-msgBody ul {

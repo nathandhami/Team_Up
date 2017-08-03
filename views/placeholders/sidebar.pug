@@ -7,9 +7,9 @@ div#overlay
     img.cropped(src= userData.image, width="120", height="120")
     .profile-user-name #{userData.firstname}
     .profile-user-status.dropdown
-      a#statusBtn.list-group-item.list-group-item-action(type='button', data-toggle='dropdown', href='#') 
-        | [ Status: #{userData.status} ] 
-        span.caret 
+      a#statusBtn.list-group-item.list-group-item-action(type='button', data-toggle='dropdown', href='#')
+        | [ Status: #{userData.status} ]
+        span.caret
       ul.dropdown-menu.status-menu.pull-right
         li
           a(href='#') Available
@@ -21,9 +21,6 @@ div#overlay
           a(href='#') Offline
   input(type='hidden', id='input_csrf', value=csrfToken)
   ul.sidebar-nav-content.list-group
-    li
-      a.list-group-item.list-group-item-action(href="#")
-        | Manage events
     li
       a.list-group-item.list-group-item-action(href="/create")
         | Create Sports Event

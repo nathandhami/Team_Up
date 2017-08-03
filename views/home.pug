@@ -9,20 +9,20 @@ aside.sidebarDisplayed
   #page-content-wrapper
     .container-fluid
       .page-header
-        h3 My Events
+        h2 My Events
     .container-fluid.home_container
       row
         .col-md-3-offset-3.col
           div#accordion.panel-group
-            - 
-              const maxEventsDisplayed = ['One', 'Two', 'Three', 'Four', 'Five', 
+            -
+              const maxEventsDisplayed = ['One', 'Two', 'Three', 'Four', 'Five',
                          'Six', 'Seven', 'Eight', 'Nine', 'Ten',
                          'Eleven', 'Twelve', 'Thirteen', 'Fourteen',]
               const maxEventsDisplayedLen = maxEventsDisplayed.length;
               const numOfUserEvents = userEvents.length;
             - for (i = 0; i < numOfUserEvents; i++) {
             - if (i == maxEventsDisplayedLen ) {break}
-                +event-panel('collapse' + maxEventsDisplayed[i], userEvents[i].teamupName, userEvents[i].locationName, 
-                              userEvents[i].locationAddress, userEvents[i].sport, userEvents[i].url)
+                +event-panel('collapse' + maxEventsDisplayed[i], userEvents[i].teamupName, userEvents[i].from, userEvents[i].to,
+                userEvents[i].sport, userEvents[i].locationName, userEvents[i].locationAddress, userEvents[i].url)
             - }
 script(src="/javascripts/home.js")

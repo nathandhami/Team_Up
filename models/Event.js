@@ -3,6 +3,8 @@ var shortid = require('shortid');
 
 const EventSchema = new mongoose.Schema({
   teamupName: String,
+  from: { type: Date },
+  to: { type: Date },
   sport: String,
   locationName: String,
   locationAddress: String,

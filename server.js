@@ -18,6 +18,8 @@ const multer = require('multer');
 const index = require('./routes/index');
 const auth = require('./routes/auth');
 const notFound = require('./routes/notFound');
+const contactUs = require('./routes/contactUs');
+const sports = require('./routes/sports');
 const create = require('./routes/create');
 const event = require('./routes/event');
 const edit = require('./routes/edit');
@@ -112,9 +114,9 @@ serverConfig.use((req, res, next) => {
 // const yourRoute = require('./routes/yourRoute');
 // serverConfig.use('/theRouteYouWantToAttachTo', yourRoute);
 // <-- Start Here
-const contactUs = require('./routes/contactUs');
-serverConfig.use('/contact', contactUs);
 
+serverConfig.use('/contact', contactUs);
+serverConfig.use('/sports', sports);
 serverConfig.use('/create', create);
 serverConfig.use('/event', event);
 serverConfig.use('/edit', edit);
