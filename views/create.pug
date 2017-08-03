@@ -29,6 +29,7 @@ block content
             #event-details.col-sm-10
               form.form-horizontal(action="/create", method="POST")
                 input(type='hidden', name='_csrf', value= csrfToken)
+                input#map-input(type='hidden', name='loc', value="")
                 .form-group
                   label.col-md-4.control-label TeamUp Name:
                   .col-md-7

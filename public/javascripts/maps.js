@@ -252,6 +252,12 @@ function loadMap() {
         let locationAddrElement = $("#locationAddress");
         locationNameElement.val(locationName);
         locationAddrElement.val(locationAddress);
+
+        let eventLocation = [];
+        eventLocation[0] = newMarker.getPosition().lng();
+        eventLocation[1] = newMarker.getPosition().lat(); 
+        let jsonGeo = JSON.stringify(eventLocation);
+        $('#map-input').attr('value', jsonGeo);
       });
     })
     (newMarker, locationName, locationAddress, content, infoWindow);
@@ -337,6 +343,7 @@ function displayMarkers(category) {
   } else if (category == 4) {
     sportElement.val("Baseball");
   }
+
 }
 
 // Handle the error for user's location
