@@ -8,6 +8,7 @@ const EventSchema = new mongoose.Schema({
   sport: String,
   locationName: String,
   locationAddress: String,
+  locationCoordinates: [Number],
   createdBy: {type: mongoose.Schema.ObjectId, ref: 'User'},
   aliasId: {type: String, unique:true, default: shortid.generate},
 });
