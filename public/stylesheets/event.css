@@ -35,6 +35,20 @@
     margin: 0;
 }
 
+#event-details li {
+    padding: 0.5em;
+    font-size: 1.1em;
+}
+
+#event-details .details {
+    margin-left: 20px;
+}
+
+#event-details .details_newline {
+    margin-left: 46px;
+}
+
+
 #event-details .icon-default {
    color: black;
    font-size: 1.5em;
