@@ -23,6 +23,7 @@ const sports = require('./routes/sports');
 const create = require('./routes/create');
 const event = require('./routes/event');
 const edit = require('./routes/edit');
+const join = require('./routes/join');
 
 // Server Config
 const serverConfig = express();
@@ -120,6 +121,7 @@ serverConfig.use('/sports', sports);
 serverConfig.use('/create', create);
 serverConfig.use('/event', event);
 serverConfig.use('/edit', edit);
+serverConfig.use('/join', join);
 
 // --> End Here
 
