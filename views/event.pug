@@ -23,6 +23,8 @@ block content
                     h4 Map
                   hr
                   .panel-body
+                    a.btn.btn-default Bullseye
+                    #map
             div.col-md-6.panelB
               .panel-group
                 .panel.panel-primary
@@ -73,6 +75,8 @@ block content
       roomId: '#{event.roomId}',
     }
 
+  script(type='text/javascript', src='/javascripts/eventMaps.js')
+  script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDZEYsZMRKwG2VO-RE3zdDA_fw5HUORfE0&libraries=places&callback=loadMap', async='', defer='')
   script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js")
   script(src="/javascripts/socket.io-client/dist/socket.io.js")
   script(src="/javascripts/event.js")
