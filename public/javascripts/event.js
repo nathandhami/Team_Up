@@ -73,6 +73,7 @@ $(document).ready(() => {
       msgBody.find('ul').append(generateMsg(historyChatArr[i].message,
         historyChatArr[i].name, historyChatArr[i].image, historyChatArr[i].date));
     }
+    msgBody.scrollTop(msgBody.prop('scrollHeight'));
   });
 
   $('form').submit(() => {
