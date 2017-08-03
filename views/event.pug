@@ -23,6 +23,8 @@ block content
                     h4 Map
                   hr
                   .panel-body
+                    a.btn.btn-default Bullseye
+                    #map
             div.col-md-6.panelB
               .panel-group
                 .panel.panel-primary
@@ -31,11 +33,12 @@ block content
                   hr
                   .panel-body
                     ul#event-details
-                      li.item <span class="icon-default glyphicon glyphicon-home" title="Location Name"></span> #{event.locationName}
-                      li.item <span class="icon-default glyphicon glyphicon-map-marker" title= "Address"></span> #{event.locationAddress} </li>
-                      li.item <span class="icon-default glyphicon glyphicon-cog" title="Sport"></span> #{event.sport}
-                      li.item <span class="icon-default glyphicon glyphicon-calendar"  title="From"></span> #{event.from}
-                      li.item <span class="icon-default glyphicon glyphicon-calendar" title="To"></span> #{event.to}
+                      li.item.
+                        <span class="icon-default glyphicon glyphicon-map-marker" title="Location"></span> <span class="details"> #{event.locationName} <br/>
+                        <span class="details_newline">  #{event.locationAddress} </span> <br/> </span>
+                      li.item <span class="icon-default glyphicon glyphicon-cog" title="Sport"></span> <span class="details">  #{event.sport} </span>
+                      li.item <span class="icon-default glyphicon glyphicon-calendar"  title="From"></span> <span class="details"> #{event.from} </span>
+                      li.item <span class="icon-default glyphicon glyphicon-calendar" title="To"></span> <span class="details"> #{event.to} </span>
                 .panel-group
                 .panel.panel-primary
                   .panel-heading
@@ -72,6 +75,8 @@ block content
       roomId: '#{event.roomId}',
     }
 
+  script(type='text/javascript', src='/javascripts/eventMaps.js')
+  script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDZEYsZMRKwG2VO-RE3zdDA_fw5HUORfE0&libraries=places&callback=loadMap', async='', defer='')
   script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js")
   script(src="/javascripts/socket.io-client/dist/socket.io.js")
   script(src="/javascripts/event.js")

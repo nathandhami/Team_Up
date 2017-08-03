@@ -1,5 +1,6 @@
 $(document).ready(() => {
     $('.status-menu li a').click( (e) => {
+        e.preventDefault();
         let status = $(e.target).text();
         let csrf = $('#input_csrf').val();
         $.ajax({

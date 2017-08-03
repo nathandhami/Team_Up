@@ -10,7 +10,7 @@
 
 /* Helper classes  */
 .spacer {
-    margin-top:50px;
+    margin-top:0;
 }
 
 .panel > .panel-heading {
@@ -19,21 +19,42 @@
 
 
 /* Panel Setup */
+
+/* Map  */
 .panelA{
     /* border: 2px solid orange; */
 }
 
+#map {
+  height: 375px;
+  width: 100%;
+}
+
+/* Event Details  */
 .panelB{
     /* border: 2px solid blue; */
     overflow-y: auto;
 }
 
-/* Event Details  */
-#event-details{
+ #event-details{
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
+
+#event-details li {
+    padding: 0.5em;
+    font-size: 1.1em;
+}
+
+#event-details .details {
+    margin-left: 20px;
+}
+
+#event-details .details_newline {
+    margin-left: 46px;
+}
+
 
 #event-details .icon-default {
    color: black;
@@ -50,7 +71,6 @@
 #event-participants > li{
     display: inline;
     margin: 1.1em;
-    padding: 0.3em
 }
 
 /* CHAT MESSENGER UI */
@@ -63,10 +83,10 @@
 
 .chatUI-container {
     width: 100%;
-}
+ }
 
 .chatUI-msgBody {
-    height: 200px;
+    height: 300px;
     overflow-y: auto;
     border-top: 1px outset rgb(74.1%, 74.1%, 74.1%);
     border-left: 1px outset rgb(74.1%, 74.1%, 74.1%);

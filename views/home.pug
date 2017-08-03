@@ -14,15 +14,8 @@ aside.sidebarDisplayed
       row
         .col-md-3-offset-3.col
           div#accordion.panel-group
-            -
-              const maxEventsDisplayed = ['One', 'Two', 'Three', 'Four', 'Five',
-                         'Six', 'Seven', 'Eight', 'Nine', 'Ten',
-                         'Eleven', 'Twelve', 'Thirteen', 'Fourteen',]
-              const maxEventsDisplayedLen = maxEventsDisplayed.length;
-              const numOfUserEvents = userEvents.length;
-            - for (i = 0; i < numOfUserEvents; i++) {
-            - if (i == maxEventsDisplayedLen ) {break}
-                +event-panel('collapse' + maxEventsDisplayed[i], userEvents[i].teamupName, userEvents[i].from, userEvents[i].to,
+            - for (let i = 0; i < userEvents.length; i++) {
+                +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to,
                 userEvents[i].sport, userEvents[i].locationName, userEvents[i].locationAddress, userEvents[i].url)
             - }
 script(src="/javascripts/home.js")

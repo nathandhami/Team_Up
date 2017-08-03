@@ -20,7 +20,10 @@ router.route('/').post((req, res) => {
   const sport = xssFilters.inHTMLData(req.body.sport);
   const locationName = xssFilters.inHTMLData(req.body.locationName);
   const locationAddress = xssFilters.inHTMLData(req.body.locationAddress);
+  const locationCoordinates = xssFilters.inHTMLData(req.body.loc);
   const userId = xssFilters.inHTMLData(req.user._id);
+
+
 
   const event = new Event({
     teamupName: teamupName,
@@ -29,6 +32,7 @@ router.route('/').post((req, res) => {
     sport: sport,
     locationName: locationName,
     locationAddress: locationAddress,
+    locationCoordinates: JSON.parse(locationCoordinates),
     createdBy: userId,
   });
 
