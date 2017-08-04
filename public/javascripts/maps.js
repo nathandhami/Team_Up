@@ -1,5 +1,4 @@
 // Uses Google maps callback api, no need to wait for DOM to load
-let markers = [];
 let map, infoWindow, service, currentLocation;
 
 function loadMap() {
@@ -11,7 +10,7 @@ function loadMap() {
     scaleControl: true,
     mapTypeId: 'roadmap'
   });
-  infoWindow = new google.maps.InfoWindow();
+  infoWindow = new google.maps.InfoWindow({ maxWidth: 250 });
 
   // Create the search box and link it to the UI element.
   let input = document.getElementById('pac-input');
@@ -94,25 +93,22 @@ function createMarker(place) {
   });
   let request = { reference: place.reference };
   service.getDetails(request, function(details, status) {
+    if (details == null) {
+      marker.setMap(null);
+    }
     google.maps.event.addListener(marker, 'click', function() {
-      infoWindow.setContent('<div><strong>' + details.name + '</strong><br>' +
-        // details.geometry.location + '<br>' +
-        details.formatted_address + '</div>'
-        // details.website + '<br />' +
-        // details.rating + '<br />' +
-        // details.formatted_phone_number
-      );
-      if (details.formatted_address == "") {
-        marker.setVisible(false);
-      }
-      infoWindow.open(map, this);
-      $("#locationName").val(place.name);
-      $("#locationAddress").val(details.formatted_address);
       let eventLocation = [];
       eventLocation[0] = marker.getPosition().lng();
       eventLocation[1] = marker.getPosition().lat();
       let jsonGeo = JSON.stringify(eventLocation);
       $('#map-input').attr('value', jsonGeo);
+      infoWindow.setContent('<strong>' + place.name + '</strong><br />' + details.formatted_address +
+        '<br /><a class="links" target="_blank" href=' + details.website + '>' + details.website +
+        '</a><br /><a class="links" target="_blank" href=https://www.google.com/maps/dir//'
+        + eventLocation[1] + ',' + eventLocation[0] + '>Get Directions</a>');
+      infoWindow.open(map, this);
+      $("#locationName").val(place.name);
+      $("#locationAddress").val(details.formatted_address);
     });
   })
 }
@@ -121,7 +117,7 @@ function createMarker(place) {
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
+    'Error: The Geolocation service failed.' :
+    'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
