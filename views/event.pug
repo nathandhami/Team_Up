@@ -21,29 +21,30 @@ block content
                 .panel.panel-primary
                   .panel-heading
                     h4 Map
-                  hr
                   .panel-body
-                    a.btn.btn-default Bullseye
+                    abbr(title="Relocate to event")
+                      a.btn.btn-default
+                        i(class="fa fa-bullseye fa-2x")
                     #map
             div.col-md-6.panelB
               .panel-group
                 .panel.panel-primary
                   .panel-heading
                     h4 Event Details
-                  hr
+                   
                   .panel-body
                     ul#event-details
                       li.item.
                         <span class="icon-default glyphicon glyphicon-map-marker" title="Location"></span> <span class="details"> #{event.locationName} <br/>
                         <span class="details_newline">  #{event.locationAddress} </span> <br/> </span>
                       li.item <span class="icon-default glyphicon glyphicon-cog" title="Sport"></span> <span class="details">  #{event.sport} </span>
-                      li.item <span class="icon-default glyphicon glyphicon-calendar"  title="From"></span> <span class="details"> #{event.from} </span>
-                      li.item <span class="icon-default glyphicon glyphicon-calendar" title="To"></span> <span class="details"> #{event.to} </span>
+                      li.item <span class="icon-default glyphicon glyphicon-calendar"  title="Schedule"></span> <span class="details"> #{event.from} <strong> to </strong><br/>
+                        <span class="details_newline"> #{event.to} </span> <br/> </span>
                 .panel-group
                 .panel.panel-primary
                   .panel-heading
                     h4 Participants
-                  hr
+                   
                   .panel-body
                     //- For now, this shows who has entered the chat.
                     ul#event-participants
@@ -73,6 +74,9 @@ block content
     }
     var localEventData = {
       roomId: '#{event.roomId}',
+      loc: ['#{event.locationCoordinates[0]}', '#{event.locationCoordinates[1]}'],
+      locationName: '#{event.locationName}',
+      locationAddr: '#{event.locationAddress}',
     }
 
   script(type='text/javascript', src='/javascripts/eventMaps.js')

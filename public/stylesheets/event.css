@@ -25,8 +25,12 @@
     /* border: 2px solid orange; */
 }
 
+#map a { 
+    color:blue;
+}
+
 #map {
-  height: 375px;
+  height: 300px;
   width: 100%;
 }
 
@@ -86,7 +90,7 @@
  }
 
 .chatUI-msgBody {
-    height: 300px;
+    height: 360px;
     overflow-y: auto;
     border-top: 1px outset rgb(74.1%, 74.1%, 74.1%);
     border-left: 1px outset rgb(74.1%, 74.1%, 74.1%);
