@@ -8,17 +8,12 @@ const router = new express.Router();
 
 /* GET create event page */
 router.route('/').get((req, res) => {
-
-  Event.find({}).exec(function (events) {
-    Event.count().exec(function (count) {
-      res.render('join', {
-        csrfToken: req.csrfToken(),
-        events: events,
-        numOfEvents: count,
-      });
-    });
-  });
-
+	Event.find({}, function(err, events) {
+    if (!err){ 
+        console.log("Events: " + events);
+    } 
+    else {throw err;}
+	});
 });
 
 
