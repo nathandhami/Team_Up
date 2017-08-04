@@ -1,4 +1,4 @@
-mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locationAddress, url)
+mixin event-panel(collapseNum, teamupName, from, to, sport, maxPlayers, locationName, locationAddress, url)
   .panel.panel-default
     .panel-heading.container-fluid
       .row
@@ -10,7 +10,8 @@ mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locati
             span#status
           div#participants.col-md-2.text-right
             abbr(title="Participants")
-              <i class="fa fa-user"> 1/10  </i>
+              i.fa.fa-user
+                p= '1/' + maxPlayers
     div.panel-collapse.collapse.in(id=collapseNum)
       .panel-body
         p= 'From: ' + from
