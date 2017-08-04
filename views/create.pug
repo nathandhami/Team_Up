@@ -5,19 +5,19 @@ block content
       .container-fluid
         .page-header
           h2 What Sport Would Like To Play?
-          button.btn.btn-info(type='button', onclick='displayMarkers(1)')
+          button.btn.btn-info#soccer
             span
               img(src='https://png.icons8.com/soccer-ball/color/24', title='Soccer Ball', width='24', height='24')
               |  Soccer
-          button.btn.btn-info(type='button', onclick='displayMarkers(2)')
+          button.btn.btn-info#basketball
             span
               img(src='https://png.icons8.com/basketball/color/24', title='Basketball', width='24', height='24')
               |  Basketball
-          button.btn.btn-info(type='button', onclick='displayMarkers(3)')
+          button.btn.btn-info#volleyball
             span
               img(src='https://png.icons8.com/volleyball/color/24', title='Volleyball', width='24', height='24')
               |  Volleyball
-          button.btn.btn-info(type='button', onclick='displayMarkers(4)')
+          button.btn.btn-info#baseball
             span
               img(src='https://png.icons8.com/baseball/color/24', title='Baseball', width='24', height='24')
               |  Baseball
@@ -55,7 +55,7 @@ block content
                 .form-group
                   label.col-md-4.control-label Maximum Number of Players:
                   .col-md-7
-                    input#maxPlayers.form-control(type='text', name='maxPlayers', placeholder='22', required='required', data-error='Max Number of Players is required.')
+                    input#maxPlayers.form-control(type='number', name='maxPlayers', placeholder='22', required='required', data-error='Max Number of Players is required.')
                 .form-group
                   label.col-md-4.control-label Name of Location:
                   .col-md-7

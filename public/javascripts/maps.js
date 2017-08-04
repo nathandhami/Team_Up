@@ -117,21 +117,6 @@ function createMarker(place) {
   })
 }
 
-// For create.js
-// Display the markers when the button are clicked
-function displayMarkers(category) {
-  let sportElement = $("#sport");
-  if (category == 1) {
-    sportElement.val("Soccer");
-  } else if (category == 2) {
-    sportElement.val("Basketball");
-  } else if (category == 3) {
-    sportElement.val("Volleyball");
-  } else if (category == 4) {
-    sportElement.val("Baseball");
-  }
-}
-
 // Handle the error for user's location
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
