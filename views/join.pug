@@ -10,12 +10,13 @@ block content
           .row
             input#pac-input.controls.col-xs-5(type='text', placeholder='Enter a Location')
             #map
-	      .row
-	        .col-md-3-offset-3.col
-	          div#accordion.panel-group
-	            - for (let i = 0; i < userEvents.length; i++) {
-	                +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to,
-	                userEvents[i].sport, userEvents[i].locationName, userEvents[i].locationAddress, userEvents[i].url)         
+      .container-fluid.home_container
+        .row
+          .col-md-3-offset-3.col
+            div#accordion.panel-group
+              - for (let i = 0; i < userEvents.length; i++) {
+                +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to, userEvents[i].sport, userEvents[i].locationName, userEvents[i].locationAddress, userEvents[i].url)
+              - }       
         
   link(rel="stylesheet", href="/stylesheets/home.css")  
   link(rel="stylesheet", href="/stylesheets/join.css")

@@ -11,6 +11,11 @@ router.route('/').get((req, res) => {
 	Event.find({}, function(err, events) {
     if (!err){ 
         console.log("Events: " + events);
+        res.render('join', {
+          title: 'Join Events',
+          csrfToken: req.csrfToken(),
+          userEvents: events,
+        });
     } 
     else {throw err;}
 	});
