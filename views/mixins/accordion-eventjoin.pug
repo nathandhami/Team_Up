@@ -1,4 +1,4 @@
-mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locationAddress, url)
+mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locationAddress, aliasId, url)
   .panel.panel-default.ac-event-panel
     .panel-heading.container-fluid
       .row
@@ -20,3 +20,4 @@ mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locati
         p= 'To: ' + to
         div
           button.joinEventBtn.btn.btn-success(role="button", href='#') Join Event
+            input(type='hidden', value=aliasId)
