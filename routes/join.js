@@ -43,12 +43,6 @@ router.route('/')
           }
 
           if (event) {
-            // for (let i = 0; i < event.users.length; i++) {
-            //   if (event.users[i] == user._id) {
-            //     console.log("FOUND");
-            //   }
-            // }
-
             let isJoined = event.users.filter(function(value){ return value == user._id;});
               
             // add check for max number of players.
