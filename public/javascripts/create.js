@@ -27,4 +27,11 @@ $(document).ready(function() {
   to_input.on("dp.change", function (e) {
     from_input.data("DateTimePicker").maxDate(e.date);
   });
+  let maxPlayers = $('#maxPlayers');
+  maxPlayers.change(() => {
+    let n = maxPlayers.val();
+    if (!($.isNumeric(n) && (n > 0))) {
+      maxPlayers.val(1);
+    }
+  })
 });
