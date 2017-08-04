@@ -6,20 +6,37 @@ const xssFilters = require('xss-filters');
 const router = new express.Router();
 
 
-/* GET create event page */
-router.route('/').get((req, res) => {
-	Event.find({}, function(err, events) {
-    if (!err){ 
-        console.log("Events: " + events);
-        res.render('join', {
-          title: 'Join Events',
-          csrfToken: req.csrfToken(),
-          userEvents: events,
-        });
-    } 
-    else {throw err;}
-	});
-});
+/* GET join event page */
+router.route('/')
+  .get((req, res) => {
+  	Event.find({}, function(err, events) {
+      if (!err){ 
+          console.log(events)
+          res.render('join', {
+            title: 'Join Events',
+            csrfToken: req.csrfToken(),
+            userEvents: events,
+          });
+      } 
+      else {throw err;}
+  	});
+  })
+
+  .post((req, res) => {
+    const userId = req.user._id;
+    
+    // Event.findOne({
+    //   _id: event_id,
+    // }, (err, event) => {
+    //   if (err) {
+    //     throw err;
+    //   }
+
+    //   if (event) {
+    //   }
+    // });
+    return;
+  })
 
 
 

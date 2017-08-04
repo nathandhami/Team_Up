@@ -16,6 +16,7 @@ block content
             div#accordion.panel-group
               - for (let i = 0; i < userEvents.length; i++) {
                 +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to, userEvents[i].sport, userEvents[i].locationName, userEvents[i].locationAddress, userEvents[i].url)
+                input(type='hidden', id='input_event', value=userEvents[i])
               - }       
         
   link(rel="stylesheet", href="/stylesheets/home.css")  
