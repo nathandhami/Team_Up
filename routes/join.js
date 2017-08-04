@@ -54,12 +54,20 @@ router.route('/')
             // add check for max number of players.
             if (isJoined.length > 0) {
               console.log("You have already joined");
+              res.json({msg: 'Error!', 
+                      text: 'You have already joined this event', status: 400,
+                    redirect: '/'});
             } else {
               event.users.push(userId.toString());
 
               event.save((err) => {
                 if (err) throw err;
               });
+
+              res.json({msg: 'Successfully joined ' + event.teamupName + '!', 
+                    text: 'You can now chat with other members of this event.', 
+                    status: 204,
+                    redirect: '/'});
             }
 
             console.log(event);

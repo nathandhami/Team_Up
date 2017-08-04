@@ -13,11 +13,28 @@ $(document).ready(() => {
             },
           timeout: 3000,
           success: function(response) {
-            if (response.status == '403') {
-              console.log(response);
+            if (response.status == '400') {
+              swal({
+                  title: response.msg,
+                  text: response.text,
+                  type: 'warning',
+                  confirmButtonColor: '#DD6B55',
+                  confirmButtonText: 'Okay',
+                  closeOnConfirm: true,
+              });
             } 
             else {
-              console.log(response);
+              swal({
+                  title: response.msg,
+                  text: response.text,
+                  type: 'success',
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: 'Okay',
+                  closeOnConfirm: false,
+              },
+              () => {
+                window.location.href = response.redirect;
+              });
             }
             
             },
