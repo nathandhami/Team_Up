@@ -9,6 +9,7 @@ $(document).ready(() => {
           url: '/join',
           data: {
               "_csrf": csrf,
+              "eventAliasId": event_alias_id,
             },
           timeout: 3000,
           success: function(response) {
