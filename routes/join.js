@@ -10,7 +10,7 @@ const User = require('../models/User');
 /* GET join event page */
 router.route('/')
   .get((req, res) => {
-  	Event.find({}, function(err, events) {
+  	Event.find({users: {$ne: req.user._id.toString()}}, function(err, events) {
       if (!err){
           res.render('join', {
             title: 'Join Events',
@@ -51,8 +51,8 @@ router.route('/')
 
             let isJoined = event.users.filter(function(value){ return value == user._id;});
               
+            // add check for max number of players.
             if (isJoined.length > 0) {
-              console.log(isJoined);
               console.log("You have already joined");
             } else {
               event.users.push(userId.toString());
