@@ -55,7 +55,7 @@ router.route('/')
               console.log(isJoined);
               console.log("You have already joined");
             } else {
-              event.users.push("'" + userId + "'");
+              event.users.push(userId.toString());
 
               event.save((err) => {
                 if (err) throw err;
