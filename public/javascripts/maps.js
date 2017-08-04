@@ -47,7 +47,7 @@ function loadMap() {
       service = new google.maps.places.PlacesService(map);
       service.nearbySearch({
         location: place.geometry.location,
-        radius: 1000,
+        radius: 1500,
         types: ['park']
       }, callback);
     });
