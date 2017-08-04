@@ -1,12 +1,25 @@
 // Uses Google maps callback api, no need to wait for DOM to load
 let markers = [];
-let map, infoWindow, currentUserLocation;
+let map, infoWindow, eventLocation;
+
+
+$(document).ready(() => {
+  let bullseyeNode = $('.panelA').find('a');
+
+  bullseyeNode.on('click', (e) => {
+    e.preventDefault();
+    if (eventLocation != null) {
+      map.setCenter(eventLocation);
+     }
+  });
+
+});
 
 function loadMap() {
- 
+
   // Create the map with a default center.
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 49.278628, lng: -122.920355},
+    center: { lat: 49.278628, lng: -122.920355 },
     zoom: 12,
     scaleControl: true,
     mapTypeId: 'roadmap'
@@ -14,31 +27,27 @@ function loadMap() {
   infoWindow = new google.maps.InfoWindow();
 
 
-  // Create a marker with its category for each location
   let i;
-  let newMarker;
- 
-}
+  let eventMarker;
+  let longitude = localEventData.loc[0];
+  let latitude = localEventData.loc[1];
 
-// For create.js
-// Display the markers when the button are clicked
-function displayMarkers(category) {
-  let i;
-  for (i = 0; i < markers.length; i++) {
-    if (markers[i].category === category) {
-      markers[i].setVisible(true);
-    }
-    else {
-      markers[i].setVisible(false);
-    }
-  }
-}
+   let content = localEventData.locationName + "<br>" + localEventData.locationAddr  + 
+   "<br><a class='directions' target='_blank' href=https://www.google.com/maps/dir//" 
+   + latitude + "," + longitude + ">Get Directions</a>";
+    eventMarker = new google.maps.Marker({
+    position: new google.maps.LatLng(latitude, longitude),
+    map: map,
+  });
 
-// Handle the error for user's location
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
-  infoWindow.open(map);
+  map.setCenter(eventMarker.getPosition());
+  eventLocation = eventMarker.getPosition();
+  infoWindow.setContent(content);
+  infoWindow.open(map, eventMarker);
+
+
+  google.maps.event.addListener(eventMarker, 'click', function () {
+    infoWindow.setContent(content);
+    infoWindow.open(map, eventMarker);
+  });
 }
