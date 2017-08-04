@@ -42,14 +42,25 @@ router.route('/')
             throw err;
           }
 
-          console.log(event);
           if (event) {
-            console.log("hello");
-            event.users.push(user);
+            // for (let i = 0; i < event.users.length; i++) {
+            //   if (event.users[i] == user._id) {
+            //     console.log("FOUND");
+            //   }
+            // }
 
-            event.save((err) => {
-              if (err) throw err;
-            });
+            let isJoined = event.users.filter(function(value){ return value == user._id;});
+              
+            if (isJoined.length > 0) {
+              console.log(isJoined);
+              console.log("You have already joined");
+            } else {
+              event.users.push("'" + userId + "'");
+
+              event.save((err) => {
+                if (err) throw err;
+              });
+            }
 
             console.log(event);
           }
