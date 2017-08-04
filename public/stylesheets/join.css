@@ -1,0 +1,15 @@
+#map {
+  height: 400px;
+  width: 85%;
+  margin: auto;
+}
+
+.ac-event-panel {
+	display: inline-block;
+	margin-right: 2em;
+}
+
+h3 {
+	margin-left: 1em;
+	margin-bottom: 1em;
+}

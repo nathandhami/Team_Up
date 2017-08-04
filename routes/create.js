@@ -36,6 +36,7 @@ router.route('/').post((req, res) => {
     createdBy: userId,
   });
 
+  event.users.push(userId);
   event.save((err, event) => {
     if (err) throw err;
     // console.log('Created: ' + event.aliasId);

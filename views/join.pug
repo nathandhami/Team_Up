@@ -1,12 +1,26 @@
 extends placeholders/header
+include ./mixins/accordion-eventjoin.pug
+
 block content
   aside.sidebarDisplayed
     #page-content-wrapper
       .container-fluid
         .page-header
-          h2 Browse the map and join a teamup sports event!
+          h3 Join events near you!
+          .row
+            input#pac-input.controls.col-xs-5(type='text', placeholder='Enter a Location')
+            #map
+      .container-fluid.home_container
         .row
-          
-          
+          .col-md-3-offset-3.col
+            div#accordion.panel-group
+              - for (let i = 0; i < userEvents.length; i++) {
+                +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to, userEvents[i].sport, userEvents[i].locationName, userEvents[i].locationAddress, userEvents[i].aliasId, userEvents[i].users.length, userEvents[i].url)
+              - }       
+        
+  link(rel="stylesheet", href="/stylesheets/home.css")  
   link(rel="stylesheet", href="/stylesheets/join.css")
+  script(type='text/javascript', src='/javascripts/join.js')
+  script(type='text/javascript', src='/javascripts/maps.js')
+  script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDZEYsZMRKwG2VO-RE3zdDA_fw5HUORfE0&libraries=places&callback=loadMap', async='', defer='')
 

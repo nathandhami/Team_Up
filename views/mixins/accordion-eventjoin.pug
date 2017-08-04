@@ -1,5 +1,5 @@
-mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locationAddress, count, url)
-  .panel.panel-default
+mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locationAddress, aliasId, count, url)
+  .panel.panel-default.ac-event-panel
     .panel-heading.container-fluid
       .row
         h5.panel-title
@@ -19,4 +19,5 @@ mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locati
         p= 'From: ' + from
         p= 'To: ' + to
         div
-          a.btn.btn-default(role="button", href=url) Join chat
+          button.joinEventBtn.btn.btn-success(role="button", href='#') Join Event
+            input(type='hidden', value=aliasId)
