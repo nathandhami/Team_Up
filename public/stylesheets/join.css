@@ -3,3 +3,7 @@
   width: 100%;
 }
 
+.ac-event-panel {
+	display: inline-block;
+	margin-right: 2em;
+}
