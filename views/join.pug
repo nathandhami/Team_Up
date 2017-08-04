@@ -5,8 +5,12 @@ block content
       .container-fluid
         .page-header
           h2 Browse the map and join a teamup sports event!
-        .row
+          .row
+            input#pac-input.controls.col-xs-5(type='text', placeholder='Enter a Location')
+            #map
           
           
   link(rel="stylesheet", href="/stylesheets/join.css")
+  script(type='text/javascript', src='/javascripts/maps.js')
+  script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDZEYsZMRKwG2VO-RE3zdDA_fw5HUORfE0&libraries=places&callback=loadMap', async='', defer='')
 
