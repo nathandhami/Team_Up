@@ -1,14 +1,31 @@
-
 #accordion a { 
   color: black;
 }
 
 #accordion a :hover { 
-  color: blue;
+  color: #CDDC39;
+}
+
+#accordion a:link { 
+  text-decoration: none;
 }
 
 #accordion abbr[title] {
   border-bottom: none;
+}
+
+.panel > .panel-heading {
+    background-color: #263238;
+     color: white;
+}
+
+.panel > .panel-heading .panel-title span  {
+    color: white;
+    font-weight: bold;
+}
+  
+.participantsBtn {
+  margin-left: 5px;
 }
 
 #listMembers {
@@ -16,7 +33,6 @@
   margin: 0;
   padding: 0;
 }
-
 
 #listMembers .userList  {
   margin: 5px 0;

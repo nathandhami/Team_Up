@@ -38,12 +38,15 @@
 .panelB{
     /* border: 2px solid blue; */
     overflow-y: auto;
+     
 }
 
  #event-details{
     list-style-type: none;
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
+    word-break:break-all;
 }
 
 #event-details li {
@@ -91,9 +94,10 @@
 
 .chatUI-msgBody {
     height: 360px;
-    overflow-y: auto;
-    border-top: 1px outset rgb(74.1%, 74.1%, 74.1%);
-    border-left: 1px outset rgb(74.1%, 74.1%, 74.1%);
+    overflow-y: scroll;
+    border-top: 2px outset rgb(74.1%, 74.1%, 74.1%);
+    border-left: 2px outset rgb(74.1%, 74.1%, 74.1%);
+ 
 }
 
 .chatUI-msgBody ul {
