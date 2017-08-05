@@ -44,6 +44,10 @@ $(document).ready(() => {
         });
   });
 
+  $('#showAllEventsBtn').click( (e) => {
+      $('.ac-event-panel').show();
+  });
+
 });
 
 // Uses Google maps callback api, no need to wait for DOM to load
