@@ -78,46 +78,57 @@ $(document).ready(() => {
 	});
 
 	$('.leaveEventBtn').click( (e) => {
-		let csrf = $('#input_csrf').val();
-		let eventAliasId = $(e.target).children('input').val();
-
-        $.ajax({
-          type: 'POST',
-          url: '/event/leave/' + eventAliasId,
-          data: {
-              "_csrf": csrf,
-          },
-          timeout: 3000,
-          success: function(response) {
-            if (response.status == '403') {
-              swal({
-                  title: response.msg,
-                  text: response.text,
-                  type: 'warning',
-                  confirmButtonColor: '#DD6B55',
-                  confirmButtonText: 'Okay',
-                  closeOnConfirm: true,
-              });
-            }
-            else {
-              swal({
-                  title: response.msg,
-                  text: response.text,
-                  type: 'success',
-                  confirmButtonColor: "#DD6B55",
-                  confirmButtonText: 'Okay',
-                  closeOnConfirm: false,
-              },
-              () => {
-                window.location.href = response.redirect;
-              });
-            }
-            
-            },
-            error: function(response) {
-              window.location.href = response.redirect;
-            },
-        });
+		swal({
+		  title: 'Are you sure?',
+		  text: "You won't be able to revert this!",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'Yes, I\'m sure.',
+		  closeOnConfirm: false
+		},
+		() => {
+			let csrf = $('#input_csrf').val();
+			let eventAliasId = $(e.target).children('input').val();
+			$.ajax({
+	          type: 'POST',
+	          url: '/event/leave/' + eventAliasId,
+	          data: {
+	              "_csrf": csrf,
+	          },
+	          timeout: 3000,
+	          success: function(response) {
+	            if (response.status == '403') {
+	              swal({
+	                  title: response.msg,
+	                  text: response.text,
+	                  type: 'warning',
+	                  confirmButtonColor: '#DD6B55',
+	                  confirmButtonText: 'Okay',
+	                  closeOnConfirm: true,
+	              });
+	            }
+	            else {
+	              swal({
+	                  title: response.msg,
+	                  text: response.text,
+	                  type: 'success',
+	                  confirmButtonColor: "#DD6B55",
+	                  confirmButtonText: 'Okay',
+	                  closeOnConfirm: false,
+	              },
+	              () => {
+	                window.location.href = response.redirect;
+	              });
+	            }
+	            
+	            },
+	            error: function(response) {
+	              window.location.href = response.redirect;
+	            },
+	        });
+		});
 	});
 
 
