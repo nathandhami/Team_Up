@@ -104,9 +104,13 @@ function loadMap() {
     let long = locations[i].locationCoordinates[0];
     let category = locations[i].sport;
     let teamupName = locations[i].teamupName;
-    let from_date = locations[i].from_date;
-    let to_date = locations[i].to_date;
-    let content = locationName + "<br>" + locationAddress + 
+    let from_date = locations[i].from.split('T')[0] + ' ' + locations[i].from.split('T')[1].split('.')[0];;
+    let to_date = locations[i].to.split('T')[0] + ' ' + locations[i].to.split('T')[1].split('.')[0];;;
+    let content = "<b>TeamUp Name</b>: " + teamupName + "<br>" + 
+                  "<b>From</b>: " + from_date + "<br>" + 
+                  "<b>To</b>: " + to_date + "<br>" + 
+                  "<b>Sport</b>: " + category + "<br>" + 
+                  "<b>Location</b>: " + locationName + "<br>" + locationAddress + 
                   "<br><a class='directions' target='_blank' href=https://www.google.com/maps/dir//" + lat + "," + long + ">Get Directions</a>";
     newMarker = new google.maps.Marker({
       position: new google.maps.LatLng(lat, long),
