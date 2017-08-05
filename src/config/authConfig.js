@@ -15,11 +15,11 @@ module.exports = (serverConfig) => {
       const userImage = req.user.image ? req.user.image : defaultImage;
       const userStatus = req.user.status ? req.user.status : "Available";
       res.locals.userData = {
-        name: req.user.displayName,
+        name: _.startCase(req.user.displayName),
         email: req.user.email,
         image: userImage,
-        firstname: req.user.firstname,
-        lastname: req.user.lastname,
+        firstname: _.startCase(req.user.firstname),
+        lastname: _.startCase(req.user.lastname),
         status: userStatus,
         facebookId: req.user.facebook,
         twitterId: req.user.twitter,
