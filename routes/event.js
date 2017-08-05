@@ -3,6 +3,7 @@
 const express = require('express');
 const router = new express.Router();
 const Event = require('../models/Event');
+const xssFilters = require('xss-filters');
 
 /* GET Event Room page */
 router.route('/chatroom/:id')
@@ -61,9 +62,19 @@ router.route('/edit/:id')
                   status: 403, redirect: '/'});
         }
         else {
-          // extract form here & update event
+          event.teamupName = xssFilters.inHTMLData(req.body.teamupName);
+          event.from = xssFilters.inHTMLData(req.body.from);
+          event.to = xssFilters.inHTMLData(req.body.to);
 
-          res.redirect('/');
+          console.log(event.from);
+
+          event.save((err) => {
+            if (err) throw err;
+          });
+
+          res.json({msg: 'Event Updated!', 
+                  text: event.teamupName + ' has been successfully updated', 
+                  status: 204, redirect: '/'});
         }
       }
     });

@@ -18,16 +18,13 @@ $(document).ready(() => {
 
 
 	$('#editEventSaveBtn').click( (e) => {
-		let csrf = $('#input_csrf').val();
 		let event = $('#input_eventModal').val();
-
 		event = JSON.parse(event);
+
         $.ajax({
           type: 'POST',
           url: '/event/edit/' + event.aliasId,
-          data: {
-              "_csrf": csrf,
-          },
+          data: $('#updateEventForm').serialize(),
           timeout: 3000,
           success: function(response) {
             if (response.status == '403') {
