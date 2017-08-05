@@ -45,6 +45,7 @@ $(document).ready(() => {
   });
 
   $('#showAllEventsBtn').click( (e) => {
+      infoWindow.close();
       $('.ac-event-panel').removeClass("highlight");
       $('.ac-event-panel').show();
       $('html,body').animate({
