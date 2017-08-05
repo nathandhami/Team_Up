@@ -106,14 +106,12 @@ router.route('/edit/:id')
                   status: 403, redirect: '/'});
         }
         else {
-          console.log(event.users);
           event.users.pull(req.user._id.toString());
 
           event.save((err) => {
             if (err) throw err;
           });
 
-          console.log(event.users);
           res.json({msg: 'Updated!', 
                   text: 'You have been removed from ' + event.teamupName, 
                   status: 204, redirect: '/'});
