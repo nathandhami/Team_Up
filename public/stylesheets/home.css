@@ -11,9 +11,27 @@
   border-bottom: none;
 }
 
-#listMembers .userList {
+#listMembers {
   list-style-type: none;
-  margin: 20px 0;
+  margin: 0;
+  padding: 0;
+}
+
+
+#listMembers .userList  {
+  margin: 5px 0;
+}
+
+#listMembers .userList:hover  {
+  background-color: rgb(89.8%, 89.8%, 89.8%);
+}
+
+.thumb-img{
+   object-fit: cover;
+   overflow: hidden;
+   width: 12%;
+   height: auto;
+   border-radius: 10%;
 }
 
 @media (max-width: 980px) {
