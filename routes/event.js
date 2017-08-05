@@ -66,8 +66,6 @@ router.route('/edit/:id')
           event.from = xssFilters.inHTMLData(req.body.from);
           event.to = xssFilters.inHTMLData(req.body.to);
 
-          console.log(event.from);
-
           event.save((err) => {
             if (err) throw err;
           });
@@ -108,10 +106,17 @@ router.route('/edit/:id')
                   status: 403, redirect: '/'});
         }
         else {
-          // ADD LEAVE CODE here
-          // Flash user succcessfully left event
+          console.log(event.users);
+          event.users.pull(req.user._id.toString());
 
-          res.redirect('/');
+          event.save((err) => {
+            if (err) throw err;
+          });
+
+          console.log(event.users);
+          res.json({msg: 'Updated!', 
+                  text: 'You have been removed from ' + event.teamupName, 
+                  status: 204, redirect: '/'});
         }
       }
     });

@@ -17,7 +17,7 @@ aside.sidebarDisplayed
             - for (let i = 0; i < userEvents.length; i++) {
                 +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to,
                 userEvents[i].sport, userEvents[i].locationName, userEvents[i].locationAddress, userEvents[i].users.length, userEvents[i].createdBy.email, userEvents[i].urlChat,
-                userEvents[i].urlEdit, userEvents[i].urlLeave, userEvents[i].urlDelete, userEvents[i])
+                userEvents[i].urlEdit, userEvents[i].urlLeave, userEvents[i].urlDelete, userEvents[i].aliasId, userEvents[i])
             - }
 
 #editEventModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
