@@ -122,7 +122,8 @@ function loadMap() {
     newMarker = new google.maps.Marker({
       position: new google.maps.LatLng(lat, long),
       map: map,
-      title: locationName
+      title: locationName,
+      animation: google.maps.Animation.DROP
     });
     newMarker.category = category;
     newMarker.setVisible(true);
