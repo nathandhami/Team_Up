@@ -25,7 +25,6 @@ router.route('/')
   .post((req, res) => {
     const userId = req.user._id;
     const eventId = xssFilters.inHTMLData(req.body.eventAliasId);
-    console.log(eventId);
 
     User.findOne({
       _id: userId,
@@ -47,7 +46,6 @@ router.route('/')
               
             // add check for max number of players.
             if (isJoined.length > 0) {
-              console.log("You have already joined");
               res.json({msg: 'Error!', 
                       text: 'You have already joined this event', status: 400,
                     redirect: '/'});
@@ -63,8 +61,6 @@ router.route('/')
                     status: 204,
                     redirect: '/'});
             }
-
-            console.log(event);
           }
         });
       }

@@ -28,3 +28,12 @@
     width: 100%;
   }
 }
+
+#editEventSaveBtn {
+  margin-right: 1em;
+  margin-top: 1em;
+}
+
+form .error {
+  color: indianred;
+}

@@ -3,6 +3,7 @@
 const express = require('express');
 const router = new express.Router();
 const Event = require('../models/Event');
+const xssFilters = require('xss-filters');
 
 /* GET Event Room page */
 router.route('/chatroom/:id')
@@ -45,9 +46,9 @@ router.route('/edit/:id')
 
     Event.findOne({ 'aliasId': id }).exec(function (err, event) {
       if (err || event == null) {
-        res.status(404).render('notFound', {
-          title: 'Page Not Found',
-        });
+        res.json({msg: 'Error!', 
+              text: 'Not Found',
+              status: 404, redirect: '/notFound'});
       }
       else {
         // Check if user belongs to the event
@@ -56,12 +57,22 @@ router.route('/edit/:id')
         // Check if user is unauthorized to process
         if (isEventMember == false) {
           // Send unauthorized page (403 error)
-          res.send('<h1> Unauthorized. Status Code: 403 </h1>');
+          res.json({msg: 'Error!', 
+                  text: 'You have not authorized to perform this action', 
+                  status: 403, redirect: '/'});
         }
         else {
-          // extract form here & update event
+          event.teamupName = xssFilters.inHTMLData(req.body.teamupName);
+          event.from = xssFilters.inHTMLData(req.body.from);
+          event.to = xssFilters.inHTMLData(req.body.to);
 
-          res.redirect('/');
+          event.save((err) => {
+            if (err) throw err;
+          });
+
+          res.json({msg: 'Event Updated!', 
+                  text: event.teamupName + ' has been successfully updated', 
+                  status: 204, redirect: '/'});
         }
       }
     });
@@ -79,9 +90,9 @@ router.route('/edit/:id')
 
     Event.findOne({ 'aliasId': id }).exec(function (err, event) {
       if (err || event == null) {
-        res.status(404).render('notFound', {
-          title: 'Page Not Found',
-        });
+        res.json({msg: 'Error!', 
+              text: 'Not Found',
+              status: 404, redirect: '/notFound'});
       }
       else {
         // Check if user belongs to the event
@@ -90,13 +101,20 @@ router.route('/edit/:id')
         // Check if user is unauthorized to process
         if (isEventMember == false) {
           // Send unauthorized page (403 error)
-          res.send('<h1> Unauthorized. Status Code: 403 </h1>');
+          res.json({msg: 'Error!', 
+                  text: 'You have not authorized to perform this action', 
+                  status: 403, redirect: '/'});
         }
         else {
-          // ADD LEAVE CODE here
-          // Flash user succcessfully left event
+          event.users.pull(req.user._id.toString());
 
-          res.redirect('/');
+          event.save((err) => {
+            if (err) throw err;
+          });
+
+          res.json({msg: 'Updated!', 
+                  text: 'You have been removed from ' + event.teamupName, 
+                  status: 204, redirect: '/'});
         }
       }
     });
@@ -114,9 +132,9 @@ router.route('/edit/:id')
 
     Event.findOne({ 'aliasId': id }).exec(function (err, event) {
       if (err || event == null) {
-        res.status(404).render('notFound', {
-          title: 'Page Not Found',
-        });
+        res.json({msg: 'Error!', 
+              text: 'Not Found',
+              status: 404, redirect: '/notFound'});
       }
       else {
         // Check if user belongs to the event
@@ -125,13 +143,17 @@ router.route('/edit/:id')
         // Check if user is unauthorized to process
         if (isEventMember == false) {
           // Send unauthorized page (403 error)
-          res.send('<h1> Unauthorized. Status Code: 403 </h1>');
+          res.json({msg: 'Error!', 
+                      text: 'You have not authorized to perform this action', 
+                      status: 403, redirect: '/'});
         }
         else {
-          // Delete event
-          // Flash user successfully deleted event
+          let resText = event.teamupName + ' has been successfully deleted.'
+          event.remove();
 
-          res.redirect('/');
+          res.json({msg: 'Deleted!', 
+                      text: resText, 
+                      status: 204, redirect: '/'});
         }
       }
     });
