@@ -1,5 +1,6 @@
 $(document).ready(() => {
 	$('.editEventBtn').click( (e) => {
+		e.preventDefault();
 		let event = $(e.target).children('input').val();
 		$('#input_eventModal').val(event);
 
@@ -78,6 +79,7 @@ $(document).ready(() => {
 	});
 
 	$('.leaveEventBtn').click( (e) => {
+		e.preventDefault();
 		swal({
 		  title: 'Are you sure?',
 		  text: "You won't be able to revert this!",
