@@ -114,9 +114,9 @@ router.route('/edit/:id')
 
     Event.findOne({ 'aliasId': id }).exec(function (err, event) {
       if (err || event == null) {
-        res.status(404).render('notFound', {
-          title: 'Page Not Found',
-        });
+        res.json({msg: 'Error!', 
+              text: 'Not Found',
+              status: 404, redirect: '/notFound'});
       }
       else {
         // Check if user belongs to the event
