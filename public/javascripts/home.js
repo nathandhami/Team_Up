@@ -20,47 +20,6 @@ $(document).ready(() => {
 	});
 
 
-	$('#editEventSaveBtn').click( (e) => {
-		let event = $('#input_eventModal').val();
-		event = JSON.parse(event);
-
-        $.ajax({
-          type: 'POST',
-          url: '/event/edit/' + event.aliasId,
-          data: $('#updateEventForm').serialize(),
-          timeout: 3000,
-          success: function(response) {
-            if (response.status == '403') {
-              swal({
-                  title: response.msg,
-                  text: response.text,
-                  type: 'warning',
-                  confirmButtonColor: '#DD6B55',
-                  confirmButtonText: 'Okay',
-                  closeOnConfirm: true,
-              });
-            }
-            else {
-              swal({
-                  title: response.msg,
-                  text: response.text,
-                  type: 'success',
-                  confirmButtonColor: "#DD6B55",
-                  confirmButtonText: 'Okay',
-                  closeOnConfirm: false,
-              },
-              () => {
-                window.location.href = response.redirect;
-              });
-            }
-            
-            },
-            error: function(response) {
-              window.location.href = response.redirect;
-            },
-        });
-	});
-
 	$('#eventDelBtn').click( (e) => {
 		let csrf = $('#input_csrf').val();
 		let event = $('#input_eventModal').val();
@@ -103,6 +62,77 @@ $(document).ready(() => {
               window.location.href = response.redirect;
             },
         });
+	});
+
+
+	$('#updateEventForm').validate({
+        rules: {
+            teamupName: {
+              required: true, 
+              minlength: 2
+            },
+            from: {
+              required: true,
+            },
+            to: {
+              required: true,
+            },
+        },
+        messages: {
+            teamupName: {
+              required: "Please enter event name.", 
+              minlength: "Event name must have minimum 2 characters."
+            },
+            from: "Please select date and time",
+            to: "Please select date and time",
+        },
+        submitHandler: function(form) {
+        	console.log("hi");
+        	let event = $('#input_eventModal').val();
+			event = JSON.parse(event);
+          $.ajax({
+	          type: 'POST',
+	          url: '/event/edit/' + event.aliasId,
+	          data: $(form).serialize(),
+	          timeout: 3000,
+	          success: function(response) {
+	            if (response.status == '403') {
+	              swal({
+	                  title: response.msg,
+	                  text: response.text,
+	                  type: 'warning',
+	                  confirmButtonColor: '#DD6B55',
+	                  confirmButtonText: 'Okay',
+	                  closeOnConfirm: true,
+	              });
+	            }
+	            else {
+	              swal({
+	                  title: response.msg,
+	                  text: response.text,
+	                  type: 'success',
+	                  confirmButtonColor: "#DD6B55",
+	                  confirmButtonText: 'Okay',
+	                  closeOnConfirm: false,
+	              },
+	              () => {
+	                window.location.href = response.redirect;
+	              });
+	            }
+	            
+	            },
+	            error: function(response) {
+	              window.location.href = response.redirect;
+	            },
+	        });
+          return false;
+        },
+
+    });
+
+	$('#editEventSaveBtn').click( (e) => {
+		console.log("hello");
+		$('updateEventForm').submit();
 	});
 });
 
