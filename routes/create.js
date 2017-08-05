@@ -8,6 +8,7 @@ const router = new express.Router();
 /* GET create event page */
 router.route('/').get((req, res) => {
   res.render('create', {
+    title: 'Create Events',
     csrfToken: req.csrfToken()
   });
 });
