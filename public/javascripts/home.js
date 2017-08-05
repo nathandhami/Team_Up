@@ -13,6 +13,15 @@ $(document).ready(() => {
 		$('#locationName').val(event.locationName);
 		$('#locationAddress').val(event.locationAddress);
 	});
+
+
+	$('#editEventSaveBtn').click( (e) => {
+		console.log("submitted");
+	});
+
+	$('#eventDelBtn').click( (e) => {
+		console.log("deleted");
+	});
 });
 
 

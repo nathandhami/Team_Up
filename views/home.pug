@@ -33,7 +33,7 @@ aside.sidebarDisplayed
             i.fa.fa-bell
             |     If you want to change the location of the event, please delete this event and 
             |         then create a new event with your desired location.
-        form.form-horizontal(action="/edit", method="POST")
+        form.form-horizontal
           input(type='hidden', name='_csrf', value= csrfToken)
           .form-group
             label.col-md-4.control-label TeamUp Name:
@@ -65,12 +65,10 @@ aside.sidebarDisplayed
             label.col-md-4.control-label Address of Location:
             .col-md-7
               input#locationAddress.form-control(type='text', name='locationAddress', readonly)
-          .form-group
-            button#editSaveBtn.btn.btn-success.pull-right(type='submit') Save Changes
-            p#form-error.help-block.pull-left.text-danger.hide   The form is not valid.
       .modal-footer
         button.btn(data-dismiss='modal', aria-hidden='true') Cancel
-        button.btn.btn-danger.pull-left(href='#') Delete Event
+        button#editEventSaveBtn.btn.btn-success.pull-right(href='#') Save Changes
+        button#eventDelBtn.btn.btn-danger.pull-left(href='#') Delete Event
 
 script(src="/javascripts/home.js")
 script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js')
