@@ -123,10 +123,9 @@ $(document).ready(() => {
     let formattedMsg =
       '<li class="clearfix">'
       + '<span class="userImg pull-left">'
-      + '<img class="img-circle"'
+      + '<img class="thumb-img"'
       + ' src=' + '"' + img + '"'
-      + ' width="42"'
-      + ' height="42"/></span><span class="userMsgBody clearfix">'
+      + '/></span><span class="userMsgBody clearfix">'
       + '<div class="header">'
       + '<strong>' + name + '</strong>'
       + '<small class="pull-right text-muted timestamp-default">'
