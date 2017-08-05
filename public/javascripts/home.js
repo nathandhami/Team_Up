@@ -34,7 +34,7 @@ $(document).ready(() => {
           },
           timeout: 3000,
           success: function(response) {
-            if (response.status == '400') {
+            if (response.status == '403') {
               swal({
                   title: response.msg,
                   text: response.text,
@@ -43,7 +43,7 @@ $(document).ready(() => {
                   confirmButtonText: 'Okay',
                   closeOnConfirm: true,
               });
-            } 
+            }
             else {
               swal({
                   title: response.msg,

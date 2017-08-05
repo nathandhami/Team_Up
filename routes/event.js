@@ -125,13 +125,17 @@ router.route('/edit/:id')
         // Check if user is unauthorized to process
         if (isEventMember == false) {
           // Send unauthorized page (403 error)
-          res.send('<h1> Unauthorized. Status Code: 403 </h1>');
+          res.json({msg: 'Error!', 
+                      text: 'You have not authorized to perform this action', 
+                      status: 403, redirect: '/'});
         }
         else {
-          // Delete event
-          // Flash user successfully deleted event
+          let resText = event.teamupName + ' has been successfully deleted.'
+          event.remove();
 
-          res.redirect('/');
+          res.json({msg: 'Deleted!', 
+                      text: resText, 
+                      status: 204, redirect: '/'});
         }
       }
     });
