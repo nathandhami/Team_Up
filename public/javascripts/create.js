@@ -9,7 +9,6 @@ $(document).ready(function() {
     minDate: moment()
   });
   from_input.on("dp.change", function (e) {
-      console.log(e.date);
       to_input.data("DateTimePicker").minDate(e.date);
   });
   to_input.on("dp.change", function (e) {
