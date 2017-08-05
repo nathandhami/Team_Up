@@ -33,12 +33,13 @@ aside.sidebarDisplayed
             i.fa.fa-bell
             |     If you want to change the location of the event, please delete this event and 
             |         then create a new event with your desired location.
-        form.form-horizontal
+        form#updateEventForm.form-horizontal(role="form", data-toggle="validator")
           input(type='hidden', name='_csrf', value= csrfToken)
+          input(type='hidden', id='input_eventModal')
           .form-group
             label.col-md-4.control-label TeamUp Name:
             .col-md-7
-                input#teamupName.form-control(type='text', name='teamupName', placeholder='TeamUp', required='required', data-error='TeamUp Name is required.')
+                input#teamupName.form-control(type='text', name='teamupName', placeholder='TeamUp', required, data-error='TeamUp Name is required.')
           .form-group
             label.col-md-4.control-label From:
             .col-md-7
