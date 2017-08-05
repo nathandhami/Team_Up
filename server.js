@@ -2,6 +2,7 @@
 
 const path = require('path');
 const express = require('express');
+const favicon = require('serve-favicon');
 const helmet = require('helmet');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -29,6 +30,9 @@ const join = require('./routes/join');
 const serverConfig = express();
 const db = mongoose.connect(nconf.get('db:url'));
 // const dbConnection = mongoose.createConnection('mongodb://localhost/users');
+
+// favicon icon
+serverConfig.use(favicon(path.join(__dirname, 'public', 'assets', 'images', 'raster', 'ico', 'favicon.ico')));
 
 // Secure http headers configured
 serverConfig.use(helmet());
