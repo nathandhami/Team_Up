@@ -16,7 +16,77 @@ aside.sidebarDisplayed
           div#accordion.panel-group
             - for (let i = 0; i < userEvents.length; i++) {
                 +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to,
-                userEvents[i].sport, userEvents[i].maxPlayers, userEvents[i].locationName,
-                userEvents[i].locationAddress, userEvents[i].users.length, userEvents[i].url)
+                userEvents[i].sport, userEvents[i].maxPlayers, userEvents[i].locationName, userEvents[i].locationAddress,
+                userEvents[i].users.length,userEvents[i].createdBy.email, userEvents[i].urlChat, userEvents[i].urlEdit,
+                userEvents[i].urlLeave, userEvents[i].urlDelete, userEvents[i].aliasId, userEvents[i])
             - }
+
+#participantsModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel1', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h3#myModalLabel1 Participant List
+      .modal-body
+        ul#listMembers
+
+      .modal-footer
+        button.btn.pull-right(data-dismiss='modal', aria-hidden='true') Cancel
+
+#editEventModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h3#myModalLabel Edit Event
+      .modal-body
+        h5
+          .alert.alert-info.alert-dismissable
+            a.panel-close.close(data-dismiss='alert') ×
+            i.fa.fa-bell
+            |     If you want to change the location of the event, please delete this event and
+            |         then create a new event with your desired location.
+        form#updateEventForm.form-horizontal(role="form")
+          input(type='hidden', name='_csrf', value= csrfToken)
+          input(type='hidden', id='input_eventModal')
+          .form-group
+            label.col-md-4.control-label TeamUp Name:
+            .col-md-7
+                input#teamupName.form-control(type='text', name='teamupName', placeholder='TeamUp', required, data-error='TeamUp Name is required.')
+          .form-group
+            label.col-md-4.control-label From:
+            .col-md-7
+              .input-group.bootstrap-timepicker.timepicker
+                input#from.form-control(type='text', name='from', placeholder='MM/DD/YYYY HH:MM AM', required='required', data-error='Start Date is required.')
+                span.input-group-addon
+                  i.fa.fa-calendar
+          .form-group
+            label.col-md-4.control-label To:
+            .col-md-7
+              .input-group.bootstrap-timepicker.timepicker
+                input#to.form-control(type='text', name='to', placeholder='MM/DD/YYYY HH:MM AM')
+                span.input-group-addon
+                  i.fa.fa-calendar
+          .form-group
+            label.col-md-4.control-label Sport:
+            .col-md-7
+              input#sport.form-control(type='text', name='sport', placeholder='Sport', readonly)
+          .form-group
+            label.col-md-4.control-label Name of Location:
+            .col-md-7
+              input#locationName.form-control(type='text', name='locationName', readonly)
+          .form-group
+            label.col-md-4.control-label Address of Location:
+            .col-md-7
+              input#locationAddress.form-control(type='text', name='locationAddress', readonly)
+          .form-group
+            button#editEventSaveBtn.btn.btn-success.pull-right(href='#') Save Changes
+      .modal-footer
+        button.btn.pull-right(data-dismiss='modal', aria-hidden='true') Cancel
+        button#eventDelBtn.btn.btn-danger.pull-left(href='#') Delete Event
+
 script(src="/javascripts/home.js")
+script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js')
+script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js')
+script(type='text/javascript', src='/javascripts/create.js')
+link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css')

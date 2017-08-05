@@ -12,7 +12,7 @@ const EventSchema = new mongoose.Schema({
   locationCoordinates: [Number],
   createdBy: {type: mongoose.Schema.ObjectId, ref: 'User'},
   aliasId: {type: String, unique:true, default: shortid.generate},
-  users: [],
+  users: [{type: mongoose.Schema.ObjectId, ref: 'User'}],
 });
 
 EventSchema.virtual('roomId')
@@ -20,10 +20,25 @@ EventSchema.virtual('roomId')
     return 'room-' + this.aliasId;
   });
 
-
-EventSchema.virtual('url')
+EventSchema.virtual('urlChat')
   .get(function() {
     return '/event/chatroom/' + this.aliasId;
   });
+
+  EventSchema.virtual('urlEdit')
+  .get(function() {
+    return '/event/edit/' + this.aliasId;
+  });
+
+  EventSchema.virtual('urlLeave')
+  .get(function() {
+    return '/event/leave/' + this.aliasId;
+  });
+
+  EventSchema.virtual('urlDelete')
+  .get(function() {
+    return '/event/delete/' + this.aliasId;
+  });
+
 
 module.exports = mongoose.model('Event', EventSchema);

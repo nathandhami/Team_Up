@@ -10,7 +10,7 @@ const User = require('../models/User');
 /* GET join event page */
 router.route('/')
   .get((req, res) => {
-  	Event.find({users: {$ne: req.user._id.toString()}}, function(err, events) {
+  	Event.find({users: {$ne: req.user._id}}, function(err, events) {
       if (!err){
           res.render('join', {
             title: 'Join Events',
@@ -25,7 +25,6 @@ router.route('/')
   .post((req, res) => {
     const userId = req.user._id;
     const eventId = xssFilters.inHTMLData(req.body.eventAliasId);
-    console.log(eventId);
 
     User.findOne({
       _id: userId,
@@ -43,16 +42,15 @@ router.route('/')
           }
 
           if (event) {
-            let isJoined = event.users.filter(function(value){ return value == user._id;});
+            let isJoined = event.users.filter(function(value){ return value.toString() == user._id;});
               
             // add check for max number of players.
             if (isJoined.length > 0) {
-              console.log("You have already joined");
               res.json({msg: 'Error!', 
                       text: 'You have already joined this event', status: 400,
                     redirect: '/'});
             } else {
-              event.users.push(userId.toString());
+              event.users.push(userId);
 
               event.save((err) => {
                 if (err) throw err;
@@ -63,8 +61,6 @@ router.route('/')
                     status: 204,
                     redirect: '/'});
             }
-
-            console.log(event);
           }
         });
       }
