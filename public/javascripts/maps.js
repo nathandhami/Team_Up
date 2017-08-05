@@ -85,7 +85,6 @@ function callback(results, status) {
 
 // Create marker with details
 function createMarker(place) {
-  let location = place.geometry.location;
   let marker = new google.maps.Marker({
     position: place.geometry.location,
     map: map,
