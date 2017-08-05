@@ -118,7 +118,7 @@ router.route('/leave/:id')
           });
         }
         else {
-          event.users.pull(req.user._id.toString());
+          event.users.pull(req.user._id);
 
           event.save((err) => {
             if (err) throw err;
@@ -182,7 +182,7 @@ router.route('/delete/:id')
   });
 
 function validateEventMember(event, userId) {
-  let isJoined = event.users.filter(function (value) { return value == userId; });
+  let isJoined = event.users.filter(function (value) { return value.toString() == userId; });
   let retVal;
 
   // Check if user belongs to the event
