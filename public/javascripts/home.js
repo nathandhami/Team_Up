@@ -14,6 +14,9 @@ $(document).ready(() => {
 		$('#sport').val(event.sport);
 		$('#locationName').val(event.locationName);
 		$('#locationAddress').val(event.locationAddress);
+
+		$('#from').data("DateTimePicker").maxDate(moment(to_date));
+		$('#to').data("DateTimePicker").minDate(moment(from_date));
 	});
 
 
