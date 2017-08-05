@@ -12,6 +12,7 @@ const EventSchema = new mongoose.Schema({
   locationCoordinates: [Number],
   createdBy: {type: mongoose.Schema.ObjectId, ref: 'User'},
   aliasId: {type: String, unique:true, default: shortid.generate},
+  users: [],
 });
 
 EventSchema.virtual('roomId')

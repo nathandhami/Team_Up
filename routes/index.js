@@ -17,7 +17,7 @@ router.route('/')
       const Event = require('../models/Event');
 
       // Get user specific events
-      Event.find({ createdBy: req.user._id }, (err, events) => {
+      Event.find({ users: {$eq: req.user._id.toString()} }, (err, events) => {
 
         res.render('index', {
           title: 'Home',
