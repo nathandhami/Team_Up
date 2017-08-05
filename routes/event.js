@@ -25,7 +25,9 @@ router.route('/chatroom/:id')
         // Check if user is unauthorized to view page
         if (isEventMember == false) {
           // Send unauthorized page (403 error)
-          res.send('<h1> Unauthorized. Status Code: 403 </h1>');
+          res.status(404).render('notAuthorized', {
+            title: 'No Permission',
+          });
         }
         else {
           res.render('event', { csrfToken: req.csrfToken(), title: event.teamupName, event: event });
@@ -37,7 +39,7 @@ router.route('/chatroom/:id')
     return;
   });
 
-  /* Process Edit */
+/* Process Edit */
 router.route('/edit/:id')
   .post((req, res, next) => {
 
@@ -46,9 +48,11 @@ router.route('/edit/:id')
 
     Event.findOne({ 'aliasId': id }).exec(function (err, event) {
       if (err || event == null) {
-        res.json({msg: 'Error!', 
-              text: 'Not Found',
-              status: 404, redirect: '/notFound'});
+        res.json({
+          msg: 'Error!',
+          text: 'Not Found',
+          status: 404, redirect: '/notFound'
+        });
       }
       else {
         // Check if user is the owner of the event
@@ -57,9 +61,11 @@ router.route('/edit/:id')
         // Check if user is unauthorized to process
         if (isCreator == false) {
           // Send unauthorized page (403 error)
-          res.json({msg: 'Error!', 
-                  text: 'You have not authorized to perform this action', 
-                  status: 403, redirect: '/'});
+          res.json({
+            msg: 'Error!',
+            text: 'You have not authorized to perform this action',
+            status: 403, redirect: '/'
+          });
         }
         else {
           event.teamupName = xssFilters.inHTMLData(req.body.teamupName);
@@ -70,9 +76,11 @@ router.route('/edit/:id')
             if (err) throw err;
           });
 
-          res.json({msg: 'Event Updated!', 
-                  text: event.teamupName + ' has been successfully updated', 
-                  status: 204, redirect: '/'});
+          res.json({
+            msg: 'Event Updated!',
+            text: event.teamupName + ' has been successfully updated',
+            status: 204, redirect: '/'
+          });
         }
       }
     });
@@ -81,8 +89,8 @@ router.route('/edit/:id')
     return;
   });
 
-  /* Process Leave */
-  router.route('/leave/:id')
+/* Process Leave */
+router.route('/leave/:id')
   .post((req, res, next) => {
 
     const id = req.params.id;
@@ -90,9 +98,11 @@ router.route('/edit/:id')
 
     Event.findOne({ 'aliasId': id }).exec(function (err, event) {
       if (err || event == null) {
-        res.json({msg: 'Error!', 
-              text: 'Not Found',
-              status: 404, redirect: '/notFound'});
+        res.json({
+          msg: 'Error!',
+          text: 'Not Found',
+          status: 404, redirect: '/notFound'
+        });
       }
       else {
         // Check if user belongs to the event
@@ -101,9 +111,11 @@ router.route('/edit/:id')
         // Check if user is unauthorized to process
         if (isEventMember == false) {
           // Send unauthorized page (403 error)
-          res.json({msg: 'Error!', 
-                  text: 'You have not authorized to perform this action', 
-                  status: 403, redirect: '/'});
+          res.json({
+            msg: 'Error!',
+            text: 'You have not authorized to perform this action',
+            status: 403, redirect: '/'
+          });
         }
         else {
           event.users.pull(req.user._id.toString());
@@ -112,9 +124,11 @@ router.route('/edit/:id')
             if (err) throw err;
           });
 
-          res.json({msg: 'Updated!', 
-                  text: 'You have been removed from ' + event.teamupName, 
-                  status: 204, redirect: '/'});
+          res.json({
+            msg: 'Updated!',
+            text: 'You have been removed from ' + event.teamupName,
+            status: 204, redirect: '/'
+          });
         }
       }
     });
@@ -123,8 +137,8 @@ router.route('/edit/:id')
     return;
   });
 
-  /* Process delete */
-  router.route('/delete/:id')
+/* Process delete */
+router.route('/delete/:id')
   .post((req, res, next) => {
 
     const id = req.params.id;
@@ -132,9 +146,11 @@ router.route('/edit/:id')
 
     Event.findOne({ 'aliasId': id }).exec(function (err, event) {
       if (err || event == null) {
-        res.json({msg: 'Error!', 
-              text: 'Not Found',
-              status: 404, redirect: '/notFound'});
+        res.json({
+          msg: 'Error!',
+          text: 'Not Found',
+          status: 404, redirect: '/notFound'
+        });
       }
       else {
         // Check if user belongs to the event
@@ -143,17 +159,21 @@ router.route('/edit/:id')
         // Check if user is unauthorized to process
         if (isCreator == false) {
           // Send unauthorized page (403 error)
-          res.json({msg: 'Error!', 
-                      text: 'You have not authorized to perform this action', 
-                      status: 403, redirect: '/'});
+          res.json({
+            msg: 'Error!',
+            text: 'You have not authorized to perform this action',
+            status: 403, redirect: '/'
+          });
         }
         else {
           let resText = event.teamupName + ' has been successfully deleted.'
           event.remove();
 
-          res.json({msg: 'Deleted!', 
-                      text: resText, 
-                      status: 204, redirect: '/'});
+          res.json({
+            msg: 'Deleted!',
+            text: resText,
+            status: 204, redirect: '/'
+          });
         }
       }
     });
@@ -161,31 +181,31 @@ router.route('/edit/:id')
     return;
   });
 
-function validateEventMember(event, userId){
-  let isJoined = event.users.filter(function(value){ return value == userId;});
+function validateEventMember(event, userId) {
+  let isJoined = event.users.filter(function (value) { return value == userId; });
   let retVal;
 
   // Check if user belongs to the event
-  if (isJoined.length <= 0){
+  if (isJoined.length <= 0) {
     retVal = false;
   }
   else {
     retVal = true;
   }
-  return retVal; 
+  return retVal;
 }
 
-function validateEventCreator(event, userId){
+function validateEventCreator(event, userId) {
   let retVal;
 
   // Check if user is the creator of the event
-  if (event.createdBy.toString() != userId){
+  if (event.createdBy.toString() != userId) {
     retVal = false;
   }
   else {
     retVal = true;
   }
-  return retVal; 
+  return retVal;
 }
 
 module.exports = router;
