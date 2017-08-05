@@ -97,7 +97,6 @@ function loadMap() {
 
   let newMarker;
   for (let i = 0; i < locations.length; i++) {
-    console.log(locations[i]);
     let locationName = locations[i].locationName;
     let locationAddress = locations[i].locationAddress;
     let lat = locations[i].locationCoordinates[1];
@@ -118,8 +117,8 @@ function loadMap() {
       title: locationName
     });
     newMarker.category = category;
-    newMarker.setVisible(false);
-    (function (newMarker, locationName, locationAddress, content, infoWindow) {
+    newMarker.setVisible(true);
+    (function (newMarker, locationName, locationAddress, content, infoWindow, index) {
       google.maps.event.addListener(newMarker, 'click', function () {
         infoWindow.setContent(content);
         infoWindow.open(map, newMarker);
@@ -133,12 +132,12 @@ function loadMap() {
         eventLocation[1] = newMarker.getPosition().lat(); 
         let jsonGeo = JSON.stringify(eventLocation);
         $('#map-input').attr('value', jsonGeo);
+        $('.ac-event-panel').hide();
+        $('#mixin' + index).show();
       });
     })
-    (newMarker, locationName, locationAddress, content, infoWindow);
+    (newMarker, locationName, locationAddress, content, infoWindow, i);
     markers.push(newMarker);
-    console.log(markers[i]);
-    markers[i].setVisible(true);
   }
 
   // Listen for the event fired when the user selects a prediction and retrieve

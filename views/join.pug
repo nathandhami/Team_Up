@@ -14,10 +14,10 @@ block content
         .row
           .col-md-3-offset-3.col
             div#accordion.panel-group
-              input(type='hidden', id='input_events', value=userEvents)
               - for (let i = 0; i < userEvents.length; i++) {
-                +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to, userEvents[i].sport, userEvents[i].locationName, userEvents[i].locationAddress, userEvents[i].aliasId, userEvents[i].users.length)
-              - }       
+                +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to, userEvents[i].sport, userEvents[i].locationName, userEvents[i].locationAddress, userEvents[i].aliasId, userEvents[i].users.length, 'mixin' + i)
+              - }  
+              input(type='hidden', id='input_events', value=userEvents)     
         
   link(rel="stylesheet", href="/stylesheets/home.css")  
   link(rel="stylesheet", href="/stylesheets/join.css")
