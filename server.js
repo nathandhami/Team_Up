@@ -28,7 +28,10 @@ const join = require('./routes/join');
 
 // Server Config
 const serverConfig = express();
-const db = mongoose.connect(nconf.get('db:url'));
+mongoose.connect(nconf.get('db:url'));
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'mongodb connection error:'));
 // const dbConnection = mongoose.createConnection('mongodb://localhost/users');
 
 // favicon icon
