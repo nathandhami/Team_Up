@@ -10,7 +10,8 @@ mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locati
             span#status
           div#participants.col-md-2.text-right
             abbr(title="Participants")
-              <i class="fa fa-user"> #{count}/10  </i>
+              i.fa.fa-user
+                p= count + '/' + maxPlayers
     div.panel-collapse.collapse.in(id=collapseNum)
       .panel-body
         p= 'Sport: ' + sport
