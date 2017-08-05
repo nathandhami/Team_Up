@@ -1,4 +1,4 @@
-mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locationAddress, count, urlChat, urlEdit, urlLeave, urlDelete)
+mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locationAddress, count, creatorEmail, urlChat, urlEdit, urlLeave, urlDelete)
   .panel.panel-default
     .panel-heading.container-fluid
       .row
@@ -20,5 +20,7 @@ mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locati
         p= 'To: ' + to
         div
           a.btn.btn-default(role="button", href=urlChat) Join chat
-          a.btn.btn-default.pull-right(role="button", href='#') Leave
-          a.btn.btn-default.pull-right(role="button", href='#') Edit
+          if (creatorEmail != userData.email)
+            a.btn.btn-default.pull-right(role="button", href='#') Leave
+          else
+            a.btn.btn-default.pull-right(role="button", href='#') Edit
