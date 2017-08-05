@@ -1,13 +1,29 @@
+.container-fluid {
+  /* The image used */
+  background-image: url("/assets/images/raster/jpg/create-event.jpg");
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .page-header {
   text-align: center;
   padding: 15px;
-  background-color: #b71c1c;
+  background-color: #286090;
   color: #f5f5f5;
   font-weight: bold;
 }
 
 h2 {
+  color: #f5f5f5;
   font-weight: bold;
+}
+
+label {
+  color: #f5f5f5;
 }
 
 p#errorLocation {
@@ -33,6 +49,7 @@ p#errorLocation {
 }
 
 h3 {
+  color: #f5f5f5;
   text-align: center;
   padding: 10px;
 }
@@ -45,10 +62,6 @@ button.btn-primary {
   margin-bottom: 15px;
 }
 
-.links {
-  color: #039be5;
-}
-
-.bootstrap-timepicker.timepicker .glyphicon {
+.links, .bootstrap-timepicker.timepicker .glyphicon {
   color: #039be5;
 }

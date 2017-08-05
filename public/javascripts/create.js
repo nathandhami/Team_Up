@@ -38,7 +38,7 @@ $(document).ready(() => {
     if ($('#teamupName').val() && $('#from').val() && $('#to').val() && $('#sport').val() && $('#maxPlayers').val() && !$('#locationName').val()) {
       $('p#errorLocation').text('Please Select a Location using Google Maps! Thank you :)');
       $('html, body').animate({
-        scrollTop: $('#soccer').offset().top
+        scrollTop: 0
       }, 2000);
       $('#pac-input').focus();
       e.preventDefault();

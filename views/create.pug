@@ -5,33 +5,34 @@ block content
       .container-fluid
         .page-header
           h2
-            | What
-            em  Sport
+            em Where
             |  Would You Like To Play?
-          button.btn.btn-info#soccer
-            span
-              img(src='https://png.icons8.com/soccer-ball/color/24', title='Soccer Ball', width='24', height='24')
-              |  Soccer
-          button.btn.btn-info#basketball
-            span
-              img(src='https://png.icons8.com/basketball/color/24', title='Basketball', width='24', height='24')
-              |  Basketball
-          button.btn.btn-info#volleyball
-            span
-              img(src='https://png.icons8.com/volleyball/color/24', title='Volleyball', width='24', height='24')
-              |  Volleyball
-          button.btn.btn-info#baseball
-            span
-              img(src='https://png.icons8.com/baseball/color/24', title='Baseball', width='24', height='24')
-              |  Baseball
-        h2
-          em Where
-          |  Would You Like To Play?
-        p#errorLocation
+          p#errorLocation
         .container-fluid
           .row
             input#pac-input.controls.col-xs-5(type='text', placeholder='Enter a Location')
             #map
+            .page-header
+              h2
+                | What
+                em  Sport
+                |  Would You Like To Play?
+              button.btn.btn-info#soccer
+                span
+                  img(src='https://png.icons8.com/soccer-ball/color/24', title='Soccer Ball', width='24', height='24')
+                  |  Soccer
+              button.btn.btn-info#basketball
+                span
+                  img(src='https://png.icons8.com/basketball/color/24', title='Basketball', width='24', height='24')
+                  |  Basketball
+              button.btn.btn-info#volleyball
+                span
+                  img(src='https://png.icons8.com/volleyball/color/24', title='Volleyball', width='24', height='24')
+                  |  Volleyball
+              button.btn.btn-info#baseball
+                span
+                  img(src='https://png.icons8.com/baseball/color/24', title='Baseball', width='24', height='24')
+                  |  Baseball
             h3 Event Details
             #event-details.col-sm-10
               form.form-horizontal(action="/create", method="POST")
