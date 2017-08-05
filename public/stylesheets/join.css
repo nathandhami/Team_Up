@@ -30,3 +30,8 @@ h3 {
 #pac-input:focus {
   border-color: #4d90fe;
 }
+
+.show-all-events {
+  float: right;
+  margin-bottom: 1em;
+}
