@@ -56,7 +56,7 @@ $(document).ready(() => {
             
             },
             error: function(response) {
-              console.log(response);
+              window.location.href = response.redirect;
             },
         });
 	});

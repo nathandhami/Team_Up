@@ -45,9 +45,9 @@ router.route('/edit/:id')
 
     Event.findOne({ 'aliasId': id }).exec(function (err, event) {
       if (err || event == null) {
-        res.status(404).render('notFound', {
-          title: 'Page Not Found',
-        });
+        res.json({msg: 'Error!', 
+              text: 'Not Found',
+              status: 404, redirect: '/notFound'});
       }
       else {
         // Check if user belongs to the event
@@ -56,7 +56,9 @@ router.route('/edit/:id')
         // Check if user is unauthorized to process
         if (isEventMember == false) {
           // Send unauthorized page (403 error)
-          res.send('<h1> Unauthorized. Status Code: 403 </h1>');
+          res.json({msg: 'Error!', 
+                  text: 'You have not authorized to perform this action', 
+                  status: 403, redirect: '/'});
         }
         else {
           // extract form here & update event
@@ -79,9 +81,9 @@ router.route('/edit/:id')
 
     Event.findOne({ 'aliasId': id }).exec(function (err, event) {
       if (err || event == null) {
-        res.status(404).render('notFound', {
-          title: 'Page Not Found',
-        });
+        res.json({msg: 'Error!', 
+              text: 'Not Found',
+              status: 404, redirect: '/notFound'});
       }
       else {
         // Check if user belongs to the event
@@ -90,7 +92,9 @@ router.route('/edit/:id')
         // Check if user is unauthorized to process
         if (isEventMember == false) {
           // Send unauthorized page (403 error)
-          res.send('<h1> Unauthorized. Status Code: 403 </h1>');
+          res.json({msg: 'Error!', 
+                  text: 'You have not authorized to perform this action', 
+                  status: 403, redirect: '/'});
         }
         else {
           // ADD LEAVE CODE here
