@@ -51,11 +51,11 @@ router.route('/edit/:id')
               status: 404, redirect: '/notFound'});
       }
       else {
-        // Check if user belongs to the event
-        let isEventMember = validateEventMember(event, userId);
+        // Check if user is the owner of the event
+        let isCreator = validateEventCreator(event, userId);
 
         // Check if user is unauthorized to process
-        if (isEventMember == false) {
+        if (isCreator == false) {
           // Send unauthorized page (403 error)
           res.json({msg: 'Error!', 
                   text: 'You have not authorized to perform this action', 
@@ -138,10 +138,10 @@ router.route('/edit/:id')
       }
       else {
         // Check if user belongs to the event
-        let isEventMember = validateEventMember(event, userId);
+        let isCreator = validateEventCreator(event, userId);
 
         // Check if user is unauthorized to process
-        if (isEventMember == false) {
+        if (isCreator == false) {
           // Send unauthorized page (403 error)
           res.json({msg: 'Error!', 
                       text: 'You have not authorized to perform this action', 
@@ -176,7 +176,16 @@ function validateEventMember(event, userId){
 }
 
 function validateEventCreator(event, userId){
+  let retVal;
 
+  // Check if user is the creator of the event
+  if (event.createdBy.toString() != userId){
+    retVal = false;
+  }
+  else {
+    retVal = true;
+  }
+  return retVal; 
 }
 
 module.exports = router;
