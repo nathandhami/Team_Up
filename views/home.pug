@@ -38,7 +38,7 @@ aside.sidebarDisplayed
           .form-group
             label.col-md-4.control-label TeamUp Name:
             .col-md-7
-                input#teamupName.form-control(type='text', name='teamupName', placeholder='TeamUp', required='required', data-error='TeamUp Name is required.' value="hello")
+                input#teamupName.form-control(type='text', name='teamupName', placeholder='TeamUp', required='required', data-error='TeamUp Name is required.')
           .form-group
             label.col-md-4.control-label From:
             .col-md-7
@@ -56,15 +56,15 @@ aside.sidebarDisplayed
           .form-group
             label.col-md-4.control-label Sport:
             .col-md-7
-              input#sport.form-control(type='text', name='sport', placeholder='Sport', required='required', data-error='Sport is required.')
+              input#sport.form-control(type='text', name='sport', placeholder='Sport', readonly)
           .form-group
             label.col-md-4.control-label Name of Location:
             .col-md-7
-              input#locationName.form-control(type='text', name='locationName', placeholder='Name of Location', required='required', data-error='Location Address is required.')
+              input#locationName.form-control(type='text', name='locationName', readonly)
           .form-group
             label.col-md-4.control-label Address of Location:
             .col-md-7
-              input#locationAddress.form-control(type='text', name='locationAddress', placeholder='Address of Location', required='required', data-error='Location Name is required.')
+              input#locationAddress.form-control(type='text', name='locationAddress', readonly)
           .form-group
             button#editSaveBtn.btn.btn-success.pull-right(type='submit') Save Changes
             p#form-error.help-block.pull-left.text-danger.hide   The form is not valid.
@@ -73,3 +73,7 @@ aside.sidebarDisplayed
         button.btn.btn-danger.pull-left(href='#') Delete Event
 
 script(src="/javascripts/home.js")
+script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js')
+script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js')
+script(type='text/javascript', src='/javascripts/create.js')
+link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css')
