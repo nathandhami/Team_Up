@@ -87,7 +87,6 @@ $(document).ready(() => {
             to: "Please select date and time",
         },
         submitHandler: function(form) {
-        	console.log("hi");
         	let event = $('#input_eventModal').val();
 			event = JSON.parse(event);
           $.ajax({
@@ -131,7 +130,6 @@ $(document).ready(() => {
     });
 
 	$('#editEventSaveBtn').click( (e) => {
-		console.log("hello");
 		$('updateEventForm').submit();
 	});
 });
