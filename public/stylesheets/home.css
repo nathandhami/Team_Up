@@ -45,8 +45,8 @@
 .thumb-img{
    object-fit: cover;
    overflow: hidden;
-   width: 12%;
-   height: auto;
+   width: 16%;
+   height: 60px;
    border-radius: 10%;
 }
 
