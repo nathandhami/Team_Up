@@ -11,7 +11,7 @@ module.exports = (serverConfig) => {
   serverConfig.use((req, res, next) => {
     res.locals.isAuth = req.isAuthenticated();
     if (_.has(req, 'user')) {
-      const defaultImage = "../../assets/images/missing.png";
+      const defaultImage = "/assets/images/missing.png";
       const userImage = req.user.image ? req.user.image : defaultImage;
       const userStatus = req.user.status ? req.user.status : "Available";
       res.locals.userData = {

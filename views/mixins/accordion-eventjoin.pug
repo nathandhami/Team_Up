@@ -1,5 +1,5 @@
-mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locationAddress, aliasId, count)
-  .panel.panel-default.ac-event-panel
+mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locationAddress, aliasId, count, mixinId)
+  .panel.panel-default.ac-event-panel(id = mixinId)
     .panel-heading.container-fluid
       .row
         h5.panel-title

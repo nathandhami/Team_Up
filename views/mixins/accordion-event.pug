@@ -18,9 +18,10 @@ mixin event-panel(collapseNum, teamupName, from, to, sport, maxPlayers, location
         p= 'Location: ' + locationName
         p= 'Address: '  + locationAddress
         p= 'From: ' + from
-        p= 'To: ' + to
+        if (to)
+          p= 'To: ' + to
         div
-          a.btn.btn-default(role="button", href=urlChat) Join chat
+          a.btn.btn-primary(role="button", href=urlChat) Join chat
           a.btn.btn-default.participantsBtn(role="button", href="#", data-toggle='modal', data-target='#participantsModal') Who's going?
             input(type='hidden', value=event)
           if (creatorEmail != userData.email)
