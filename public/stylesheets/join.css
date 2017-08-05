@@ -35,3 +35,8 @@ h3 {
   float: right;
   margin-bottom: 1em;
 }
+
+.highlight {
+  background: #e9fcfb;
+  border: 1px solid lightblue;
+}

@@ -45,7 +45,11 @@ $(document).ready(() => {
   });
 
   $('#showAllEventsBtn').click( (e) => {
+      $('.ac-event-panel').removeClass("highlight");
       $('.ac-event-panel').show();
+      $('html,body').animate({
+        scrollTop: $("#showAllEventsBtn").offset().top},
+        'slow');
   });
 
 });
@@ -136,8 +140,11 @@ function loadMap() {
         eventLocation[1] = newMarker.getPosition().lat(); 
         let jsonGeo = JSON.stringify(eventLocation);
         $('#map-input').attr('value', jsonGeo);
+
+        $('.ac-event-panel').removeClass("highlight");
         $('.ac-event-panel').hide();
         $('#mixin' + index).show();
+        $('#mixin' + index).addClass("highlight");
       });
     })
     (newMarker, locationName, locationAddress, content, infoWindow, i);
