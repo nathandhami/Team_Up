@@ -24,7 +24,7 @@ function loadMap() {
   let eventMarker;
   let longitude = localEventData.loc[0];
   let latitude = localEventData.loc[1];
-  let content = localEventData.locationName + "<br>" + localEventData.locationAddr  +
+  let content = localEventData.locationName + "<br>" + localEventData.locationAddr +
     "<br><a class='directions' target='_blank' href=https://www.google.com/maps/dir//"
     + latitude + "," + longitude + ">Get Directions</a>";
   eventMarker = new google.maps.Marker({
