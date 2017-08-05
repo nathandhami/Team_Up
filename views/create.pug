@@ -38,37 +38,37 @@ block content
                 input(type='hidden', name='_csrf', value= csrfToken)
                 input#map-input(type='hidden', name='loc', value="")
                 .form-group
-                  label.col-md-4.control-label TeamUp Name:
+                  label.col-md-4.control-label * TeamUp Name:
                   .col-md-7
                     input#teamupName.form-control(type='text', name='teamupName', placeholder='TeamUp', required='required', data-error='TeamUp Name is required.')
                 .form-group
-                  label.col-md-4.control-label From:
+                  label.col-md-4.control-label * From:
                   .col-md-7
                     .input-group.bootstrap-timepicker.timepicker
                       input#from.form-control(type='text', name='from', placeholder='MM/DD/YYYY HH:MM AM', required='required', data-error='Start Date is required.')
                       span.input-group-addon
                         i.fa.fa-calendar
                 .form-group
-                  label.col-md-4.control-label To:
+                  label.col-md-4.control-label * To:
                   .col-md-7
                     .input-group.bootstrap-timepicker.timepicker
-                      input#to.form-control(type='text', name='to', placeholder='MM/DD/YYYY HH:MM AM')
+                      input#to.form-control(type='text', name='to', placeholder='MM/DD/YYYY HH:MM AM', required='required', data-error='End Date is required.')
                       span.input-group-addon
                         i.fa.fa-calendar
                 .form-group
-                  label.col-md-4.control-label Sport:
+                  label.col-md-4.control-label * Sport:
                   .col-md-7
                     input#sport.form-control(type='text', name='sport', placeholder='Sport', required='required', data-error='Sport is required.')
                 .form-group
-                  label.col-md-4.control-label Maximum Number of Players:
+                  label.col-md-4.control-label * Maximum Number of Players:
                   .col-md-7
                     input#maxPlayers.form-control(type='number', name='maxPlayers', placeholder='22', required='required', data-error='Max Number of Players is required.')
                 .form-group
-                  label.col-md-4.control-label Name of Location:
+                  label.col-md-4.control-label * Name of Location:
                   .col-md-7
                     input#locationName.form-control(type='text', name='locationName', placeholder='Name of Location', readonly='', data-error='Location Name is required.')
                 .form-group
-                  label.col-md-4.control-label Address of Location:
+                  label.col-md-4.control-label * Address of Location:
                   .col-md-7
                     input#locationAddress.form-control(type='text', name='locationAddress', placeholder='Address of Location', readonly='', data-error='Location Address is required.')
                 .form-group
