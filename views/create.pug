@@ -21,6 +21,8 @@ block content
             span
               img(src='https://png.icons8.com/baseball/color/24', title='Baseball', width='24', height='24')
               |  Baseball
+        h2 Where Would Like To Play?
+        p#errorLocation
         .container-fluid
           .row
             input#pac-input.controls.col-xs-5(type='text', placeholder='Enter a Location')
@@ -59,15 +61,15 @@ block content
                 .form-group
                   label.col-md-4.control-label Name of Location:
                   .col-md-7
-                    input#locationName.form-control(type='text', name='locationName', placeholder='Name of Location', readonly='', required='required', data-error='Location Address is required.')
+                    input#locationName.form-control(type='text', name='locationName', placeholder='Name of Location', readonly='', required='required', data-error='Location Name is required.')
                 .form-group
                   label.col-md-4.control-label Address of Location:
                   .col-md-7
-                    input#locationAddress.form-control(type='text', name='locationAddress', placeholder='Address of Location', readonly='', required='required', data-error='Location Name is required.')
+                    input#locationAddress.form-control(type='text', name='locationAddress', placeholder='Address of Location', readonly='', data-error='Location Address is required.')
                 .form-group
                   label.col-md-4.control-label
                   .col-md-7
-                    button.btn.btn-primary.btn-block.hvr-grow(type='submit') Create Event
+                    button#submit.btn.btn-primary.btn-block.hvr-grow(type='submit') Create Event
 
   script(type='text/javascript', src='/javascripts/maps.js')
   script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDZEYsZMRKwG2VO-RE3zdDA_fw5HUORfE0&libraries=places&callback=loadMap', async='', defer='')

@@ -10,6 +10,10 @@ h2 {
   font-weight: bold;
 }
 
+p#errorLocation {
+  color: #f44336;
+}
+
 #pac-input {
   background-color: #fff;
   font-family: Roboto;
