@@ -20,6 +20,8 @@ mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locati
         p= 'To: ' + to
         div
           a.btn.btn-default(role="button", href=urlChat) Join chat
+          a.btn.btn-default.participantsBtn(role="button", href="#", data-toggle='modal', data-target='#participantsModal') Who's going?
+            input(type='hidden', value=event)
           if (creatorEmail != userData.email)
             a.btn.btn-default.pull-right.leaveEventBtn(role="button", href='#') Leave
               input(type='hidden', value=aliasId)

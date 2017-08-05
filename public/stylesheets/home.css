@@ -11,6 +11,11 @@
   border-bottom: none;
 }
 
+#listMembers .userList {
+  list-style-type: none;
+  margin: 20px 0;
+}
+
 @media (max-width: 980px) {
   #participants {
     text-align:left;

@@ -20,6 +20,23 @@ $(document).ready(() => {
 		$('#to').data("DateTimePicker").minDate(moment(from_date));
 	});
 
+	$('.participantsBtn').click( (e) => {
+		e.preventDefault();
+		let event = $(e.target).children('input').val();
+ 
+		event = JSON.parse(event);
+		
+		let parentNode = $('#listMembers');
+		$('.userList').remove();
+
+		for(let i = 0; i < event.users.length; i++){
+			parentNode.append('<li class="userList"> ' + event.users[i].email + "</li>");
+		}
+
+		 
+	});
+
+
 
 	$('#eventDelBtn').click( (e) => {
 		swal({

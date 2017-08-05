@@ -20,6 +20,20 @@ aside.sidebarDisplayed
                 userEvents[i].urlEdit, userEvents[i].urlLeave, userEvents[i].urlDelete, userEvents[i].aliasId, userEvents[i])
             - }
 
+
+
+#participantsModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel1', aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+        h3#myModalLabel1 Participant List
+      .modal-body
+        ul#listMembers
+        
+      .modal-footer
+        button.btn.pull-right(data-dismiss='modal', aria-hidden='true') Cancel
+
 #editEventModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
   .modal-dialog
     .modal-content
