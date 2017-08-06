@@ -7,6 +7,43 @@ include ./mixins/accordion-event.pug
 aside.sidebarDisplayed
   //- Accordion display of events
   #page-content-wrapper
+    .container
+      #myCarousel.carousel.slide(data-ride='carousel')
+        // Indicators
+        ol.carousel-indicators
+          li.active(data-target='#myCarousel', data-slide-to='0')
+          li(data-target='#myCarousel', data-slide-to='1')
+          li(data-target='#myCarousel', data-slide-to='2')
+          li(data-target='#myCarousel', data-slide-to='3')
+        // Wrapper for slides
+        .carousel-inner.carousel-items
+          .item.active
+            img(src='images/soccer.jpg')
+            <div class="carousel-caption">
+              <h4>Enjoy the game!</h4>
+            </div>
+          .item
+            img(src='images/volleyball.jpg')
+            <div class="carousel-caption">
+              <h4>Make new friends</h4>
+            </div>
+          .item
+            img(src='images/basketball3.jpg')
+            <div class="carousel-caption">
+              <h4>Be the best!</h4>
+            </div>
+          .item
+            img(src='images/baseball.jpg')
+            <div class="carousel-caption">
+              <h4>Play wherever you like</h4>
+            </div>
+        // Left and right controls
+        a.left.carousel-control(href='#myCarousel', data-slide='prev')
+          span.glyphicon.glyphicon-chevron-left
+          span.sr-only Previous
+        a.right.carousel-control(href='#myCarousel', data-slide='next')
+          span.glyphicon.glyphicon-chevron-right
+          span.sr-only Next
     .container-fluid
       .page-header
         h2 My Events
