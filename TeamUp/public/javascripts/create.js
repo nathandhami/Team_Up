@@ -2,15 +2,19 @@ $(document).ready(() => {
   let sportElement = $('#sport');
   $('#soccer').on('click', () => {
     sportElement.val('Soccer');
+    sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
   });
   $('#basketball').on('click', () => {
     sportElement.val('Basketball');
+    sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
   });
   $('#volleyball').on('click', () => {
     sportElement.val('Volleyball');
+    sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
   });
   $('#baseball').on('click', () => {
     sportElement.val('Baseball');
+    sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
   });
   let from_input = $('#from');
   let to_input = $('#to');
@@ -32,6 +36,8 @@ $(document).ready(() => {
     let n = maxPlayers.val();
     if (!($.isNumeric(n) && (n > 0))) {
       maxPlayers.val(1);
+    } else if ($.isNumeric(n) && (n > 40)) {
+      maxPlayers.val(40);
     }
   });
   $('#submit').on('click', (e) => {

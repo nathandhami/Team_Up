@@ -72,6 +72,14 @@ function loadMap() {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
+
+  // Find parks around the location
+  service = new google.maps.places.PlacesService(map);
+  service.nearbySearch({
+    location: currentLocation,
+    radius: 1500,
+    types: ['park']
+  }, callback);
 }
 
 // For each location, create a marker
@@ -101,13 +109,22 @@ function createMarker(place) {
       eventLocation[1] = marker.getPosition().lat();
       let jsonGeo = JSON.stringify(eventLocation);
       $('#map-input').attr('value', jsonGeo);
-      infoWindow.setContent('<strong>' + place.name + '</strong><br />' + details.formatted_address +
-        '<br /><a class="links" target="_blank" href=' + details.website + '>' + details.website +
-        '</a><br /><a class="links" target="_blank" href=https://www.google.com/maps/dir//'
-        + eventLocation[1] + ',' + eventLocation[0] + '>Get Directions</a>');
+      if (details.website) {
+        infoWindow.setContent('<strong>' + place.name + '</strong><br />' + details.formatted_address +
+          '<br /><a class="links" target="_blank" href=' + details.website + '>' + details.website +
+          '</a><br /><a class="links" target="_blank" href=https://www.google.com/maps/dir//'
+          + eventLocation[1] + ',' + eventLocation[0] + '>Get Directions</a>');
+      } else {
+        infoWindow.setContent('<strong>' + place.name + '</strong><br />' + details.formatted_address +
+          '<br /><a class="links" target="_blank" href=https://www.google.com/maps/dir//'
+          + eventLocation[1] + ',' + eventLocation[0] + '>Get Directions</a>');
+      }
       infoWindow.open(map, this);
-      $("#locationName").val(place.name);
-      $("#locationAddress").val(details.formatted_address);
+      $('#locationName').val(place.name);
+      $('#locationAddress').val(details.formatted_address);
+      $('html, body').animate({
+        scrollTop: $('#soccer').offset().top
+      }, 2000);
     });
   })
 }
