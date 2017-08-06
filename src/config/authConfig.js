@@ -11,7 +11,8 @@ module.exports = (serverConfig) => {
   serverConfig.use((req, res, next) => {
     res.locals.isAuth = req.isAuthenticated();
     if (_.has(req, 'user')) {
-        const userStatus = req.user.status ? req.user.status : "Available";
+      const userStatus = req.user.status ? req.user.status : "Available";
+      req.user.displayName = req.user.firstname + ' ' + req.user.lastname;
       res.locals.userData = {
         name: _.startCase(req.user.displayName),
         email: req.user.email,
