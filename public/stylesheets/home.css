@@ -14,8 +14,12 @@
   border-bottom: none;
 }
 
-#accordion .btn-primary, .btn-default{
+#accordion .btn-primary{
   color: white;
+ }
+
+ #accordion .panel-body{
+  background-color: #F6F6F6;
  }
 
 .panel > .panel-heading {
