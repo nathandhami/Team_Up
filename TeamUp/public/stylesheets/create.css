@@ -73,3 +73,7 @@ button.btn-primary {
 .panelEventLabel{
   width: auto;
 }
+
+.sport-clicked {
+  background-color: dodgerblue;
+}
