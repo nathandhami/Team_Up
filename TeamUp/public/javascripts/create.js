@@ -1,18 +1,26 @@
 $(document).ready(() => {
   let sportElement = $('#sport');
   $('#soccer').on('click', () => {
+    $('.sport-clicked').removeClass('sport-clicked');
+    $('#soccer').addClass('sport-clicked');
     sportElement.val('Soccer');
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
   });
   $('#basketball').on('click', () => {
+    $('.sport-clicked').removeClass('sport-clicked');
+    $('#basketball').addClass('sport-clicked');
     sportElement.val('Basketball');
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
   });
   $('#volleyball').on('click', () => {
+    $('.sport-clicked').removeClass('sport-clicked');
+    $('#volleyball').addClass('sport-clicked');
     sportElement.val('Volleyball');
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
   });
   $('#baseball').on('click', () => {
+    $('.sport-clicked').removeClass('sport-clicked');
+    $('#baseball').addClass('sport-clicked');
     sportElement.val('Baseball');
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
   });
