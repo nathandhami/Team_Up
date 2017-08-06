@@ -14,6 +14,10 @@
   border-bottom: none;
 }
 
+#accordion .btn-primary, .btn-default{
+  color: white;
+ }
+
 .panel > .panel-heading {
     background-color: #263238;
      color: white;

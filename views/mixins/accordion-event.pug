@@ -13,19 +13,19 @@ mixin event-panel(collapseNum, teamupName, from, to, sport, locationName, locati
               <i class="fa fa-user"> #{count}/10  </i>
     div.panel-collapse.collapse.in(id=collapseNum)
       .panel-body
-        p= 'Sport: ' + sport
-        p= 'Location: ' + locationName
-        p= 'Address: '  + locationAddress
-        p= 'From: ' + from
+        p <label>Sport:</label> #{sport}
+        p <label>Location:</label> #{locationName}
+        p <label>Address:</label> #{locationAddress}
+        p  <label>From:</label> #{from}
         if (to)
-          p= 'To: ' + to
+          p <label>To:</label> #{to}
         div
           a.btn.btn-primary(role="button", href=urlChat) Join chat
-          a.btn.btn-default.participantsBtn(role="button", href="#", data-toggle='modal', data-target='#participantsModal') Who's going?
+          a.btn.btn-primary.participantsBtn(role="button", href="#", data-toggle='modal', data-target='#participantsModal') Who's going?
             input(type='hidden', value=event)
           if (creatorEmail != userData.email)
-            a.btn.btn-default.pull-right.leaveEventBtn(role="button", href='#') Leave
+            a.btn.btn-primary.pull-right.leaveEventBtn(role="button", href='#') Leave
               input(type='hidden', value=aliasId)
           else
-            a.btn.btn-default.pull-right.editEventBtn(role="button", href='#', data-toggle='modal', data-target='#editEventModal') Edit
+            a.btn.btn-primary.pull-right.editEventBtn(role="button", href='#', data-toggle='modal', data-target='#editEventModal') Edit
               input(type='hidden', value=event)

@@ -11,6 +11,11 @@ aside.sidebarDisplayed
       .page-header
         h2 My Events
     .container-fluid.home_container
+      if(userEvents.length == 0)
+        .jumbotron
+          h1 Welcome #{userData.firstname}!
+          p <i class="fa fa-arrow-left fa-2x"></i> &nbsp Join a sports event or create a new one using the side navigation panel
+
       row
         .col-md-3-offset-3.col
           div#accordion.panel-group
