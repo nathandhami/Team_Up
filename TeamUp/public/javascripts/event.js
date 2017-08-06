@@ -17,7 +17,6 @@ $(document).ready(() => {
     let status = $(e.target).text();
 
     localUserData.status = status;
-    // console.log(status);
 
     // Status Updating Logic
     socket.emit('userChangedStatus', localUserData);
@@ -33,7 +32,6 @@ $(document).ready(() => {
   // This was recieved by all chatrooms and will only affect the user 
   // that changed it (through userId)
   socket.on('updateStatusBroadcast', (user) => {
-
     if (localUserData.userId == user.userId) {
       let statusTitle = $('.profile-user-status > a');
       statusTitle.text(' [ Status: ' + user.status + ' ]');
@@ -41,8 +39,7 @@ $(document).ready(() => {
     }
     
       $('#event-participants').find('span').each(function( index ) {
-        var text = $(this).data('userId');
-        // console.log (text);
+        var text = $(this).data('userid');
        if (text == user.userId){
          $(this).text(' (' + user.status + ')');
        }
@@ -59,7 +56,7 @@ $(document).ready(() => {
 
     for (let i = 0; i < data.length; i++) {
       let content = $('<li class="users user' + i + '">' + data[i].name + ' ' 
-                        + '<span data-userId="' + data[i].userId + '" class="statuses status' + i + '">'
+                        + '<span data-userid="' + data[i].userId + '" class="statuses status' + i + '">'
                         + '(' + data[i].status + ')' + '</span></li>');
       eventParticipants.append(content);
     }
@@ -87,7 +84,6 @@ $(document).ready(() => {
       date: Date.now(),
     };
 
-    console.log(data);
     // Send data to server socket
     socket.emit('chat message', data);
 
