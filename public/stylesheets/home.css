@@ -1,3 +1,11 @@
+.page-header {
+  text-align: center;
+}
+
+#myCarousel{
+  z-index: 0;
+}
+
 #accordion a { 
   color: black;
 }
