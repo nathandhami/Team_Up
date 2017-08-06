@@ -17,11 +17,13 @@ block content
           .col-md-3-offset-3.col
             div#accordion.panel-group
               - for (let i = 0; i < userEvents.length; i++) {
-                +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to, userEvents[i].sport, userEvents[i].locationName, userEvents[i].locationAddress, userEvents[i].aliasId, userEvents[i].users.length, 'mixin' + i)
-              - }  
-              input(type='hidden', id='input_events', value=userEvents)     
-        
-  link(rel="stylesheet", href="/stylesheets/home.css")  
+                +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to,
+                userEvents[i].sport, userEvents[i].maxPlayers, userEvents[i].locationName,
+                userEvents[i].locationAddress, userEvents[i].aliasId, userEvents[i].users.length, 'mixin' + i)
+              - }
+              input(type='hidden', id='input_events', value=userEvents)
+
+  link(rel="stylesheet", href="/stylesheets/home.css")
   link(rel="stylesheet", href="/stylesheets/join.css")
   script(type='text/javascript', src='/javascripts/join.js')
   script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDZEYsZMRKwG2VO-RE3zdDA_fw5HUORfE0&libraries=places&callback=loadMap', async='', defer='')
