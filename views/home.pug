@@ -46,7 +46,7 @@ aside.sidebarDisplayed
           span.sr-only Next
     .container-fluid
       .page-header
-        h2 My Events
+        h2.header My Events
     .container-fluid.home_container
       if(userEvents.length == 0)
         .jumbotron
@@ -58,11 +58,10 @@ aside.sidebarDisplayed
           div#accordion.panel-group
             - for (let i = 0; i < userEvents.length; i++) {
                 +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to,
-                userEvents[i].sport, userEvents[i].locationName, userEvents[i].locationAddress, userEvents[i].users.length, userEvents[i].createdBy.email, userEvents[i].urlChat,
-                userEvents[i].urlEdit, userEvents[i].urlLeave, userEvents[i].urlDelete, userEvents[i].aliasId, userEvents[i])
+                userEvents[i].sport, userEvents[i].maxPlayers, userEvents[i].locationName, userEvents[i].locationAddress,
+                userEvents[i].users.length, userEvents[i].createdBy.email, userEvents[i].urlChat, userEvents[i].urlEdit,
+                userEvents[i].urlLeave, userEvents[i].urlDelete, userEvents[i].aliasId, userEvents[i])
             - }
-
-
 
 #participantsModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel1', aria-hidden='true')
   .modal-dialog
@@ -72,7 +71,7 @@ aside.sidebarDisplayed
         h3#myModalLabel1 Participant List
       .modal-body
         ul#listMembers
-        
+
       .modal-footer
         button.btn.pull-right(data-dismiss='modal', aria-hidden='true') Cancel
 
@@ -87,7 +86,7 @@ aside.sidebarDisplayed
           .alert.alert-info.alert-dismissable
             a.panel-close.close(data-dismiss='alert') ×
             i.fa.fa-bell
-            |     If you want to change the location of the event, please delete this event and 
+            |     If you want to change the location of the event, please delete this event and
             |         then create a new event with your desired location.
         form#updateEventForm.form-horizontal(role="form")
           input(type='hidden', name='_csrf', value= csrfToken)
