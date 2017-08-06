@@ -96,6 +96,7 @@ router.route('/register')
             lastname: lastName,
             email: email,
             password: password,
+            image: '/assets/images/missing.png',
             status: "Available",
           });
 
