@@ -61,9 +61,16 @@ function loadMap() {
         lng: position.coords.longitude
       };
       currentLocation = pos;
+      var im = 'http://i.stack.imgur.com/orZ4x.png';
+      var userMarker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            icon: im
+        });
       infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
+      infoWindow.setContent('You are here.');
       infoWindow.open(map);
+      setTimeout(function(){infoWindow.close();}, '3000');
       map.setCenter(pos);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
