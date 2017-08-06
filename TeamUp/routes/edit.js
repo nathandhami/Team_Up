@@ -75,10 +75,11 @@ router.route('/uploadPic')
         }
 
         if (user) {
+          let randomNum = Math.floor(Math.random() * 50000);
           let ImageData = fs.readFileSync(req.file.path);
           let pubFolder = 'public/';
-          let destFile = '/uploads/' + user.firstname + '_'
-                        + user.lastname + path.extname(req.file.originalname);
+          let destFile = '/uploads/' + user._id + 
+                        path.extname(req.file.originalname) + randomNum;
           let dest = pubFolder + destFile;
 
           fs.writeFile(dest, ImageData, 'binary',
