@@ -103,7 +103,8 @@ function createMarker(place) {
   let marker = new google.maps.Marker({
     position: place.geometry.location,
     map: map,
-    title: place.name
+    title: place.name,
+    animation: google.maps.Animation.DROP
   });
   let request = { reference: place.reference };
   service.getDetails(request, function(details, status) {
