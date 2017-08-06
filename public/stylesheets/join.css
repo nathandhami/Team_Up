@@ -1,6 +1,6 @@
-#page-content-wrapper {
+body {
   /* The image used */
-  background-image: url("https://pixabay.com/get/eb31b20f2ef1013ed1584d05fb0938c9bd22ffd41cb1134195f4c17baf/san-siro-2430650_1280.jpg");
+  background-image: url("/assets/images/raster/jpg/join-event.jpg");
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;

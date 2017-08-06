@@ -1,12 +1,32 @@
-#accordion a { 
+body {
+  /* The image used */
+  background-image: url("/assets/images/raster/jpg/home-page.jpg");
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h2.header {
+  color: #f5f5f5;
+  font-weight: bold;
+}
+
+.jumbotron, #accordion {
+  opacity: 0.9;
+}
+
+#accordion a {
   color: black;
 }
 
-#accordion a :hover { 
+#accordion a :hover {
   color: #CDDC39;
 }
 
-#accordion a:link { 
+#accordion a:link {
   text-decoration: none;
 }
 
@@ -31,7 +51,7 @@
     color: white;
     font-weight: bold;
 }
-  
+
 .participantsBtn {
   margin-left: 5px;
 }
