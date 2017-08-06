@@ -49,6 +49,11 @@ router.route('/')
               res.json({msg: 'Error!', 
                       text: 'You have already joined this event', status: 400,
                     redirect: '/'});
+            } else if (event.users.length >= event.maxPlayers) {
+              res.json({msg: 'Error!', 
+                      text: 'Sorry! The maximum player count has been reached.',
+                      status: 400,
+                    redirect: '/'});
             } else {
               event.users.push(userId);
 
