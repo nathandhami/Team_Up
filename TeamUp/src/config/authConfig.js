@@ -23,8 +23,10 @@ module.exports = (serverConfig) => {
         facebookId: req.user.facebook,
         twitterId: req.user.twitter,
         googleId: req.user.google,
+        userID: req.user.firstname+'_' + req.user.lastname + req.user.identification,
       };
     }
+
     next();
   });
 

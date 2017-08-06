@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const autoIncrement = require('mongoose-auto-increment');
+
+const db = mongoose.connection;
+autoIncrement.initialize(db);
 
 const UserSchema = new mongoose.Schema({
   firstname: String,
@@ -12,6 +16,7 @@ const UserSchema = new mongoose.Schema({
   facebook: Object,
   twitter: Object,
   google: Object,
+  identification: Number,
 });
 
 UserSchema.pre('save', function(next) {
@@ -36,4 +41,6 @@ UserSchema.methods.validPassword = function(password) {
   return bcrypt.compareSync(password, this.password);
 };
 
+
+UserSchema.plugin(autoIncrement.plugin, {model: 'User', field: 'identification', startAt: 1});
 module.exports = mongoose.model('User', UserSchema);
