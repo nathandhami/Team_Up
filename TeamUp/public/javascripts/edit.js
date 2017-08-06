@@ -43,7 +43,7 @@ $(document).ready(() => {
         submitHandler: function(form) {
           $.ajax({
             type: 'POST',
-            url: '/edit',
+            url: '/edit/profile',
             data: $(form).serialize(),
             timeout: 3000,
             success: function(response) {

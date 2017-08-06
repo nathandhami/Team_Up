@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path')
 const User = require('../models/User');
 
-router.route('/')
+router.route('/profile')
   .get((req, res, next) => {
     res.render('edit', {
       title: 'Profile',
@@ -46,7 +46,7 @@ router.route('/')
 
           res.json({success: 'Profile Updated!', status: 204,
                     text: 'Your personal info has been updated.',
-                    redirect: '/edit'});
+                    redirect: '/edit/profile'});
         } else {
           res.json({error: 'Incorrect Password!', status: 403,
                     text: 'Please try again with your current password.'});
