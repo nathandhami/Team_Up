@@ -7,9 +7,46 @@ include ./mixins/accordion-event.pug
 aside.sidebarDisplayed
   //- Accordion display of events
   #page-content-wrapper
+    .container
+      #myCarousel.carousel.slide(data-ride='carousel')
+        // Indicators
+        ol.carousel-indicators
+          li.active(data-target='#myCarousel', data-slide-to='0')
+          li(data-target='#myCarousel', data-slide-to='1')
+          li(data-target='#myCarousel', data-slide-to='2')
+          li(data-target='#myCarousel', data-slide-to='3')
+        // Wrapper for slides
+        .carousel-inner.carousel-items
+          .item.active
+            img(src='images/soccer.jpg')
+            <div class="carousel-caption">
+              <h4>Enjoy the game!</h4>
+            </div>
+          .item
+            img(src='images/volleyball.jpg')
+            <div class="carousel-caption">
+              <h4>Make new friends</h4>
+            </div>
+          .item
+            img(src='images/basketball3.jpg')
+            <div class="carousel-caption">
+              <h4>Be the best!</h4>
+            </div>
+          .item
+            img(src='images/baseball.jpg')
+            <div class="carousel-caption">
+              <h4>Play wherever you like</h4>
+            </div>
+        // Left and right controls
+        a.left.carousel-control(href='#myCarousel', data-slide='prev')
+          span.glyphicon.glyphicon-chevron-left
+          span.sr-only Previous
+        a.right.carousel-control(href='#myCarousel', data-slide='next')
+          span.glyphicon.glyphicon-chevron-right
+          span.sr-only Next
     .container-fluid
       .page-header
-        h2 My Events
+        h2.header My Events
     .container-fluid.home_container
       if(userEvents.length == 0)
         .jumbotron
@@ -21,11 +58,10 @@ aside.sidebarDisplayed
           div#accordion.panel-group
             - for (let i = 0; i < userEvents.length; i++) {
                 +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to,
-                userEvents[i].sport, userEvents[i].locationName, userEvents[i].locationAddress, userEvents[i].users.length, userEvents[i].createdBy.email, userEvents[i].urlChat,
-                userEvents[i].urlEdit, userEvents[i].urlLeave, userEvents[i].urlDelete, userEvents[i].aliasId, userEvents[i])
+                userEvents[i].sport, userEvents[i].maxPlayers, userEvents[i].locationName, userEvents[i].locationAddress,
+                userEvents[i].users.length, userEvents[i].createdBy.email, userEvents[i].urlChat, userEvents[i].urlEdit,
+                userEvents[i].urlLeave, userEvents[i].urlDelete, userEvents[i].aliasId, userEvents[i])
             - }
-
-
 
 #participantsModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel1', aria-hidden='true')
   .modal-dialog
@@ -35,7 +71,7 @@ aside.sidebarDisplayed
         h3#myModalLabel1 Participant List
       .modal-body
         ul#listMembers
-        
+
       .modal-footer
         button.btn.pull-right(data-dismiss='modal', aria-hidden='true') Cancel
 
@@ -50,7 +86,7 @@ aside.sidebarDisplayed
           .alert.alert-info.alert-dismissable
             a.panel-close.close(data-dismiss='alert') ×
             i.fa.fa-bell
-            |     If you want to change the location of the event, please delete this event and 
+            |     If you want to change the location of the event, please delete this event and
             |         then create a new event with your desired location.
         form#updateEventForm.form-horizontal(role="form")
           input(type='hidden', name='_csrf', value= csrfToken)

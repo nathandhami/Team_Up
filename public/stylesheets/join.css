@@ -1,21 +1,25 @@
-#map {
-  height: 400px;
-  width: 85%;
-  margin: auto;
+body {
+  /* The image used */
+  background-image: url("/assets/images/raster/jpg/join-event.jpg");
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.ac-event-panel {
-	display: inline-block;
-	margin-right: 2em;
+.page-header {
+  text-align: center;
+  padding: 15px;
+  background-color: #286090;
+  color: #f5f5f5;
+  font-weight: bold;
 }
 
-h3 {
-	margin-left: 1em;
-	margin-bottom: 1em;
-}
-
-.directions {
-  color: #039be5;
+h2.header {
+  color: #f5f5f5;
+  font-weight: bold;
 }
 
 #pac-input {
@@ -31,12 +35,26 @@ h3 {
   border-color: #4d90fe;
 }
 
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+.ac-event-panel {
+	display: inline-block;
+	margin-right: 2em;
+}
+
+.directions {
+  color: #039be5;
+}
+
 .show-all-events {
   float: right;
-  margin-bottom: 1em;
+  margin: 1em;
 }
 
 .highlight {
   background: #e9fcfb;
-  border: 2px solid lightblue;
+  border: 3px solid lightsteelblue;
 }

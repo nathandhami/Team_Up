@@ -6,6 +6,7 @@ const EventSchema = new mongoose.Schema({
   from: { type: Date },
   to: { type: Date },
   sport: String,
+  maxPlayers: Number,
   locationName: String,
   locationAddress: String,
   locationCoordinates: [Number],

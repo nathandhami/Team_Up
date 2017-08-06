@@ -4,66 +4,78 @@ block content
     #page-content-wrapper
       .container-fluid
         .page-header
-          h2 What Sport Would Like To Play?
-          button.btn.btn-info(type='button', onclick='displayMarkers(1)')
-            span
-              img(src='https://png.icons8.com/soccer-ball/color/24', title='Soccer Ball', width='24', height='24')
-              |  Soccer
-          button.btn.btn-info(type='button', onclick='displayMarkers(2)')
-            span
-              img(src='https://png.icons8.com/basketball/color/24', title='Basketball', width='24', height='24')
-              |  Basketball
-          button.btn.btn-info(type='button', onclick='displayMarkers(3)')
-            span
-              img(src='https://png.icons8.com/volleyball/color/24', title='Volleyball', width='24', height='24')
-              |  Volleyball
-          button.btn.btn-info(type='button', onclick='displayMarkers(4)')
-            span
-              img(src='https://png.icons8.com/baseball/color/24', title='Baseball', width='24', height='24')
-              |  Baseball
+          h2
+            em Where
+            |  Would You Like To Play?
+          p#errorLocation
         .container-fluid
           .row
             input#pac-input.controls.col-xs-5(type='text', placeholder='Enter a Location')
             #map
+            .page-header
+              h2
+                | What
+                em  Sport
+                |  Would You Like To Play?
+              button.btn.btn-info#soccer
+                span
+                  img(src='https://png.icons8.com/soccer-ball/color/24', title='Soccer Ball', width='24', height='24')
+                  |  Soccer
+              button.btn.btn-info#basketball
+                span
+                  img(src='https://png.icons8.com/basketball/color/24', title='Basketball', width='24', height='24')
+                  |  Basketball
+              button.btn.btn-info#volleyball
+                span
+                  img(src='https://png.icons8.com/volleyball/color/24', title='Volleyball', width='24', height='24')
+                  |  Volleyball
+              button.btn.btn-info#baseball
+                span
+                  img(src='https://png.icons8.com/baseball/color/24', title='Baseball', width='24', height='24')
+                  |  Baseball
             h3 Event Details
             #event-details.col-sm-10
               form.form-horizontal(action="/create", method="POST")
                 input(type='hidden', name='_csrf', value= csrfToken)
                 input#map-input(type='hidden', name='loc', value="")
                 .form-group
-                  label.col-md-4.control-label TeamUp Name:
+                  label.col-md-4.control-label * TeamUp Name:
                   .col-md-7
                     input#teamupName.form-control(type='text', name='teamupName', placeholder='TeamUp', required='required', data-error='TeamUp Name is required.')
                 .form-group
-                  label.col-md-4.control-label From:
+                  label.col-md-4.control-label * From:
                   .col-md-7
                     .input-group.bootstrap-timepicker.timepicker
                       input#from.form-control(type='text', name='from', placeholder='MM/DD/YYYY HH:MM AM', required='required', data-error='Start Date is required.')
                       span.input-group-addon
                         i.fa.fa-calendar
                 .form-group
-                  label.col-md-4.control-label To:
+                  label.col-md-4.control-label * To:
                   .col-md-7
                     .input-group.bootstrap-timepicker.timepicker
-                      input#to.form-control(type='text', name='to', placeholder='MM/DD/YYYY HH:MM AM')
+                      input#to.form-control(type='text', name='to', placeholder='MM/DD/YYYY HH:MM AM', required='required', data-error='End Date is required.')
                       span.input-group-addon
                         i.fa.fa-calendar
                 .form-group
-                  label.col-md-4.control-label Sport:
+                  label.col-md-4.control-label * Sport:
                   .col-md-7
                     input#sport.form-control(type='text', name='sport', placeholder='Sport', required='required', data-error='Sport is required.')
                 .form-group
-                  label.col-md-4.control-label Name of Location:
+                  label.col-md-4.control-label * Maximum Number of Players:
                   .col-md-7
-                    input#locationName.form-control(type='text', name='locationName', placeholder='Name of Location', required='required', data-error='Location Address is required.')
+                    input#maxPlayers.form-control(type='number', name='maxPlayers', placeholder='22', required='required', data-error='Max Number of Players is required.')
                 .form-group
-                  label.col-md-4.control-label Address of Location:
+                  label.col-md-4.control-label * Name of Location:
                   .col-md-7
-                    input#locationAddress.form-control(type='text', name='locationAddress', placeholder='Address of Location', required='required', data-error='Location Name is required.')
+                    input#locationName.form-control(type='text', name='locationName', placeholder='Name of Location', readonly='', data-error='Location Name is required.')
+                .form-group
+                  label.col-md-4.control-label * Address of Location:
+                  .col-md-7
+                    input#locationAddress.form-control(type='text', name='locationAddress', placeholder='Address of Location', readonly='', data-error='Location Address is required.')
                 .form-group
                   label.col-md-4.control-label
                   .col-md-7
-                    button.btn.btn-primary.btn-block.hvr-grow(type='submit') Create Event
+                    button#submit.btn.btn-primary.btn-block.hvr-grow(type='submit') Create Event
 
   script(type='text/javascript', src='/javascripts/maps.js')
   script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDZEYsZMRKwG2VO-RE3zdDA_fw5HUORfE0&libraries=places&callback=loadMap', async='', defer='')

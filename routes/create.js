@@ -8,6 +8,7 @@ const router = new express.Router();
 /* GET create event page */
 router.route('/').get((req, res) => {
   res.render('create', {
+    title: 'Create Events',
     csrfToken: req.csrfToken()
   });
 });
@@ -18,18 +19,18 @@ router.route('/').post((req, res) => {
   const from = xssFilters.inHTMLData(req.body.from);
   const to = xssFilters.inHTMLData(req.body.to);
   const sport = xssFilters.inHTMLData(req.body.sport);
+  const maxPlayers = xssFilters.inHTMLData(req.body.maxPlayers);
   const locationName = xssFilters.inHTMLData(req.body.locationName);
   const locationAddress = xssFilters.inHTMLData(req.body.locationAddress);
   const locationCoordinates = xssFilters.inHTMLData(req.body.loc);
   const userId = xssFilters.inHTMLData(req.user._id);
-
-
 
   const event = new Event({
     teamupName: teamupName,
     from: from,
     to: to,
     sport: sport,
+    maxPlayers: maxPlayers,
     locationName: locationName,
     locationAddress: locationAddress,
     locationCoordinates: JSON.parse(locationCoordinates),
