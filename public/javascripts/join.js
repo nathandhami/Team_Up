@@ -120,6 +120,16 @@ function loadMap() {
                   "<b>Sport</b>: " + category + "<br>" + 
                   "<b>Location</b>: " + locationName + "<br>" + locationAddress + 
                   "<br><a class='directions' target='_blank' href=https://www.google.com/maps/dir//" + lat + "," + long + ">Get Directions</a>";
+    // check for event on same location
+    for (let j = i - 1; j >= 0; j--) {
+      if (locations[j].locationCoordinates[1] == lat && 
+          locations[j].locationCoordinates[0] == long) {
+        //slightly change lat and long
+        lat = lat + (Math.random() -1) / 1500;
+        long = long + (Math.random() -.5) / 1500;
+      }
+    }
+
     newMarker = new google.maps.Marker({
       position: new google.maps.LatLng(lat, long),
       map: map,
