@@ -1,6 +1,6 @@
 body {
   /* The image used */
-  background-image: url("/assets/images/raster/jpg/join-event.jpg");
+  /* background-image: url("/assets/images/raster/jpg/join-event.jpg"); */
 
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
