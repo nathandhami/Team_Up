@@ -18,13 +18,13 @@ io.on('connection', (socket) => {
   socket.on('new user', function (userData, eventData, callback) {
     {
       socket.userName = userData.name;
-      socket.email = userData.email;
+      socket.userId = userData.userId;
       socket.status = userData.status;
       socket.room = eventData.roomId;
 
       socket.join(socket.room);
 
-      users.push({ email: socket.email, name: socket.userName, status: socket.status, room: socket.room });
+      users.push({ userId: socket.userId, name: socket.userName, status: socket.status, room: socket.room });
 
       const filterRoomArr = [];
       for (let i = 0; i < users.length; i++) {
@@ -79,7 +79,7 @@ io.on('connection', (socket) => {
 
     for (let i = 0; i < users.length; i++) {
       // Break after finding user only once since there may be duplicates
-      if (users[i].email == socket.email) {
+      if (users[i].userId == socket.userId) {
         users[i].status = data.status;
         user = users[i];
         break;
@@ -93,7 +93,7 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     // Break after finding user only once
     for (let i = 0; i < users.length; i++) {
-      if (users[i].email == socket.email) {
+      if (users[i].userId == socket.userId) {
         users.splice(i, 1);
         break;
       }
@@ -116,14 +116,14 @@ io.on('connection', (socket) => {
   });
 });
 
-// Filter out duplicate objects by email property
+// Filter out duplicate objects by userId property
 function filterArray(arr) {
   const set = new Set();
   const filteredArr = arr.filter(element => {
-    if (set.has(element.email)) {
+    if (set.has(element.userId)) {
       return false;
     }
-    set.add(element.email);
+    set.add(element.userId);
     return true;
   });
 

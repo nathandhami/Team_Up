@@ -31,19 +31,19 @@ $(document).ready(() => {
 
 
   // This was recieved by all chatrooms and will only affect the user 
-  // that changed it (through email)
+  // that changed it (through userId)
   socket.on('updateStatusBroadcast', (user) => {
 
-    if (localUserData.email == user.email) {
+    if (localUserData.userId == user.userId) {
       let statusTitle = $('.profile-user-status > a');
       statusTitle.text(' [ Status: ' + user.status + ' ]');
       statusTitle.append($('<span class="caret"></span>'));
     }
     
       $('#event-participants').find('span').each(function( index ) {
-        var text = $(this).data('email');
+        var text = $(this).data('userId');
         // console.log (text);
-       if (text == user.email){
+       if (text == user.userId){
          $(this).text(' (' + user.status + ')');
        }
 
@@ -59,7 +59,7 @@ $(document).ready(() => {
 
     for (let i = 0; i < data.length; i++) {
       let content = $('<li class="users user' + i + '">' + data[i].name + ' ' 
-                        + '<span data-email="' + data[i].email + '" class="statuses status' + i + '">'
+                        + '<span data-userId="' + data[i].userId + '" class="statuses status' + i + '">'
                         + '(' + data[i].status + ')' + '</span></li>');
       eventParticipants.append(content);
     }

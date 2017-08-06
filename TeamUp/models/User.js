@@ -19,6 +19,13 @@ const UserSchema = new mongoose.Schema({
   identification: Number,
 });
 
+UserSchema.virtual('userId')
+  .get(function() {
+    const user = this;
+    return user.firstname + '_' + user.lastname + user.identification;
+});
+
+
 UserSchema.pre('save', function(next) {
   const user = this;
   const saltRound = 10;
