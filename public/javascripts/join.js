@@ -82,10 +82,19 @@ function loadMap() {
         lng: position.coords.longitude
       };
       currentLocation = pos;
+      var im = 'http://i.stack.imgur.com/orZ4x.png';
+      var userMarker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            icon: im
+        });
       infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
+      infoWindow.setContent('You are here.');
       infoWindow.open(map);
+      setTimeout(function(){infoWindow.close();}, '3000');
+
       map.setCenter(pos);
+      map.setZoom(10);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -221,4 +230,5 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
+  setTimeout(function(){infoWindow.close();}, '3000');
 }
