@@ -32,9 +32,6 @@ $(document).ready(() => {
 		for(let i = 0; i < event.users.length; i++){
 
 			let image = event.users[i].image;
-			if(localUserData.email == event.users[i].email){
-				image = localUserData.image;
-			}
 
 			parentNode.append('<li class="clearfix userList"> <img class="thumb-img" src="' + image + '"/> ' 
 			+ event.users[i].firstname + ' ' + event.users[i].lastname + ' (' + event.users[i].email + ')' + "</li>");
