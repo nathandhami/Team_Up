@@ -11,13 +11,11 @@ module.exports = (serverConfig) => {
   serverConfig.use((req, res, next) => {
     res.locals.isAuth = req.isAuthenticated();
     if (_.has(req, 'user')) {
-      const defaultImage = "/assets/images/missing.png";
-      const userImage = req.user.image ? req.user.image : defaultImage;
-      const userStatus = req.user.status ? req.user.status : "Available";
+        const userStatus = req.user.status ? req.user.status : "Available";
       res.locals.userData = {
         name: _.startCase(req.user.displayName),
         email: req.user.email,
-        image: userImage,
+        image: req.user.image,
         firstname: _.startCase(req.user.firstname),
         lastname: _.startCase(req.user.lastname),
         status: userStatus,

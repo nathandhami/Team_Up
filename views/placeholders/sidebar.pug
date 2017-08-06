@@ -4,7 +4,7 @@ div#overlay
   //- button.close.sidebarClose(type="button",aria-label="Close")
     //- <span aria-hidden="true">&times;</span>
   .profile-user-pic
-    img.cropped(src= userData.image, width="120", height="120")
+    img.cropped(src= '/' + userData.image, width="120", height="120")
     .profile-user-name #{userData.name}
     .profile-user-status.dropdown
       a#statusBtn.list-group-item.list-group-item-action(type='button', data-toggle='dropdown', href='#')

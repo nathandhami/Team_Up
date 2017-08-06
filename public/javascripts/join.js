@@ -53,11 +53,9 @@ $(document).ready(() => {
 });
 
 // Uses Google maps callback api, no need to wait for DOM to load
-let markers = [];
-let map, infoWindow, service, currentUserLocation;
+let map, infoWindow, service;
 
 function loadMap() {
-
   let locations = $('#input_events').val();
   locations = JSON.parse(locations);
   // Create the map with a default center.
@@ -188,8 +186,8 @@ function loadMap() {
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
+    'Error: The Geolocation service failed.' :
+    'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
   setTimeout(function(){infoWindow.close();}, '3000');
 }
