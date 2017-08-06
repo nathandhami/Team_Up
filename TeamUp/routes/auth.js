@@ -126,6 +126,11 @@ router.route('/deleteUser')
       }
 
       if (user) {
+        if( user.facebook || user.google || user.twitter ){
+           res.json({error: 'Bad Request! Cannot delete social media accounts', status: 403,});
+          return;
+        }
+
         if (user.validPassword(userPass)) {
           user.remove();
           res.json({success: 'Account Deleted!',

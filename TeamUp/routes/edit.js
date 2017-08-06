@@ -33,6 +33,11 @@ router.route('/profile')
       }
 
       if (user) {
+        if( user.facebook || user.google || user.twitter){
+           res.json({error: 'Bad Request!', status: 403,
+                    text: 'Cannot update social media accounts.',});
+          return;
+        }
         if (user.validPassword(currentPass)) {
           user.firstname = fname;
           user.lastname = lname;
@@ -41,7 +46,7 @@ router.route('/profile')
           }
 
           user.save((err) => {
-            if (err) throw err;
+             if (err) throw err;
           });
 
           res.json({success: 'Profile Updated!', status: 204,
