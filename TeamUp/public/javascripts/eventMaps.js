@@ -34,9 +34,7 @@ function loadMap() {
 
   map.setCenter(eventMarker.getPosition());
   eventLocation = eventMarker.getPosition();
-  infoWindow.setContent(content);
-  infoWindow.open(map, eventMarker);
-
+  
   google.maps.event.addListener(eventMarker, 'click', function () {
     infoWindow.setContent(content);
     infoWindow.open(map, eventMarker);
