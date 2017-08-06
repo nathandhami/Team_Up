@@ -69,6 +69,7 @@ $ ./start.bat [git bash, windows only]
 * userData.facebookId
 * userData.twitterId
 * userData.googleId
+* userData.userID
 
 > Caution : Some of these may be null or undefined, so check before use
 
