@@ -53,6 +53,7 @@ $(document).ready(() => {
 });
 
 // Uses Google maps callback api, no need to wait for DOM to load
+let markers = [];
 let map, infoWindow, service;
 
 function loadMap() {
