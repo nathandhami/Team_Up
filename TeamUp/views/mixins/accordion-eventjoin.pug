@@ -6,9 +6,9 @@ mixin event-panel(collapseNum, teamupName, from, to, sport, maxPlayers, location
           .col-md-4
             a(href= '#' + collapseNum)
               span= teamupName
-          .col-md-6
+          .col-md-5
             span#status
-          div#participants.col-md-2.text-right
+          div#participants.col-md-3.text-right
             abbr(title="Participants")
               i.fa.fa-user &nbsp #{count} / #{maxPlayers}
     div.panel-collapse(id=collapseNum)
