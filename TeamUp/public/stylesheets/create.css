@@ -74,6 +74,11 @@ button.btn-primary {
   background-color: dodgerblue;
 }
 
-.input-group{
+
+#from{
+  z-index: 1;
+}
+
+#to{
   z-index: 0;
 }
