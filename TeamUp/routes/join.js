@@ -10,7 +10,7 @@ const User = require('../models/User');
 /* GET join event page */
 router.route('/')
   .get((req, res) => {
-  	Event.find({users: {$ne: req.user._id}}, function(err, events) {
+  	Event.find({users: {$ne: req.user._id}}, null, {sort: {from: 1}}, function(err, events) {
       if (!err){
           res.render('join', {
             title: 'Join Events',
