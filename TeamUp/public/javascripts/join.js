@@ -40,7 +40,6 @@ $(document).ready(() => {
         console.log(response);
       },
     });
-    $(this).prop('disabled', true);
   });
 
   $('#showAllEventsBtn').click( (e) => {
