@@ -73,3 +73,7 @@ button.btn-primary {
 .sport-clicked {
   background-color: dodgerblue;
 }
+
+.input-group{
+  z-index: 0;
+}
