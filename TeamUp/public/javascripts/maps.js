@@ -42,13 +42,7 @@ function loadMap() {
       } else {
         bounds.extend(place.geometry.location);
       }
-      // Find parks around the location
-      service = new google.maps.places.PlacesService(map);
-      service.nearbySearch({
-        location: place.geometry.location,
-        radius: 1500,
-        types: ['park']
-      }, callback);
+      findLocations(place.geometry.location);
     });
     map.fitBounds(bounds);
   });
@@ -60,7 +54,6 @@ function loadMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      currentLocation = pos;
       var im = 'http://i.stack.imgur.com/orZ4x.png';
       var userMarker = new google.maps.Marker({
         position: pos,
@@ -72,13 +65,7 @@ function loadMap() {
       infoWindow.open(map);
       setTimeout(function(){infoWindow.close();}, '3000');
       map.setCenter(pos);
-      // Find parks around the location
-      service = new google.maps.places.PlacesService(map);
-      service.nearbySearch({
-        location: currentLocation,
-        radius: 1500,
-        types: ['park']
-      }, callback);
+      findLocations(pos);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -86,11 +73,13 @@ function loadMap() {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
+}
 
-  // Find parks around the location
+// Find parks around the location
+function findLocations(location) {
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch({
-    location: currentLocation,
+    location: location,
     radius: 1500,
     types: ['park']
   }, callback);
