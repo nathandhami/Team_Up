@@ -76,7 +76,7 @@ function findLocations(location) {
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch({
     location: location,
-    radius: 5000,
+    radius: 1000,
     types: ['park']
   }, callback);
 }
@@ -96,7 +96,6 @@ function createMarker(place) {
     position: place.geometry.location,
     map: map,
     title: place.name,
-    // animation: google.maps.Animation.DROP
   });
   let request = { reference: place.reference };
   service.getDetails(request, function(details, status) {
@@ -110,17 +109,17 @@ function createMarker(place) {
       let jsonGeo = JSON.stringify(eventLocation);
       $('#map-input').attr('value', jsonGeo);
       if (details.website) {
-        infoWindow.setContent('<strong>' + place.name + '</strong><br />' + details.formatted_address +
+        infoWindow.setContent('<strong>' + details.name + '</strong><br />' + details.formatted_address +
           '<br /><a class="links" target="_blank" href=' + details.website + '>' + details.website +
           '</a><br /><a class="links" target="_blank" href=https://www.google.com/maps/dir//'
           + eventLocation[1] + ',' + eventLocation[0] + '>Get Directions</a>');
       } else {
-        infoWindow.setContent('<strong>' + place.name + '</strong><br />' + details.formatted_address +
+        infoWindow.setContent('<strong>' + details.name + '</strong><br />' + details.formatted_address +
           '<br /><a class="links" target="_blank" href=https://www.google.com/maps/dir//'
           + eventLocation[1] + ',' + eventLocation[0] + '>Get Directions</a>');
       }
       infoWindow.open(map, this);
-      $('#locationName').val(place.name);
+      $('#locationName').val(details.name);
       $('#locationAddress').val(details.formatted_address);
     });
   })
