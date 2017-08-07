@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = new express.Router();
+const nconf = require('nconf');
 const Event = require('../models/Event');
 const xssFilters = require('xss-filters');
 
@@ -30,7 +31,7 @@ router.route('/chatroom/:id')
           });
         }
         else {
-          res.render('event', { csrfToken: req.csrfToken(), title: event.teamupName, event: event });
+          res.render('event', { csrfToken: req.csrfToken(), title: event.teamupName, event: event, mapKey: nconf.get('googleMap:key')});
         }
       }
     });
