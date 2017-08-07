@@ -1,35 +1,40 @@
 $(document).ready(() => {
   let sportElement = $('#sport');
-  $('#soccer').on('click', () => {
+  $('#soccer').on('click', (e) => {
     $('.sport-clicked').removeClass('sport-clicked');
     $('#soccer').addClass('sport-clicked');
     sportElement.val('Soccer');
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
+    e.preventDefault();
   });
-  $('#basketball').on('click', () => {
+  $('#basketball').on('click', (e) => {
     $('.sport-clicked').removeClass('sport-clicked');
     $('#basketball').addClass('sport-clicked');
     sportElement.val('Basketball');
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
+    e.preventDefault();
   });
-  $('#volleyball').on('click', () => {
+  $('#volleyball').on('click', (e) => {
     $('.sport-clicked').removeClass('sport-clicked');
     $('#volleyball').addClass('sport-clicked');
     sportElement.val('Volleyball');
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
+    e.preventDefault();
   });
-  $('#baseball').on('click', () => {
+  $('#baseball').on('click', (e) => {
     $('.sport-clicked').removeClass('sport-clicked');
     $('#baseball').addClass('sport-clicked');
     sportElement.val('Baseball');
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
+    e.preventDefault();
   });
-  $('#other').on('click', () => {
+  $('#other').on('click', (e) => {
     $('.sport-clicked').removeClass('sport-clicked');
     $('#other').addClass('sport-clicked');
     sportElement.val('');
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
     sportElement.focus();
+    e.preventDefault();
   });
   let from_input = $('#from');
   let to_input = $('#to');
