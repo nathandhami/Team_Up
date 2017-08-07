@@ -63,7 +63,7 @@ function loadMap() {
   // Create the map with a default center.
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 49.278628, lng: -122.920355},
-    zoom: 10,
+    zoom: 12,
     scaleControl: true,
     mapTypeId: 'roadmap'
   });
