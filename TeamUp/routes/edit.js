@@ -9,9 +9,15 @@ const User = require('../models/User');
 
 router.route('/profile')
   .get((req, res, next) => {
+    let isSocial = false;
+    if (req.user.facebook || req.user.twitter || 
+          req.user.google) {
+      isSocial = true;
+    }
     res.render('edit', {
       title: 'Profile',
-      csrfToken: req.csrfToken()
+      csrfToken: req.csrfToken(),
+      isSocial: isSocial,
     });
 
     return;
