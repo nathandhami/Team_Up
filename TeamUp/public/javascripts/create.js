@@ -70,4 +70,7 @@ $(document).ready(() => {
       e.preventDefault();
     }
   });
+  $('form').bind('submit', (e) => {
+    $('#submit').prop('disabled', true);
+  })
 });
