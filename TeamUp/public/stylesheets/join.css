@@ -23,9 +23,7 @@ h2.header {
 }
 
 #pac-input {
-  background-color: #fff;
-  font-family: Roboto;
-  font-size: 15px;
+  font-size: 1.5em;
   font-weight: 300;
   padding: 3px 11px;
   text-overflow: ellipsis;
