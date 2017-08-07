@@ -29,7 +29,7 @@ module.exports = () => {
             // email: profile.emails[0].value,
             firstname: firstName,
             lastname: lastName,
-            image: profile._json.default_profile ? '/assets/images/missing.png' : profile._json.profile_image_url,
+            image: profile._json.default_profile ? '/assets/images/raster/png/missing.png' : profile._json.profile_image_url,
             displayName: profile.displayName,
             twitter: {
               id: profile.id,

@@ -6,6 +6,10 @@
     min-width: 100%;
 }
 
+.carousel-indicators{
+  z-index: 1;
+}
+
 h2.header {
   /* color: #f5f5f5; */
   font-weight: bold;

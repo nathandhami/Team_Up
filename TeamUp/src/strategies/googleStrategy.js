@@ -23,7 +23,7 @@ module.exports = () => {
             firstname: profile.name.givenName,
             lastname: profile.name.familyName,
             email: profile.emails[0].value,
-            image: profile._json.image.isDefault ? '/assets/images/missing.png' : profile._json.image.url,
+            image: profile._json.image.isDefault ? '/assets/images/raster/png/missing.png' : profile._json.image.url,
             displayName: profile.displayName,
             google: {
               id: profile.id,

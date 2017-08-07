@@ -96,7 +96,7 @@ router.route('/register')
             lastname: lastName,
             email: email,
             password: password,
-            image: '/assets/images/missing.png',
+            image: '/assets/images/raster/png/missing.png',
             status: "Available",
           });
 
@@ -149,7 +149,7 @@ router.route('/changeStatus')
   .post((req, res) => {
     const userId = req.user._id;
     const status = xssFilters.inHTMLData(req.body.status);
-    
+
     User.findOne({
       _id: userId,
     }, (err, user) => {
@@ -161,7 +161,7 @@ router.route('/changeStatus')
         user.save((err, user) => {
             if (err) throw err;
         });
-        res.json({success: 'Status changed.', 
+        res.json({success: 'Status changed.',
                     status: 204});
       }
     });
