@@ -72,6 +72,13 @@ function loadMap() {
       infoWindow.open(map);
       setTimeout(function(){infoWindow.close();}, '3000');
       map.setCenter(pos);
+      // Find parks around the location
+      service = new google.maps.places.PlacesService(map);
+      service.nearbySearch({
+        location: currentLocation,
+        radius: 1500,
+        types: ['park']
+      }, callback);
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
