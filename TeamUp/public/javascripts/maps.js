@@ -20,6 +20,7 @@ function loadMap() {
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function() {
     searchBox.setBounds(map.getBounds());
+    findLocations(map.getCenter());
   });
 
   // Listen for the event fired when the user selects a prediction and retrieve
@@ -42,13 +43,7 @@ function loadMap() {
       } else {
         bounds.extend(place.geometry.location);
       }
-      // Find parks around the location
-      service = new google.maps.places.PlacesService(map);
-      service.nearbySearch({
-        location: place.geometry.location,
-        radius: 1500,
-        types: ['park']
-      }, callback);
+      findLocations(place.geometry.location);
     });
     map.fitBounds(bounds);
   });
@@ -60,31 +55,28 @@ function loadMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      currentLocation = pos;
       var im = 'http://i.stack.imgur.com/orZ4x.png';
       var userMarker = new google.maps.Marker({
-            position: pos,
-            map: map,
-            icon: im
-        });
+        position: pos,
+        map: map,
+        icon: im
+      });
       infoWindow.setPosition(pos);
       infoWindow.setContent('You are here.');
       infoWindow.open(map);
       setTimeout(function(){infoWindow.close();}, '3000');
       map.setCenter(pos);
-    }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
+      findLocations(pos);
     });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
   }
+}
 
-  // Find parks around the location
+// Find parks around the location
+function findLocations(location) {
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch({
-    location: currentLocation,
-    radius: 1500,
+    location: location,
+    radius: 1000,
     types: ['park']
   }, callback);
 }
@@ -104,7 +96,6 @@ function createMarker(place) {
     position: place.geometry.location,
     map: map,
     title: place.name,
-    animation: google.maps.Animation.DROP
   });
   let request = { reference: place.reference };
   service.getDetails(request, function(details, status) {
@@ -118,31 +109,18 @@ function createMarker(place) {
       let jsonGeo = JSON.stringify(eventLocation);
       $('#map-input').attr('value', jsonGeo);
       if (details.website) {
-        infoWindow.setContent('<strong>' + place.name + '</strong><br />' + details.formatted_address +
+        infoWindow.setContent('<strong>' + details.name + '</strong><br />' + details.formatted_address +
           '<br /><a class="links" target="_blank" href=' + details.website + '>' + details.website +
           '</a><br /><a class="links" target="_blank" href=https://www.google.com/maps/dir//'
           + eventLocation[1] + ',' + eventLocation[0] + '>Get Directions</a>');
       } else {
-        infoWindow.setContent('<strong>' + place.name + '</strong><br />' + details.formatted_address +
+        infoWindow.setContent('<strong>' + details.name + '</strong><br />' + details.formatted_address +
           '<br /><a class="links" target="_blank" href=https://www.google.com/maps/dir//'
           + eventLocation[1] + ',' + eventLocation[0] + '>Get Directions</a>');
       }
       infoWindow.open(map, this);
-      $('#locationName').val(place.name);
+      $('#locationName').val(details.name);
       $('#locationAddress').val(details.formatted_address);
-      $('html, body').animate({
-        scrollTop: $('#soccer').offset().top
-      }, 2000);
     });
   })
-}
-
-// Handle the error for user's location
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-    'Error: The Geolocation service failed.' :
-    'Error: Your browser doesn\'t support geolocation.');
-  infoWindow.open(map);
-  setTimeout(function(){infoWindow.close();}, '3000');
 }

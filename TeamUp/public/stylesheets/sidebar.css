@@ -10,7 +10,7 @@
   left: 0;
   padding-top: 3em;
   color: white;
- 
+
 }
 
 .sidebar-nav-content {
@@ -59,7 +59,7 @@
     border-radius: 50%;
 }
 
-#statusBtn { 
+#statusBtn {
   background-color: #102027;
   border: 0;
 }
@@ -145,7 +145,7 @@ aside #sidebar-wrapper{
       width: 100%;
       height: 100%;
       background-color: rgba(0,0,0,0.5);
-      z-index: 1;
+      z-index: 2;
       transition: all 0.25s ease;
   }
 

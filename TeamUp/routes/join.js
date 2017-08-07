@@ -3,6 +3,7 @@
 const express = require('express');
 const Event = require('../models/Event');
 const xssFilters = require('xss-filters');
+const nconf = require('nconf');
 const router = new express.Router();
 const User = require('../models/User');
 
@@ -20,12 +21,13 @@ router.route('/')
           }
           res.render('join', {
             title: 'Join Events',
+             mapKey: nconf.get('googleMap:key'),
             csrfToken: req.csrfToken(),
             userEvents: events,
             fromDate: from,
             toDate: to,
           });
-      } 
+      }
       else {throw err;}
   	});
   })
@@ -51,14 +53,14 @@ router.route('/')
 
           if (event) {
             let isJoined = event.users.filter(function(value){ return value.toString() == user._id;});
-              
+
             // add check for max number of players.
             if (isJoined.length > 0) {
-              res.json({msg: 'Error!', 
+              res.json({msg: 'Error!',
                       text: 'You have already joined this event', status: 400,
                     redirect: '/'});
             } else if (event.users.length >= event.maxPlayers) {
-              res.json({msg: 'Error!', 
+              res.json({msg: 'Error!',
                       text: 'Sorry! The maximum player count has been reached.',
                       status: 400,
                     redirect: '/'});
@@ -69,8 +71,8 @@ router.route('/')
                 if (err) throw err;
               });
 
-              res.json({msg: 'Successfully joined ' + event.teamupName + '!', 
-                    text: 'You can now chat with other members of this event.', 
+              res.json({msg: 'Successfully joined ' + event.teamupName + '!',
+                    text: 'You can now chat with other members of this event.',
                     status: 204,
                     redirect: '/'});
             }
@@ -81,7 +83,4 @@ router.route('/')
     });
     return;
   })
-
-
-
 module.exports = router;

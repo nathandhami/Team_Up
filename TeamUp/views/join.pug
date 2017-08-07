@@ -5,14 +5,15 @@ block content
   aside.sidebarDisplayed
     #page-content-wrapper
       .container-fluid
-        .page-header
+        .page-header.panel.panel-default
           h2.header
             em Join
             |  events near you!
         .container-fluid
           .row
-            input#pac-input.controls.col-xs-5(type='text', placeholder='Enter a Location here to see events around')
-            #map
+            .panel.panel-default
+              input#pac-input.controls.col-xs-5(type='text', placeholder='Enter a Location here to see events around')
+              #map
       .container-fluid.home_container
         .row
           a#showAllEventsBtn.btn.btn-default.show-all-events Show All Events
@@ -29,5 +30,5 @@ block content
   link(rel="stylesheet", href="/stylesheets/home.css")
   link(rel="stylesheet", href="/stylesheets/join.css")
   script(type='text/javascript', src='/javascripts/join.js')
-  script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDZEYsZMRKwG2VO-RE3zdDA_fw5HUORfE0&libraries=places&callback=loadMap', async='', defer='')
+  script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key='+mapKey+'&libraries=places&callback=loadMap', async='', defer='')
 

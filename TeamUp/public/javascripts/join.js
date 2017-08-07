@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $('.joinEventBtn').click( (e) => {
+  $('.joinEventBtn').one('click', (e) => {
     let event_alias_id = $(e.target).children('input').val();
     console.log(event_alias_id);
     let csrf = $('#input_csrf').val();
@@ -40,6 +40,7 @@ $(document).ready(() => {
         console.log(response);
       },
     });
+    $(this).prop('disabled', true);
   });
 
   $('#showAllEventsBtn').click( (e) => {
@@ -173,22 +174,6 @@ function loadMap() {
       infoWindow.open(map);
       setTimeout(function(){infoWindow.close();}, '3000');
       map.setCenter(pos);
-      map.setZoom(10);
-    }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
     });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
   }
-}
-
-// Handle the error for user's location
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-    'Error: The Geolocation service failed.' :
-    'Error: Your browser doesn\'t support geolocation.');
-  infoWindow.open(map);
-  setTimeout(function(){infoWindow.close();}, '3000');
 }

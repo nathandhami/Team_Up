@@ -31,7 +31,7 @@ block content
                 .panel.panel-primary
                   .panel-heading
                     h4 Event Details
-                   
+
                   .panel-body
                     ul#event-details
                       li.item.
@@ -50,7 +50,7 @@ block content
                 .panel.panel-primary
                   .panel-heading
                     h4 Chatroom Users
-                   
+
                   .panel-body
                     //- For now, this shows who has entered the chat.
                     ul#event-participants
@@ -75,7 +75,7 @@ block content
     var localUserData = {
       img: '#{userData.image}',
       name: '#{userData.firstname}',
-      email: '#{userData.email}',
+      userId: '#{userData.userId}',
       status: '#{userData.status}',
     }
     var localEventData = {
@@ -86,7 +86,7 @@ block content
     }
 
   script(type='text/javascript', src='/javascripts/eventMaps.js')
-  script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDZEYsZMRKwG2VO-RE3zdDA_fw5HUORfE0&libraries=places&callback=loadMap', async='', defer='')
+  script(type='text/javascript', src='https://maps.googleapis.com/maps/api/js?key='+mapKey+'&libraries=places&callback=loadMap', async='', defer='')
   script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js")
   script(src="/javascripts/socket.io-client/dist/socket.io.js")
   script(src="/javascripts/event.js")

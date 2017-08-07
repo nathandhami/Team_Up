@@ -18,14 +18,13 @@ module.exports = () => {
       };
 
       // console.log(profile);
-
       User.findOne(query, (err, user) => {
         if (!user) {
           const userDocument = new User({
             email: profile.emails[0].value,
             firstname: profile.name.givenName,
             lastname: profile.name.familyName,
-            image: profile.photos[0].value,
+            image: profile._json.picture.data.is_silhouette ? '/assets/images/raster/png/missing.png' : profile.photos[0].value,
             displayName: profile.displayName,
             facebook: {
               id: profile.id,

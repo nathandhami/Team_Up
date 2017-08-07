@@ -3,12 +3,14 @@
 const express = require('express');
 const Event = require('../models/Event');
 const xssFilters = require('xss-filters');
+const nconf = require('nconf');
 const router = new express.Router();
 
 /* GET create event page */
 router.route('/').get((req, res) => {
   res.render('create', {
     title: 'Create Events',
+    mapKey: nconf.get('googleMap:key'),
     csrfToken: req.csrfToken()
   });
 });

@@ -16,6 +16,7 @@ module.exports = () => {
       const query = {
         'twitter.id': profile.id,
       };
+
       // console.log(profile);
 
       const fullName = profile.displayName.split(' ');
@@ -28,7 +29,7 @@ module.exports = () => {
             // email: profile.emails[0].value,
             firstname: firstName,
             lastname: lastName,
-            image: profile._json.profile_image_url,
+            image: profile._json.default_profile ? '/assets/images/raster/png/missing.png' : profile._json.profile_image_url,
             displayName: profile.displayName,
             twitter: {
               id: profile.id,
