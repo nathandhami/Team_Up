@@ -43,6 +43,12 @@ h2.header {
 	margin-right: 2em;
 }
 
+@media (min-width: 550px) {
+  .ac-event-panel {
+    width: 465px;
+  }
+}
+
 .directions {
   color: #039be5;
 }

@@ -11,14 +11,21 @@ const User = require('../models/User');
 /* GET join event page */
 router.route('/')
   .get((req, res) => {
-  	Event.find({users: {$ne: req.user._id}}, function(err, events) {
+  	Event.find({users: {$ne: req.user._id}}, null, {sort: {from: 1}}, function(err, events) {
       if (!err){
+          let from = [];
+          let to = [];
+          for (let i = 0; i < events.length; i++) {
+            from.push(events[i].from.toUTCString());
+            to.push(events[i].to.toUTCString());
+          }
           res.render('join', {
             title: 'Join Events',
              mapKey: nconf.get('googleMap:key'),
             csrfToken: req.csrfToken(),
             userEvents: events,
-
+            fromDate: from,
+            toDate: to,
           });
       }
       else {throw err;}
