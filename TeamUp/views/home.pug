@@ -19,24 +19,20 @@ aside.sidebarDisplayed
         .carousel-inner.carousel-items
           .item.active
             img(src='images/soccer.jpg')
-            <div class="carousel-caption">
-              <h4>Enjoy the game!</h4>
-            </div>
+            .carousel-caption
+              h4 Enjoy the game!
           .item
             img(src='images/volleyball.jpg')
-            <div class="carousel-caption">
-              <h4>Make new friends</h4>
-            </div>
+            .carousel-caption
+              h4 Make new friends
           .item
             img(src='images/basketball3.jpg')
-            <div class="carousel-caption">
-              <h4>Be the best!</h4>
-            </div>
+            .carousel-caption
+              h4 Be the best!
           .item
             img(src='images/baseball.jpg')
-            <div class="carousel-caption">
-              <h4>Play wherever you like</h4>
-            </div>
+            .carousel-caption
+              h4 Play wherever you like
         // Left and right controls
         a.left.carousel-control(href='#myCarousel', data-slide='prev')
           span.glyphicon.glyphicon-chevron-left
@@ -59,7 +55,7 @@ aside.sidebarDisplayed
             - for (let i = 0; i < userEvents.length; i++) {
                 +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to,
                 userEvents[i].sport, userEvents[i].maxPlayers, userEvents[i].locationName, userEvents[i].locationAddress,
-                userEvents[i].users.length, userEvents[i].createdBy.email, userEvents[i].urlChat, userEvents[i].urlEdit,
+                userEvents[i].users.length, userEvents[i].createdBy.userId, userEvents[i].urlChat, userEvents[i].urlEdit,
                 userEvents[i].urlLeave, userEvents[i].urlDelete, userEvents[i].aliasId, userEvents[i])
             - }
 
@@ -126,8 +122,6 @@ aside.sidebarDisplayed
       .modal-footer
         button.btn.pull-right(data-dismiss='modal', aria-hidden='true') Cancel
         button#eventDelBtn.btn.btn-danger.pull-left(href='#') Delete Event
-  script.
-    var localUserData = {email: '#{userData.email}', image: '#{userData.image}'};
 
 script(src="/javascripts/home.js")
 script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js')

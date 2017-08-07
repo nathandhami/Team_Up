@@ -111,3 +111,7 @@ button.navbar-toggle{
 .icon-bar{
   background-color: white;
 }
+
+.nav>li>a:focus{
+  color: #CDDC39;
+}
