@@ -122,9 +122,6 @@ function createMarker(place) {
       infoWindow.open(map, this);
       $('#locationName').val(place.name);
       $('#locationAddress').val(details.formatted_address);
-      $('html, body').animate({
-        scrollTop: $('#soccer').offset().top
-      }, 2000);
     });
   })
 }
