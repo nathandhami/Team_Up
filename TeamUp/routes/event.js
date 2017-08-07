@@ -30,7 +30,10 @@ router.route('/chatroom/:id')
           });
         }
         else {
-          res.render('event', { csrfToken: req.csrfToken(), title: event.teamupName, event: event });
+          let fromDate = event.from.toUTCString();
+          let toDate = event.to.toUTCString();
+          res.render('event', { csrfToken: req.csrfToken(), title: event.teamupName, 
+            event: event, fromDate: fromDate, toDate: toDate });
         }
       }
     });
