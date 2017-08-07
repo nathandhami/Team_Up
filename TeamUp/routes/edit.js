@@ -79,7 +79,7 @@ router.route('/uploadPic')
           let ImageData = fs.readFileSync(req.file.path);
           let pubFolder = 'public/';
           let destFile = '/uploads/' + user.firstname + '_' +
-                        user.lastname + randomNum + 
+                        user.lastname + user.identification + randomNum + 
                         path.extname(req.file.originalname);
           let dest = pubFolder + destFile;
 
