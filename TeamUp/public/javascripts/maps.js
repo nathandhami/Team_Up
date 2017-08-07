@@ -60,10 +60,10 @@ function loadMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      currentLocation = position;
+      currentLocation = pos;
       var im = 'http://i.stack.imgur.com/orZ4x.png';
       var userMarker = new google.maps.Marker({
-        position: position,
+        position: pos,
         map: map,
         icon: im
       });
