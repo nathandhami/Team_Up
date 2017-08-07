@@ -60,13 +60,13 @@ function loadMap() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-      currentLocation = pos;
+      currentLocation = position;
       var im = 'http://i.stack.imgur.com/orZ4x.png';
       var userMarker = new google.maps.Marker({
-            position: pos,
-            map: map,
-            icon: im
-        });
+        position: position,
+        map: map,
+        icon: im
+      });
       infoWindow.setPosition(pos);
       infoWindow.setContent('You are here.');
       infoWindow.open(map);

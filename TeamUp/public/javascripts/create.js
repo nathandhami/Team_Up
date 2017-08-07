@@ -16,6 +16,11 @@ $(document).ready(() => {
     sportElement.val('Baseball');
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
   });
+  $('#other').on('click', () => {
+    sportElement.val('');
+    sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
+    sportElement.focus();
+  });
   let from_input = $('#from');
   let to_input = $('#to');
   from_input.datetimepicker({
