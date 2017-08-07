@@ -28,5 +28,8 @@
     "consumerKey": "8kCJQbl2sL6HpGyXnz9qUnYEq",
     "consumerSecret" : "r7zpECv04V9UMCvp6S8jFesoLCqB0pK0bgEMjGWusrQnxYQqL0",
     "callbackURL" : "http://localhost:8080/auth/twitter/callback"
+  },
+  "googleMap":{
+    "key" : "AIzaSyAqXv5KYYnWPvlLczxIGlcGo4w6spUYPdI"
   }
 }

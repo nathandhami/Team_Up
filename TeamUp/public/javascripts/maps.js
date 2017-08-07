@@ -20,6 +20,7 @@ function loadMap() {
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function() {
     searchBox.setBounds(map.getBounds());
+    findLocations(map.getCenter());
   });
 
   // Listen for the event fired when the user selects a prediction and retrieve
@@ -67,11 +68,11 @@ function loadMap() {
       map.setCenter(pos);
       findLocations(pos);
     }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
+      // handleLocationError(true, infoWindow, map.getCenter());
     });
   } else {
     // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
+    // handleLocationError(false, infoWindow, map.getCenter());
   }
 }
 
@@ -80,7 +81,7 @@ function findLocations(location) {
   service = new google.maps.places.PlacesService(map);
   service.nearbySearch({
     location: location,
-    radius: 1500,
+    radius: 5000,
     types: ['park']
   }, callback);
 }
@@ -100,7 +101,7 @@ function createMarker(place) {
     position: place.geometry.location,
     map: map,
     title: place.name,
-    animation: google.maps.Animation.DROP
+    // animation: google.maps.Animation.DROP
   });
   let request = { reference: place.reference };
   service.getDetails(request, function(details, status) {
