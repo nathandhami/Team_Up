@@ -25,6 +25,8 @@ $(document).ready(() => {
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
   });
   $('#other').on('click', () => {
+    $('.sport-clicked').removeClass('sport-clicked');
+    $('#other').addClass('sport-clicked');
     sportElement.val('');
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
     sportElement.focus();
