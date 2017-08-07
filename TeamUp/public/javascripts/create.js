@@ -28,7 +28,7 @@ $(document).ready(() => {
     sportElement.val('Baseball');
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
   });
-  $('#other').on('click', () => {
+  $('#other').on('click', (e) => {
     e.preventDefault();
     $('.sport-clicked').removeClass('sport-clicked');
     $('#other').addClass('sport-clicked');
