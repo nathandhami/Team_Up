@@ -1,6 +1,10 @@
 $(document).ready(() => {
   let sportElement = $('#sport');
   $('#soccer').on('click', (e) => {
+<<<<<<< HEAD
+=======
+    e.preventDefault();
+>>>>>>> a42574bd0712179f227a19b6e73bc367122d6087
     $('.sport-clicked').removeClass('sport-clicked');
     $('#soccer').addClass('sport-clicked');
     sportElement.val('Soccer');
@@ -8,6 +12,10 @@ $(document).ready(() => {
     e.preventDefault();
   });
   $('#basketball').on('click', (e) => {
+<<<<<<< HEAD
+=======
+    e.preventDefault();
+>>>>>>> a42574bd0712179f227a19b6e73bc367122d6087
     $('.sport-clicked').removeClass('sport-clicked');
     $('#basketball').addClass('sport-clicked');
     sportElement.val('Basketball');
@@ -15,6 +23,10 @@ $(document).ready(() => {
     e.preventDefault();
   });
   $('#volleyball').on('click', (e) => {
+<<<<<<< HEAD
+=======
+    e.preventDefault();
+>>>>>>> a42574bd0712179f227a19b6e73bc367122d6087
     $('.sport-clicked').removeClass('sport-clicked');
     $('#volleyball').addClass('sport-clicked');
     sportElement.val('Volleyball');
@@ -22,13 +34,22 @@ $(document).ready(() => {
     e.preventDefault();
   });
   $('#baseball').on('click', (e) => {
+<<<<<<< HEAD
+=======
+    e.preventDefault();
+>>>>>>> a42574bd0712179f227a19b6e73bc367122d6087
     $('.sport-clicked').removeClass('sport-clicked');
     $('#baseball').addClass('sport-clicked');
     sportElement.val('Baseball');
     sportElement.fadeTo(100, 0.1).fadeTo(200, 1.0);
     e.preventDefault();
   });
+<<<<<<< HEAD
   $('#other').on('click', (e) => {
+=======
+  $('#other').on('click', () => {
+    e.preventDefault();
+>>>>>>> a42574bd0712179f227a19b6e73bc367122d6087
     $('.sport-clicked').removeClass('sport-clicked');
     $('#other').addClass('sport-clicked');
     sportElement.val('');
