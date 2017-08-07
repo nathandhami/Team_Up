@@ -21,6 +21,7 @@ const auth = require('./routes/auth');
 const notFound = require('./routes/notFound');
 const contactUs = require('./routes/contactUs');
 const sports = require('./routes/sports');
+const about = require('./routes/about');
 const create = require('./routes/create');
 const event = require('./routes/event');
 const edit = require('./routes/edit');
@@ -125,6 +126,7 @@ serverConfig.use((req, res, next) => {
 
 serverConfig.use('/contact', contactUs);
 serverConfig.use('/sports', sports);
+serverConfig.use('/about', about);
 serverConfig.use('/create', create);
 serverConfig.use('/event', event);
 serverConfig.use('/edit', edit);
