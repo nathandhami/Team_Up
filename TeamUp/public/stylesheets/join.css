@@ -43,7 +43,12 @@ h2.header {
 .ac-event-panel {
 	display: inline-block;
 	margin-right: 2em;
-  width: 465px;
+}
+
+@media (min-width: 550px) {
+  .ac-event-panel {
+    width: 465px;
+  }
 }
 
 .directions {
