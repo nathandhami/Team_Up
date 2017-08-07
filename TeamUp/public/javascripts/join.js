@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $('.joinEventBtn').one('click', (e) => {
+  $('.joinEventBtn').click( (e) => {
     let event_alias_id = $(e.target).children('input').val();
     console.log(event_alias_id);
     let csrf = $('#input_csrf').val();
