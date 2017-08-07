@@ -31,7 +31,10 @@ router.route('/chatroom/:id')
           });
         }
         else {
-          res.render('event', { csrfToken: req.csrfToken(), title: event.teamupName, event: event, mapKey: nconf.get('googleMap:key')});
+          let fromDate = event.from.toUTCString();
+          let toDate = event.to.toUTCString();
+          res.render('event', { csrfToken: req.csrfToken(), title: event.teamupName, 
+            event: event, fromDate: fromDate, toDate: toDate, mapKey: nconf.get('googleMap:key') });
         }
       }
     });

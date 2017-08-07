@@ -17,13 +17,22 @@ router.route('/')
       const Event = require('../models/Event');
 
       // Get user specific events
-      Event.find({ users: {$eq: req.user._id.toString()} }).populate('createdBy').populate('users').exec((err, events) => {
+      Event.find({ users: {$eq: req.user._id.toString()} }).populate('createdBy').
+                    populate('users').sort('from').exec((err, events) => {
+        let from = [];
+        let to = [];
+        for (let i = 0; i < events.length; i++) {
+          from.push(events[i].from.toUTCString());
+          to.push(events[i].to.toUTCString());
+        }
         res.render('index', {
           title: 'Home',
           csrfToken: req.csrfToken(),
           errorExist: messages.length > 0,
           loginErrors: messages,
           userEvents: events,
+          fromDate: from,
+          toDate: to,
         });
       });
     }

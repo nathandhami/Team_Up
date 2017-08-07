@@ -53,7 +53,7 @@ aside.sidebarDisplayed
         .col-md-3-offset-3.col
           div#accordion.panel-group
             - for (let i = 0; i < userEvents.length; i++) {
-                +event-panel('collapse' + i, userEvents[i].teamupName, userEvents[i].from, userEvents[i].to,
+                +event-panel('collapse' + i, userEvents[i].teamupName, fromDate[i], toDate[i],
                 userEvents[i].sport, userEvents[i].maxPlayers, userEvents[i].locationName, userEvents[i].locationAddress,
                 userEvents[i].users.length, userEvents[i].createdBy.userId, userEvents[i].urlChat, userEvents[i].urlEdit,
                 userEvents[i].urlLeave, userEvents[i].urlDelete, userEvents[i].aliasId, userEvents[i])

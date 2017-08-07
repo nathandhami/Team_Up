@@ -38,9 +38,9 @@ block content
                         <span class="icon-default glyphicon glyphicon-map-marker" title="Location"></span> <span class="details"> #{event.locationName} <br/>
                         <span class="details_newline">  #{event.locationAddress} </span> <br/> </span>
                       li.item <span class="icon-default glyphicon glyphicon-cog" title="Sport"></span> <span class="details">  #{event.sport} </span>
-                      li.item <span class="icon-default glyphicon glyphicon-calendar"  title="Schedule"></span> <span class="details"> #{event.from} <br/>
+                      li.item <span class="icon-default glyphicon glyphicon-calendar"  title="Schedule"></span> <span class="details"> #{fromDate} <br/>
                         if(event.to)
-                          <span class="details_newline"> <strong> to </strong> #{event.to} </span> <br/> </span>
+                          <span class="details_newline"> <strong> to </strong> #{toDate} </span> <br/> </span>
                       li.item <span class="icon-default glyphicon glyphicon-user" title="Members"></span> <span class="details"> #{event.users.length}
                         if (event.users.length > 1)
                           | &nbsp members going
