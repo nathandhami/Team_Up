@@ -69,6 +69,7 @@ bash 'install_dependencies' do
   sudo npm --no-bin-links install express-validator
   sudo npm --no-bin-links install helmet
   sudo npm --no-bin-links install lodash
+  sudo npm --no-bin-links install moment
   sudo npm --no-bin-links install mongoose
   sudo npm --no-bin-links install mongoose-auto-increment
   sudo npm --no-bin-links install multer
