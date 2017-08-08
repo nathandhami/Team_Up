@@ -76,6 +76,12 @@ router.route('/edit/:id')
           event.from = xssFilters.inHTMLData(req.body.from);
           event.to = xssFilters.inHTMLData(req.body.to);
 
+          if (event.users.length > req.body.maxPlayers) {
+            event.maxPlayers = event.users.length;
+          } else {
+            event.maxPlayers = xssFilters.inHTMLData(req.body.maxPlayers);
+          }
+
           event.save((err) => {
             if (err) throw err;
           });

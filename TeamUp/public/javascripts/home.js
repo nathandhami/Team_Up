@@ -12,6 +12,7 @@ $(document).ready(() => {
 		$('#teamupName').val(event.teamupName);
 		$('#from').val(from_date);
 		$('#to').val(to_date);
+		$('#maxPlayers').val(event.maxPlayers);
 		$('#sport').val(event.sport);
 		$('#locationName').val(event.locationName);
 		$('#locationAddress').val(event.locationAddress);
@@ -172,6 +173,11 @@ $(document).ready(() => {
             to: {
               required: true,
             },
+            maxPlayers: {
+            	required: true,
+            	max: 40,
+            	min: 0,
+            }
         },
         messages: {
             teamupName: {
@@ -180,6 +186,11 @@ $(document).ready(() => {
             },
             from: "Please select date and time",
             to: "Please select date and time",
+            maxPlayers: {
+              required: "Please enter the maximum player count.", 
+              max: "Value should be between 0-40",
+              min: "Value should be between 0-40",
+            }
         },
         submitHandler: function(form) {
         	let event = $('#input_eventModal').val();
