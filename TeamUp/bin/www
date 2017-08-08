@@ -2,7 +2,6 @@
 
 'use strict';
 
-const open = require('open');
 const serverConfig = require('../server');
 const https = require('https');
 const http = require('http');
@@ -30,5 +29,4 @@ const baseurlDisplay = () => {
   const baseurl = `http://localhost:${PORT}/`;
   winston.info(`Listening on port: ${PORT}`);
   winston.info(`Serving at URL ${baseurl}`);
-  open(baseurl);
 };
