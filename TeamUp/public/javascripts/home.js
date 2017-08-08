@@ -6,8 +6,10 @@ $(document).ready(() => {
 
 		event = JSON.parse(event);
 
-		let from_date = event.from.split('T')[0] + ' ' + event.from.split('T')[1].split('.')[0];
-		let to_date = event.to.split('T')[0] + ' ' + event.to.split('T')[1].split('.')[0];
+		let from_date = moment(event.from).format('MM/DD/YYYY HH:MM AM');
+		from_date = from_date.substring(0, from_date.length - 1);
+		let to_date = moment(event.to).format('MM/DD/YYYY HH:MM AM');
+		to_date = to_date.substring(0, to_date.length - 1);
 
 		$('#teamupName').val(event.teamupName);
 		$('#from').val(from_date);
