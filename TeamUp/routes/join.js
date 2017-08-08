@@ -6,6 +6,7 @@ const xssFilters = require('xss-filters');
 const nconf = require('nconf');
 const router = new express.Router();
 const User = require('../models/User');
+const moment = require('moment');
 
 
 /* GET join event page */
@@ -16,8 +17,8 @@ router.route('/')
           let from = [];
           let to = [];
           for (let i = 0; i < events.length; i++) {
-            from.push(events[i].from.toUTCString());
-            to.push(events[i].to.toUTCString());
+            from.push(moment(events[i].from).format('ddd DD MMM YYYY hh:mm A'));
+            to.push(moment(events[i].to).format('ddd DD MMM YYYY hh:mm A'));
           }
           res.render('join', {
             title: 'Join Events',
