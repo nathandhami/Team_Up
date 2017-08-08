@@ -109,3 +109,7 @@ h2.header {
 form .error {
   color: indianred;
 }
+
+.links, .bootstrap-timepicker.timepicker .glyphicon {
+  color: #039be5;
+}

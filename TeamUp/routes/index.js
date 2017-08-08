@@ -3,6 +3,7 @@
 const express = require('express');
 const _ = require('lodash');
 const router = new express.Router();
+const moment = require("moment");
 
 /* GET home page */
 router.route('/')
@@ -22,8 +23,8 @@ router.route('/')
         let from = [];
         let to = [];
         for (let i = 0; i < events.length; i++) {
-          from.push(events[i].from.toUTCString());
-          to.push(events[i].to.toUTCString());
+          from.push(moment(events[i].from).format('ddd DD MMM YYYY hh:mm A'));
+          to.push(moment(events[i].to).format('ddd DD MMM YYYY hh:mm A'));
         }
         res.render('index', {
           title: 'Home',

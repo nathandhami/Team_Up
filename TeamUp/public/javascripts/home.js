@@ -6,12 +6,13 @@ $(document).ready(() => {
 
 		event = JSON.parse(event);
 
-		let from_date = event.from.split('T')[0] + ' ' + event.from.split('T')[1].split('.')[0];
-		let to_date = event.to.split('T')[0] + ' ' + event.to.split('T')[1].split('.')[0];
+		let from_date = moment(event.from).format('MM/DD/YYYY hh:mm A');
+		let to_date = moment(event.to).format('MM/DD/YYYY hh:mm A');
 
 		$('#teamupName').val(event.teamupName);
 		$('#from').val(from_date);
 		$('#to').val(to_date);
+		$('#maxPlayers').val(event.maxPlayers);
 		$('#sport').val(event.sport);
 		$('#locationName').val(event.locationName);
 		$('#locationAddress').val(event.locationAddress);
@@ -172,6 +173,11 @@ $(document).ready(() => {
             to: {
               required: true,
             },
+            maxPlayers: {
+            	required: true,
+            	max: 40,
+            	min: 0,
+            }
         },
         messages: {
             teamupName: {
@@ -180,6 +186,11 @@ $(document).ready(() => {
             },
             from: "Please select date and time",
             to: "Please select date and time",
+            maxPlayers: {
+              required: "Please enter the maximum player count.", 
+              max: "Value should be between 0-40",
+              min: "Value should be between 0-40",
+            }
         },
         submitHandler: function(form) {
         	let event = $('#input_eventModal').val();
