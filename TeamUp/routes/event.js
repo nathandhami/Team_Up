@@ -5,6 +5,7 @@ const router = new express.Router();
 const nconf = require('nconf');
 const Event = require('../models/Event');
 const xssFilters = require('xss-filters');
+const moment = require('moment');
 
 /* GET Event Room page */
 router.route('/chatroom/:id')
@@ -31,8 +32,8 @@ router.route('/chatroom/:id')
           });
         }
         else {
-          let fromDate = event.from.toUTCString();
-          let toDate = event.to.toUTCString();
+          let fromDate = moment(event.from).format('ddd MM/DD/YYYY hh:MM A');
+          let toDate = moment(event.to).format('ddd MM/DD/YYYY hh:MM A');
           res.render('event', { csrfToken: req.csrfToken(), title: event.teamupName, 
             event: event, fromDate: fromDate, toDate: toDate, mapKey: nconf.get('googleMap:key') });
         }
