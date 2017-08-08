@@ -6,8 +6,8 @@ $(document).ready(() => {
 
 		event = JSON.parse(event);
 
-		let from_date = moment(event.from).format('MM/DD/YYYY hh:MM A');
-		let to_date = moment(event.to).format('MM/DD/YYYY hh:MM A');
+		let from_date = moment(event.from).format('MM/DD/YYYY hh:mm A');
+		let to_date = moment(event.to).format('MM/DD/YYYY hh:mm A');
 
 		$('#teamupName').val(event.teamupName);
 		$('#from').val(from_date);

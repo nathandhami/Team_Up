@@ -23,8 +23,8 @@ router.route('/')
         let from = [];
         let to = [];
         for (let i = 0; i < events.length; i++) {
-          from.push(moment(events[i].from).format('ddd MM/DD/YYYY hh:MM A'));
-          to.push(moment(events[i].to).format('ddd MM/DD/YYYY hh:MM A'));
+          from.push(moment(events[i].from).format('ddd DD MMM YYYY hh:mm A'));
+          to.push(moment(events[i].to).format('ddd DD MMM YYYY hh:mm A'));
         }
         res.render('index', {
           title: 'Home',

@@ -32,8 +32,8 @@ router.route('/chatroom/:id')
           });
         }
         else {
-          let fromDate = moment(event.from).format('ddd MM/DD/YYYY hh:MM A');
-          let toDate = moment(event.to).format('ddd MM/DD/YYYY hh:MM A');
+          let fromDate = moment(event.from).format('ddd DD MMM YYYY hh:mm A');
+          let toDate = moment(event.to).format('ddd DD MMM YYYY hh:mm A');
           res.render('event', { csrfToken: req.csrfToken(), title: event.teamupName, 
             event: event, fromDate: fromDate, toDate: toDate, mapKey: nconf.get('googleMap:key') });
         }
