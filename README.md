@@ -7,8 +7,8 @@ It might take time to load, so if you get 502 bad gateway, maybe wait for a few 
 # Features
 
 * Users can login and register through his credentials or using google, twitter or facebook api
-* Users can search nearby parks and assign an event on that locations
-* Other users can join the events and chat with each other
+* Users can search nearby parks using Google Maps api and create an event on that location
+* Other users can join the events from a map and chat with each other
 
 
 
