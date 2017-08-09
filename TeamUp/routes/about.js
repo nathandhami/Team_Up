@@ -7,7 +7,7 @@ const router = new express.Router();
 router.route('/').get((req, res) => {
   res.render('about', {
     title: 'About Us',
-    csrfToken: req.csrfToken()
+    csrfToken: req.csrfToken(),
   });
 });
 

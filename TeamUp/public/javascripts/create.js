@@ -39,11 +39,11 @@ $(document).ready(() => {
   let from_input = $('#from');
   let to_input = $('#to');
   from_input.datetimepicker({
-    minDate: moment()
+    minDate: moment(),
   });
   to_input.datetimepicker({
     useCurrent: false,
-    minDate: moment()
+    minDate: moment(),
   });
   from_input.on('dp.change', (e) => {
     to_input.data('DateTimePicker').minDate(e.date);
@@ -64,7 +64,7 @@ $(document).ready(() => {
     if ($('#teamupName').val() && $('#from').val() && $('#to').val() && $('#sport').val() && $('#maxPlayers').val() && !$('#locationName').val()) {
       $('p#errorLocation').text('Please Select a Location using Google Maps! Thank you :)');
       $('html, body').animate({
-        scrollTop: 0
+        scrollTop: 0,
       }, 2000);
       $('#pac-input').focus();
       e.preventDefault();
@@ -72,5 +72,5 @@ $(document).ready(() => {
   });
   $('form').bind('submit', (e) => {
     $('#submit').prop('disabled', true);
-  })
+  });
 });

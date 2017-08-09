@@ -6,39 +6,39 @@ $(document).ready(() => {
     $('#updateForm').validate({
         rules: {
             first_name: {
-              required: true, 
-              minlength: 2
+              required: true,
+              minlength: 2,
             },
             last_name: {
-              required: true, 
-              minlength: 2
+              required: true,
+              minlength: 2,
             },
             current_password: 'required',
             new_pass: {
-              required: true, 
-              minlength: 6
+              required: true,
+              minlength: 6,
             },
             confirm_new_pass: {
-              equalTo: '#new_pass'
-            }
+              equalTo: '#new_pass',
+            },
         },
         messages: {
             first_name: {
-              required: "Please enter your first name.", 
-              minlength: "First Name must have minimum 2 characters."
+              required: 'Please enter your first name.',
+              minlength: 'First Name must have minimum 2 characters.',
             },
             last_name: {
-              required: "Please enter your last name.", 
-              minlength: "Last Name must have minimum 2 characters."
+              required: 'Please enter your last name.',
+              minlength: 'Last Name must have minimum 2 characters.',
             },
-            current_password: "Please enter your current password",
+            current_password: 'Please enter your current password',
             new_pass: {
-              required: "Please enter your new password", 
-              minlength: "Password must have minimum 6 characters."
+              required: 'Please enter your new password',
+              minlength: 'Password must have minimum 6 characters.',
             },
             confirm_new_pass: {
-              equalTo: "Your passwords do not match."
-            }
+              equalTo: 'Your passwords do not match.',
+            },
         },
         submitHandler: function(form) {
           $.ajax({
@@ -61,7 +61,7 @@ $(document).ready(() => {
                       title: response.success,
                       text: response.text,
                       type: 'success',
-                      confirmButtonColor: "#DD6B55",
+                      confirmButtonColor: '#DD6B55',
                       confirmButtonText: 'Okay',
                       closeOnConfirm: false,
                     },

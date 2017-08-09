@@ -17,47 +17,43 @@ $(document).ready(() => {
 		$('#locationName').val(event.locationName);
 		$('#locationAddress').val(event.locationAddress);
 
-		$('#from').data("DateTimePicker").maxDate(moment(to_date));
-		$('#to').data("DateTimePicker").minDate(moment(from_date));
+		$('#from').data('DateTimePicker').maxDate(moment(to_date));
+		$('#to').data('DateTimePicker').minDate(moment(from_date));
 	});
 
 	$('.participantsBtn').click( (e) => {
 		e.preventDefault();
 		let event = $(e.target).children('input').val();
- 
+
 		event = JSON.parse(event);
 
 		let parentNode = $('#listMembers');
 		$('.userList').remove();
 
-		for(let i = 0; i < event.users.length; i++){
-
+		for (let i = 0; i < event.users.length; i++) {
 			let image = event.users[i].image;
 			let email = 'hidden';
 
-			if(event.users[i].email != null){
-				email = event.users[i].email
+			if (event.users[i].email != null) {
+				email = event.users[i].email;
 			}
 
-			parentNode.append('<li class="clearfix userList"> <img class="thumb-img" src="' + image + '"/> ' 
-			+ event.users[i].firstname + ' ' + event.users[i].lastname + ' (' + email + ')' + "</li>");
+			parentNode.append('<li class="clearfix userList"> <img class="thumb-img" src="' + image + '"/> '
+			+ event.users[i].firstname + ' ' + event.users[i].lastname + ' (' + email + ')' + '</li>');
 		}
-
-		 
 	});
-
 
 
 	$('#eventDelBtn').click( (e) => {
 		swal({
 		  title: 'Are you sure?',
-		  text: "You won't be able to revert this!",
+		  text: 'You won\'t be able to revert this!',
 		  type: 'warning',
 		  showCancelButton: true,
 		  confirmButtonColor: '#3085d6',
 		  cancelButtonColor: '#d33',
 		  confirmButtonText: 'Yes, delete it!',
-		  closeOnConfirm: false
+		  closeOnConfirm: false,
 		},
 		() => {
 			let csrf = $('#input_csrf').val();
@@ -68,7 +64,7 @@ $(document).ready(() => {
 	          type: 'POST',
 	          url: '/event/delete/' + event.aliasId,
 	          data: {
-	              "_csrf": csrf,
+	              '_csrf': csrf,
 	          },
 	          timeout: 3000,
 	          success: function(response) {
@@ -81,13 +77,12 @@ $(document).ready(() => {
 	                  confirmButtonText: 'Okay',
 	                  closeOnConfirm: true,
 	              });
-	            }
-	            else {
+	            } else {
 	              swal({
 	                  title: response.msg,
 	                  text: response.text,
 	                  type: 'success',
-	                  confirmButtonColor: "#DD6B55",
+	                  confirmButtonColor: '#DD6B55',
 	                  confirmButtonText: 'Okay',
 	                  closeOnConfirm: false,
 	              },
@@ -95,27 +90,25 @@ $(document).ready(() => {
 	                window.location.href = response.redirect;
 	              });
 	            }
-	            
 	            },
 	            error: function(response) {
 	              window.location.href = response.redirect;
 	            },
 	        });
 	    });
-			
 	});
 
 	$('.leaveEventBtn').click( (e) => {
 		e.preventDefault();
 		swal({
 		  title: 'Are you sure?',
-		  text: "You won't be able to revert this!",
+		  text: 'You won\'t be able to revert this!',
 		  type: 'warning',
 		  showCancelButton: true,
 		  confirmButtonColor: '#3085d6',
 		  cancelButtonColor: '#d33',
 		  confirmButtonText: 'Yes, I\'m sure.',
-		  closeOnConfirm: false
+		  closeOnConfirm: false,
 		},
 		() => {
 			let csrf = $('#input_csrf').val();
@@ -124,7 +117,7 @@ $(document).ready(() => {
 	          type: 'POST',
 	          url: '/event/leave/' + eventAliasId,
 	          data: {
-	              "_csrf": csrf,
+	              '_csrf': csrf,
 	          },
 	          timeout: 3000,
 	          success: function(response) {
@@ -137,13 +130,12 @@ $(document).ready(() => {
 	                  confirmButtonText: 'Okay',
 	                  closeOnConfirm: true,
 	              });
-	            }
-	            else {
+	            } else {
 	              swal({
 	                  title: response.msg,
 	                  text: response.text,
 	                  type: 'success',
-	                  confirmButtonColor: "#DD6B55",
+	                  confirmButtonColor: '#DD6B55',
 	                  confirmButtonText: 'Okay',
 	                  closeOnConfirm: false,
 	              },
@@ -151,7 +143,6 @@ $(document).ready(() => {
 	                window.location.href = response.redirect;
 	              });
 	            }
-	            
 	            },
 	            error: function(response) {
 	              window.location.href = response.redirect;
@@ -164,8 +155,8 @@ $(document).ready(() => {
 	$('#updateEventForm').validate({
         rules: {
             teamupName: {
-              required: true, 
-              minlength: 2
+              required: true,
+              minlength: 2,
             },
             from: {
               required: true,
@@ -177,20 +168,20 @@ $(document).ready(() => {
             	required: true,
             	max: 40,
             	min: 0,
-            }
+            },
         },
         messages: {
             teamupName: {
-              required: "Please enter event name.", 
-              minlength: "Event name must have minimum 2 characters."
+              required: 'Please enter event name.',
+              minlength: 'Event name must have minimum 2 characters.',
             },
-            from: "Please select date and time",
-            to: "Please select date and time",
+            from: 'Please select date and time',
+            to: 'Please select date and time',
             maxPlayers: {
-              required: "Please enter the maximum player count.", 
-              max: "Value should be between 0-40",
-              min: "Value should be between 0-40",
-            }
+              required: 'Please enter the maximum player count.',
+              max: 'Value should be between 0-40',
+              min: 'Value should be between 0-40',
+            },
         },
         submitHandler: function(form) {
         	let event = $('#input_eventModal').val();
@@ -210,13 +201,12 @@ $(document).ready(() => {
 	                  confirmButtonText: 'Okay',
 	                  closeOnConfirm: true,
 	              });
-	            }
-	            else {
+	            } else {
 	              swal({
 	                  title: response.msg,
 	                  text: response.text,
 	                  type: 'success',
-	                  confirmButtonColor: "#DD6B55",
+	                  confirmButtonColor: '#DD6B55',
 	                  confirmButtonText: 'Okay',
 	                  closeOnConfirm: false,
 	              },
@@ -224,7 +214,6 @@ $(document).ready(() => {
 	                window.location.href = response.redirect;
 	              });
 	            }
-	            
 	            },
 	            error: function(response) {
 	              window.location.href = response.redirect;

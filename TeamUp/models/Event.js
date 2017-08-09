@@ -1,17 +1,17 @@
 const mongoose = require('mongoose');
-var shortid = require('shortid');
+let shortid = require('shortid');
 
 const EventSchema = new mongoose.Schema({
   teamupName: String,
-  from: { type: Date },
-  to: { type: Date },
+  from: {type: Date},
+  to: {type: Date},
   sport: String,
   maxPlayers: Number,
   locationName: String,
   locationAddress: String,
   locationCoordinates: [Number],
   createdBy: {type: mongoose.Schema.ObjectId, ref: 'User'},
-  aliasId: {type: String, unique:true, default: shortid.generate},
+  aliasId: {type: String, unique: true, default: shortid.generate},
   users: [{type: mongoose.Schema.ObjectId, ref: 'User'}],
 });
 

@@ -7,8 +7,8 @@ $(document).ready(() => {
             type: 'POST',
             url: '/auth/changeStatus',
             data: {
-            	"_csrf": csrf,
-            	"status": status,
+            	'_csrf': csrf,
+            	'status': status,
             },
             timeout: 3000,
             success: function(response) {

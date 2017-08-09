@@ -12,8 +12,8 @@ const moment = require('moment');
 /* GET join event page */
 router.route('/')
   .get((req, res) => {
-  	Event.find({users: {$ne: req.user._id}}, null, {sort: {from: 1}}, function(err, events) {
-      if (!err){
+  	Event.find({users: {$ne: req.user._id}}, null, {sort: {from: 1}}, (err, events) => {
+      if (!err) {
           let from = [];
           let to = [];
           for (let i = 0; i < events.length; i++) {
@@ -28,8 +28,9 @@ router.route('/')
             fromDate: from,
             toDate: to,
           });
-      }
-      else {throw err;}
+      } else {
+throw err;
+}
   	});
   })
 
@@ -53,7 +54,9 @@ router.route('/')
           }
 
           if (event) {
-            let isJoined = event.users.filter(function(value){ return value.toString() == user._id;});
+            let isJoined = event.users.filter((value) => {
+ return value.toString() == user._id;
+});
 
             // add check for max number of players.
             if (isJoined.length > 0) {
@@ -80,8 +83,7 @@ router.route('/')
           }
         });
       }
-
     });
     return;
-  })
+  });
 module.exports = router;

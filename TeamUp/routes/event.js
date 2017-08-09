@@ -10,17 +10,15 @@ const moment = require('moment');
 /* GET Event Room page */
 router.route('/chatroom/:id')
   .get((req, res, next) => {
-
     const id = req.params.id;
     const userId = req.user._id;
 
-    Event.findOne({ 'aliasId': id }).exec(function (err, event) {
+    Event.findOne({'aliasId': id}).exec((err, event) => {
       if (err || event == null) {
         res.status(404).render('notFound', {
           title: 'Page Not Found',
         });
-      }
-      else {
+      } else {
         // Check if user belongs to the event
         let isEventMember = validateEventMember(event, userId);
 
@@ -30,12 +28,11 @@ router.route('/chatroom/:id')
           res.status(404).render('notAuthorized', {
             title: 'No Permission',
           });
-        }
-        else {
+        } else {
           let fromDate = moment(event.from).format('ddd DD MMM YYYY hh:mm A');
           let toDate = moment(event.to).format('ddd DD MMM YYYY hh:mm A');
-          res.render('event', { csrfToken: req.csrfToken(), title: event.teamupName, 
-            event: event, fromDate: fromDate, toDate: toDate, mapKey: nconf.get('googleMap:key') });
+          res.render('event', {csrfToken: req.csrfToken(), title: event.teamupName,
+            event: event, fromDate: fromDate, toDate: toDate, mapKey: nconf.get('googleMap:key')});
         }
       }
     });
@@ -47,19 +44,17 @@ router.route('/chatroom/:id')
 /* Process Edit */
 router.route('/edit/:id')
   .post((req, res, next) => {
-
     const id = req.params.id;
     const userId = req.user._id;
 
-    Event.findOne({ 'aliasId': id }).exec(function (err, event) {
+    Event.findOne({'aliasId': id}).exec((err, event) => {
       if (err || event == null) {
         res.json({
           msg: 'Error!',
           text: 'Not Found',
-          status: 404, redirect: '/notFound'
+          status: 404, redirect: '/notFound',
         });
-      }
-      else {
+      } else {
         // Check if user is the owner of the event
         let isCreator = validateEventCreator(event, userId);
 
@@ -69,10 +64,9 @@ router.route('/edit/:id')
           res.json({
             msg: 'Error!',
             text: 'You have not authorized to perform this action',
-            status: 403, redirect: '/'
+            status: 403, redirect: '/',
           });
-        }
-        else {
+        } else {
           event.teamupName = xssFilters.inHTMLData(req.body.teamupName);
           event.from = xssFilters.inHTMLData(req.body.from);
           event.to = xssFilters.inHTMLData(req.body.to);
@@ -90,7 +84,7 @@ router.route('/edit/:id')
           res.json({
             msg: 'Event Updated!',
             text: event.teamupName + ' has been successfully updated',
-            status: 204, redirect: '/'
+            status: 204, redirect: '/',
           });
         }
       }
@@ -103,19 +97,17 @@ router.route('/edit/:id')
 /* Process Leave */
 router.route('/leave/:id')
   .post((req, res, next) => {
-
     const id = req.params.id;
     const userId = req.user._id;
 
-    Event.findOne({ 'aliasId': id }).exec(function (err, event) {
+    Event.findOne({'aliasId': id}).exec((err, event) => {
       if (err || event == null) {
         res.json({
           msg: 'Error!',
           text: 'Not Found',
-          status: 404, redirect: '/notFound'
+          status: 404, redirect: '/notFound',
         });
-      }
-      else {
+      } else {
         // Check if user belongs to the event
         let isEventMember = validateEventMember(event, userId);
 
@@ -125,10 +117,9 @@ router.route('/leave/:id')
           res.json({
             msg: 'Error!',
             text: 'You have not authorized to perform this action',
-            status: 403, redirect: '/'
+            status: 403, redirect: '/',
           });
-        }
-        else {
+        } else {
           event.users.pull(req.user._id);
 
           event.save((err) => {
@@ -138,7 +129,7 @@ router.route('/leave/:id')
           res.json({
             msg: 'Updated!',
             text: 'You have been removed from ' + event.teamupName,
-            status: 204, redirect: '/'
+            status: 204, redirect: '/',
           });
         }
       }
@@ -151,19 +142,17 @@ router.route('/leave/:id')
 /* Process delete */
 router.route('/delete/:id')
   .post((req, res, next) => {
-
     const id = req.params.id;
     const userId = req.user._id;
 
-    Event.findOne({ 'aliasId': id }).exec(function (err, event) {
+    Event.findOne({'aliasId': id}).exec((err, event) => {
       if (err || event == null) {
         res.json({
           msg: 'Error!',
           text: 'Not Found',
-          status: 404, redirect: '/notFound'
+          status: 404, redirect: '/notFound',
         });
-      }
-      else {
+      } else {
         // Check if user belongs to the event
         let isCreator = validateEventCreator(event, userId);
 
@@ -173,17 +162,16 @@ router.route('/delete/:id')
           res.json({
             msg: 'Error!',
             text: 'You have not authorized to perform this action',
-            status: 403, redirect: '/'
+            status: 403, redirect: '/',
           });
-        }
-        else {
-          let resText = event.teamupName + ' has been successfully deleted.'
+        } else {
+          let resText = event.teamupName + ' has been successfully deleted.';
           event.remove();
 
           res.json({
             msg: 'Deleted!',
             text: resText,
-            status: 204, redirect: '/'
+            status: 204, redirect: '/',
           });
         }
       }
@@ -193,14 +181,15 @@ router.route('/delete/:id')
   });
 
 function validateEventMember(event, userId) {
-  let isJoined = event.users.filter(function (value) { return value.toString() == userId; });
+  let isJoined = event.users.filter((value) => {
+ return value.toString() == userId;
+});
   let retVal;
 
   // Check if user belongs to the event
   if (isJoined.length <= 0) {
     retVal = false;
-  }
-  else {
+  } else {
     retVal = true;
   }
   return retVal;
@@ -212,8 +201,7 @@ function validateEventCreator(event, userId) {
   // Check if user is the creator of the event
   if (event.createdBy.toString() != userId) {
     retVal = false;
-  }
-  else {
+  } else {
     retVal = true;
   }
   return retVal;

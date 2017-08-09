@@ -1,5 +1,4 @@
 $(() => {
-
   $('#sidebar').on('click', (e) => {
     e.preventDefault();
     $('aside').toggleClass('sidebarDisplayed');
@@ -11,12 +10,11 @@ $(() => {
     $('aside').toggleClass('sidebarDisplayed');
   });
 
-  $(window).resize(function () {
-    var minWidth = 768;
-    var container = $('aside');
+  $(window).resize(() => {
+    let minWidth = 768;
+    let container = $('aside');
     if (!container.hasClass('sidebarDisplayed') && $(window).width() > minWidth) {
       container.addClass('sidebarDisplayed');
     }
   });
-
 });

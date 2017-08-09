@@ -11,7 +11,7 @@ router.route('/').get((req, res) => {
   res.render('create', {
     title: 'Create Events',
     mapKey: nconf.get('googleMap:key'),
-    csrfToken: req.csrfToken()
+    csrfToken: req.csrfToken(),
   });
 });
 

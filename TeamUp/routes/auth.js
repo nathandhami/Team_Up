@@ -68,7 +68,6 @@ router.route('/register')
 
     req.getValidationResult().then((result) => {
       if (!result.isEmpty()) {
-
         let messages = [];
         let results = result.array();
         results.forEach((element) => {
@@ -97,7 +96,7 @@ router.route('/register')
             email: email,
             password: password,
             image: '/assets/images/raster/png/missing.png',
-            status: "Available",
+            status: 'Available',
           });
 
           user.save((err, user) => {
@@ -126,8 +125,8 @@ router.route('/deleteUser')
       }
 
       if (user) {
-        if( user.facebook || user.google || user.twitter ){
-           res.json({error: 'Bad Request! Cannot delete social media accounts', status: 403,});
+        if ( user.facebook || user.google || user.twitter ) {
+           res.json({error: 'Bad Request! Cannot delete social media accounts', status: 403});
           return;
         }
 

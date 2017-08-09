@@ -60,7 +60,7 @@ serverConfig.use(expressValidator());
 serverConfig.use(cookieParser());
 
 serverConfig.use(multer({
-  dest: './public/uploads/'
+  dest: './public/uploads/',
 }).single('pic_upload'));
 
 serverConfig.use(csrf({
@@ -105,7 +105,6 @@ serverConfig.set('view engine', 'pug');
 
 // Setting up Routes
 serverConfig.use(express.static(path.join(__dirname, 'public')));
-
 
 
 serverConfig.use('/', index);

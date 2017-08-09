@@ -4,13 +4,13 @@ const express = require('express');
 const xssFilters = require('xss-filters');
 const router = new express.Router();
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
 const User = require('../models/User');
 
 router.route('/profile')
   .get((req, res, next) => {
     let isSocial = false;
-    if (req.user.facebook || req.user.twitter || 
+    if (req.user.facebook || req.user.twitter ||
           req.user.google) {
       isSocial = true;
     }
@@ -39,9 +39,9 @@ router.route('/profile')
       }
 
       if (user) {
-        if( user.facebook || user.google || user.twitter){
+        if ( user.facebook || user.google || user.twitter) {
            res.json({error: 'Bad Request!', status: 403,
-                    text: 'Cannot update social media accounts.',});
+                    text: 'Cannot update social media accounts.'});
           return;
         }
         if (user.validPassword(currentPass)) {
@@ -66,11 +66,10 @@ router.route('/profile')
 
       return;
     });
-
-  })
+  });
 
 router.route('/uploadPic')
-  .post(function(req, res) {
+  .post((req, res) => {
     const userId = req.user._id;
 
     User.findOne({
@@ -85,12 +84,12 @@ router.route('/uploadPic')
           let ImageData = fs.readFileSync(req.file.path);
           let pubFolder = 'public/';
           let destFile = '/uploads/' + user.firstname + '_' +
-                        user.lastname + user.identification + randomNum + 
+                        user.lastname + user.identification + randomNum +
                         path.extname(req.file.originalname);
           let dest = pubFolder + destFile;
 
           fs.writeFile(dest, ImageData, 'binary',
-            function(err){
+            (err) => {
               if (err) throw err;
             });
 

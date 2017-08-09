@@ -23,7 +23,7 @@ router.route('/')
                     '<br/><br/><br/>' +
                     '<b>Message</b>:  ' + contactMsg + '<br/>';
 
-    
+
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
         service: 'gmail',

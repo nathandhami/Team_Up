@@ -10,12 +10,11 @@ const xssFilters = require('xss-filters');
 socketApi.io = io;
 
 // Stores users that are connected @ default namespace
-var users = [];
+let users = [];
 
 // event handler for each connected socket
 io.on('connection', (socket) => {
-
-  socket.on('new user', function (userData, eventData, callback) {
+  socket.on('new user', (userData, eventData, callback) => {
     {
       socket.userName = userData.name;
       socket.userId = userData.userId;
@@ -24,7 +23,7 @@ io.on('connection', (socket) => {
 
       socket.join(socket.room);
 
-      users.push({ userId: socket.userId, name: socket.userName, status: socket.status, room: socket.room });
+      users.push({userId: socket.userId, name: socket.userName, status: socket.status, room: socket.room});
 
       const filterRoomArr = [];
       for (let i = 0; i < users.length; i++) {
@@ -42,10 +41,9 @@ io.on('connection', (socket) => {
 
     // console.log('New User Event - Global socket users: ' + users);
     // Show previous messages of chat history
-    Chat.find({ 'roomId': socket.room }).sort({ date: -1 }).exec(function (err, historyChatMsg) {
+    Chat.find({'roomId': socket.room}).sort({date: -1}).exec((err, historyChatMsg) => {
       socket.emit('sendChatHistory', historyChatMsg);
     });
-
   });
 
   socket.on('chat message', (data) => {
@@ -74,7 +72,6 @@ io.on('connection', (socket) => {
   // Status updating Logic
   // Don't need to update database because ajax will handle that
   socket.on('userChangedStatus', (data) => {
-
     let user = {};
 
     for (let i = 0; i < users.length; i++) {
@@ -87,7 +84,6 @@ io.on('connection', (socket) => {
     }
 
     io.emit('updateStatusBroadcast', user);
-
   });
 
   socket.on('disconnect', () => {
@@ -119,7 +115,7 @@ io.on('connection', (socket) => {
 // Filter out duplicate objects by userId property
 function filterArray(arr) {
   const set = new Set();
-  const filteredArr = arr.filter(element => {
+  const filteredArr = arr.filter((element) => {
     if (set.has(element.userId)) {
       return false;
     }

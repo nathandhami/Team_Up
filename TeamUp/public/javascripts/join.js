@@ -7,8 +7,8 @@ $(document).ready(() => {
       type: 'POST',
       url: '/join',
       data: {
-          "_csrf": csrf,
-          "eventAliasId": event_alias_id,
+          '_csrf': csrf,
+          'eventAliasId': event_alias_id,
         },
       timeout: 3000,
       success: function(response) {
@@ -21,13 +21,12 @@ $(document).ready(() => {
               confirmButtonText: 'Okay',
               closeOnConfirm: true,
           });
-        }
-        else {
+        } else {
           swal({
               title: response.msg,
               text: response.text,
               type: 'success',
-              confirmButtonColor: "#DD6B55",
+              confirmButtonColor: '#DD6B55',
               confirmButtonText: 'Okay',
               closeOnConfirm: false,
           },
@@ -44,10 +43,10 @@ $(document).ready(() => {
 
   $('#showAllEventsBtn').click( (e) => {
     infoWindow.close();
-    $('.ac-event-panel').removeClass("highlight");
+    $('.ac-event-panel').removeClass('highlight');
     $('.ac-event-panel').show();
     $('html,body').animate({
-      scrollTop: $("#showAllEventsBtn").offset().top},
+      scrollTop: $('#showAllEventsBtn').offset().top},
       'slow');
   });
 });
@@ -64,7 +63,7 @@ function loadMap() {
     center: {lat: 49.278628, lng: -122.920355},
     zoom: 12,
     scaleControl: true,
-    mapTypeId: 'roadmap'
+    mapTypeId: 'roadmap',
   });
   infoWindow = new google.maps.InfoWindow();
   service = new google.maps.places.PlacesService(map);
@@ -75,22 +74,22 @@ function loadMap() {
   map.controls[google.maps.ControlPosition.TOP].push(input);
 
   // Bias the SearchBox results towards current map's viewport.
-  map.addListener('bounds_changed', function() {
+  map.addListener('bounds_changed', () => {
     searchBox.setBounds(map.getBounds());
   });
 
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
-  searchBox.addListener('places_changed', function() {
+  searchBox.addListener('places_changed', () => {
     let places = searchBox.getPlaces();
     if (places.length == 0) {
       return;
     }
     // For each place, get the location.
     let bounds = new google.maps.LatLngBounds();
-    places.forEach(function(place) {
+    places.forEach((place) => {
       if (!place.geometry) {
-        console.log("Returned place contains no geometry");
+        console.log('Returned place contains no geometry');
         return;
       }
       if (place.geometry.viewport) {
@@ -111,23 +110,23 @@ function loadMap() {
     let long = locations[i].locationCoordinates[0];
     let category = locations[i].sport;
     let teamupName = locations[i].teamupName;
-    let from_date = locations[i].from.split('T')[0] + ' ' + locations[i].from.split('T')[1].split('.')[0];;
+    let from_date = locations[i].from.split('T')[0] + ' ' + locations[i].from.split('T')[1].split('.')[0]; ;
     let to_date = 'None Set';
-    if (locations[i].to){
-      to_date = locations[i].to.split('T')[0] + ' ' + locations[i].to.split('T')[1].split('.')[0];;;
+    if (locations[i].to) {
+      to_date = locations[i].to.split('T')[0] + ' ' + locations[i].to.split('T')[1].split('.')[0]; ;;
     }
-    let content = "<b>TeamUp Name</b>: " + teamupName + "<br>" +
-                  "<b>From</b>: " + from_date + "<br>" +
-                  "<b>To</b>: " + to_date + "<br>" +
-                  "<b>Sport</b>: " + category + "<br>" +
-                  "<b>Location</b>: " + locationName + "<br>" + locationAddress +
-                  "<br><a class='directions' target='_blank' href=https://www.google.com/maps/dir//" + lat + "," + long + ">Get Directions</a>";
+    let content = '<b>TeamUp Name</b>: ' + teamupName + '<br>' +
+                  '<b>From</b>: ' + from_date + '<br>' +
+                  '<b>To</b>: ' + to_date + '<br>' +
+                  '<b>Sport</b>: ' + category + '<br>' +
+                  '<b>Location</b>: ' + locationName + '<br>' + locationAddress +
+                  '<br><a class=\'directions\' target=\'_blank\' href=https://www.google.com/maps/dir//' + lat + ',' + long + '>Get Directions</a>';
 
     // check for event on same location
     for (let j = i - 1; j >= 0; j--) {
       if (locations[j].locationCoordinates[1] == lat &&
           locations[j].locationCoordinates[0] == long) {
-        //slightly change lat and long
+        // slightly change lat and long
         lat = lat + (Math.random() -1) / 1500;
         long = long + (Math.random() -.5) / 1500;
       }
@@ -136,18 +135,18 @@ function loadMap() {
       position: new google.maps.LatLng(lat, long),
       map: map,
       title: locationName,
-      animation: google.maps.Animation.DROP
+      animation: google.maps.Animation.DROP,
     });
     newMarker.category = category;
     newMarker.setVisible(true);
-    (function (newMarker, locationName, locationAddress, content, infoWindow, index) {
-      google.maps.event.addListener(newMarker, 'click', function () {
+    (function(newMarker, locationName, locationAddress, content, infoWindow, index) {
+      google.maps.event.addListener(newMarker, 'click', () => {
         infoWindow.setContent(content);
         infoWindow.open(map, newMarker);
-        $('.ac-event-panel').removeClass("highlight");
+        $('.ac-event-panel').removeClass('highlight');
         $('.ac-event-panel').hide();
         $('#mixin' + index).show();
-        $('#mixin' + index).addClass("highlight");
+        $('#mixin' + index).addClass('highlight');
       });
     })
     (newMarker, locationName, locationAddress, content, infoWindow, i);
@@ -156,22 +155,24 @@ function loadMap() {
 
   // Locate user's location if location is turned on
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
+    navigator.geolocation.getCurrentPosition((position) => {
+      let pos = {
         lat: position.coords.latitude,
-        lng: position.coords.longitude
+        lng: position.coords.longitude,
       };
       currentLocation = pos;
-      var im = 'http://i.stack.imgur.com/orZ4x.png';
-      var userMarker = new google.maps.Marker({
+      let im = 'http://i.stack.imgur.com/orZ4x.png';
+      let userMarker = new google.maps.Marker({
             position: pos,
             map: map,
-            icon: im
+            icon: im,
         });
       infoWindow.setPosition(pos);
       infoWindow.setContent('You are here.');
       infoWindow.open(map);
-      setTimeout(function(){infoWindow.close();}, '3000');
+      setTimeout(() => {
+infoWindow.close();
+}, '3000');
       map.setCenter(pos);
     });
   }

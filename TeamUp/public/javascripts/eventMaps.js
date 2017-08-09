@@ -14,19 +14,19 @@ $(document).ready(() => {
 function loadMap() {
   // Create the map with a default center.
   map = new google.maps.Map(document.getElementById('map'), {
-    center: { lat: 49.278628, lng: -122.920355 },
+    center: {lat: 49.278628, lng: -122.920355},
     zoom: 12,
     scaleControl: true,
-    mapTypeId: 'roadmap'
+    mapTypeId: 'roadmap',
   });
   infoWindow = new google.maps.InfoWindow();
 
   let eventMarker;
   let longitude = localEventData.loc[0];
   let latitude = localEventData.loc[1];
-  let content = localEventData.locationName + "<br>" + localEventData.locationAddr +
-    "<br><a class='directions' target='_blank' href=https://www.google.com/maps/dir//"
-    + latitude + "," + longitude + ">Get Directions</a>";
+  let content = localEventData.locationName + '<br>' + localEventData.locationAddr +
+    '<br><a class=\'directions\' target=\'_blank\' href=https://www.google.com/maps/dir//'
+    + latitude + ',' + longitude + '>Get Directions</a>';
   eventMarker = new google.maps.Marker({
     position: new google.maps.LatLng(latitude, longitude),
     map: map,
@@ -34,8 +34,8 @@ function loadMap() {
 
   map.setCenter(eventMarker.getPosition());
   eventLocation = eventMarker.getPosition();
-  
-  google.maps.event.addListener(eventMarker, 'click', function () {
+
+  google.maps.event.addListener(eventMarker, 'click', () => {
     infoWindow.setContent(content);
     infoWindow.open(map, eventMarker);
   });
