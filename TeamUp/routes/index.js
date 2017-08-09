@@ -3,7 +3,7 @@
 const express = require('express');
 const _ = require('lodash');
 const router = new express.Router();
-const moment = require('moment');
+const moment = require("moment");
 
 /* GET home page */
 router.route('/')
@@ -18,7 +18,7 @@ router.route('/')
       const Event = require('../models/Event');
 
       // Get user specific events
-      Event.find({users: {$eq: req.user._id.toString()}}).populate('createdBy').
+      Event.find({ users: {$eq: req.user._id.toString()} }).populate('createdBy').
                     populate('users').sort('from').exec((err, events) => {
         let from = [];
         let to = [];
@@ -40,7 +40,7 @@ router.route('/')
     // login page
     else {
       res.render('index', {
-        title: 'Teamup - Login or Sign Up',
+        title: 'TeamUp - Login or Sign Up',
         csrfToken: req.csrfToken(),
         errorExist: messages.length > 0,
         loginErrors: messages,
