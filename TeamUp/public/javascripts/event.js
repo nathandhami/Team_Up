@@ -1,8 +1,7 @@
 $(document).ready(() => {
-
   // Chat Client-Side Behaviour
 
-  var socket = io();
+  let socket = io();
   // Force socket.io to use only websock and never use HTTP polling
   // let socket = io({transports: ['websocket'], upgrade: false});
   let syncTimestampArr = [];
@@ -20,11 +19,10 @@ $(document).ready(() => {
 
     // Status Updating Logic
     socket.emit('userChangedStatus', localUserData);
-
   });
 
 
-  socket.on('connect', function () {
+  socket.on('connect', () => {
     socket.emit('new user', localUserData, localEventData);
   });
 
@@ -37,15 +35,13 @@ $(document).ready(() => {
       statusTitle.text(' [ Status: ' + user.status + ' ]');
       statusTitle.append($('<span class="caret"></span>'));
     }
-    
+
       $('#event-participants').find('span').each(function( index ) {
-        var text = $(this).data('userid');
-       if (text == user.userId){
+        let text = $(this).data('userid');
+       if (text == user.userId) {
          $(this).text(' (' + user.status + ')');
        }
-
     });
-
   });
 
   socket.on('updateChatUsers', (data) => {
@@ -55,7 +51,7 @@ $(document).ready(() => {
     $('.users').remove();
 
     for (let i = 0; i < data.length; i++) {
-      let content = $('<li class="users user' + i + '">' + data[i].name + ' ' 
+      let content = $('<li class="users user' + i + '">' + data[i].name + ' '
                         + '<span data-userid="' + data[i].userId + '" class="statuses status' + i + '">'
                         + '(' + data[i].status + ')' + '</span></li>');
       eventParticipants.append(content);
@@ -153,7 +149,7 @@ $(document).ready(() => {
    *
    */
   function syncTimestamps(intervalRate) {
-    setInterval(function () {
+    setInterval(() => {
       let arrSize = syncTimestampArr.length;
 
       for (i = 0; i < arrSize; i++) {
@@ -165,7 +161,6 @@ $(document).ready(() => {
     }, intervalRate);
   }
   // END OF Chat Client-Side Behaviour
-
 });
 
 
