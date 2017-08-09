@@ -7,10 +7,12 @@ It might take time to load, so if you get 502 bad gateway, maybe wait for a few 
 # Features
 
 * Users can login and register through his credentials or using google, twitter or facebook api
-* Users can search nearby parks using Google Maps api and create an event on that location
+* Users can search nearby parks using Google Maps api and get directions to reach that location
+* Users can create events based on the locations from the Google Maps
 * Users can set a maximum number of players to join their events
-* Other users can join the events from a map and chat with each other
-* Users can see each others status in chatroom
+* Users can join the sports events from a map and chat with other users attending the same event
+* Users can see each others' status in the chatroom
+* Users can see, edit, and delete events anytime they want
 
 
 # Limitation
