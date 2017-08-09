@@ -62,6 +62,9 @@
     margin-left: 46px;
 }
 
+#event-details .details_newline2 {
+    margin-left: 49px;
+}
 
 #event-details .icon-default {
    color: black;
